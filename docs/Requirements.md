@@ -2,10 +2,10 @@
 ==========
 
 Es soll eine Applikation für Konferenzen programmiert werden. Die Hauptanwender sind Gäste, die diese Applikation über das Web oder über mobile Endgeräte nutzen sollen. Eine Konferenz (Conference) hat eine Dauer von einem bis mehrere Tage und findet üblicherweise an einem Ort statt. Beispiele für Konferenzen sind W-JAX oder die PRODYNA Hausmesse. Auf einer Konferenz findet Vorträge (Talks) statt. Die Gäste sollen sich informieren können, welche Talks überhaupt existieren, wann sie sind, in welchem Raum (Room) sie stattfinden und von wem (Speaker) dieser Talk gehalten wird. Ein Talk kann von mehreren Speakern gehalten werden. Zusätzlich soll es ein Backoffice-Zugang geben, über welche die Stammdaten (als Conference, Speaker, Room, Talk) gepflegt werden können.
- - Eine Conference hat einen Namen, eine Kurzbeschreibung, ein Anfangs- und ein Enddatum.
- - Ein Speaker hat einen Namen und eine Kurzbeschreibung
- - Ein Room hat einen Namen (z.B. "Adria") und eine Kapazität
- - Ein Talk hat einen Namen, eine Kurzbeschreibung, eine Länge (in Minuten), einen Room und einen oder mehrere Speaker und gehört zu einer Conference. 
+ - Eine **Conference** hat einen Namen, eine Kurzbeschreibung, ein Anfangs- und ein Enddatum.
+ - Ein **Speaker** hat einen Namen und eine Kurzbeschreibung
+ - Ein **Room** hat einen Namen (z.B. "Adria") und eine Kapazität
+ - Ein **Talk** hat einen Namen, eine Kurzbeschreibung, eine Länge (in Minuten), einen Room und einen oder mehrere Speaker und gehört zu einer Conference. 
 
 ### Anforderungen
 Der Auftraggeber stellt die folgenden Anforderungen:
