@@ -2,14 +2,12 @@
 ==========
 
 Es soll eine Applikation für Konferenzen programmiert werden. Die Hauptanwender sind Gäste, die diese Applikation über das Web oder über mobile Endgeräte nutzen sollen. Eine Konferenz (Conference) hat eine Dauer von einem bis mehrere Tage und findet üblicherweise an einem Ort statt. Beispiele für Konferenzen sind W-JAX oder die PRODYNA Hausmesse. Auf einer Konferenz findet Vorträge (Talks) statt. Die Gäste sollen sich informieren können, welche Talks überhaupt existieren, wann sie sind, in welchem Raum (Room) sie stattfinden und von wem (Speaker) dieser Talk gehalten wird. Ein Talk kann von mehreren Speakern gehalten werden. Zusätzlich soll es ein Backoffice-Zugang geben, über welche die Stammdaten (als Conference, Speaker, Room, Talk) gepflegt werden können.
-
  - Eine Conference hat einen Namen, eine Kurzbeschreibung, ein Anfangs- und ein Enddatum.
  - Ein Speaker hat einen Namen und eine Kurzbeschreibung
  - Ein Room hat einen Namen (z.B. "Adria") und eine Kapazität
  - Ein Talk hat einen Namen, eine Kurzbeschreibung, eine Länge (in Minuten), einen Room und einen oder mehrere Speaker und gehört zu einer Conference. 
 
-Anforderungen
--------------
+#### Anforderungen
 Der Auftraggeber stellt die folgenden Anforderungen:
  - Als Endanwender erwarte ich die folgenden Sichten In der Applikation
  	- Startseite: Liste aller Konferenzen
@@ -61,13 +59,11 @@ Der Auftraggeber stellt die folgenden Anforderungen:
  - Als Ops möchte ich, dass zu allen Service-Aufrufen ein Log-Eintrag erfolgt, wo man den Service, die Methode, die Parameter und die Antwortzeiten sehen kann
  - Als Ops möchte ich, dass die Applikation nicht direkt die Datenbanktabellen anlegt oder manipuliert, sondern ein SQL-Script bereit liegt, weil bei uns Applikationen keine DDL-Logik enthalten dürfen
 
- Hinweise
- ---------------
+#### Hinweise
  - Wir verzichten auf Security, wer sowas implementiert erhält einen Bonus
  - Die Qualität der GUI (Ergonomie) spielt keine Rolle, es geht nur um Funktionalität
 
- Entscheidungen
-----------------
+#### Entscheidungen
 Als Architekt des Projekt müssen sie diverse Entscheidungen treffen
  - Wie viele Release Units soll es geben?
  - Welche Komponenten wird es geben?
@@ -75,8 +71,7 @@ Als Architekt des Projekt müssen sie diverse Entscheidungen treffen
  - Welche Datenbank soll verwendet werden (MySQL oder MongoDB)
  - Welche Standards sollen gelten
  
-Deliverables
----------------
+#### Deliverables
  - Ein Dokument "Service Architekture"
  - Ein oder mehrere git-Repositories mit jeweils eine Maven-Projekt
  - Das Build des Maven-Projekts liefert ein Assembly, das alles enthält, um die Applikation zum Laufen zu bringen
