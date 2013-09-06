@@ -1,0 +1,1 @@
+include "com.prodyna.pac.conference.ejb",  "com.prodyna.pac.conference.rest", "com.prodyna.pac.conference.jsf"

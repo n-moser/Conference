@@ -4,3 +4,10 @@
 *.jar
 *.war
 *.ear
+*.zip
+
+# Directories #
+.idea/
+.metadata/
+.gradle/
+build/

@@ -1,0 +1,90 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2013 Nicolas Moser
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'jacoco'
+apply plugin: 'pmd'
+apply plugin: 'project-report'
+
+jacocoTestReport.dependsOn(build)
+
+checkstyle {
+    ignoreFailures = true
+    showViolations = false
+    configFile = file("$rootDir/config/checkstyle/checkstyle.xml")
+}
+
+findbugs {
+    ignoreFailures = true
+}
+
+pmd {
+    ruleSets = ["basic", "braces", "codesize", "coupling", "design", "naming"]
+    ignoreFailures = true
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled = true
+    }
+}
+
+tasks.withType(Pmd) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+task checkClean (dependsOn: clean) {
+    check.execute();
+}
+
+task checkstyleReport << {
+    if (file("$buildDir/reports/checkstyle/${checkType}.xml").exists()) {
+        ant.xslt(in: "$buildDir/reports/checkstyle/${checkType}.xml",
+                style: "$rootDir/config/checkstyle/checkstyle-noframes.xsl",
+                out: "$buildDir/reports/checkstyle/${checkType}.html"
+        )
+    }
+}
+
+gradle.taskGraph.afterTask { Task task ->
+    if (task.name in ['checkstyleMain', 'checkstyleTest']) {
+        checkstyleReport {
+            def matcher = task.name =~ /^checkstyle(.*)$/
+            if (matcher.matches()) {
+                checkType = matcher.group(1).toLowerCase()
+            }
+        }
+        checkstyleReport.execute()
+    }
+}

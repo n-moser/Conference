@@ -1,0 +1,4 @@
+language: java
+jdk: oraclejdk6
+
+before_script: cd com.prodyna.pac.conference
