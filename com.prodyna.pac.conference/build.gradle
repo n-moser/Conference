@@ -21,19 +21,25 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
+
+
+
 subprojects {
 
     version = '0.0.1'
 
-    apply from: "$rootDir/gradle/repositories.gradle"
-
     apply from: "$rootDir/gradle/java.gradle"
     apply from: "$rootDir/gradle/test.gradle"
-    
-	//apply from: "$rootDir/gradle/quality.gradle"
+
+    //apply from: "$rootDir/gradle/quality.gradle"
 
     apply from: "$rootDir/gradle/eclipse.gradle"
     apply from: "$rootDir/gradle/idea.gradle"
+
+    repositories {
+        mavenCentral()
+    }
 
     dependencies {
         provided group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'

@@ -23,29 +23,72 @@
 
 package com.prodyna.pac.conference.ejb.model;
 
-import java.io.Serializable;
+import javax.persistence.*;
 
 /**
- * Datatype
+ * TalkSpeaker
  * <p/>
  * Author: Nicolas Moser
- * Date: 06.09.13
- * Time: 17:35
+ * Date: 09.09.13
+ * Time: 23:28
  */
-public interface Datatype extends Serializable {
+@Entity
+public class TalkSpeaker implements Datatype {
+
+    private Long id;
+
+    private Long version;
+
+    private Speaker speaker;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Override
+    public Long getId() {
+        return this.id;
+    }
 
     /**
-     * Getter for the Datatype Identifier.
+     * Setter for the entity identifier.
      *
-     * @return the Identifier
+     * @param id the ID to set
      */
-    Long getId();
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Version
+    @Override
+    public Long getVersion() {
+        return version;
+    }
 
     /**
-     * Getter for the Datatype Version.
+     * Setter for the entity version.
      *
-     * @return the Version
+     * @param version the version to set
      */
-    Long getVersion();
+    public void setVersion(Long version) {
+        this.version = version;
+    }
 
+    /**
+     * Getter for the speaker.
+     *
+     * @return the speaker
+     */
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
+    @JoinColumn
+    public Speaker getSpeaker() {
+        return speaker;
+    }
+
+    /**
+     * Setter for the speaker
+     *
+     * @param speaker the speaker to set
+     */
+    public void setSpeaker(Speaker speaker) {
+        this.speaker = speaker;
+    }
 }
