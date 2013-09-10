@@ -25,14 +25,15 @@
 
 
 
+
+
 subprojects {
 
     version = '0.0.1'
 
     apply from: "$rootDir/gradle/java.gradle"
     apply from: "$rootDir/gradle/test.gradle"
-
-    //apply from: "$rootDir/gradle/quality.gradle"
+    apply from: "$rootDir/gradle/quality.gradle"
 
     apply from: "$rootDir/gradle/eclipse.gradle"
     apply from: "$rootDir/gradle/idea.gradle"

@@ -21,11 +21,15 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
+
 apply plugin: 'war'
 apply plugin: 'jetty'
 
 dependencies {
-	compile project(':com.prodyna.pac.conference.ejb')
+    compile project(':com.prodyna.pac.conference.ejb')
+    compile group: 'org.richfaces.ui', name: 'richfaces-components-ui', version: '4.2.0.Final'
+    compile group: 'org.richfaces.core', name: 'richfaces-core-impl', version: '4.2.0.Final'
 }
 
 jar.enabled = false

@@ -21,6 +21,8 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
+
 apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'jacoco'
@@ -64,9 +66,10 @@ tasks.withType(Pmd) {
     }
 }
 
-task checkClean (dependsOn: clean) {
+task checkClean(dependsOn: clean) {
     check.execute();
 }
+
 
 task checkstyleReport << {
     if (file("$buildDir/reports/checkstyle/${checkType}.xml").exists()) {
