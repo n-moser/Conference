@@ -21,11 +21,13 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
+
 apply plugin: 'war'
 apply plugin: 'jetty'
 
 dependencies {
-	compile project(':com.prodyna.pac.conference.ejb')
+    compile project(':com.prodyna.pac.conference.ejb.facade')
 }
 
 jar.enabled = false
