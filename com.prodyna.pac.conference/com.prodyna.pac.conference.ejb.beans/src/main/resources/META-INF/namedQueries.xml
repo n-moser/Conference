@@ -37,4 +37,37 @@
         </query>
     </named-query>
 
+    <!-- Room -->
+
+    <named-query name="Room.findRoomByName">
+        <query>
+            <![CDATA[
+                SELECT r FROM Room r
+                WHERE r.name = :name
+            ]]>
+        </query>
+    </named-query>
+
+    <!-- Speaker -->
+
+    <named-query name="Speaker.findSpeakerByName">
+        <query>
+            <![CDATA[
+                SELECT s FROM Speaker s
+                WHERE s.name = :name
+            ]]>
+        </query>
+    </named-query>
+
+    <!-- Talk -->
+
+    <named-query name="Talk.findTalkByName">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                WHERE t.name = :name
+            ]]>
+        </query>
+    </named-query>
+
 </entity-mappings>

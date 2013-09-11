@@ -85,7 +85,7 @@ public class Room implements Datatype {
      */
     @Size(min = 3, max = 50)
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     public String getName() {
         return name;
     }

@@ -29,39 +29,91 @@ import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
+import javax.persistence.TypedQuery;
 
 /**
  * SpeakerServiceBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13
- * Time: 16:51
+ * Time: 16:49
  */
 @Stateless
 public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 
+    private static final String QUERY_FIND_SPEAKER_BY_NAME = "Speaker.findSpeakerByName";
+
+    @Inject
+    private EntityManager entityManager;
+
     @Override
     public Speaker findSpeakerById(Long id) throws ServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+
+            return this.entityManager.find(Speaker.class, id);
+
+        } catch (PersistenceException pe) {
+            throw new ServiceException("Cannot find Speaker entity with ID '" + id + "'.", pe);
+        }
     }
 
     @Override
     public Speaker findSpeakerByName(String name) throws ServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        try {
+            TypedQuery<Speaker> query = this.entityManager.
+                    createNamedQuery(QUERY_FIND_SPEAKER_BY_NAME, Speaker.class);
+
+            query.setParameter("name", name);
+
+            return query.getSingleResult();
+
+        } catch (PersistenceException pe) {
+            throw new ServiceException("Cannot find Speaker entity with name '" + name + "'.", pe);
+        }
     }
 
     @Override
-    public Speaker createSpeaker(Speaker Speaker) throws ServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Speaker createSpeaker(Speaker speaker) throws ServiceException {
+
+        try {
+            this.entityManager.persist(speaker);
+            this.entityManager.flush();
+        } catch (PersistenceException pe) {
+            throw new ServiceException("Error persisting new Speaker entity with name '" + speaker.getName() + "'.",
+                    pe);
+        }
+
+        return speaker;
     }
 
     @Override
-    public Speaker updateSpeaker(Speaker Speaker) throws ServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Speaker updateSpeaker(Speaker speaker) throws ServiceException {
+
+        try {
+            speaker = this.entityManager.merge(speaker);
+            this.entityManager.flush();
+        } catch (PersistenceException pe) {
+            throw new ServiceException("Error updating Speaker entity with ID '" + speaker.getId() + "'.", pe);
+        }
+
+        return speaker;
+
     }
 
     @Override
-    public Speaker removeSpeaker(Speaker Speaker) throws ServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Speaker removeSpeaker(Speaker speaker) throws ServiceException {
+
+        try {
+            this.entityManager.remove(speaker);
+            this.entityManager.flush();
+        } catch (PersistenceException pe) {
+            throw new ServiceException("Error removing Speaker entity with ID '" + speaker.getId() + "'.", pe);
+        }
+
+        return speaker;
     }
 }

@@ -29,39 +29,90 @@ import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
+import javax.persistence.TypedQuery;
 
 /**
  * RoomServiceBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13
- * Time: 16:51
+ * Time: 16:49
  */
 @Stateless
 public class RoomServiceBean extends ServiceBean implements RoomService {
 
+    private static final String QUERY_FIND_ROOM_BY_NAME = "Room.findRoomByName";
+
+    @Inject
+    private EntityManager entityManager;
+
     @Override
     public Room findRoomById(Long id) throws ServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+
+            return this.entityManager.find(Room.class, id);
+
+        } catch (PersistenceException pe) {
+            throw new ServiceException("Cannot find Room entity with ID '" + id + "'.", pe);
+        }
     }
 
     @Override
     public Room findRoomByName(String name) throws ServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        try {
+            TypedQuery<Room> query = this.entityManager.
+                    createNamedQuery(QUERY_FIND_ROOM_BY_NAME, Room.class);
+
+            query.setParameter("name", name);
+
+            return query.getSingleResult();
+
+        } catch (PersistenceException pe) {
+            throw new ServiceException("Cannot find Room entity with name '" + name + "'.", pe);
+        }
     }
 
     @Override
     public Room createRoom(Room room) throws ServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        try {
+            this.entityManager.persist(room);
+            this.entityManager.flush();
+        } catch (PersistenceException pe) {
+            throw new ServiceException("Error persisting new Room entity with name '" + room.getName() + "'.", pe);
+        }
+
+        return room;
     }
 
     @Override
     public Room updateRoom(Room room) throws ServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        try {
+            room = this.entityManager.merge(room);
+            this.entityManager.flush();
+        } catch (PersistenceException pe) {
+            throw new ServiceException("Error updating Room entity with ID '" + room.getId() + "'.", pe);
+        }
+
+        return room;
+
     }
 
     @Override
     public Room removeRoom(Room room) throws ServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        try {
+            this.entityManager.remove(room);
+            this.entityManager.flush();
+        } catch (PersistenceException pe) {
+            throw new ServiceException("Error removing Room entity with ID '" + room.getId() + "'.", pe);
+        }
+
+        return room;
     }
 }

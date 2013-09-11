@@ -44,7 +44,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class ConferenceServiceBean extends ServiceBean implements ConferenceService {
 
-    public static final String QUERY_FIND_CONFERENCE_BY_NAME = "Conference.findConferenceByName";
+    private static final String QUERY_FIND_CONFERENCE_BY_NAME = "Conference.findConferenceByName";
 
     @Inject
     private EntityManager entityManager;
