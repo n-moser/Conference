@@ -26,4 +26,6 @@
 
 dependencies {
     compile project(':com.prodyna.pac.conference.ejb.facade')
+    compile group: 'javax.enterprise', name: 'cdi-api', version: '1.0-SP4'
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
 }

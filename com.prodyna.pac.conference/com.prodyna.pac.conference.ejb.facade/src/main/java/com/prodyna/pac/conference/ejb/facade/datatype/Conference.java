@@ -21,21 +21,23 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.facade.datatypes;
+package com.prodyna.pac.conference.ejb.facade.datatype;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Date;
 
 /**
- * Talk
+ * Conference
  * <p/>
  * Author: Nicolas Moser
  * Date: 06.09.13
- * Time: 17:37
+ * Time: 17:33
  */
 @Entity
-public class Talk implements Datatype {
+public class Conference implements Datatype {
 
     private Long id;
 
@@ -45,13 +47,9 @@ public class Talk implements Datatype {
 
     private String description;
 
-    private Integer duration;
+    private Date startDate;
 
-    private Room room;
-
-    private Conference conference;
-
-    private List<TalkSpeaker> speakers;
+    private Date endDate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -70,7 +68,6 @@ public class Talk implements Datatype {
     }
 
     @Version
-    @Column(nullable = false)
     @Override
     public Long getVersion() {
         return version;
@@ -86,36 +83,39 @@ public class Talk implements Datatype {
     }
 
     /**
-     * Getter for the talks name.
+     * Getter for the conference name.
      *
-     * @return the name of the talk
+     * @return the conference name
      */
-    @Column(nullable = false)
+    @Size(min = 3, max = 50)
+    @NotNull
+    @Column(nullable = false, length = 50)
     public String getName() {
         return name;
     }
 
     /**
-     * Setter for the talks name.
+     * Setter for the conference name.
      *
-     * @param name the name to set
+     * @param name the conference name to set
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Getter for the talk description.
+     * Getter for the conference description.
      *
-     * @return the description
+     * @return the conference description
      */
-    @Column(nullable = true)
+    @Size(min = 1, max = 255)
+    @Column(nullable = true, length = 255)
     public String getDescription() {
         return description;
     }
 
     /**
-     * Setter for the talk description.
+     * Setter for the conference description.
      *
      * @param description the description to set
      */
@@ -124,86 +124,46 @@ public class Talk implements Datatype {
     }
 
     /**
-     * Getter for the duration in minutes.
+     * Getter for the conference start date.
      *
-     * @return the duration in minutes
+     * @return the start date
      */
+    @Future
+    @NotNull
+    @Temporal(value = TemporalType.DATE)
     @Column(nullable = false)
-    public Integer getDuration() {
-        return duration;
+    public Date getStartDate() {
+        return startDate;
     }
 
     /**
-     * Setter for the duration in minutes.
+     * Setter for the conference start date.
      *
-     * @param duration the duration to set
+     * @param startDate the start date to set
      */
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     /**
-     * Getter for the room.
+     * Getter for the conference end date.
      *
-     * @return the room
+     * @return the end date
      */
-    @JoinColumn
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER, optional = false)
-    public Room getRoom() {
-        return room;
+    @Future
+    @NotNull
+    @Temporal(value = TemporalType.DATE)
+    @Column(nullable = false)
+    public Date getEndDate() {
+        return endDate;
     }
 
     /**
-     * Setter for the room.
+     * Setter for the conference end date.
      *
-     * @param room the room to set
+     * @param endDate the end date to set
      */
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-    /**
-     * Getter for the conference.
-     *
-     * @return the conference
-     */
-    @JoinColumn
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER, optional = false)
-    public Conference getConference() {
-        return conference;
-    }
-
-    /**
-     * Setter for the conference.
-     *
-     * @param conference the conference to set
-     */
-    public void setConference(Conference conference) {
-        this.conference = conference;
-    }
-
-    /**
-     * Getter for the speakers list.
-     *
-     * @return the list of speakers
-     */
-    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = false, cascade = {CascadeType.ALL})
-    @JoinColumn
-    public List<TalkSpeaker> getSpeakers() {
-        if (speakers == null) {
-            speakers = new ArrayList<TalkSpeaker>();
-        }
-        return speakers;
-    }
-
-    /**
-     * Setter for the speakers.
-     * <p/>
-     * Must not be invoked by clients since it is a persistence provider operation.
-     *
-     * @param speakers the speakers to set
-     */
-    void setSpeakers(List<TalkSpeaker> speakers) {
-        this.speakers = speakers;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }

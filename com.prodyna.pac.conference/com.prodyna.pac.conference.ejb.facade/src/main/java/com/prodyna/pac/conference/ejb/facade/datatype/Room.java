@@ -21,19 +21,23 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.facade.datatypes;
+package com.prodyna.pac.conference.ejb.facade.datatype;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
- * Speaker
+ * Room
  * <p/>
  * Author: Nicolas Moser
  * Date: 06.09.13
  * Time: 17:36
  */
 @Entity
-public class Speaker implements Datatype {
+public class Room implements Datatype {
 
     private Long id;
 
@@ -41,7 +45,7 @@ public class Speaker implements Datatype {
 
     private String name;
 
-    private String desciption;
+    private Integer capacity;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -75,39 +79,44 @@ public class Speaker implements Datatype {
     }
 
     /**
-     * Getter for the speakers name.
+     * Getter for the rooms name.
      *
-     * @return name of the speaker
+     * @return the name of the room
      */
+    @Size(min = 3, max = 50)
+    @NotNull
     @Column(nullable = false)
     public String getName() {
         return name;
     }
 
     /**
-     * Setter for the speakers name.
+     * Setter for the rooms name.
      *
-     * @param name the name to set
+     * @param name the rooms name to set
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Getter for the speakers profile description.
+     * Getter for the rooms capacity.
      *
-     * @return the profile description
+     * @return the capacity
      */
-    public String getDesciption() {
-        return desciption;
+    @Min(value = 1)
+    @Max(value = 10000)
+    @Column(nullable = false)
+    public Integer getCapacity() {
+        return capacity;
     }
 
     /**
-     * Setter for the speakers profile description.
+     * Setter for the rooms capacity.
      *
-     * @param desciption the description to set
+     * @param capacity the capacity to set
      */
-    public void setDesciption(String desciption) {
-        this.desciption = desciption;
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 }

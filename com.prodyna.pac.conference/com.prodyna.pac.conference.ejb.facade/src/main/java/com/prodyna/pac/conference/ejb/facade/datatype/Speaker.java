@@ -21,19 +21,22 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.facade.datatypes;
+package com.prodyna.pac.conference.ejb.facade.datatype;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
- * Room
+ * Speaker
  * <p/>
  * Author: Nicolas Moser
  * Date: 06.09.13
  * Time: 17:36
  */
 @Entity
-public class Room implements Datatype {
+public class Speaker implements Datatype {
 
     private Long id;
 
@@ -41,7 +44,7 @@ public class Room implements Datatype {
 
     private String name;
 
-    private Integer capacity;
+    private String desciption;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -75,40 +78,44 @@ public class Room implements Datatype {
     }
 
     /**
-     * Getter for the rooms name.
+     * Getter for the speakers name.
      *
-     * @return the name of the room
+     * @return name of the speaker
      */
-    @Column(nullable = false)
+    @NotNull
+    @Size(min = 3, max = 50)
+    @Pattern(regexp = "[a-zA-Z]*")
+    @Column(nullable = false, length = 50)
     public String getName() {
         return name;
     }
 
     /**
-     * Setter for the rooms name.
+     * Setter for the speakers name.
      *
-     * @param name the rooms name to set
+     * @param name the name to set
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Getter for the rooms capacity.
+     * Getter for the speakers profile description.
      *
-     * @return the capacity
+     * @return the profile description
      */
-    @Column(nullable = false)
-    public Integer getCapacity() {
-        return capacity;
+    @Size(min = 1, max = 255)
+    @Column(nullable = true, length = 255)
+    public String getDesciption() {
+        return desciption;
     }
 
     /**
-     * Setter for the rooms capacity.
+     * Setter for the speakers profile description.
      *
-     * @param capacity the capacity to set
+     * @param desciption the description to set
      */
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
+    public void setDesciption(String desciption) {
+        this.desciption = desciption;
     }
 }

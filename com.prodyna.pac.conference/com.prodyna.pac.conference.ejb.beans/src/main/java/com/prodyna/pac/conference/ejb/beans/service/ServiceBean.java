@@ -21,31 +21,17 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.facade.datatypes;
+package com.prodyna.pac.conference.ejb.beans.service;
 
-import java.io.Serializable;
+import com.prodyna.pac.conference.ejb.facade.service.Service;
 
 /**
- * Datatype
+ * ServiceBean
  * <p/>
  * Author: Nicolas Moser
- * Date: 06.09.13
- * Time: 17:35
+ * Date: 11.09.13
+ * Time: 16:49
  */
-public interface Datatype extends Serializable {
-
-    /**
-     * Getter for the Datatype Identifier.
-     *
-     * @return the Identifier
-     */
-    Long getId();
-
-    /**
-     * Getter for the Datatype Version.
-     *
-     * @return the Version
-     */
-    Long getVersion();
+public abstract class ServiceBean implements Service {
 
 }

@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.facade.datatypes;
+package com.prodyna.pac.conference.ejb.facade.datatype;
 
 import javax.persistence.*;
 

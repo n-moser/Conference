@@ -21,17 +21,23 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.prodyna.pac.conference.ejb.beans.cdi.producer;
 
+import javax.enterprise.inject.Produces;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
+/**
+ * EntityManagerProducer
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 18:53
+ */
+public class EntityManagerProducer {
 
-
-
-
-dependencies {
-    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: '1.0.1.Final'
-    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.0.1.Final'
-    compile group: 'org.hibernate', name: 'hibernate-validator', version: '4.2.0.Final'
-
-    compile group: 'org.jboss.spec.javax.ejb', name: 'jboss-ejb-api_3.1_spec', version: '1.0.1.Final'
+    @Produces
+    @PersistenceContext(unitName = "conference")
+    private EntityManager entityManager;
 
 }

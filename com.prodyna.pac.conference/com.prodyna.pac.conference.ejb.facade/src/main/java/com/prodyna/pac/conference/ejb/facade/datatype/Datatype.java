@@ -21,17 +21,31 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.prodyna.pac.conference.ejb.facade.datatype;
 
+import java.io.Serializable;
 
+/**
+ * Datatype
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 06.09.13
+ * Time: 17:35
+ */
+public interface Datatype extends Serializable {
 
+    /**
+     * Getter for the Datatype Identifier.
+     *
+     * @return the Identifier
+     */
+    Long getId();
 
-
-
-dependencies {
-    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: '1.0.1.Final'
-    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.0.1.Final'
-    compile group: 'org.hibernate', name: 'hibernate-validator', version: '4.2.0.Final'
-
-    compile group: 'org.jboss.spec.javax.ejb', name: 'jboss-ejb-api_3.1_spec', version: '1.0.1.Final'
+    /**
+     * Getter for the Datatype Version.
+     *
+     * @return the Version
+     */
+    Long getVersion();
 
 }

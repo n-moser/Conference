@@ -21,17 +21,53 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.prodyna.pac.conference.ejb.facade.exception;
 
+import javax.ejb.ApplicationException;
 
+/**
+ * ServiceException
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 16:44
+ */
+@ApplicationException(rollback = true)
+public class ServiceException extends Exception {
 
+    /**
+     * Creates a new service exception without parameters.
+     */
+    public ServiceException() {
+        super();
+    }
 
+    /**
+     * Creates a new service exception with the given error message.
+     *
+     * @param message the error message
+     */
+    public ServiceException(String message) {
+        super(message);
+    }
 
+    /**
+     * Creates a new service exception with the given error cause.
+     *
+     * @param cause the causing exception
+     */
+    public ServiceException(Exception cause) {
+        super(cause);
+    }
 
-dependencies {
-    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: '1.0.1.Final'
-    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.0.1.Final'
-    compile group: 'org.hibernate', name: 'hibernate-validator', version: '4.2.0.Final'
-
-    compile group: 'org.jboss.spec.javax.ejb', name: 'jboss-ejb-api_3.1_spec', version: '1.0.1.Final'
+    /**
+     * Creates a new service exception with the given error message and cause.
+     *
+     * @param message the error message
+     * @param cause   the causing exception
+     */
+    public ServiceException(String message, Exception cause) {
+        super(message, cause);
+    }
 
 }
