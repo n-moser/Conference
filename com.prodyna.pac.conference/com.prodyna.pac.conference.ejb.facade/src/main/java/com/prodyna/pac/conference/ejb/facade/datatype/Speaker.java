@@ -38,84 +38,96 @@ import javax.validation.constraints.Size;
 @Entity
 public class Speaker implements Datatype {
 
-    private Long id;
+	private Long id;
 
-    private Long version;
+	private Long version;
 
-    private String name;
+	private String name;
 
-    private String desciption;
+	private String desciption;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Override
-    public Long getId() {
-        return this.id;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Override
+	public Long getId() {
 
-    /**
-     * Setter for the entity identifier.
-     *
-     * @param id the ID to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
+		return this.id;
+	}
 
-    @Version
-    @Override
-    public Long getVersion() {
-        return version;
-    }
+	/**
+	 * Setter for the entity identifier.
+	 *
+	 * @param id
+	 * 		the ID to set
+	 */
+	public void setId(Long id) {
 
-    /**
-     * Setter for the entity version.
-     *
-     * @param version the version to set
-     */
-    public void setVersion(Long version) {
-        this.version = version;
-    }
+		this.id = id;
+	}
 
-    /**
-     * Getter for the speakers name.
-     *
-     * @return name of the speaker
-     */
-    @NotNull
-    @Size(min = 3, max = 50)
-    @Pattern(regexp = "[a-zA-Z]*")
-    @Column(nullable = false, length = 50)
-    public String getName() {
-        return name;
-    }
+	@Version
+	@Override
+	public Long getVersion() {
 
-    /**
-     * Setter for the speakers name.
-     *
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+		return version;
+	}
 
-    /**
-     * Getter for the speakers profile description.
-     *
-     * @return the profile description
-     */
-    @Size(min = 1, max = 255)
-    @Column(nullable = true, length = 255)
-    public String getDesciption() {
-        return desciption;
-    }
+	/**
+	 * Setter for the entity version.
+	 *
+	 * @param version
+	 * 		the version to set
+	 */
+	public void setVersion(Long version) {
 
-    /**
-     * Setter for the speakers profile description.
-     *
-     * @param desciption the description to set
-     */
-    public void setDesciption(String desciption) {
-        this.desciption = desciption;
-    }
+		this.version = version;
+	}
+
+	/**
+	 * Getter for the speakers name.
+	 *
+	 * @return name of the speaker
+	 */
+	@NotNull
+	@Size(min = 3, max = 50)
+	@Pattern(regexp = "[a-zA-Z]*")
+	@Column(nullable = false, length = 50)
+	public String getName() {
+
+		return name;
+	}
+
+	/**
+	 * Setter for the speakers name.
+	 *
+	 * @param name
+	 * 		the name to set
+	 */
+	public void setName(String name) {
+
+		this.name = name;
+	}
+
+	/**
+	 * Getter for the speakers profile description.
+	 *
+	 * @return the profile description
+	 */
+	@Size(min = 1, max = 255)
+	@Column(nullable = true, length = 255)
+	public String getDesciption() {
+
+		return desciption;
+	}
+
+	/**
+	 * Setter for the speakers profile description.
+	 *
+	 * @param desciption
+	 * 		the description to set
+	 */
+	public void setDesciption(String desciption) {
+
+		this.desciption = desciption;
+	}
 }

@@ -39,59 +39,69 @@ import javax.ejb.Remote;
 @Remote
 public interface TalkService extends Service {
 
-    /**
-     * Find the Talk entity with the given ID.
-     *
-     * @param id the id of the talk entity
-     *
-     * @return the talk entity
-     *
-     * @throws ServiceException when the Talk entity with the given ID does not exist in the database
-     */
-    Talk findTalkById(Long id) throws ServiceException;
+	/**
+	 * Find the Talk entity with the given ID.
+	 *
+	 * @param id
+	 * 		the id of the talk entity
+	 *
+	 * @return the talk entity
+	 *
+	 * @throws ServiceException
+	 * 		when the Talk entity with the given ID does not exist in the database
+	 */
+	Talk findTalkById(Long id) throws ServiceException;
 
-    /**
-     * Find the Talk entity with the given Name.
-     *
-     * @param name the id of the talk entity
-     *
-     * @return the talk entity
-     *
-     * @throws ServiceException when the Talk entity with the given Name does not exist in the database
-     */
-    Talk findTalkByName(String name) throws ServiceException;
+	/**
+	 * Find the Talk entity with the given Name.
+	 *
+	 * @param name
+	 * 		the id of the talk entity
+	 *
+	 * @return the talk entity
+	 *
+	 * @throws ServiceException
+	 * 		when the Talk entity with the given Name does not exist in the database
+	 */
+	Talk findTalkByName(String name) throws ServiceException;
 
-    /**
-     * Persists a non-persistent Talk entity to the database.
-     *
-     * @param Talk the talk entity to persist
-     *
-     * @return the persisted entity
-     *
-     * @throws ServiceException when the entity cannot be persisted
-     */
-    Talk createTalk(Talk Talk) throws ServiceException;
+	/**
+	 * Persists a non-persistent Talk entity to the database.
+	 *
+	 * @param Talk
+	 * 		the talk entity to persist
+	 *
+	 * @return the persisted entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be persisted
+	 */
+	Talk createTalk(Talk Talk) throws ServiceException;
 
-    /**
-     * Updates an already persistent Talk entity to the database.
-     *
-     * @param Talk the talk entity to update
-     *
-     * @return the updated entity
-     *
-     * @throws ServiceException when the entity cannot be updated
-     */
-    Talk updateTalk(Talk Talk) throws ServiceException;
+	/**
+	 * Updates an already persistent Talk entity to the database.
+	 *
+	 * @param Talk
+	 * 		the talk entity to update
+	 *
+	 * @return the updated entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be updated
+	 */
+	Talk updateTalk(Talk Talk) throws ServiceException;
 
-    /**
-     * Removes an already persistent Talk entity from the database.
-     *
-     * @param Talk the talk entity to remove
-     *
-     * @return the removed entity
-     *
-     * @throws ServiceException when the entity cannot be removed
-     */
-    Talk removeTalk(Talk Talk) throws ServiceException;
+	/**
+	 * Removes an already persistent Talk entity from the database.
+	 *
+	 * @param Talk
+	 * 		the talk entity to remove
+	 *
+	 * @return the removed entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be removed
+	 */
+	Talk removeTalk(Talk Talk) throws ServiceException;
 
 }

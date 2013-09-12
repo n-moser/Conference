@@ -39,84 +39,96 @@ import javax.validation.constraints.Size;
 @Entity
 public class Room implements Datatype {
 
-    private Long id;
+	private Long id;
 
-    private Long version;
+	private Long version;
 
-    private String name;
+	private String name;
 
-    private Integer capacity;
+	private Integer capacity;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Override
-    public Long getId() {
-        return this.id;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Override
+	public Long getId() {
 
-    /**
-     * Setter for the entity identifier.
-     *
-     * @param id the ID to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
+		return this.id;
+	}
 
-    @Version
-    @Override
-    public Long getVersion() {
-        return version;
-    }
+	/**
+	 * Setter for the entity identifier.
+	 *
+	 * @param id
+	 * 		the ID to set
+	 */
+	public void setId(Long id) {
 
-    /**
-     * Setter for the entity version.
-     *
-     * @param version the version to set
-     */
-    public void setVersion(Long version) {
-        this.version = version;
-    }
+		this.id = id;
+	}
 
-    /**
-     * Getter for the rooms name.
-     *
-     * @return the name of the room
-     */
-    @Size(min = 3, max = 50)
-    @NotNull
-    @Column(nullable = false, length = 50)
-    public String getName() {
-        return name;
-    }
+	@Version
+	@Override
+	public Long getVersion() {
 
-    /**
-     * Setter for the rooms name.
-     *
-     * @param name the rooms name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+		return version;
+	}
 
-    /**
-     * Getter for the rooms capacity.
-     *
-     * @return the capacity
-     */
-    @Min(value = 1)
-    @Max(value = 10000)
-    @Column(nullable = false)
-    public Integer getCapacity() {
-        return capacity;
-    }
+	/**
+	 * Setter for the entity version.
+	 *
+	 * @param version
+	 * 		the version to set
+	 */
+	public void setVersion(Long version) {
 
-    /**
-     * Setter for the rooms capacity.
-     *
-     * @param capacity the capacity to set
-     */
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
-    }
+		this.version = version;
+	}
+
+	/**
+	 * Getter for the rooms name.
+	 *
+	 * @return the name of the room
+	 */
+	@Size(min = 3, max = 50)
+	@NotNull
+	@Column(nullable = false, length = 50)
+	public String getName() {
+
+		return name;
+	}
+
+	/**
+	 * Setter for the rooms name.
+	 *
+	 * @param name
+	 * 		the rooms name to set
+	 */
+	public void setName(String name) {
+
+		this.name = name;
+	}
+
+	/**
+	 * Getter for the rooms capacity.
+	 *
+	 * @return the capacity
+	 */
+	@Min(value = 1)
+	@Max(value = 10000)
+	@Column(nullable = false)
+	public Integer getCapacity() {
+
+		return capacity;
+	}
+
+	/**
+	 * Setter for the rooms capacity.
+	 *
+	 * @param capacity
+	 * 		the capacity to set
+	 */
+	public void setCapacity(Integer capacity) {
+
+		this.capacity = capacity;
+	}
 }

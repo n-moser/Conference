@@ -44,75 +44,76 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class TalkServiceBean extends ServiceBean implements TalkService {
 
-    private static final String QUERY_FIND_TALK_BY_NAME = "Talk.findTalkByName";
+	private static final String QUERY_FIND_TALK_BY_NAME = "Talk.findTalkByName";
 
-    @Inject
-    private EntityManager entityManager;
+	@Inject
+	private EntityManager entityManager;
 
-    @Override
-    public Talk findTalkById(Long id) throws ServiceException {
-        try {
+	@Override
+	public Talk findTalkById(Long id) throws ServiceException {
 
-            return this.entityManager.find(Talk.class, id);
+		try {
 
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Cannot find Talk entity with ID '" + id + "'.", pe);
-        }
-    }
+			return this.entityManager.find(Talk.class, id);
 
-    @Override
-    public Talk findTalkByName(String name) throws ServiceException {
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot find Talk entity with ID '" + id + "'.", pe);
+		}
+	}
 
-        try {
-            TypedQuery<Talk> query = this.entityManager.
-                    createNamedQuery(QUERY_FIND_TALK_BY_NAME, Talk.class);
+	@Override
+	public Talk findTalkByName(String name) throws ServiceException {
 
-            query.setParameter("name", name);
+		try {
+			TypedQuery<Talk> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_TALK_BY_NAME, Talk.class);
 
-            return query.getSingleResult();
+			query.setParameter("name", name);
 
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Cannot find Talk entity with name '" + name + "'.", pe);
-        }
-    }
+			return query.getSingleResult();
 
-    @Override
-    public Talk createTalk(Talk talk) throws ServiceException {
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot find Talk entity with name '" + name + "'.", pe);
+		}
+	}
 
-        try {
-            this.entityManager.persist(talk);
-            this.entityManager.flush();
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Error persisting new Talk entity with name '" + talk.getName() + "'.", pe);
-        }
+	@Override
+	public Talk createTalk(Talk talk) throws ServiceException {
 
-        return talk;
-    }
+		try {
+			this.entityManager.persist(talk);
+			this.entityManager.flush();
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Error persisting new Talk entity with name '" + talk.getName() + "'.", pe);
+		}
 
-    @Override
-    public Talk updateTalk(Talk talk) throws ServiceException {
+		return talk;
+	}
 
-        try {
-            talk = this.entityManager.merge(talk);
-            this.entityManager.flush();
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Error updating Talk entity with ID '" + talk.getId() + "'.", pe);
-        }
+	@Override
+	public Talk updateTalk(Talk talk) throws ServiceException {
 
-        return talk;
+		try {
+			talk = this.entityManager.merge(talk);
+			this.entityManager.flush();
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Error updating Talk entity with ID '" + talk.getId() + "'.", pe);
+		}
 
-    }
+		return talk;
 
-    @Override
-    public Talk removeTalk(Talk talk) throws ServiceException {
+	}
 
-        try {
-            this.entityManager.remove(talk);
-            this.entityManager.flush();
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Error removing Talk entity with ID '" + talk.getId() + "'.", pe);
-        }
+	@Override
+	public Talk removeTalk(Talk talk) throws ServiceException {
 
-        return talk;
-    }
+		try {
+			this.entityManager.remove(talk);
+			this.entityManager.flush();
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Error removing Talk entity with ID '" + talk.getId() + "'.", pe);
+		}
+
+		return talk;
+	}
 }

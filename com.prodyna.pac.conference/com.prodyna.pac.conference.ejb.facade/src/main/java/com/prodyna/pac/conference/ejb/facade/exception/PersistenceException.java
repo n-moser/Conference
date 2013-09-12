@@ -35,39 +35,45 @@ import javax.ejb.ApplicationException;
 @ApplicationException(rollback = true)
 public class PersistenceException extends Exception {
 
-    /**
-     * Creates a new persistence exception without parameters.
-     */
-    public PersistenceException() {
-        super();
-    }
+	/** Creates a new persistence exception without parameters. */
+	public PersistenceException() {
 
-    /**
-     * Creates a new persistence exception with the given error message.
-     *
-     * @param message the error message
-     */
-    public PersistenceException(String message) {
-        super(message);
-    }
+		super();
+	}
 
-    /**
-     * Creates a new persistence exception with the given error cause.
-     *
-     * @param cause the causing exception
-     */
-    public PersistenceException(Exception cause) {
-        super(cause);
-    }
+	/**
+	 * Creates a new persistence exception with the given error message.
+	 *
+	 * @param message
+	 * 		the error message
+	 */
+	public PersistenceException(String message) {
 
-    /**
-     * Creates a new persistence exception with the given error message and cause.
-     *
-     * @param message the error message
-     * @param cause   the causing exception
-     */
-    public PersistenceException(String message, Exception cause) {
-        super(message, cause);
-    }
+		super(message);
+	}
+
+	/**
+	 * Creates a new persistence exception with the given error cause.
+	 *
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public PersistenceException(Exception cause) {
+
+		super(cause);
+	}
+
+	/**
+	 * Creates a new persistence exception with the given error message and cause.
+	 *
+	 * @param message
+	 * 		the error message
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public PersistenceException(String message, Exception cause) {
+
+		super(message, cause);
+	}
 
 }

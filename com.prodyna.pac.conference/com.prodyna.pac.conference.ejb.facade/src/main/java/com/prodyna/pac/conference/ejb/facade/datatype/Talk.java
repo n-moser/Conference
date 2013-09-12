@@ -24,7 +24,10 @@
 package com.prodyna.pac.conference.ejb.facade.datatype;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,181 +41,205 @@ import java.util.List;
 @Entity
 public class Talk implements Datatype {
 
-    private Long id;
+	private Long id;
 
-    private Long version;
+	private Long version;
 
-    private String name;
+	private String name;
 
-    private String description;
+	private String description;
 
-    private Integer duration;
+	private Integer duration;
 
-    private Room room;
+	private Room room;
 
-    private Conference conference;
+	private Conference conference;
 
-    private List<TalkSpeaker> speakers;
+	private List<TalkSpeaker> speakers;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Override
-    public Long getId() {
-        return this.id;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Override
+	public Long getId() {
 
-    /**
-     * Setter for the entity identifier.
-     *
-     * @param id the ID to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
+		return this.id;
+	}
 
-    @Version
-    @Column(nullable = false)
-    @Override
-    public Long getVersion() {
-        return version;
-    }
+	/**
+	 * Setter for the entity identifier.
+	 *
+	 * @param id
+	 * 		the ID to set
+	 */
+	public void setId(Long id) {
 
-    /**
-     * Setter for the entity version.
-     *
-     * @param version the version to set
-     */
-    public void setVersion(Long version) {
-        this.version = version;
-    }
+		this.id = id;
+	}
 
-    /**
-     * Getter for the talks name.
-     *
-     * @return the name of the talk
-     */
-    @NotNull
-    @Size(min = 3, max = 50)
-    @Column(nullable = false)
-    public String getName() {
-        return name;
-    }
+	@Version
+	@Column(nullable = false)
+	@Override
+	public Long getVersion() {
 
-    /**
-     * Setter for the talks name.
-     *
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+		return version;
+	}
 
-    /**
-     * Getter for the talk description.
-     *
-     * @return the description
-     */
-    @Size(min = 1, max = 255)
-    @Column(nullable = true, length = 255)
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * Setter for the entity version.
+	 *
+	 * @param version
+	 * 		the version to set
+	 */
+	public void setVersion(Long version) {
 
-    /**
-     * Setter for the talk description.
-     *
-     * @param description the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
+		this.version = version;
+	}
 
-    /**
-     * Getter for the duration in minutes.
-     *
-     * @return the duration in minutes
-     */
-    @NotNull
-    @Min(value = 1)
-    @Max(value = 480)
-    @Column(nullable = false)
-    public Integer getDuration() {
-        return duration;
-    }
+	/**
+	 * Getter for the talks name.
+	 *
+	 * @return the name of the talk
+	 */
+	@NotNull
+	@Size(min = 3, max = 50)
+	@Column(nullable = false)
+	public String getName() {
 
-    /**
-     * Setter for the duration in minutes.
-     *
-     * @param duration the duration to set
-     */
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
+		return name;
+	}
 
-    /**
-     * Getter for the room.
-     *
-     * @return the room
-     */
-    @NotNull
-    @JoinColumn
-    @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER, optional = false)
-    public Room getRoom() {
-        return room;
-    }
+	/**
+	 * Setter for the talks name.
+	 *
+	 * @param name
+	 * 		the name to set
+	 */
+	public void setName(String name) {
 
-    /**
-     * Setter for the room.
-     *
-     * @param room the room to set
-     */
-    public void setRoom(Room room) {
-        this.room = room;
-    }
+		this.name = name;
+	}
 
-    /**
-     * Getter for the conference.
-     *
-     * @return the conference
-     */
-    @NotNull
-    @JoinColumn
-    @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER, optional = false)
-    public Conference getConference() {
-        return conference;
-    }
+	/**
+	 * Getter for the talk description.
+	 *
+	 * @return the description
+	 */
+	@Size(min = 1, max = 255)
+	@Column(nullable = true, length = 255)
+	public String getDescription() {
 
-    /**
-     * Setter for the conference.
-     *
-     * @param conference the conference to set
-     */
-    public void setConference(Conference conference) {
-        this.conference = conference;
-    }
+		return description;
+	}
 
-    /**
-     * Getter for the speakers list.
-     *
-     * @return the list of speakers
-     */
-    @JoinColumn
-    @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER, orphanRemoval = false)
-    public List<TalkSpeaker> getSpeakers() {
-        if (speakers == null) {
-            speakers = new ArrayList<TalkSpeaker>();
-        }
-        return speakers;
-    }
+	/**
+	 * Setter for the talk description.
+	 *
+	 * @param description
+	 * 		the description to set
+	 */
+	public void setDescription(String description) {
 
-    /**
-     * Setter for the speakers.
-     * <p/>
-     * Must not be invoked by clients since it is a persistence provider operation.
-     *
-     * @param speakers the speakers to set
-     */
-    void setSpeakers(List<TalkSpeaker> speakers) {
-        this.speakers = speakers;
-    }
+		this.description = description;
+	}
+
+	/**
+	 * Getter for the duration in minutes.
+	 *
+	 * @return the duration in minutes
+	 */
+	@NotNull
+	@Min(value = 1)
+	@Max(value = 480)
+	@Column(nullable = false)
+	public Integer getDuration() {
+
+		return duration;
+	}
+
+	/**
+	 * Setter for the duration in minutes.
+	 *
+	 * @param duration
+	 * 		the duration to set
+	 */
+	public void setDuration(Integer duration) {
+
+		this.duration = duration;
+	}
+
+	/**
+	 * Getter for the room.
+	 *
+	 * @return the room
+	 */
+	@NotNull
+	@JoinColumn
+	@ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER, optional = false)
+	public Room getRoom() {
+
+		return room;
+	}
+
+	/**
+	 * Setter for the room.
+	 *
+	 * @param room
+	 * 		the room to set
+	 */
+	public void setRoom(Room room) {
+
+		this.room = room;
+	}
+
+	/**
+	 * Getter for the conference.
+	 *
+	 * @return the conference
+	 */
+	@NotNull
+	@JoinColumn
+	@ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER, optional = false)
+	public Conference getConference() {
+
+		return conference;
+	}
+
+	/**
+	 * Setter for the conference.
+	 *
+	 * @param conference
+	 * 		the conference to set
+	 */
+	public void setConference(Conference conference) {
+
+		this.conference = conference;
+	}
+
+	/**
+	 * Getter for the speakers list.
+	 *
+	 * @return the list of speakers
+	 */
+	@JoinColumn
+	@OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER, orphanRemoval = false)
+	public List<TalkSpeaker> getSpeakers() {
+
+		if (speakers == null) {
+			speakers = new ArrayList<TalkSpeaker>();
+		}
+		return speakers;
+	}
+
+	/**
+	 * Setter for the speakers.
+	 * <p/>
+	 * Must not be invoked by clients since it is a persistence provider operation.
+	 *
+	 * @param speakers
+	 * 		the speakers to set
+	 */
+	void setSpeakers(List<TalkSpeaker> speakers) {
+
+		this.speakers = speakers;
+	}
 }

@@ -44,76 +44,77 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 
-    private static final String QUERY_FIND_SPEAKER_BY_NAME = "Speaker.findSpeakerByName";
+	private static final String QUERY_FIND_SPEAKER_BY_NAME = "Speaker.findSpeakerByName";
 
-    @Inject
-    private EntityManager entityManager;
+	@Inject
+	private EntityManager entityManager;
 
-    @Override
-    public Speaker findSpeakerById(Long id) throws ServiceException {
-        try {
+	@Override
+	public Speaker findSpeakerById(Long id) throws ServiceException {
 
-            return this.entityManager.find(Speaker.class, id);
+		try {
 
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Cannot find Speaker entity with ID '" + id + "'.", pe);
-        }
-    }
+			return this.entityManager.find(Speaker.class, id);
 
-    @Override
-    public Speaker findSpeakerByName(String name) throws ServiceException {
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot find Speaker entity with ID '" + id + "'.", pe);
+		}
+	}
 
-        try {
-            TypedQuery<Speaker> query = this.entityManager.
-                    createNamedQuery(QUERY_FIND_SPEAKER_BY_NAME, Speaker.class);
+	@Override
+	public Speaker findSpeakerByName(String name) throws ServiceException {
 
-            query.setParameter("name", name);
+		try {
+			TypedQuery<Speaker> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_SPEAKER_BY_NAME, Speaker.class);
 
-            return query.getSingleResult();
+			query.setParameter("name", name);
 
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Cannot find Speaker entity with name '" + name + "'.", pe);
-        }
-    }
+			return query.getSingleResult();
 
-    @Override
-    public Speaker createSpeaker(Speaker speaker) throws ServiceException {
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot find Speaker entity with name '" + name + "'.", pe);
+		}
+	}
 
-        try {
-            this.entityManager.persist(speaker);
-            this.entityManager.flush();
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Error persisting new Speaker entity with name '" + speaker.getName() + "'.",
-                    pe);
-        }
+	@Override
+	public Speaker createSpeaker(Speaker speaker) throws ServiceException {
 
-        return speaker;
-    }
+		try {
+			this.entityManager.persist(speaker);
+			this.entityManager.flush();
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Error persisting new Speaker entity with name '" + speaker.getName() + "'.",
+					pe);
+		}
 
-    @Override
-    public Speaker updateSpeaker(Speaker speaker) throws ServiceException {
+		return speaker;
+	}
 
-        try {
-            speaker = this.entityManager.merge(speaker);
-            this.entityManager.flush();
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Error updating Speaker entity with ID '" + speaker.getId() + "'.", pe);
-        }
+	@Override
+	public Speaker updateSpeaker(Speaker speaker) throws ServiceException {
 
-        return speaker;
+		try {
+			speaker = this.entityManager.merge(speaker);
+			this.entityManager.flush();
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Error updating Speaker entity with ID '" + speaker.getId() + "'.", pe);
+		}
 
-    }
+		return speaker;
 
-    @Override
-    public Speaker removeSpeaker(Speaker speaker) throws ServiceException {
+	}
 
-        try {
-            this.entityManager.remove(speaker);
-            this.entityManager.flush();
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Error removing Speaker entity with ID '" + speaker.getId() + "'.", pe);
-        }
+	@Override
+	public Speaker removeSpeaker(Speaker speaker) throws ServiceException {
 
-        return speaker;
-    }
+		try {
+			this.entityManager.remove(speaker);
+			this.entityManager.flush();
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Error removing Speaker entity with ID '" + speaker.getId() + "'.", pe);
+		}
+
+		return speaker;
+	}
 }

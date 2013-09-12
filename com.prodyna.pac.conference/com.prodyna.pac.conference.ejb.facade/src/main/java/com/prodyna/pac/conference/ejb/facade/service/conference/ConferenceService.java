@@ -39,59 +39,69 @@ import javax.ejb.Remote;
 @Remote
 public interface ConferenceService extends Service {
 
-    /**
-     * Find the Conference entity with the given ID.
-     *
-     * @param id the id of the conference entity
-     *
-     * @return the conference entity
-     *
-     * @throws ServiceException when the Conference entity with the given ID does not exist in the database
-     */
-    Conference findConferenceById(Long id) throws ServiceException;
+	/**
+	 * Find the Conference entity with the given ID.
+	 *
+	 * @param id
+	 * 		the id of the conference entity
+	 *
+	 * @return the conference entity
+	 *
+	 * @throws ServiceException
+	 * 		when the Conference entity with the given ID does not exist in the database
+	 */
+	Conference findConferenceById(Long id) throws ServiceException;
 
-    /**
-     * Find the Conference entity with the given Name.
-     *
-     * @param name the id of the conference entity
-     *
-     * @return the conference entity
-     *
-     * @throws ServiceException when the Conference entity with the given Name does not exist in the database
-     */
-    Conference findConferenceByName(String name) throws ServiceException;
+	/**
+	 * Find the Conference entity with the given Name.
+	 *
+	 * @param name
+	 * 		the id of the conference entity
+	 *
+	 * @return the conference entity
+	 *
+	 * @throws ServiceException
+	 * 		when the Conference entity with the given Name does not exist in the database
+	 */
+	Conference findConferenceByName(String name) throws ServiceException;
 
-    /**
-     * Persists a non-persistent Conference entity to the database.
-     *
-     * @param Conference the conference entity to persist
-     *
-     * @return the persisted entity
-     *
-     * @throws ServiceException when the entity cannot be persisted
-     */
-    Conference createConference(Conference Conference) throws ServiceException;
+	/**
+	 * Persists a non-persistent Conference entity to the database.
+	 *
+	 * @param Conference
+	 * 		the conference entity to persist
+	 *
+	 * @return the persisted entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be persisted
+	 */
+	Conference createConference(Conference Conference) throws ServiceException;
 
-    /**
-     * Updates an already persistent Conference entity to the database.
-     *
-     * @param Conference the conference entity to update
-     *
-     * @return the updated entity
-     *
-     * @throws ServiceException when the entity cannot be updated
-     */
-    Conference updateConference(Conference Conference) throws ServiceException;
+	/**
+	 * Updates an already persistent Conference entity to the database.
+	 *
+	 * @param Conference
+	 * 		the conference entity to update
+	 *
+	 * @return the updated entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be updated
+	 */
+	Conference updateConference(Conference Conference) throws ServiceException;
 
-    /**
-     * Removes an already persistent Conference entity from the database.
-     *
-     * @param Conference the conference entity to remove
-     *
-     * @return the removed entity
-     *
-     * @throws ServiceException when the entity cannot be removed
-     */
-    Conference removeConference(Conference Conference) throws ServiceException;
+	/**
+	 * Removes an already persistent Conference entity from the database.
+	 *
+	 * @param Conference
+	 * 		the conference entity to remove
+	 *
+	 * @return the removed entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be removed
+	 */
+	Conference removeConference(Conference Conference) throws ServiceException;
 
 }

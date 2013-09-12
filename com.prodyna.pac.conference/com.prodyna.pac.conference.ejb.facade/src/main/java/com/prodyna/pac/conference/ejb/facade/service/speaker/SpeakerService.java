@@ -39,59 +39,69 @@ import javax.ejb.Remote;
 @Remote
 public interface SpeakerService extends Service {
 
-    /**
-     * Find the Speaker entity with the given ID.
-     *
-     * @param id the id of the speaker entity
-     *
-     * @return the speaker entity
-     *
-     * @throws ServiceException when the Speaker entity with the given ID does not exist in the database
-     */
-    Speaker findSpeakerById(Long id) throws ServiceException;
+	/**
+	 * Find the Speaker entity with the given ID.
+	 *
+	 * @param id
+	 * 		the id of the speaker entity
+	 *
+	 * @return the speaker entity
+	 *
+	 * @throws ServiceException
+	 * 		when the Speaker entity with the given ID does not exist in the database
+	 */
+	Speaker findSpeakerById(Long id) throws ServiceException;
 
-    /**
-     * Find the Speaker entity with the given Name.
-     *
-     * @param name the id of the speaker entity
-     *
-     * @return the speaker entity
-     *
-     * @throws ServiceException when the Speaker entity with the given Name does not exist in the database
-     */
-    Speaker findSpeakerByName(String name) throws ServiceException;
+	/**
+	 * Find the Speaker entity with the given Name.
+	 *
+	 * @param name
+	 * 		the id of the speaker entity
+	 *
+	 * @return the speaker entity
+	 *
+	 * @throws ServiceException
+	 * 		when the Speaker entity with the given Name does not exist in the database
+	 */
+	Speaker findSpeakerByName(String name) throws ServiceException;
 
-    /**
-     * Persists a non-persistent Speaker entity to the database.
-     *
-     * @param Speaker the speaker entity to persist
-     *
-     * @return the persisted entity
-     *
-     * @throws ServiceException when the entity cannot be persisted
-     */
-    Speaker createSpeaker(Speaker Speaker) throws ServiceException;
+	/**
+	 * Persists a non-persistent Speaker entity to the database.
+	 *
+	 * @param Speaker
+	 * 		the speaker entity to persist
+	 *
+	 * @return the persisted entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be persisted
+	 */
+	Speaker createSpeaker(Speaker Speaker) throws ServiceException;
 
-    /**
-     * Updates an already persistent Speaker entity to the database.
-     *
-     * @param Speaker the speaker entity to update
-     *
-     * @return the updated entity
-     *
-     * @throws ServiceException when the entity cannot be updated
-     */
-    Speaker updateSpeaker(Speaker Speaker) throws ServiceException;
+	/**
+	 * Updates an already persistent Speaker entity to the database.
+	 *
+	 * @param Speaker
+	 * 		the speaker entity to update
+	 *
+	 * @return the updated entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be updated
+	 */
+	Speaker updateSpeaker(Speaker Speaker) throws ServiceException;
 
-    /**
-     * Removes an already persistent Speaker entity from the database.
-     *
-     * @param Speaker the speaker entity to remove
-     *
-     * @return the removed entity
-     *
-     * @throws ServiceException when the entity cannot be removed
-     */
-    Speaker removeSpeaker(Speaker Speaker) throws ServiceException;
+	/**
+	 * Removes an already persistent Speaker entity from the database.
+	 *
+	 * @param Speaker
+	 * 		the speaker entity to remove
+	 *
+	 * @return the removed entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be removed
+	 */
+	Speaker removeSpeaker(Speaker Speaker) throws ServiceException;
 
 }

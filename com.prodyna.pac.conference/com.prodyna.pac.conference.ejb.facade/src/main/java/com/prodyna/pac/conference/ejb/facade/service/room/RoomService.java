@@ -39,59 +39,69 @@ import javax.ejb.Remote;
 @Remote
 public interface RoomService extends Service {
 
-    /**
-     * Find the Room entity with the given ID.
-     *
-     * @param id the id of the room entity
-     *
-     * @return the room entity
-     *
-     * @throws ServiceException when the Room entity with the given ID does not exist in the database
-     */
-    Room findRoomById(Long id) throws ServiceException;
+	/**
+	 * Find the Room entity with the given ID.
+	 *
+	 * @param id
+	 * 		the id of the room entity
+	 *
+	 * @return the room entity
+	 *
+	 * @throws ServiceException
+	 * 		when the Room entity with the given ID does not exist in the database
+	 */
+	Room findRoomById(Long id) throws ServiceException;
 
-    /**
-     * Find the Room entity with the given Name.
-     *
-     * @param name the id of the room entity
-     *
-     * @return the room entity
-     *
-     * @throws ServiceException when the Room entity with the given Name does not exist in the database
-     */
-    Room findRoomByName(String name) throws ServiceException;
+	/**
+	 * Find the Room entity with the given Name.
+	 *
+	 * @param name
+	 * 		the id of the room entity
+	 *
+	 * @return the room entity
+	 *
+	 * @throws ServiceException
+	 * 		when the Room entity with the given Name does not exist in the database
+	 */
+	Room findRoomByName(String name) throws ServiceException;
 
-    /**
-     * Persists a non-persistent Room entity to the database.
-     *
-     * @param Room the room entity to persist
-     *
-     * @return the persisted entity
-     *
-     * @throws ServiceException when the entity cannot be persisted
-     */
-    Room createRoom(Room Room) throws ServiceException;
+	/**
+	 * Persists a non-persistent Room entity to the database.
+	 *
+	 * @param Room
+	 * 		the room entity to persist
+	 *
+	 * @return the persisted entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be persisted
+	 */
+	Room createRoom(Room Room) throws ServiceException;
 
-    /**
-     * Updates an already persistent Room entity to the database.
-     *
-     * @param Room the room entity to update
-     *
-     * @return the updated entity
-     *
-     * @throws ServiceException when the entity cannot be updated
-     */
-    Room updateRoom(Room Room) throws ServiceException;
+	/**
+	 * Updates an already persistent Room entity to the database.
+	 *
+	 * @param Room
+	 * 		the room entity to update
+	 *
+	 * @return the updated entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be updated
+	 */
+	Room updateRoom(Room Room) throws ServiceException;
 
-    /**
-     * Removes an already persistent Room entity from the database.
-     *
-     * @param Room the room entity to remove
-     *
-     * @return the removed entity
-     *
-     * @throws ServiceException when the entity cannot be removed
-     */
-    Room removeRoom(Room Room) throws ServiceException;
+	/**
+	 * Removes an already persistent Room entity from the database.
+	 *
+	 * @param Room
+	 * 		the room entity to remove
+	 *
+	 * @return the removed entity
+	 *
+	 * @throws ServiceException
+	 * 		when the entity cannot be removed
+	 */
+	Room removeRoom(Room Room) throws ServiceException;
 
 }

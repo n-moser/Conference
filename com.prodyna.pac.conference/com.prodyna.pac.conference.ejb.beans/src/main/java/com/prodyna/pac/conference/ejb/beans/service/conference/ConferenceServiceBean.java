@@ -44,76 +44,77 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class ConferenceServiceBean extends ServiceBean implements ConferenceService {
 
-    private static final String QUERY_FIND_CONFERENCE_BY_NAME = "Conference.findConferenceByName";
+	private static final String QUERY_FIND_CONFERENCE_BY_NAME = "Conference.findConferenceByName";
 
-    @Inject
-    private EntityManager entityManager;
+	@Inject
+	private EntityManager entityManager;
 
-    @Override
-    public Conference findConferenceById(Long id) throws ServiceException {
-        try {
+	@Override
+	public Conference findConferenceById(Long id) throws ServiceException {
 
-            return this.entityManager.find(Conference.class, id);
+		try {
 
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Cannot find Conference entity with ID '" + id + "'.", pe);
-        }
-    }
+			return this.entityManager.find(Conference.class, id);
 
-    @Override
-    public Conference findConferenceByName(String name) throws ServiceException {
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot find Conference entity with ID '" + id + "'.", pe);
+		}
+	}
 
-        try {
-            TypedQuery<Conference> query = this.entityManager.
-                    createNamedQuery(QUERY_FIND_CONFERENCE_BY_NAME, Conference.class);
+	@Override
+	public Conference findConferenceByName(String name) throws ServiceException {
 
-            query.setParameter("name", name);
+		try {
+			TypedQuery<Conference> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_CONFERENCE_BY_NAME, Conference.class);
 
-            return query.getSingleResult();
+			query.setParameter("name", name);
 
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Cannot find Conference entity with name '" + name + "'.", pe);
-        }
-    }
+			return query.getSingleResult();
 
-    @Override
-    public Conference createConference(Conference conference) throws ServiceException {
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot find Conference entity with name '" + name + "'.", pe);
+		}
+	}
 
-        try {
-            this.entityManager.persist(conference);
-            this.entityManager.flush();
-        } catch (PersistenceException pe) {
-            throw new ServiceException(
-                    "Error persisting new Conference entity with name '" + conference.getName() + "'.", pe);
-        }
+	@Override
+	public Conference createConference(Conference conference) throws ServiceException {
 
-        return conference;
-    }
+		try {
+			this.entityManager.persist(conference);
+			this.entityManager.flush();
+		} catch (PersistenceException pe) {
+			throw new ServiceException(
+					"Error persisting new Conference entity with name '" + conference.getName() + "'.", pe);
+		}
 
-    @Override
-    public Conference updateConference(Conference conference) throws ServiceException {
+		return conference;
+	}
 
-        try {
-            conference = this.entityManager.merge(conference);
-            this.entityManager.flush();
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Error updating Conference entity with ID '" + conference.getId() + "'.", pe);
-        }
+	@Override
+	public Conference updateConference(Conference conference) throws ServiceException {
 
-        return conference;
+		try {
+			conference = this.entityManager.merge(conference);
+			this.entityManager.flush();
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Error updating Conference entity with ID '" + conference.getId() + "'.", pe);
+		}
 
-    }
+		return conference;
 
-    @Override
-    public Conference removeConference(Conference conference) throws ServiceException {
+	}
 
-        try {
-            this.entityManager.remove(conference);
-            this.entityManager.flush();
-        } catch (PersistenceException pe) {
-            throw new ServiceException("Error removing Conference entity with ID '" + conference.getId() + "'.", pe);
-        }
+	@Override
+	public Conference removeConference(Conference conference) throws ServiceException {
 
-        return conference;
-    }
+		try {
+			this.entityManager.remove(conference);
+			this.entityManager.flush();
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Error removing Conference entity with ID '" + conference.getId() + "'.", pe);
+		}
+
+		return conference;
+	}
 }

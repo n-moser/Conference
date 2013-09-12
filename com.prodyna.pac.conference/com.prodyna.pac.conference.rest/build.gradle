@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
+version = '0.0.2'
 
 apply plugin: 'war'
 apply plugin: 'jetty'

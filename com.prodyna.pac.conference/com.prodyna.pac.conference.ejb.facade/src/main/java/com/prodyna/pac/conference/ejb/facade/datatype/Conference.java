@@ -39,131 +39,149 @@ import java.util.Date;
 @Entity
 public class Conference implements Datatype {
 
-    private Long id;
+	private Long id;
 
-    private Long version;
+	private Long version;
 
-    private String name;
+	private String name;
 
-    private String description;
+	private String description;
 
-    private Date startDate;
+	private Date startDate;
 
-    private Date endDate;
+	private Date endDate;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Override
-    public Long getId() {
-        return this.id;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Override
+	public Long getId() {
 
-    /**
-     * Setter for the entity identifier.
-     *
-     * @param id the ID to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
+		return this.id;
+	}
 
-    @Version
-    @Override
-    public Long getVersion() {
-        return version;
-    }
+	/**
+	 * Setter for the entity identifier.
+	 *
+	 * @param id
+	 * 		the ID to set
+	 */
+	public void setId(Long id) {
 
-    /**
-     * Setter for the entity version.
-     *
-     * @param version the version to set
-     */
-    public void setVersion(Long version) {
-        this.version = version;
-    }
+		this.id = id;
+	}
 
-    /**
-     * Getter for the conference name.
-     *
-     * @return the conference name
-     */
-    @Size(min = 3, max = 50)
-    @NotNull
-    @Column(nullable = false, length = 50)
-    public String getName() {
-        return name;
-    }
+	@Version
+	@Override
+	public Long getVersion() {
 
-    /**
-     * Setter for the conference name.
-     *
-     * @param name the conference name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+		return version;
+	}
 
-    /**
-     * Getter for the conference description.
-     *
-     * @return the conference description
-     */
-    @Size(min = 1, max = 255)
-    @Column(nullable = true, length = 255)
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * Setter for the entity version.
+	 *
+	 * @param version
+	 * 		the version to set
+	 */
+	public void setVersion(Long version) {
 
-    /**
-     * Setter for the conference description.
-     *
-     * @param description the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
+		this.version = version;
+	}
 
-    /**
-     * Getter for the conference start date.
-     *
-     * @return the start date
-     */
-    @Future
-    @NotNull
-    @Temporal(value = TemporalType.DATE)
-    @Column(nullable = false)
-    public Date getStartDate() {
-        return startDate;
-    }
+	/**
+	 * Getter for the conference name.
+	 *
+	 * @return the conference name
+	 */
+	@Size(min = 3, max = 50)
+	@NotNull
+	@Column(nullable = false, length = 50)
+	public String getName() {
 
-    /**
-     * Setter for the conference start date.
-     *
-     * @param startDate the start date to set
-     */
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
+		return name;
+	}
 
-    /**
-     * Getter for the conference end date.
-     *
-     * @return the end date
-     */
-    @Future
-    @NotNull
-    @Temporal(value = TemporalType.DATE)
-    @Column(nullable = false)
-    public Date getEndDate() {
-        return endDate;
-    }
+	/**
+	 * Setter for the conference name.
+	 *
+	 * @param name
+	 * 		the conference name to set
+	 */
+	public void setName(String name) {
 
-    /**
-     * Setter for the conference end date.
-     *
-     * @param endDate the end date to set
-     */
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+		this.name = name;
+	}
+
+	/**
+	 * Getter for the conference description.
+	 *
+	 * @return the conference description
+	 */
+	@Size(min = 1, max = 255)
+	@Column(nullable = true, length = 255)
+	public String getDescription() {
+
+		return description;
+	}
+
+	/**
+	 * Setter for the conference description.
+	 *
+	 * @param description
+	 * 		the description to set
+	 */
+	public void setDescription(String description) {
+
+		this.description = description;
+	}
+
+	/**
+	 * Getter for the conference start date.
+	 *
+	 * @return the start date
+	 */
+	@Future
+	@NotNull
+	@Temporal(value = TemporalType.DATE)
+	@Column(nullable = false)
+	public Date getStartDate() {
+
+		return startDate;
+	}
+
+	/**
+	 * Setter for the conference start date.
+	 *
+	 * @param startDate
+	 * 		the start date to set
+	 */
+	public void setStartDate(Date startDate) {
+
+		this.startDate = startDate;
+	}
+
+	/**
+	 * Getter for the conference end date.
+	 *
+	 * @return the end date
+	 */
+	@Future
+	@NotNull
+	@Temporal(value = TemporalType.DATE)
+	@Column(nullable = false)
+	public Date getEndDate() {
+
+		return endDate;
+	}
+
+	/**
+	 * Setter for the conference end date.
+	 *
+	 * @param endDate
+	 * 		the end date to set
+	 */
+	public void setEndDate(Date endDate) {
+
+		this.endDate = endDate;
+	}
 }

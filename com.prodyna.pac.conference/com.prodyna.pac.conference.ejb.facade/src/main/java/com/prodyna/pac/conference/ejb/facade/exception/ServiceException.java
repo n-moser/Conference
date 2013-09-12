@@ -35,39 +35,45 @@ import javax.ejb.ApplicationException;
 @ApplicationException(rollback = true)
 public class ServiceException extends Exception {
 
-    /**
-     * Creates a new service exception without parameters.
-     */
-    public ServiceException() {
-        super();
-    }
+	/** Creates a new service exception without parameters. */
+	public ServiceException() {
 
-    /**
-     * Creates a new service exception with the given error message.
-     *
-     * @param message the error message
-     */
-    public ServiceException(String message) {
-        super(message);
-    }
+		super();
+	}
 
-    /**
-     * Creates a new service exception with the given error cause.
-     *
-     * @param cause the causing exception
-     */
-    public ServiceException(Exception cause) {
-        super(cause);
-    }
+	/**
+	 * Creates a new service exception with the given error message.
+	 *
+	 * @param message
+	 * 		the error message
+	 */
+	public ServiceException(String message) {
 
-    /**
-     * Creates a new service exception with the given error message and cause.
-     *
-     * @param message the error message
-     * @param cause   the causing exception
-     */
-    public ServiceException(String message, Exception cause) {
-        super(message, cause);
-    }
+		super(message);
+	}
+
+	/**
+	 * Creates a new service exception with the given error cause.
+	 *
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public ServiceException(Exception cause) {
+
+		super(cause);
+	}
+
+	/**
+	 * Creates a new service exception with the given error message and cause.
+	 *
+	 * @param message
+	 * 		the error message
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public ServiceException(String message, Exception cause) {
+
+		super(message, cause);
+	}
 
 }

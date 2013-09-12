@@ -34,18 +34,18 @@ import java.io.Serializable;
  */
 public interface Datatype extends Serializable {
 
-    /**
-     * Getter for the Datatype Identifier.
-     *
-     * @return the Identifier
-     */
-    Long getId();
+	/**
+	 * Getter for the Datatype Identifier.
+	 *
+	 * @return the Identifier
+	 */
+	Long getId();
 
-    /**
-     * Getter for the Datatype Version.
-     *
-     * @return the Version
-     */
-    Long getVersion();
+	/**
+	 * Getter for the Datatype Version.
+	 *
+	 * @return the Version
+	 */
+	Long getVersion();
 
 }

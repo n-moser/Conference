@@ -36,8 +36,8 @@ import javax.persistence.PersistenceContext;
  */
 public class EntityManagerProducer {
 
-    @Produces
-    @PersistenceContext(unitName = "conference")
-    private EntityManager entityManager;
+	@Produces
+	@PersistenceContext(unitName = "conference")
+	private EntityManager entityManager;
 
 }

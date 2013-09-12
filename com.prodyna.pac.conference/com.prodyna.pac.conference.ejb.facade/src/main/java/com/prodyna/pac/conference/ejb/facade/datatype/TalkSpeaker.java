@@ -35,60 +35,69 @@ import javax.persistence.*;
 @Entity
 public class TalkSpeaker implements Datatype {
 
-    private Long id;
+	private Long id;
 
-    private Long version;
+	private Long version;
 
-    private Speaker speaker;
+	private Speaker speaker;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Override
-    public Long getId() {
-        return this.id;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Override
+	public Long getId() {
 
-    /**
-     * Setter for the entity identifier.
-     *
-     * @param id the ID to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
+		return this.id;
+	}
 
-    @Version
-    @Override
-    public Long getVersion() {
-        return version;
-    }
+	/**
+	 * Setter for the entity identifier.
+	 *
+	 * @param id
+	 * 		the ID to set
+	 */
+	public void setId(Long id) {
 
-    /**
-     * Setter for the entity version.
-     *
-     * @param version the version to set
-     */
-    public void setVersion(Long version) {
-        this.version = version;
-    }
+		this.id = id;
+	}
 
-    /**
-     * Getter for the speaker.
-     *
-     * @return the speaker
-     */
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn
-    public Speaker getSpeaker() {
-        return speaker;
-    }
+	@Version
+	@Override
+	public Long getVersion() {
 
-    /**
-     * Setter for the speaker
-     *
-     * @param speaker the speaker to set
-     */
-    public void setSpeaker(Speaker speaker) {
-        this.speaker = speaker;
-    }
+		return version;
+	}
+
+	/**
+	 * Setter for the entity version.
+	 *
+	 * @param version
+	 * 		the version to set
+	 */
+	public void setVersion(Long version) {
+
+		this.version = version;
+	}
+
+	/**
+	 * Getter for the speaker.
+	 *
+	 * @return the speaker
+	 */
+	@ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
+	@JoinColumn
+	public Speaker getSpeaker() {
+
+		return speaker;
+	}
+
+	/**
+	 * Setter for the speaker
+	 *
+	 * @param speaker
+	 * 		the speaker to set
+	 */
+	public void setSpeaker(Speaker speaker) {
+
+		this.speaker = speaker;
+	}
 }
