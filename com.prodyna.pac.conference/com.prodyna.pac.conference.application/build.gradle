@@ -21,5 +21,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+apply plugin: 'ear'
+
 dependencies {
+    deploy project(':com.prodyna.pac.conference.ejb.facade')
+    deploy project(':com.prodyna.pac.conference.ejb.beans')
+    deploy project(path: ':com.prodyna.pac.conference.jsf', configuration: 'archives')
+    deploy project(path: ':com.prodyna.pac.conference.rest', configuration: 'archives')
 }
