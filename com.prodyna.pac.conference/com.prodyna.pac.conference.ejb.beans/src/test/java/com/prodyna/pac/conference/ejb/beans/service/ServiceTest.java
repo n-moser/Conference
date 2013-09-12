@@ -21,30 +21,51 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.prodyna.pac.conference.ejb.beans.service;
 
-subprojects {
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    version = '0.0.1'
+/**
+ * ServiceTest
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 12.09.13
+ * Time: 12:37
+ */
+public abstract class ServiceTest {
 
-    apply from: "$rootDir/config/gradle/java.gradle"
-    apply from: "$rootDir/config/gradle/test.gradle"
-    apply from: "$rootDir/config/gradle/quality.gradle"
+	private static final DateFormat FORMAT = new SimpleDateFormat("dd.MM.yyyy");
 
-    apply from: "$rootDir/config/gradle/eclipse.gradle"
-    apply from: "$rootDir/config/gradle/idea.gradle"
+	/**
+	 * Parse the given date string in the pattern 'dd.MM.yyyy' as Date.
+	 *
+	 * @param date
+	 * 		the date as string
+	 *
+	 * @return the date instance
+	 *
+	 * @throws ParseException
+	 * 		when the date is not in the given format
+	 */
+	protected Date parseDate(String date) throws ParseException {
 
-    repositories {
-        mavenCentral()
+		return FORMAT.parse(date);
+	}
 
-        maven {
-            url 'http://repository.jboss.org/nexus/content/groups/public'
-        }
-    }
+	/**
+	 * Prints the date to the given format 'dd.MM.yyyy'.
+	 *
+	 * @param date
+	 * 		the date instance
+	 *
+	 * @return the date as string
+	 */
+	protected String format(Date date) {
 
-    dependencies {
-        provided group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
-        testRuntime group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.+'
-        testCompile group: 'junit', name: 'junit', version: '4.+'
-    }
+		return FORMAT.format(date);
+	}
 
 }

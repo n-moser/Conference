@@ -125,7 +125,7 @@ public interface PersistenceManager {
 	 * @param type
 	 * 		the result type
 	 *
-	 * @return
+	 * @return a query instance for the given query string
 	 *
 	 * @throws PersistenceException
 	 */

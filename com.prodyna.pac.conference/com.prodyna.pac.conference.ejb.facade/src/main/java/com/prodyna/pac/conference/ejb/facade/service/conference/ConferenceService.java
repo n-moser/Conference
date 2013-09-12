@@ -27,7 +27,7 @@ import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.Service;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
 /**
  * ConferenceService
@@ -36,7 +36,7 @@ import javax.ejb.Remote;
  * Date: 11.09.13
  * Time: 16:43
  */
-@Remote
+@Local
 public interface ConferenceService extends Service {
 
 	/**

@@ -44,7 +44,7 @@ public class Speaker implements Datatype {
 
 	private String name;
 
-	private String desciption;
+	private String description;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -115,19 +115,19 @@ public class Speaker implements Datatype {
 	 */
 	@Size(min = 1, max = 255)
 	@Column(nullable = true, length = 255)
-	public String getDesciption() {
+	public String getDescription() {
 
-		return desciption;
+		return description;
 	}
 
 	/**
 	 * Setter for the speakers profile description.
 	 *
-	 * @param desciption
+	 * @param description
 	 * 		the description to set
 	 */
-	public void setDesciption(String desciption) {
+	public void setDescription(String description) {
 
-		this.desciption = desciption;
+		this.description = description;
 	}
 }
