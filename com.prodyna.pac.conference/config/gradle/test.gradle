@@ -26,7 +26,7 @@
 test {
 
     // explicitly include or exclude tests
-    include 'com/moser/jmxweb/**'
+    include 'com/prodyna/pac/conference/**'
 
     // show standard out and standard error of the test JVM(s) on the console
     // testLogging.showStandardStreams = true

@@ -24,7 +24,7 @@
 version = '0.0.2'
 
 configurations {
-    jbossAS7ManagedTestRuntime { extendsFrom testRuntime}
+    jbossAS7ManagedTestRuntime { extendsFrom testRuntime }
 }
 
 dependencies {
@@ -42,75 +42,5 @@ dependencies {
 
     testRuntime group: 'org.jboss.as', name: 'jboss-as-arquillian-container-managed', version: '7.1.1.Final'
     testRuntime group: 'org.jboss.spec', name: 'jboss-javaee-6.0', version: '1.0.0.Final'
-
-    /*
-
-    // Arquillian Core
-    testCompile group: 'org.jboss.arquillian.core', name: 'arquillian-core-api', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.core', name: 'arquillian-core-spi', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.core', name: 'arquillian-core-impl-base', version: '1.1.1.Final'
-
-    // Arquillian Config
-    testCompile group: 'org.jboss.arquillian.config', name: 'arquillian-config-api', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.config', name: 'arquillian-config-spi', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.config', name: 'arquillian-config-impl-base', version: '1.1.1.Final'
-
-    // Arquillian Test
-    testCompile group: 'org.jboss.arquillian.test', name: 'arquillian-test-spi', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.test', name: 'arquillian-test-impl-base', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.test', name: 'arquillian-test-api', version: '1.1.1.Final'
-
-    // Arquillian Container
-    testCompile group: 'org.jboss.arquillian.container', name: 'arquillian-container-impl-base', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.container', name: 'arquillian-container-spi', version: '1.1.1.Final'
-
-    // Arquillian Container Test
-    testCompile group: 'org.jboss.arquillian.container', name: 'arquillian-container-test-api', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.container', name: 'arquillian-container-test-spi', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.container', name: 'arquillian-container-test-impl-base', version: '1.1.1.Final'
-
-    // Arquillian JUnit
-    testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-core', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-container', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-standalone', version: '1.1.1.Final'
-
-    // Arquillian Protocol
-    testCompile group: 'org.jboss.arquillian.protocol', name: 'arquillian-protocol-servlet', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.protocol', name: 'arquillian-protocol-jmx', version: '1.1.1.Final'
-
-    // Arquillian Enricher
-    testCompile group: 'org.jboss.arquillian.testenricher', name: 'arquillian-testenricher-cdi', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.testenricher', name: 'arquillian-testenricher-ejb', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.testenricher', name: 'arquillian-testenricher-resource', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.testenricher', name: 'arquillian-testenricher-initialcontext', version: '1.1.1.Final'
-
-    // Shrinkwrap Core
-    testCompile group: 'org.jboss.shrinkwrap', name: 'shrinkwrap-spi', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap', name: 'shrinkwrap-impl-base', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap', name: 'shrinkwrap-api-nio2', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap', name: 'shrinkwrap-impl-nio2', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap', name: 'shrinkwrap-api', version: '1.1.2'
-
-    // Shrinkwrap Core
-    testCompile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-api', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-spi', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-api-maven', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-spi-maven', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-impl-maven', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-api-maven-archive', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-impl-maven-archive', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-depchain', version: '1.1.2'
-    testCompile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-maven-plugin', version: '1.1.2'
-
-    // Shrinkwrap Descriptors
-    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-api-base', version: '2.0.0-alpha-3'
-    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-api-javaee', version: '2.0.0-alpha-3'
-    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-api-jboss', version: '2.0.0-alpha-3'
-    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-api-gen', version: '2.0.0-alpha-3'
-    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-api-impl-base', version: '2.0.0-alpha-3'
-    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-api-impl-javaee', version: '2.0.0-alpha-3'
-    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-api-impl-jboss', version: '2.0.0-alpha-3'
-    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-spi', version: '2.0.0-alpha-3'
-    */
 
 }

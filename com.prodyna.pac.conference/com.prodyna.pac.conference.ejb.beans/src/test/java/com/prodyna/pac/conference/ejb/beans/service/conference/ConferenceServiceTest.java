@@ -53,10 +53,11 @@ public class ConferenceServiceTest extends ServiceTest {
 	@Deployment
 	public static Archive<?> createTestArchive() {
 
-		WebArchive war = ShrinkWrap.create(WebArchive.class, "apartment.war");
+		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
 		war.addPackages(true, "com.prodyna.pac.conference");
 		war.addAsWebInfResource("META-INF/beans.xml", "beans.xml");
-		war.addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml");
+		war.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
+		war.addAsResource("META-INF/namedQueries.xml", "META-INF/namedQueries.xml");
 
 		return war;
 	}
