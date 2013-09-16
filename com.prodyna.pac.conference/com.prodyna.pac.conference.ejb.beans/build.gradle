@@ -23,6 +23,8 @@
 
 version = '0.0.2'
 
+def JBOSS_HOME = 'build/jboss-as-7.1.1.Final'
+
 configurations {
     jbossAS7ManagedTestRuntime { extendsFrom testRuntime }
     jbossAS7Distribution
@@ -54,7 +56,7 @@ task explodeJBoss(type: Copy) {
     def outputDir = file("${buildDir}")
 
     copy {
-        from configurations.jbossAS7Distribution.findAll {it.name.endsWith('.zip')}.collect { zipTree(it)}
+        from zipTree(configurations.jbossAS7Distribution.singleFile)
         into outputDir
     }
 }

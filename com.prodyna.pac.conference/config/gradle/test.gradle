@@ -38,6 +38,9 @@ test {
     // set JVM arguments for the test JVM(s)
     jvmArgs '-XX:MaxPermSize=256m'
 
+    // set System Property for correct Arquillian JBoss Container
+    systemProperty 'arquillian.launch', 'jboss_gradle'
+
     // listen to events in the test execution lifecycle
     beforeTest { descriptor ->
         logger.lifecycle("Running test: " + descriptor)

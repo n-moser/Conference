@@ -75,6 +75,8 @@ public class ConferenceServiceTest extends ServiceTest {
 
 		Assert.assertNotNull(result);
 		Assert.assertNotNull(result.getId());
+
+		System.out.println("Conference ID: " + result.getId());
 	}
 
 
