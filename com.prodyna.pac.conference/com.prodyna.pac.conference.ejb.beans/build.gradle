@@ -25,6 +25,7 @@ version = '0.0.2'
 
 configurations {
     jbossAS7ManagedTestRuntime { extendsFrom testRuntime }
+    jbossAS7Distribution
 }
 
 dependencies {
@@ -40,7 +41,23 @@ dependencies {
 
     testRuntime group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-impl-javaee', version: '2.0.0-alpha-3'
 
+    testRuntime group: 'javax.enterprise', name: 'cdi-api', version: '1.0-SP4'
     testRuntime group: 'org.jboss.as', name: 'jboss-as-arquillian-container-managed', version: '7.1.1.Final'
     testRuntime group: 'org.jboss.spec', name: 'jboss-javaee-6.0', version: '1.0.0.Final'
 
+    jbossAS7Distribution('org.jboss.as:jboss-as-dist:7.1.1.Final@zip')
+
 }
+
+task explodeJBoss(type: Copy) {
+
+    def outputDir = file("${buildDir}")
+
+    copy {
+        from configurations.jbossAS7Distribution.findAll {it.name.endsWith('.zip')}.collect { zipTree(it)}
+        into outputDir
+    }
+}
+
+test.dependsOn explodeJBoss
+

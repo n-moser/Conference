@@ -33,7 +33,7 @@
     <container qualifier="jboss" default="true">
 
         <configuration>
-            <property name="jbossHome">${basedir}/build/jboss-as-7.1.1.Final</property>
+            <property name="jbossHome">build/jboss-as-7.1.1.Final</property>
         </configuration>
 
     </container>

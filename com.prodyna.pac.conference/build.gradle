@@ -39,6 +39,9 @@ subprojects {
         maven {
             url 'http://repository.jboss.org/nexus/content/groups/public'
         }
+
+        // mavenRepo url: 'http://repository.jboss.org/nexus/content/groups/public'
+
     }
 
     dependencies {
