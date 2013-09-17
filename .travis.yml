@@ -2,10 +2,10 @@ language: java
 jdk:
   - oraclejdk6
  
+before_script: cd com.prodyna.pac.conference
+ 
 install:
-  - TERM=dumb
+  - TERM=dumb gradle assemble
 
 script:
-  - TERM=dumb
-
-before_script: cd com.prodyna.pac.conference
+  - TERM=dumb gradle check
