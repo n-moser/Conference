@@ -56,7 +56,6 @@ public class ConferenceServiceTest extends ServiceTest {
 		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
 		war.addPackages(true, "com.prodyna.pac.conference");
 		war.addAsWebInfResource("META-INF/beans.xml", "beans.xml");
-//		war.addAsWebInfResource("test-ds.xml", "conference-ds.xml");
 		war.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
 		war.addAsResource("META-INF/namedQueries.xml", "META-INF/namedQueries.xml");
 
@@ -64,7 +63,7 @@ public class ConferenceServiceTest extends ServiceTest {
 	}
 
 	@Test
-	public void createConference() throws Exception {
+	public void createReadUpdateDeleteConference() throws Exception {
 
 		Conference conference = new Conference();
 		conference.setName("JAX");
@@ -76,8 +75,32 @@ public class ConferenceServiceTest extends ServiceTest {
 
 		Assert.assertNotNull(result);
 		Assert.assertNotNull(result.getId());
+		Assert.assertNotNull(result.getVersion());
+		Assert.assertEquals(0L, result.getVersion().longValue());
+		Assert.assertEquals("JAX", result.getName());
 
-		System.out.println("Conference ID: " + result.getId());
+		System.out.print("Conference ID: " + result.getId());
+		System.out.println("Conference Version: " + result.getVersion());
+
+		result.setName("W-JAX");
+		result = service.updateConference(result);
+
+		Assert.assertNotNull(result);
+		Assert.assertNotNull(result.getId());
+		Assert.assertNotNull(result.getVersion());
+		Assert.assertEquals(1L, result.getVersion().longValue());
+		Assert.assertEquals("W-JAX", result.getName());
+
+		System.out.print("Conference ID: " + result.getId());
+		System.out.println("Conference Version: " + result.getVersion());
+
+		result = service.removeConference(result);
+
+		Assert.assertNotNull(result);
+
+		result = service.findConferenceById(result.getId());
+
+		Assert.assertNull(result);
 	}
 
 

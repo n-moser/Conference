@@ -102,15 +102,18 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 		}
 
 		return conference;
-
 	}
 
 	@Override
 	public Conference removeConference(Conference conference) throws ServiceException {
 
 		try {
+			conference = this.findConferenceById(conference.getId());
 			this.entityManager.remove(conference);
 			this.entityManager.flush();
+
+			this.entityManager.detach(conference);
+
 		} catch (PersistenceException pe) {
 			throw new ServiceException("Error removing Conference entity with ID '" + conference.getId() + "'.", pe);
 		}
