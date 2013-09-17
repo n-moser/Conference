@@ -1,7 +1,10 @@
 language: java
 jdk:
   - oraclejdk6
- 
+
+before_install:
+ - ls -llaR
+
 before_script:
   - cd com.prodyna.pac.conference
   - mysql -e 'create database conference;'
