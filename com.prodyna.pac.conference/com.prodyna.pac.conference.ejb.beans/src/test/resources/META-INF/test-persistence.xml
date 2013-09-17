@@ -30,14 +30,14 @@
     <persistence-unit name="conferencePU">
 
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+        <jta-data-source>java:jboss/datasources/MysqlDS</jta-data-source>
 
         <mapping-file>META-INF/namedQueries.xml</mapping-file>
 
         <properties>
 
             <!-- Properties for Hibernate -->
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
             <property name="hibernate.show_sql" value="false"/>
         </properties>
 

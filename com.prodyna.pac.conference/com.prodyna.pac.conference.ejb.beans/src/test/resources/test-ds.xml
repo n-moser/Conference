@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
   ~ The MIT License (MIT)
   ~
@@ -25,19 +26,26 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
 
-    <datasource jndi-name="java:jboss/datasources/conferenceTestDS"
-                pool-name="conference-test" enabled="true"
+    <datasource jndi-name="java:jboss/datasources/MysqlDS"
+                pool-name="conference" enabled="true"
                 use-java-context="true">
 
-        <connection-url>jdbc:h2:mem:conference-test;DB_CLOSE_DELAY=-1</connection-url>
-        <driver>h2</driver>
+        <connection-url>jdbc:mysql://localhost:3306/conference</connection-url>
+        <driver>mysql-connector-java-5.1.26.jar</driver>
+
+        <pool>
+            <min-pool-size>100</min-pool-size>
+            <max-pool-size>200</max-pool-size>
+            <prefill>true</prefill>
+            <use-strict-min>false</use-strict-min>
+            <flush-strategy>FailingConnectionOnly</flush-strategy>
+        </pool>
 
         <security>
-            <user-name>sa</user-name>
-            <password>sa</password>
+            <user-name>travis</user-name>
+            <password></password>
         </security>
 
     </datasource>
 
 </datasources>
- 

@@ -56,6 +56,7 @@ public class ConferenceServiceTest extends ServiceTest {
 		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
 		war.addPackages(true, "com.prodyna.pac.conference");
 		war.addAsWebInfResource("META-INF/beans.xml", "beans.xml");
+//		war.addAsWebInfResource("test-ds.xml", "conference-ds.xml");
 		war.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
 		war.addAsResource("META-INF/namedQueries.xml", "META-INF/namedQueries.xml");
 

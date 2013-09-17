@@ -28,36 +28,48 @@ def JBOSS_HOME = 'build/jboss-as-7.1.1.Final'
 configurations {
     jbossAS7ManagedTestRuntime { extendsFrom testRuntime }
     jbossAS7Distribution
+    mysqlDriver
 }
 
 dependencies {
 
     compile project(':com.prodyna.pac.conference.ejb.facade')
-    compile group: 'javax.enterprise', name: 'cdi-api', version: '1.0-SP4'
-    compile group: 'javax.inject', name: 'javax.inject', version: '1'
+    compile group: 'javax.enterprise', name: 'cdi-api', version: cdiVersion
+    compile group: 'javax.inject', name: 'javax.inject', version: injectVersion
 
-    testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: '1.2'
-    testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-container', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.arquillian.protocol', name: 'arquillian-protocol-servlet', version: '1.1.1.Final'
-    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-api-javaee', version: '2.0.0-alpha-3'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: hamcrestVersion
+    testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-container', version: arquillianVersion
+    testCompile group: 'org.jboss.arquillian.protocol', name: 'arquillian-protocol-servlet', version: arquillianVersion
+    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-api-javaee', version: shrinkwrapVersion
 
-    testRuntime group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-impl-javaee', version: '2.0.0-alpha-3'
+    testRuntime group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-impl-javaee', version: shrinkwrapVersion
 
-    testRuntime group: 'javax.enterprise', name: 'cdi-api', version: '1.0-SP4'
-    testRuntime group: 'org.jboss.as', name: 'jboss-as-arquillian-container-managed', version: '7.1.1.Final'
-    testRuntime group: 'org.jboss.spec', name: 'jboss-javaee-6.0', version: '1.0.0.Final'
+    testRuntime group: 'javax.enterprise', name: 'cdi-api', version: cdiVersion
+    testRuntime group: 'org.jboss.as', name: 'jboss-as-arquillian-container-managed', version: jbossVersion
+    testRuntime group: 'org.jboss.spec', name: 'jboss-javaee-6.0', version: javaeeVersion
 
     jbossAS7Distribution('org.jboss.as:jboss-as-dist:7.1.1.Final@zip')
-
+    mysqlDriver group: 'mysql', name: 'mysql-connector-java', version: mysqlDriverVersion
 }
 
 task explodeJBoss(type: Copy) {
 
-    def outputDir = file("${buildDir}")
+    def jbossDir = file("${buildDir}")
+    def jbossDeployDir = file("${buildDir}/jboss-as-7.1.1.Final/standalone/deployments")
 
     copy {
         from zipTree(configurations.jbossAS7Distribution.singleFile)
-        into outputDir
+        into jbossDir
+    }
+
+    copy {
+        from configurations.mysqlDriver.singleFile
+        into jbossDeployDir
+    }
+
+    copy {
+        from file("${projectDir}/src/test/resources/test-ds.xml")
+        into jbossDeployDir
     }
 }
 

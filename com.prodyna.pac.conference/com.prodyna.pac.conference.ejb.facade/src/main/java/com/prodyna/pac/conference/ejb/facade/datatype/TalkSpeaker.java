@@ -42,7 +42,7 @@ public class TalkSpeaker implements Datatype {
 	private Speaker speaker;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Override
 	public Long getId() {
 

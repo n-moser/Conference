@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
   ~ The MIT License (MIT)
   ~
@@ -22,17 +21,23 @@
   ~ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
   ~ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
 
-<configuration>
+    <datasource jndi-name="java:jboss/datasources/conferenceTestDS"
+                pool-name="conference-test" enabled="true"
+                use-java-context="true">
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level [%logger] %X{errorCode} %msg%n</pattern>
-        </encoder>
-    </appender>
+        <connection-url>jdbc:h2:mem:conference-test;DB_CLOSE_DELAY=-1</connection-url>
+        <driver>h2</driver>
 
-    <root level="DEBUG">
-        <appender-ref ref="STDOUT"/>
-    </root>
+        <security>
+            <user-name>sa</user-name>
+            <password>sa</password>
+        </security>
 
-</configuration>
+    </datasource>
+
+</datasources>
+ 

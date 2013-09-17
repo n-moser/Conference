@@ -58,7 +58,7 @@ public class Talk implements Datatype {
 	private List<TalkSpeaker> speakers;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Override
 	public Long getId() {
 
