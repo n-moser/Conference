@@ -3,9 +3,6 @@ jdk:
   - oraclejdk6
  
 before_script: cd com.prodyna.pac.conference
- 
-install:
-  - TERM=dumb gradle assemble
 
 script:
   - TERM=dumb gradle check
