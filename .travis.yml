@@ -5,4 +5,4 @@ jdk:
 before_script: cd com.prodyna.pac.conference
 
 script:
-  - TERM=dumb gradle check
+  - TERM=dumb gradle check -d
