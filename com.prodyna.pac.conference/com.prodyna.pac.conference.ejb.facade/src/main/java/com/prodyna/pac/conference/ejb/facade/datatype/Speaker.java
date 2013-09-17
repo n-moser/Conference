@@ -90,7 +90,7 @@ public class Speaker implements Datatype {
 	 */
 	@NotNull
 	@Size(min = 3, max = 50)
-	@Pattern(regexp = "[a-zA-Z]*")
+	@Pattern(regexp = "[a-zA-Z ]*")
 	@Column(nullable = false, length = 50)
 	public String getName() {
 

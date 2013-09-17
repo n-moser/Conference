@@ -109,6 +109,7 @@ public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 	public Speaker removeSpeaker(Speaker speaker) throws ServiceException {
 
 		try {
+			speaker = this.findSpeakerById(speaker.getId());
 			this.entityManager.remove(speaker);
 			this.entityManager.flush();
 		} catch (PersistenceException pe) {

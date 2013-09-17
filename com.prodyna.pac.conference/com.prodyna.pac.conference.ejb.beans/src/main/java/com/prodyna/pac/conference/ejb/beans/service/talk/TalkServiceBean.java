@@ -108,6 +108,7 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 	public Talk removeTalk(Talk talk) throws ServiceException {
 
 		try {
+			talk = this.findTalkById(talk.getId());
 			this.entityManager.remove(talk);
 			this.entityManager.flush();
 		} catch (PersistenceException pe) {

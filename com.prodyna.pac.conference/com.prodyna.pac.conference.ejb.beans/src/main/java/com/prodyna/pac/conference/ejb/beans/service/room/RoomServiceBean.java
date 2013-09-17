@@ -108,6 +108,7 @@ public class RoomServiceBean extends ServiceBean implements RoomService {
 	public Room removeRoom(Room room) throws ServiceException {
 
 		try {
+			room = this.findRoomById(room.getId());
 			this.entityManager.remove(room);
 			this.entityManager.flush();
 		} catch (PersistenceException pe) {
