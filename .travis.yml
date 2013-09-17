@@ -2,7 +2,9 @@ language: java
 jdk:
   - oraclejdk6
  
-before_script: cd com.prodyna.pac.conference
+before_script:
+  - cd com.prodyna.pac.conference
+  - mysql -e 'create database conference;'
 
 script:
   - TERM=dumb gradle check
