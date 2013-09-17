@@ -1,4 +1,11 @@
 language: java
-jdk: oraclejdk6
+jdk:
+  - oraclejdk6
+ 
+install:
+  - TERM=dumb
+
+script:
+  - TERM=dumb
 
 before_script: cd com.prodyna.pac.conference
