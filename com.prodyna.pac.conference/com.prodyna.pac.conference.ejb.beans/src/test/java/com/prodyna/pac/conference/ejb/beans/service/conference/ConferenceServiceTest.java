@@ -26,11 +26,7 @@ package com.prodyna.pac.conference.ejb.beans.service.conference;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
 import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
-import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,18 +46,6 @@ public class ConferenceServiceTest extends ServiceTest {
 	@Inject
 	private ConferenceService service;
 
-	@Deployment
-	public static Archive<?> createTestArchive() {
-
-		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
-		war.addPackages(true, "com.prodyna.pac.conference");
-		war.addAsWebInfResource("META-INF/beans.xml", "beans.xml");
-		war.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
-		war.addAsResource("META-INF/namedQueries.xml", "META-INF/namedQueries.xml");
-
-		return war;
-	}
-
 	@Test
 	public void createReadUpdateDeleteConference() throws Exception {
 
@@ -79,8 +63,8 @@ public class ConferenceServiceTest extends ServiceTest {
 		Assert.assertEquals(0L, result.getVersion().longValue());
 		Assert.assertEquals("JAX", result.getName());
 
-		System.out.print("Conference ID: " + result.getId());
-		System.out.println("Conference Version: " + result.getVersion());
+		System.out.println("Conference ID: " + result.getId());
+		System.out.print("Conference Version: " + result.getVersion());
 
 		result.setName("W-JAX");
 		result = service.updateConference(result);
@@ -91,8 +75,8 @@ public class ConferenceServiceTest extends ServiceTest {
 		Assert.assertEquals(1L, result.getVersion().longValue());
 		Assert.assertEquals("W-JAX", result.getName());
 
-		System.out.print("Conference ID: " + result.getId());
-		System.out.println("Conference Version: " + result.getVersion());
+		System.out.println("Conference ID: " + result.getId());
+		System.out.print("Conference Version: " + result.getVersion());
 
 		result = service.removeConference(result);
 

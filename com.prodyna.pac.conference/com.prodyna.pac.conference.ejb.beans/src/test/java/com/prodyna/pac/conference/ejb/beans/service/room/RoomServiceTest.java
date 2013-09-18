@@ -26,11 +26,7 @@ package com.prodyna.pac.conference.ejb.beans.service.room;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
 import com.prodyna.pac.conference.ejb.facade.datatype.Room;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
-import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,18 +46,6 @@ public class RoomServiceTest extends ServiceTest {
 	@Inject
 	private RoomService service;
 
-	@Deployment
-	public static Archive<?> createTestArchive() {
-
-		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
-		war.addPackages(true, "com.prodyna.pac.conference");
-		war.addAsWebInfResource("META-INF/beans.xml", "beans.xml");
-		war.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
-		war.addAsResource("META-INF/namedQueries.xml", "META-INF/namedQueries.xml");
-
-		return war;
-	}
-
 	@Test
 	public void createReadUpdateDeleteRoom() throws Exception {
 
@@ -77,8 +61,8 @@ public class RoomServiceTest extends ServiceTest {
 		Assert.assertEquals(0L, result.getVersion().longValue());
 		Assert.assertEquals("Snow White", result.getName());
 
-		System.out.print("Room ID: " + result.getId());
-		System.out.println("Room Version: " + result.getVersion());
+		System.out.println("Room ID: " + result.getId());
+		System.out.print("Room Version: " + result.getVersion());
 
 		result.setName("Cinderella");
 		result = service.updateRoom(result);
@@ -89,8 +73,8 @@ public class RoomServiceTest extends ServiceTest {
 		Assert.assertEquals(1L, result.getVersion().longValue());
 		Assert.assertEquals("Cinderella", result.getName());
 
-		System.out.print("Room ID: " + result.getId());
-		System.out.println("Room Version: " + result.getVersion());
+		System.out.println("Room ID: " + result.getId());
+		System.out.print("Room Version: " + result.getVersion());
 
 		result = service.removeRoom(result);
 

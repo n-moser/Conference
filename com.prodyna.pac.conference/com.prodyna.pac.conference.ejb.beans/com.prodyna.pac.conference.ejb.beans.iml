@@ -171,6 +171,7 @@
     <orderEntry type="library" scope="TEST" name="jstl-1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="plexus-cipher-1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="arquillian-testenricher-resource-1.0.0.CR7" level="project" />
+    <orderEntry type="library" scope="TEST" name="unresolved dependency - org.jboss.arquillian.extension arquillian-suite-extension 1" level="project" />
   </component>
 </module>
 
