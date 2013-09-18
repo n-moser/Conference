@@ -62,7 +62,7 @@ public class RoomServiceTest extends ServiceTest {
 		Assert.assertEquals("Snow White", result.getName());
 
 		System.out.println("Room ID: " + result.getId());
-		System.out.print("Room Version: " + result.getVersion());
+		System.out.println("Room Version: " + result.getVersion());
 
 		result.setName("Cinderella");
 		result = service.updateRoom(result);

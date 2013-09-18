@@ -108,7 +108,7 @@ public class TalkServiceTest extends ServiceTest {
 		Assert.assertEquals("Java EE Webstack Performance", result.getName());
 
 		System.out.println("Talk ID: " + result.getId());
-		System.out.print("Talk Version: " + result.getVersion());
+		System.out.println("Talk Version: " + result.getVersion());
 
 		result.setName("Automatisiertes Testen in Android");
 		result = service.updateTalk(result);

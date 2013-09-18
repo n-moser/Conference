@@ -64,7 +64,7 @@ public class ConferenceServiceTest extends ServiceTest {
 		Assert.assertEquals("JAX", result.getName());
 
 		System.out.println("Conference ID: " + result.getId());
-		System.out.print("Conference Version: " + result.getVersion());
+		System.out.println("Conference Version: " + result.getVersion());
 
 		result.setName("W-JAX");
 		result = service.updateConference(result);
