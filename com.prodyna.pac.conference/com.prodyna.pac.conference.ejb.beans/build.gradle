@@ -34,8 +34,6 @@ configurations {
 dependencies {
 
     compile project(':com.prodyna.pac.conference.ejb.facade')
-    compile group: 'javax.enterprise', name: 'cdi-api', version: cdiVersion
-    compile group: 'javax.inject', name: 'javax.inject', version: injectVersion
 
     testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: hamcrestVersion
     testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-container', version: arquillianVersion

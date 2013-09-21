@@ -21,14 +21,19 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-version = '0.0.2'
+package com.prodyna.pac.conference.rest;
 
-apply plugin: 'war'
-apply plugin: 'jetty'
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb.facade')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: '1.0.0.Final'
+/**
+ * ConferenceApplication
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 21.09.13
+ * Time: 10:20
+ */
+@ApplicationPath("rest")
+public class ConferenceApplication extends Application {
+
 }
-
-jar.enabled = false

@@ -21,14 +21,59 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-version = '0.0.2'
+package com.prodyna.pac.conference.ejb.facade.exception;
 
-apply plugin: 'war'
-apply plugin: 'jetty'
+import javax.ejb.ApplicationException;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb.facade')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: '1.0.0.Final'
+/**
+ * ServiceException
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 16:44
+ */
+@ApplicationException(rollback = true)
+public class RESTException extends Exception {
+
+	/** Creates a new REST exception without parameters. */
+	public RESTException() {
+
+		super();
+	}
+
+	/**
+	 * Creates a new REST exception with the given error message.
+	 *
+	 * @param message
+	 * 		the error message
+	 */
+	public RESTException(String message) {
+
+		super(message);
+	}
+
+	/**
+	 * Creates a new REST exception with the given error cause.
+	 *
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public RESTException(Exception cause) {
+
+		super(cause);
+	}
+
+	/**
+	 * Creates a new REST exception with the given error message and cause.
+	 *
+	 * @param message
+	 * 		the error message
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public RESTException(String message, Exception cause) {
+
+		super(message, cause);
+	}
+
 }
-
-jar.enabled = false

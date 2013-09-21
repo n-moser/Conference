@@ -25,6 +25,11 @@
 version = '0.0.2'
 
 dependencies {
+
+    // TODO Move to Common
+    compile group: 'javax.enterprise', name: 'cdi-api', version: cdiVersion
+    compile group: 'javax.inject', name: 'javax.inject', version: injectVersion
+
     compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: hibernateVersion
     compile group: 'org.hibernate', name: 'hibernate-validator', version: hibernateValidatorVersion
 
