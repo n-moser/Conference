@@ -120,7 +120,7 @@ public class TalkServiceTest extends ServiceTest {
 		Assert.assertEquals("Automatisiertes Testen in Android", result.getName());
 
 		System.out.println("Talk ID: " + result.getId());
-		System.out.print("Talk Version: " + result.getVersion());
+		System.out.println("Talk Version: " + result.getVersion());
 
 		result = service.removeTalk(result);
 

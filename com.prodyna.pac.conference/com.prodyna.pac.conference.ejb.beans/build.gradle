@@ -47,8 +47,12 @@ dependencies {
     testRuntime group: 'org.jboss.as', name: 'jboss-as-arquillian-container-managed', version: jbossVersion
     testRuntime group: 'org.jboss.spec', name: 'jboss-javaee-6.0', version: javaeeVersion
 
+//    testRuntime group: 'org.jacoco', name:'org.jacoco.core', version:'0.6.0.201210061924'
+//    testRuntime group: 'org.jboss.arquillian.extension', name: 'arquillian-jacoco', version: '1.0.0.Alpha5'
+
     jbossAS7Distribution('org.jboss.as:jboss-as-dist:7.1.1.Final@zip')
     mysqlDriver group: 'mysql', name: 'mysql-connector-java', version: mysqlDriverVersion
+
 }
 
 task explodeJBoss(type: Copy) {

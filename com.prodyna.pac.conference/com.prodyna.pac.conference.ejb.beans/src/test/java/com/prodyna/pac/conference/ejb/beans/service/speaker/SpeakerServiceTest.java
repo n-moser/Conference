@@ -73,7 +73,7 @@ public class SpeakerServiceTest extends ServiceTest {
 		Assert.assertEquals("Jens Vogel", result.getName());
 
 		System.out.println("Speaker ID: " + result.getId());
-		System.out.print("Speaker Version: " + result.getVersion());
+		System.out.println("Speaker Version: " + result.getVersion());
 
 		result = service.removeSpeaker(result);
 

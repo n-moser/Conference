@@ -29,3 +29,12 @@ dependencies {
     deploy project(path: ':com.prodyna.pac.conference.jsf', configuration: 'archives')
     deploy project(path: ':com.prodyna.pac.conference.rest', configuration: 'archives')
 }
+
+task deploy(type: Copy, dependsOn: ear) {
+
+    copy {
+        from ear
+        into file(jbossHome + "/standalone/deployments")
+    }
+
+}

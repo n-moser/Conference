@@ -24,11 +24,11 @@
 version = '0.0.2'
 
 apply plugin: 'war'
-apply plugin: 'jetty'
 
 dependencies {
     provided project(':com.prodyna.pac.conference.ejb.facade')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: '1.0.0.Final'
+
+    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
 }
 
 jar.enabled = false

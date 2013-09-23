@@ -23,6 +23,11 @@
 
 
 ext {
+
+    jbossHome = 'D:\\Server\\JBoss\\AS-7.1.1'
+
+    // Library Versions
+
     ejbVersion = '1.0.1.Final'
     cdiVersion = '1.0-SP4'
     injectVersion = '1'
@@ -31,10 +36,12 @@ ext {
     hibernateVersion = '1.0.1.Final'
     hibernateValidatorVersion = '4.2.0.Final'
 
-    jbossVersion = '7.1.1.Final'
-    mysqlDriverVersion = '5.1.26'
+    jaxrsVersion = '1.0.0.Final'
 
     richfacesVersion = '4.2.0.Final'
+
+    jbossVersion = '7.1.1.Final'
+    mysqlDriverVersion = '5.1.26'
 
     slf4jVersion = '1.7.5'
     junitVersion = '4.11'

@@ -74,7 +74,7 @@ public class RoomServiceTest extends ServiceTest {
 		Assert.assertEquals("Cinderella", result.getName());
 
 		System.out.println("Room ID: " + result.getId());
-		System.out.print("Room Version: " + result.getVersion());
+		System.out.println("Room Version: " + result.getVersion());
 
 		result = service.removeRoom(result);
 

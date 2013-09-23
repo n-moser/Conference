@@ -24,10 +24,12 @@
 version = '0.0.2'
 
 apply plugin: 'war'
-apply plugin: 'jetty'
 
 dependencies {
-    compile project(':com.prodyna.pac.conference.ejb.facade')
+    provided project(':com.prodyna.pac.conference.ejb.facade')
+
+    compile group: 'org.jboss.spec.javax.servlet', name: 'jboss-servlet-api_3.0_spec', version: '1.0.0.Final'
+
     compile group: 'org.richfaces.ui', name: 'richfaces-components-ui', version: richfacesVersion
     compile group: 'org.richfaces.core', name: 'richfaces-core-impl', version: richfacesVersion
 }
