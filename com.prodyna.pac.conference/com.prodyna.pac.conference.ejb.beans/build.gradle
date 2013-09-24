@@ -21,8 +21,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-def JBOSS_HOME = 'build/jboss-as-7.1.1.Final'
-
 configurations {
     jbossAS7ManagedTestRuntime { extendsFrom testRuntime }
     jbossAS7Distribution
@@ -58,6 +56,11 @@ task explodeJBoss(type: Copy) {
     def jbossDir = file("${buildDir}")
     def jbossDeployDir = file("${buildDir}/jboss-as-7.1.1.Final/standalone/deployments")
 
+    inputs.file configurations.jbossAS7Distribution.singleFile
+    outputs.dir jbossDeployDir
+
+    logger.info("Exploding JBoss " + configurations.jbossAS7Distribution.singleFile)
+
     copy {
         from zipTree(configurations.jbossAS7Distribution.singleFile)
         into jbossDir
@@ -75,4 +78,3 @@ task explodeJBoss(type: Copy) {
 }
 
 test.dependsOn explodeJBoss
-
