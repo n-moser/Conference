@@ -52,13 +52,15 @@ task deployJBoss(type: Copy, dependsOn: ear) {
     def jbossHome = System.getenv('JBOSS_HOME')
 
     if (jbossHome == null) {
-        throw new StopExecutionException('Environment Variable $JBOSS_HOME not set.');
+        logger.warn('Environment Variable $JBOSS_HOME not set.');
+        //  throw new StopExecutionException('Environment Variable $JBOSS_HOME not set.');
+    } else {
+        copy {
+            from ear
+            into file(jbossHome + "/standalone/deployments")
+        }
     }
 
-    copy {
-        from ear
-        into file(jbossHome + "/standalone/deployments")
-    }
 
 }
 
