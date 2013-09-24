@@ -31,6 +31,7 @@ import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * TalkResource
@@ -46,11 +47,22 @@ public class TalkResource {
 	private TalkService talkService;
 
 	@GET
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Talk findTalk(Long id) throws RESTException {
+	public Talk findTalk(@PathParam("id") Long id) throws RESTException {
 
 		try {
 			return this.talkService.findTalkById(id);
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Talk> getAllTasks() throws RESTException {
+		try {
+			return this.talkService.getAllTalks();
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}

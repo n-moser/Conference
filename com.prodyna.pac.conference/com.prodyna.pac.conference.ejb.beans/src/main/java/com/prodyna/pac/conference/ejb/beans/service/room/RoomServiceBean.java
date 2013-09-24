@@ -33,6 +33,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 /**
  * RoomServiceBean
@@ -43,6 +44,8 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class RoomServiceBean extends ServiceBean implements RoomService {
+
+	private static final String QUERY_FIND_ALL_ROOMS = "Room.findAllRooms";
 
 	private static final String QUERY_FIND_ROOM_BY_NAME = "Room.findRoomByName";
 
@@ -74,6 +77,20 @@ public class RoomServiceBean extends ServiceBean implements RoomService {
 
 		} catch (PersistenceException pe) {
 			throw new ServiceException("Cannot find Room entity with name '" + name + "'.", pe);
+		}
+	}
+
+	@Override
+	public List<Room> getAllRooms() throws ServiceException {
+
+		try {
+			TypedQuery<Room> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_ALL_ROOMS, Room.class);
+
+			return query.getResultList();
+
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot list all Room entities.", pe);
 		}
 	}
 

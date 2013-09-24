@@ -21,16 +21,18 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.prodyna.pac.conference.ejb.facade.service.conference;
 
-dependencies {
+import javax.ejb.Local;
 
-    // TODO Move to Common
-    compile group: 'javax.enterprise', name: 'cdi-api', version: cdiVersion
-    compile group: 'javax.inject', name: 'javax.inject', version: injectVersion
-
-    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: hibernateVersion
-    compile group: 'org.hibernate', name: 'hibernate-validator', version: hibernateValidatorVersion
-
-    compile group: 'org.jboss.spec.javax.ejb', name: 'jboss-ejb-api_3.1_spec', version: ejbVersion
+/**
+ * ConferenceService
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 16:43
+ */
+@Local
+public interface ConferenceServiceLocal extends ConferenceService {
 
 }

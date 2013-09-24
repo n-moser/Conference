@@ -21,14 +21,21 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-version = '0.0.2'
-
 apply plugin: 'war'
 
 dependencies {
-    provided project(':com.prodyna.pac.conference.ejb.facade')
+    providedCompile project(':com.prodyna.pac.conference.ejb.facade')
 
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+    providedCompile group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+}
+
+war {
+
+    archiveName = project.name + '.war'
+
+    manifest {
+        attributes("Implementation-Title": project.name, "Implementation-Version": version, "Built-By": System.getProperty('user.name'), "Built-Date": new Date(), 'Built-JDK': System.getProperty('java.version'))
+    }
 }
 
 jar.enabled = false

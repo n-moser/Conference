@@ -28,6 +28,7 @@ import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.Service;
 
 import javax.ejb.Local;
+import java.util.List;
 
 /**
  * TalkService
@@ -64,6 +65,16 @@ public interface TalkService extends Service {
 	 * 		when the Talk entity with the given Name does not exist in the database
 	 */
 	Talk findTalkByName(String name) throws ServiceException;
+
+	/**
+	 * Find all Talk entity instances.
+	 *
+	 * @return the list of all existing talk instances
+	 *
+	 * @throws ServiceException
+	 * 		when the Talk query fails
+	 */
+	List<Talk> getAllTalks() throws ServiceException;
 
 	/**
 	 * Persists a non-persistent Talk entity to the database.

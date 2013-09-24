@@ -26,13 +26,15 @@ package com.prodyna.pac.conference.ejb.beans.service.conference;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
 import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
+import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceServiceLocal;
+import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceServiceRemote;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 /**
  * ConferenceServiceBean
@@ -42,7 +44,9 @@ import javax.persistence.TypedQuery;
  * Time: 16:49
  */
 @Stateless
-public class ConferenceServiceBean extends ServiceBean implements ConferenceService {
+public class ConferenceServiceBean extends ServiceBean implements ConferenceServiceLocal, ConferenceServiceRemote {
+
+	private static final String QUERY_FIND_ALL_CONFERENCES = "Conference.findAllConferences";
 
 	private static final String QUERY_FIND_CONFERENCE_BY_NAME = "Conference.findConferenceByName";
 
@@ -53,7 +57,6 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 	public Conference findConferenceById(Long id) throws ServiceException {
 
 		try {
-
 			return this.entityManager.find(Conference.class, id);
 
 		} catch (PersistenceException pe) {
@@ -74,6 +77,20 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 
 		} catch (PersistenceException pe) {
 			throw new ServiceException("Cannot find Conference entity with name '" + name + "'.", pe);
+		}
+	}
+
+	@Override
+	public List<Conference> getAllConferences() throws ServiceException {
+
+		try {
+			TypedQuery<Conference> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_ALL_CONFERENCES, Conference.class);
+
+			return query.getResultList();
+
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot list all Conference entities.", pe);
 		}
 	}
 

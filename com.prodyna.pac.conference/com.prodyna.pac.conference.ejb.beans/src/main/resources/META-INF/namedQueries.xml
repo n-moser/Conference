@@ -23,10 +23,18 @@
 
 <entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm/orm_1_0.xsd"
-                 version="1.0">
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+                 version="2.0">
 
     <!-- Conference -->
+
+    <named-query name="Conference.findAllConferences">
+        <query>
+            <![CDATA[
+                SELECT c FROM Conference c
+            ]]>
+        </query>
+    </named-query>
 
     <named-query name="Conference.findConferenceByName">
         <query>
@@ -39,6 +47,14 @@
 
     <!-- Room -->
 
+    <named-query name="Room.findAllRooms">
+        <query>
+            <![CDATA[
+                SELECT r FROM Room r
+            ]]>
+        </query>
+    </named-query>
+
     <named-query name="Room.findRoomByName">
         <query>
             <![CDATA[
@@ -50,6 +66,14 @@
 
     <!-- Speaker -->
 
+    <named-query name="Speaker.findAllSpeakers">
+        <query>
+            <![CDATA[
+                SELECT s FROM Speaker s
+            ]]>
+        </query>
+    </named-query>
+
     <named-query name="Speaker.findSpeakerByName">
         <query>
             <![CDATA[
@@ -60,6 +84,14 @@
     </named-query>
 
     <!-- Talk -->
+
+    <named-query name="Talk.findAllTalks">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+            ]]>
+        </query>
+    </named-query>
 
     <named-query name="Talk.findTalkByName">
         <query>

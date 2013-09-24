@@ -31,10 +31,18 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <jta-data-source>java:jboss/datasources/MysqlDS</jta-data-source>
 
-        <mapping-file>META-INF/namedQueries.xml</mapping-file>
-
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <validation-mode>CALLBACK</validation-mode>
+
+        <class>com.prodyna.pac.conference.ejb.facade.datatype.Conference</class>
+        <class>com.prodyna.pac.conference.ejb.facade.datatype.Room</class>
+        <class>com.prodyna.pac.conference.ejb.facade.datatype.Speaker</class>
+        <class>com.prodyna.pac.conference.ejb.facade.datatype.Talk</class>
+        <class>com.prodyna.pac.conference.ejb.facade.datatype.TalkSpeaker</class>
+
+        <mapping-file>META-INF/namedQueries.xml</mapping-file>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>

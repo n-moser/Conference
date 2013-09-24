@@ -28,6 +28,7 @@ import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.Service;
 
 import javax.ejb.Local;
+import java.util.List;
 
 /**
  * RoomService
@@ -64,6 +65,16 @@ public interface RoomService extends Service {
 	 * 		when the Room entity with the given Name does not exist in the database
 	 */
 	Room findRoomByName(String name) throws ServiceException;
+
+	/**
+	 * Find all Room entity instances.
+	 *
+	 * @return the list of all existing room instances
+	 *
+	 * @throws ServiceException
+	 * 		when the Room query fails
+	 */
+	List<Room> getAllRooms() throws ServiceException;
 
 	/**
 	 * Persists a non-persistent Room entity to the database.

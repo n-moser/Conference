@@ -34,6 +34,7 @@ ext {
     hibernateVersion = '1.0.1.Final'
     hibernateValidatorVersion = '4.2.0.Final'
 
+    servletVersion = '1.0.0.Final'
     jaxrsVersion = '1.0.0.Final'
 
     richfacesVersion = '4.2.0.Final'

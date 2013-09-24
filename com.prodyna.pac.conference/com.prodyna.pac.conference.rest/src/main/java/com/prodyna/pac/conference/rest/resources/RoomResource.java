@@ -31,6 +31,7 @@ import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * RoomResource
@@ -46,8 +47,9 @@ public class RoomResource {
 	private RoomService roomService;
 
 	@GET
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Room findRoom(Long id) throws RESTException {
+	public Room findRoom(@PathParam("id") Long id) throws RESTException {
 
 		try {
 			return this.roomService.findRoomById(id);
@@ -55,6 +57,17 @@ public class RoomResource {
 			throw new RESTException(e);
 		}
 	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Room> getAllTasks() throws RESTException {
+		try {
+			return this.roomService.getAllRooms();
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)

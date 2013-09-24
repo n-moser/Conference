@@ -28,6 +28,7 @@ import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.Service;
 
 import javax.ejb.Local;
+import java.util.List;
 
 /**
  * SpeakerService
@@ -64,6 +65,16 @@ public interface SpeakerService extends Service {
 	 * 		when the Speaker entity with the given Name does not exist in the database
 	 */
 	Speaker findSpeakerByName(String name) throws ServiceException;
+
+	/**
+	 * Find all Speaker entity instances.
+	 *
+	 * @return the list of all existing speaker instances
+	 *
+	 * @throws ServiceException
+	 * 		when the Speaker query fails
+	 */
+	List<Speaker> getAllSpeakers() throws ServiceException;
 
 	/**
 	 * Persists a non-persistent Speaker entity to the database.

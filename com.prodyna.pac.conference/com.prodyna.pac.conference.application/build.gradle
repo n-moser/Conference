@@ -23,6 +23,8 @@
 
 apply plugin: 'ear'
 
+description = 'This project is responsible for creating the Conference enterprise application archive (ear).'
+
 dependencies {
     deploy project(':com.prodyna.pac.conference.ejb.facade')
     deploy project(':com.prodyna.pac.conference.ejb.beans')
@@ -30,7 +32,22 @@ dependencies {
     deploy project(path: ':com.prodyna.pac.conference.rest', configuration: 'archives')
 }
 
-task deploy(type: Copy, dependsOn: ear) {
+ear {
+    deploymentDescriptor {
+        applicationName = "conference"
+
+        webModule('com.prodyna.pac.conference.jsf.war', "/app")
+        webModule('com.prodyna.pac.conference.rest.war', "/rest")
+    }
+}
+
+ear {
+    manifest {
+        attributes("Implementation-Title": project.name, "Implementation-Version": version, "Built-By": System.getProperty('user.name'), "Built-Date": new Date(), 'Built-JDK': System.getProperty('java.version'))
+    }
+}
+
+task deploy(type: Copy, dependsOn: [clean, ear]) {
 
     def jbossHome = System.getenv('JBOSS_HOME')
 
@@ -44,3 +61,5 @@ task deploy(type: Copy, dependsOn: ear) {
     }
 
 }
+
+deploy.onlyIf {System.getenv('JBOSS_HOME') != null}

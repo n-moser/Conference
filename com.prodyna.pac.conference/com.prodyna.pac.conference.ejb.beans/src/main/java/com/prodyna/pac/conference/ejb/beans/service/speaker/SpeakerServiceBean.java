@@ -33,6 +33,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 /**
  * SpeakerServiceBean
@@ -43,6 +44,8 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
+
+	private static final String QUERY_FIND_ALL_SPEAKERS = "Speaker.findAllSpeakers";
 
 	private static final String QUERY_FIND_SPEAKER_BY_NAME = "Speaker.findSpeakerByName";
 
@@ -74,6 +77,20 @@ public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 
 		} catch (PersistenceException pe) {
 			throw new ServiceException("Cannot find Speaker entity with name '" + name + "'.", pe);
+		}
+	}
+
+	@Override
+	public List<Speaker> getAllSpeakers() throws ServiceException {
+
+		try {
+			TypedQuery<Speaker> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_ALL_SPEAKERS, Speaker.class);
+
+			return query.getResultList();
+
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot list all Speaker entities.", pe);
 		}
 	}
 

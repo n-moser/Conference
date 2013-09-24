@@ -31,6 +31,7 @@ import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceServic
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * ConferenceResource
@@ -46,11 +47,23 @@ public class ConferenceResource {
 	private ConferenceService conferenceService;
 
 	@GET
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Conference findConference(Long id) throws RESTException {
+	public Conference findConference(@PathParam("id") Long id) throws RESTException {
 
 		try {
 			return this.conferenceService.findConferenceById(id);
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Conference> getAllTasks() throws RESTException {
+
+		try {
+			return this.conferenceService.getAllConferences();
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}

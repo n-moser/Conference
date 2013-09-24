@@ -31,6 +31,7 @@ import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * SpeakerResource
@@ -46,11 +47,22 @@ public class SpeakerResource {
 	private SpeakerService speakerService;
 
 	@GET
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Speaker findSpeaker(Long id) throws RESTException {
+	public Speaker findSpeaker(@PathParam("id") Long id) throws RESTException {
 
 		try {
 			return this.speakerService.findSpeakerById(id);
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Speaker> getAllTasks() throws RESTException {
+		try {
+			return this.speakerService.getAllSpeakers();
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}

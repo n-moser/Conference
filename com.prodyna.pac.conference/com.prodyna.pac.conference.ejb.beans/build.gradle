@@ -21,8 +21,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-version = '0.0.2'
-
 def JBOSS_HOME = 'build/jboss-as-7.1.1.Final'
 
 configurations {

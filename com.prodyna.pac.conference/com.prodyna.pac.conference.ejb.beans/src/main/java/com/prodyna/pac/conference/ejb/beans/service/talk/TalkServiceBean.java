@@ -33,6 +33,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 /**
  * TalkServiceBean
@@ -43,6 +44,8 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class TalkServiceBean extends ServiceBean implements TalkService {
+
+	private static final String QUERY_FIND_ALL_TALKS = "Talk.findAllTalks";
 
 	private static final String QUERY_FIND_TALK_BY_NAME = "Talk.findTalkByName";
 
@@ -74,6 +77,20 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 
 		} catch (PersistenceException pe) {
 			throw new ServiceException("Cannot find Talk entity with name '" + name + "'.", pe);
+		}
+	}
+
+	@Override
+	public List<Talk> getAllTalks() throws ServiceException {
+
+		try {
+			TypedQuery<Talk> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_ALL_TALKS, Talk.class);
+
+			return query.getResultList();
+
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot list all Talk entities.", pe);
 		}
 	}
 

@@ -28,6 +28,7 @@ import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.Service;
 
 import javax.ejb.Local;
+import java.util.List;
 
 /**
  * ConferenceService
@@ -64,6 +65,16 @@ public interface ConferenceService extends Service {
 	 * 		when the Conference entity with the given Name does not exist in the database
 	 */
 	Conference findConferenceByName(String name) throws ServiceException;
+
+	/**
+	 * Find all Conference entity instances.
+	 *
+	 * @return the list of all existing conference instances
+	 *
+	 * @throws ServiceException
+	 * 		when the Conference query fails
+	 */
+	List<Conference> getAllConferences() throws ServiceException;
 
 	/**
 	 * Persists a non-persistent Conference entity to the database.

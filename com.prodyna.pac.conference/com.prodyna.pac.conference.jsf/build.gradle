@@ -21,17 +21,23 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-version = '0.0.2'
-
 apply plugin: 'war'
 
 dependencies {
-    provided project(':com.prodyna.pac.conference.ejb.facade')
+    providedCompile project(':com.prodyna.pac.conference.ejb.facade')
 
-    compile group: 'org.jboss.spec.javax.servlet', name: 'jboss-servlet-api_3.0_spec', version: '1.0.0.Final'
+    providedCompile group: 'org.jboss.spec.javax.servlet', name: 'jboss-servlet-api_3.0_spec', version: servletVersion
 
     compile group: 'org.richfaces.ui', name: 'richfaces-components-ui', version: richfacesVersion
     compile group: 'org.richfaces.core', name: 'richfaces-core-impl', version: richfacesVersion
+}
+
+war {
+    archiveName = project.name + '.war'
+
+    manifest {
+        attributes("Implementation-Title": project.name, "Implementation-Version": version, "Built-By": System.getProperty('user.name'), "Built-Date": new Date(), 'Built-JDK': System.getProperty('java.version'))
+    }
 }
 
 jar.enabled = false

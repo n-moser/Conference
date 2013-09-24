@@ -12,7 +12,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.facade" scope="PROVIDED" />
+    <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.facade" exported="" />
     <orderEntry type="library" exported="" name="richfaces-core-api-4.2.0.Final" level="project" />
     <orderEntry type="library" exported="" name="richfaces-components-ui-4.2.0.Final" level="project" />
     <orderEntry type="library" exported="" name="richfaces-components-api-4.2.0.Final" level="project" />
