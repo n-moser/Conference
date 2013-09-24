@@ -47,7 +47,7 @@ ear {
     }
 }
 
-task deploy(type: Copy, dependsOn: ear) {
+task deployJBoss(type: Copy, dependsOn: ear) {
 
     def jbossHome = System.getenv('JBOSS_HOME')
 
@@ -62,4 +62,4 @@ task deploy(type: Copy, dependsOn: ear) {
 
 }
 
-deploy.onlyIf { System.getenv('JBOSS_HOME') != null }
+deployJBoss.onlyIf { System.getenv('JBOSS_HOME') != null }
