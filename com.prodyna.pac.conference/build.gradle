@@ -24,8 +24,6 @@
 
 ext {
 
-    jbossHome = 'D:\\Server\\JBoss\\AS-7.1.1'
-
     // Library Versions
 
     ejbVersion = '1.0.1.Final'
