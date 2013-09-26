@@ -37,7 +37,7 @@ ext {
     servletVersion = '1.0.0.Final'
     jaxrsVersion = '1.0.0.Final'
 
-    richfacesVersion = '4.2.0.Final'
+    richfacesVersion = '4.3.4.Final'
 
     jbossVersion = '7.1.1.Final'
     mysqlDriverVersion = '5.1.26'
@@ -58,7 +58,7 @@ subprojects {
 
     apply from: "$rootDir/config/gradle/java.gradle"
     apply from: "$rootDir/config/gradle/test.gradle"
-    apply from: "$rootDir/config/gradle/quality.gradle"
+//    apply from: "$rootDir/config/gradle/quality.gradle"
 
     idea {
         module {

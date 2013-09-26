@@ -23,10 +23,13 @@
   -->
 
 <html>
-<head>
-    <title></title>
-</head>
-<body>
 
-</body>
+    <head>
+        <title>Conference</title>
+    </head>
+
+	<body>
+		<jsp:forward page="/welcome.jsf" />
+	</body>
+
 </html>

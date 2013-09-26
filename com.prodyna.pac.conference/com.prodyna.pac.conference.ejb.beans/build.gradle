@@ -56,24 +56,23 @@ task explodeJBoss(type: Copy) {
     def jbossDir = file("${buildDir}")
     def jbossDeployDir = file("${buildDir}/jboss-as-7.1.1.Final/standalone/deployments")
 
-    inputs.file configurations.jbossAS7Distribution.singleFile
-    outputs.dir jbossDeployDir
+    from zipTree(configurations.jbossAS7Distribution.singleFile)
+    into jbossDir
 
-    logger.info("Exploding JBoss " + configurations.jbossAS7Distribution.singleFile)
-
-    copy {
-        from zipTree(configurations.jbossAS7Distribution.singleFile)
-        into jbossDir
+    doFirst {
+        logger.lifecycle("Exploding JBoss " + configurations.jbossAS7Distribution.singleFile)
     }
 
-    copy {
-        from configurations.mysqlDriver.singleFile
-        into jbossDeployDir
-    }
+    doLast {
+        copy {
+            from configurations.mysqlDriver.singleFile
+            into jbossDeployDir
+        }
 
-    copy {
-        from file("${projectDir}/src/test/resources/test-ds.xml")
-        into jbossDeployDir
+        copy {
+            from file("${projectDir}/src/test/resources/test-ds.xml")
+            into jbossDeployDir
+        }
     }
 }
 
