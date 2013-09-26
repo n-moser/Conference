@@ -39,20 +39,8 @@
     <!-- Context Parameter -->
 
     <context-param>
-        <param-name>javax.faces.FACELETS_LIBRARIES</param-name>
-        <param-value>/WEB-INF/app-tags.taglib.xml</param-value>
-    </context-param>
-    <context-param>
         <param-name>org.richfaces.skin</param-name>
         <param-value>#{skinBean.skin}</param-value>
-    </context-param>
-    <context-param>
-        <param-name>org.richfaces.fileUpload.maxRequestSize</param-name>
-        <param-value>100000</param-value>
-    </context-param>
-    <context-param>
-        <param-name>org.richfaces.fileUpload.createTempFiles</param-name>
-        <param-value>false</param-value>
     </context-param>
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
@@ -61,6 +49,12 @@
     <context-param>
         <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
         <param-value>server</param-value>
+    </context-param>
+
+    <!-- Resource Optimization -->
+    <context-param>
+        <param-name>org.richfaces.resourceOptimization.enabled</param-name>
+        <param-value>true</param-value>
     </context-param>
 
     <!-- Servlets -->
@@ -84,7 +78,7 @@
 
     <mime-mapping>
         <extension>xcss</extension>
-        <mime-type>text/css</mime-type>
+        <mime-type>text/resources.css</mime-type>
     </mime-mapping>
 
 </web-app>

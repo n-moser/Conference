@@ -21,31 +21,26 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-apply plugin: 'war'
+package com.prodyna.pac.conference.ejb.beans.cdi.producer;
 
-dependencies {
-    providedCompile project(':com.prodyna.pac.conference.ejb.facade')
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    providedCompile group: 'org.jboss.spec.javax.servlet', name: 'jboss-servlet-api_3.0_spec', version: servletVersion
-    providedCompile group: 'org.jboss.spec.javax.annotation', name: 'jboss-annotations-api_1.1_spec', version: '1.0.0.Final'
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
 
-    compile group: 'org.richfaces.ui', name: 'richfaces-components-ui', version: richfacesVersion
-    compile group: 'org.richfaces.ui', name: 'richfaces-components-ui', version: richfacesVersion
-    compile group: 'org.richfaces.core', name: 'richfaces-core-impl', version: richfacesVersion
+/**
+ * LoggerProducer
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 26.09.13
+ * Time: 20:40
+ */
+public class LoggerProducer {
+
+	@Produces
+	public Logger produceLogger(InjectionPoint ip) {
+
+		return LoggerFactory.getLogger(ip.getMember().getDeclaringClass());
+	}
 }
-
-war {
-    archiveName = project.name + '.war'
-
-    manifest {
-        attributes("Implementation-Title": project.name, "Implementation-Version": version, "Built-By": System.getProperty('user.name'), "Built-Date": new Date(), 'Built-JDK': System.getProperty('java.version'))
-    }
-}
-
-idea {
-    module {
-        scopes.PROVIDED.plus += configurations.providedCompile
-    }
-}
-
-jar.enabled = false

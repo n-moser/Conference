@@ -21,31 +21,27 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-apply plugin: 'war'
+package com.prodyna.pac.conference.jsf;
 
-dependencies {
-    providedCompile project(':com.prodyna.pac.conference.ejb.facade')
+import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
 
-    providedCompile group: 'org.jboss.spec.javax.servlet', name: 'jboss-servlet-api_3.0_spec', version: servletVersion
-    providedCompile group: 'org.jboss.spec.javax.annotation', name: 'jboss-annotations-api_1.1_spec', version: '1.0.0.Final'
+import javax.annotation.ManagedBean;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
-    compile group: 'org.richfaces.ui', name: 'richfaces-components-ui', version: richfacesVersion
-    compile group: 'org.richfaces.ui', name: 'richfaces-components-ui', version: richfacesVersion
-    compile group: 'org.richfaces.core', name: 'richfaces-core-impl', version: richfacesVersion
+/**
+ * ConferenceBean
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 26.09.13
+ * Time: 18:46
+ */
+@ManagedBean
+@RequestScoped
+@Named("conferenceBean")
+public class ConferenceBean {
+
+	private ConferenceService service;
+
+
 }
-
-war {
-    archiveName = project.name + '.war'
-
-    manifest {
-        attributes("Implementation-Title": project.name, "Implementation-Version": version, "Built-By": System.getProperty('user.name'), "Built-Date": new Date(), 'Built-JDK': System.getProperty('java.version'))
-    }
-}
-
-idea {
-    module {
-        scopes.PROVIDED.plus += configurations.providedCompile
-    }
-}
-
-jar.enabled = false

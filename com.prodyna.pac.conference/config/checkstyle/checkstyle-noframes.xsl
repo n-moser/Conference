@@ -39,7 +39,7 @@
     <xsl:template match="checkstyle">
         <html>
             <head>
-                <style type="text/css">
+                <style type="text/resources.css">
                     .bannercell {
                     border: 0px;
                     padding: 0px;
@@ -98,7 +98,7 @@
                     <tr>
                         <td class="bannercell" rowspan="2">
                             <!--a href="http://jakarta.apache.org/">
-                            <img src="http://jakarta.apache.org/images/jakarta-logo.gif" alt="http://jakarta.apache.org" align="left" border="0"/>
+                            <img src="http://jakarta.apache.org/resources.images/jakarta-logo.gif" alt="http://jakarta.apache.org" align="left" border="0"/>
                             </a-->
                         </td>
                         <td class="text-align:right">

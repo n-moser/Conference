@@ -38,4 +38,10 @@ war {
     }
 }
 
+idea {
+    module {
+        scopes.PROVIDED.plus += configurations.providedCompile
+    }
+}
+
 jar.enabled = false

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
@@ -24,18 +25,52 @@
   -->
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich">
 
-<head>
-    <title>Conference</title>
-</head>
+<h:head>
 
-<ui:composition template="/templates/main.xhtml">
-    <ui:define name="body">
-        Welcome To RichFaces 4.x Demo
-    </ui:define>
+    <title>PAC Conferences</title>
 
-</ui:composition>
+    <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/images/favicon.ico"/>
+
+    <h:outputStylesheet library="css" name="style.css"/>
+
+</h:head>
+
+<h:body>
+
+    <rich:panel>
+        <f:facet name="header">
+            <h:outputText value="Conferences"></h:outputText>
+        </f:facet>
+        <h:form>
+            <rich:dataGrid value="#{conferenceListBean.conferences}" var="conf" columns="3" elements="9" width="600px" border="0">
+                <rich:panel bodyClass="pbody">
+                    <f:facet name="header">
+                        <h:outputText value="#{conf.name}"></h:outputText>
+                    </f:facet>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Price:" styleClass="label"></h:outputText>
+                        <h:outputText value="1.00" />
+                            <h:outputText value="#{car.price}" />
+                            <h:outputText value="Mileage:" styleClass="label"></h:outputText>
+                            <h:outputText value="#{car.mileage}" />
+                            <h:outputText value="VIN:" styleClass="label"></h:outputText>
+                            <h:outputText value="#{car.vin}" />
+                            <h:outputText value="Stock:" styleClass="label"></h:outputText>
+                            <h:outputText value="#{car.stock}" />
+                    </h:panelGrid>
+                </rich:panel>
+                <f:facet name="footer">
+                    <rich:dataScroller />
+                </f:facet>
+            </rich:dataGrid>
+        </h:form>
+    </rich:panel>
+
+</h:body>
 
 </html>
-
