@@ -33,7 +33,7 @@ import javax.ws.rs.core.Application;
  * Date: 21.09.13
  * Time: 10:20
  */
-@ApplicationPath("rest")
+@ApplicationPath("services")
 public class ConferenceApplication extends Application {
 
 }
