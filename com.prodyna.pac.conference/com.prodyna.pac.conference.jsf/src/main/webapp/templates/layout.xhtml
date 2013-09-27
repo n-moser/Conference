@@ -27,10 +27,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich">
 
 <h:head>
-    <h:outputStylesheet name="style.css" library="css"/>
+
+    <title>PAC Conferences</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/images/favicon.ico"/>
+
+    <h:outputStylesheet library="css" name="style.css"/>
+
 </h:head>
 
 <h:body>
@@ -39,19 +46,22 @@
 
         <div id="header">
             <ui:insert name="header">
-                <ui:include src="/template/header.xhtml"/>
+                <ui:include src="header.xhtml"/>
             </ui:insert>
         </div>
 
         <div id="content">
-            <ui:insert name="content">
-                <ui:include src="/template/content.xhtml"/>
-            </ui:insert>
+
+            <rich:panel>
+                <ui:insert name="content">
+                    <ui:include src="content.xhtml"/>
+                </ui:insert>
+            </rich:panel>
         </div>
 
         <div id="footer">
             <ui:insert name="footer">
-                <ui:include src="/template/footer.xhtml"/>
+                <ui:include src="footer.xhtml"/>
             </ui:insert>
         </div>
 

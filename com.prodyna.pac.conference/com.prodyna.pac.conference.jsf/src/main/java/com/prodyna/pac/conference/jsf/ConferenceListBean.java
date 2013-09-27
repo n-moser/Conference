@@ -33,6 +33,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -73,8 +74,21 @@ public class ConferenceListBean {
 
 			Conference conf = new Conference();
 			conf.setName("Test");
+			conf.setDescription("This is a sample conference without any important content.");
+			conf.setStartDate(new Date());
+			conf.setEndDate(new Date());
 
 			this.conferences.add(conf);
+			this.conferences.add(conf);
+			this.conferences.add(conf);
+			this.conferences.add(conf);
+			this.conferences.add(conf);
+			this.conferences.add(conf);
+			this.conferences.add(conf);
+			this.conferences.add(conf);
+			this.conferences.add(conf);
+
+
 		} catch (ServiceException se) {
 			logger.error("Error retrieving Conferences.", se);
 		}
