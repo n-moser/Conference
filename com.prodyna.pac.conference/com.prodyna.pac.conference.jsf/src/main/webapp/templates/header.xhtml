@@ -11,7 +11,7 @@
   ~ the Software without restriction, including without limitation the rights to
   ~ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
   ~ the Software, and to permit persons to whom the Software is furnished to do so,
-  ~ subject to the following conditions:
+  ~ security to the following conditions:
   ~
   ~ The above copyright notice and this permission notice shall be included in all
   ~ copies or substantial portions of the Software.
@@ -26,7 +26,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
 
 <body>
 
@@ -36,7 +38,87 @@
         <div class="subTitle">Powered by PRODYNA</div>
     </div>
 
-    <div class="headerLine"> </div>
+    <rich:toolbar height="26px" styleClass="toolbar">
+
+        <rich:toolbarGroup location="left">
+            <h:outputLink value="welcome.jsf" styleClass="breadCrump">Conferences</h:outputLink>
+        </rich:toolbarGroup>
+
+        <rich:toolbarGroup location="left" rendered="#{not empty breadCrumpBean.conference}">
+            <h:outputText value=">" styleClass="breadCrumpSeparator"/>
+            <h:outputLink value="conference.jsf"
+                          styleClass="breadCrump">#{breadCrumpBean.conference.name}</h:outputLink>
+        </rich:toolbarGroup>
+
+        <rich:toolbarGroup rendered="#{breadCrumpBean.talk} != null">
+            <h:outputText value=">" styleClass="breadCrumpSeparator"/>
+            <h:outputLink value="talks.jsf" styleClass="breadCrump">Talks</h:outputLink>
+        </rich:toolbarGroup>
+
+        <rich:toolbarGroup rendered="#{breadCrumpBean.talk} != null">
+            <h:outputText value=">" styleClass="breadCrumpSeparator" />
+            <h:outputLink value="talk.jsf" styleClass="breadCrump">#{breadCrumpBean.talk.name}</h:outputLink>
+        </rich:toolbarGroup>
+
+        <rich:toolbarGroup rendered="#{breadCrumpBean.speaker} != null">
+            <h:outputText value=">" styleClass="breadCrumpSeparator"/>
+            <h:outputLink value="speaker.jsf" styleClass="breadCrump">#{breadCrumpBean.speaker.name}</h:outputLink>
+        </rich:toolbarGroup>
+
+        <rich:toolbarGroup rendered="#{breadCrumpBean.room} != null">
+            <h:outputText value=">" styleClass="breadCrumpSeparator"/>
+            <h:outputLink value="room.jsf" styleClass="breadCrump">#{breadCrumpBean.room.name}</h:outputLink>
+        </rich:toolbarGroup>
+
+        <rich:toolbarGroup location="right">
+
+            <h:outputLink value="#" id="loginLink" rendered="#{!securityBean.loggedIn}">
+
+                <rich:componentControl event="click" operation="show" target="loginPanel">
+                    <a4j:param name="event" value="event" noEscape="true"/>
+                    <rich:hashParam>
+                        <a4j:param noEscape="true" name="top"
+                                   value="jQuery(#{rich:element('loginLink')}.parentNode).offset().top + jQuery(#{rich:element('loginLink')}.parentNode).height()"/>
+
+                        <a4j:param noEscape="true" name="left"
+                                   value="jQuery(#{rich:element('loginLink')}).offset().left + jQuery(#{rich:element('loginLink')}).width() - p_width"/>
+                    </rich:hashParam>
+                </rich:componentControl>
+
+                Login
+
+            </h:outputLink>
+
+            <h:outputText value="Logged in as '#{securityBean.userName}'" rendered="#{securityBean.loggedIn}"/>
+
+            <h:form>
+                <h:commandLink value="Logout" action="#{securityBean.logout()}" rendered="#{securityBean.loggedIn}"/>
+            </h:form>
+
+        </rich:toolbarGroup>
+    </rich:toolbar>
+
+    <rich:popupPanel id="loginPanel" autosized="true" modal="true" moveable="false" resizeable="false"
+                     followByScroll="false" onmaskclick="#{rich:component('loginPanel')}.hide()">
+
+        <h:form id="loginForm" onsubmit="#{securityBean.login()}">
+
+            <h:panelGrid columns="2">
+                <h:outputText value="Login"/>
+                <h:inputText value="#{securityBean.userName}"/>
+                <h:outputText value="Password"/>
+                <h:inputSecret value="#{securityBean.password}"/>
+            </h:panelGrid>
+
+            <h:commandLink action="#{securityBean.login()}" value="Login"/>
+
+        </h:form>
+
+    </rich:popupPanel>
+
+    <h:outputScript type="text/javascript" target="body">
+        p_width = #{rich:component('loginPanel')}.width();
+    </h:outputScript>
 
 </ui:composition>
 
