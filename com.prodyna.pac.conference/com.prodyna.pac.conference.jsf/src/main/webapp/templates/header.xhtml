@@ -50,24 +50,28 @@
                           styleClass="breadCrump">#{breadCrumpBean.conference.name}</h:outputLink>
         </rich:toolbarGroup>
 
-        <rich:toolbarGroup rendered="#{breadCrumpBean.talk} != null">
+        <rich:toolbarGroup rendered="#{not empty breadCrumpBean.talk}">
             <h:outputText value=">" styleClass="breadCrumpSeparator"/>
             <h:outputLink value="talks.jsf" styleClass="breadCrump">Talks</h:outputLink>
         </rich:toolbarGroup>
 
-        <rich:toolbarGroup rendered="#{breadCrumpBean.talk} != null">
+        <rich:toolbarGroup rendered="#{not empty breadCrumpBean.talk}">
             <h:outputText value=">" styleClass="breadCrumpSeparator" />
             <h:outputLink value="talk.jsf" styleClass="breadCrump">#{breadCrumpBean.talk.name}</h:outputLink>
         </rich:toolbarGroup>
 
-        <rich:toolbarGroup rendered="#{breadCrumpBean.speaker} != null">
+        <rich:toolbarGroup rendered="#{not empty breadCrumpBean.speaker}">
             <h:outputText value=">" styleClass="breadCrumpSeparator"/>
             <h:outputLink value="speaker.jsf" styleClass="breadCrump">#{breadCrumpBean.speaker.name}</h:outputLink>
         </rich:toolbarGroup>
 
-        <rich:toolbarGroup rendered="#{breadCrumpBean.room} != null">
+        <rich:toolbarGroup rendered="#{not empty breadCrumpBean.room}">
             <h:outputText value=">" styleClass="breadCrumpSeparator"/>
             <h:outputLink value="room.jsf" styleClass="breadCrump">#{breadCrumpBean.room.name}</h:outputLink>
+        </rich:toolbarGroup>
+
+        <rich:toolbarGroup location="right">
+            <h:outputLink value="admin.jsf" styleClass="breadCrump">Administration</h:outputLink>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup location="right">

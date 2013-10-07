@@ -23,11 +23,14 @@
 
 package com.prodyna.pac.conference.jsf;
 
+import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
 
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
 
 /**
  * ConferenceBean
@@ -41,7 +44,29 @@ import javax.inject.Named;
 @Named("conferenceBean")
 public class ConferenceBean {
 
+	@Inject
 	private ConferenceService service;
+
+	@Inject
+	private ConferenceListBean listBean;
+
+	private int currentIndex;
+
+	public int getCurrentIndex() {
+
+		return currentIndex;
+	}
+
+	public void setCurrentIndex(int currentIndex) {
+
+		this.currentIndex = currentIndex;
+	}
+
+	public void removeSelected() {
+
+		List<Conference> conferences = listBean.getConferences();
+		conferences.remove(currentIndex);
+	}
 
 
 }

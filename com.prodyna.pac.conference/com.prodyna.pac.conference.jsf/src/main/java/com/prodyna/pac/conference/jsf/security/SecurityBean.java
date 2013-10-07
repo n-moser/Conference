@@ -86,22 +86,31 @@ public class SecurityBean implements Serializable {
 
 	public String login() {
 
-		logger.info("Authenticating User {}.", this.userName);
+		if (this.userName != null && !this.userName.isEmpty()) {
 
-		if (ADMIN.equals(this.userName) && ADMIN.equals(this.password)) {
-			logger.info("Authentication of User {} succeeded.", this.userName);
-			this.loggedIn = true;
+			logger.info("Authenticating User {}.", this.userName);
+
+			if (ADMIN.equals(this.userName) && ADMIN.equals(this.password)) {
+				logger.info("Authentication of User {} succeeded.", this.userName);
+				this.loggedIn = true;
+			} else {
+				logger.info("Authentication of User {} failed.", this.userName);
+			}
+
+			return "admin";
+
 		} else {
-			logger.info("Authentication of User {} failed.", this.userName);
+			return "welcome";
 		}
-
-		return "administration";
 	}
 
-	public void logout() {
+	public String logout() {
+
 		this.loggedIn = false;
 
 		this.userName = null;
 		this.password = null;
+
+		return "welcome";
 	}
 }

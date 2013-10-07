@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+  ~ The MIT License (MIT)
+  ~
+  ~ Copyright (c) 2013 Nicolas Moser
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of
+  ~ this software and associated documentation files (the "Software"), to deal in
+  ~ the Software without restriction, including without limitation the rights to
+  ~ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+  ~ the Software, and to permit persons to whom the Software is furnished to do so,
+  ~ security to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  ~ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  ~ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  ~ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  ~ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+
+<h:body>
+
+    <ui:composition template="templates/layout.xhtml">
+
+        <ui:define name="content">
+
+            <f:facet name="header">
+                <h:outputText value="Administration"></h:outputText>
+            </f:facet>
+
+            <h:commandLink value="Create new Conference"/>
+
+            <rich:panel title="Conferences">
+
+                <rich:dataTable id="conferenceTable" value="#{conferenceListBean.conferences}" var="conf"
+                                iterationStatusVar="it">
+
+                    <rich:column>
+                        <f:facet name="header">Name</f:facet>
+                        <h:outputText value="#{conf.name}"/>
+                    </rich:column>
+
+                    <rich:column>
+                        <f:facet name="header">Description</f:facet>
+                        <h:outputText value="#{conf.description}"/>
+                    </rich:column>
+
+                    <rich:column>
+                        <f:facet name="header">Start</f:facet>
+                        <h:outputText value="#{conf.startDate}">
+                            <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                        </h:outputText>
+                    </rich:column>
+
+                    <rich:column>
+                        <f:facet name="header">End</f:facet>
+                        <h:outputText value="#{conf.endDate}">
+                            <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                        </h:outputText>
+                    </rich:column>
+
+                    <rich:column>
+                        <a4j:commandLink execute="@this" render="@none"
+                                         oncomplete="#{rich:component('confirmPane')}.show()">
+                            <h:graphicImage value="./resources/images/icons/delete.gif" alt="delete"/>
+                            <a4j:param value="#{it.index}" assignTo="#{conferenceBean.currentIndex}"/>
+                        </a4j:commandLink>
+                        <a4j:commandLink execute="@this" oncomplete="#{rich:component('editPane')}.show()">
+                            <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
+                            <a4j:param value="#{it.index}" assignTo="#{conferenceBean.currentIndex}"/>
+                            <f:setPropertyActionListener target="#{conferenceBean.editedConference}" value="#{car}"/>
+                        </a4j:commandLink>
+                    </rich:column>
+
+                </rich:dataTable>
+
+                <rich:popupPanel id="confirmPane" autosized="true">
+                    Are you sure you want to delete the conference?
+                    <a4j:commandButton value="Cancel" onclick="#{rich:component('confirmPane')}.hide(); return false;"/>
+                    <a4j:commandButton value="Delete" onclick="removeConference(); return false;"/>
+                </rich:popupPanel>
+
+                <a4j:jsFunction name="removeConference" execute="@this" render="conferenceTable"
+                                action="#{conferenceBean.removeSelected()}"
+                                oncomplete="#{rich:component('confirmPane')}.hide();"/>
+
+            </rich:panel>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>
