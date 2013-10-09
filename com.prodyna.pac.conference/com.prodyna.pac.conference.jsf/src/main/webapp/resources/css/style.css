@@ -9,6 +9,8 @@ html,body {
 
     font-family: Arial, sans-serif;
 	font-size: 1em;
+
+    height: 100%;
 }
 
 #header {
@@ -50,6 +52,30 @@ html,body {
 .pbody {
     width: 500px;
     border: none;
+}
+
+.gridTable tbody {
+    vertical-align: baseline;
+}
+
+.masterTable {
+    width: 100%;
+}
+
+.masterTableRow {
+    vertical-align: bottom;
+}
+
+.masterControl {
+    width: 100%;
+}
+
+.masterControlCal {
+    margin-left: 0px;
+}
+
+.linkTable {
+    width: 100%;
 }
 
 #footer {

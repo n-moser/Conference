@@ -45,13 +45,14 @@
                 <h:commandButton value="Create new Conference" action="#{conferenceBean.edit(null)}"/>
                 <h:commandButton value="Create new Talk" action="#{talkBean.edit(null)}"/>
                 <h:commandButton value="Create new Room" action="#{roomBean.edit(null)}"/>
-                <h:commandButton value="Create new Speaker" action="#{conferenceBean.newConference()}"/>
+                <h:commandButton value="Create new Speaker" action="#{speakerBean.edit(null)}"/>
             </h:form>
 
             <rich:panel title="Conferences">
 
                 <rich:dataTable id="conferenceTable" value="#{conferenceListBean.conferences}" var="conf"
-                                iterationStatusVar="it" rendered="#{not empty conferenceListBean.conferences}">
+                                iterationStatusVar="it" rendered="#{not empty conferenceListBean.conferences}"
+                                styleClass="linkTable">
 
                     <rich:column>
                         <f:facet name="header">Name</f:facet>

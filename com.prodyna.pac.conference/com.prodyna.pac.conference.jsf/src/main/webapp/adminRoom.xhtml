@@ -42,18 +42,18 @@
                 <h:outputText value="Room Administration"></h:outputText>
             </f:facet>
 
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2" width="100%" styleClass="gridTable">
 
                 <rich:panel id="room" header="Room">
 
                     <h:form>
-                        <h:panelGrid columns="2">
+                        <h:panelGrid columns="2" styleClass="masterTable" rowClasses="masterTableRow">
 
                             <h:outputText title="Name of the Room" value="Name"/>
-                            <h:inputText value="#{roomBean.room.name}" required="true"/>
+                            <h:inputText value="#{roomBean.room.name}" required="true" styleClass="masterControl"/>
 
                             <h:outputText title="Capacity of the Room in Minutes" value="Capacity"/>
-                            <rich:inputNumberSpinner step="1" value="#{roomBean.room.capacity}" required="true"/>
+                            <rich:inputNumberSpinner step="10" value="#{roomBean.room.capacity}" required="true" />
 
                             <h:outputText title="Conference of the Room" value="Conference"/>
                             <rich:select enableManualInput="false" defaultLabel="Select the Conference"

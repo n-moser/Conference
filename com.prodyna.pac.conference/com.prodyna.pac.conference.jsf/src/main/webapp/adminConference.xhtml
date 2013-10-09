@@ -42,37 +42,39 @@
                 <h:outputText value="Conference Administration"></h:outputText>
             </f:facet>
 
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2" width="100%" styleClass="gridTable">
 
                 <rich:panel id="conference" header="Conference">
 
                     <h:form>
-                        <h:panelGrid columns="2">
+                        <h:panelGrid columns="2" styleClass="masterTable">
 
                             <h:outputText title="Name of the Conference" value="Name"/>
-                            <h:inputText value="#{conferenceBean.conference.name}"/>
+                            <h:inputText value="#{conferenceBean.conference.name}" styleClass="masterControl"/>
 
                             <h:outputText title="Description of the Conference" value="Description"/>
-                            <h:inputText value="#{conferenceBean.conference.description}"/>
+                            <h:inputText value="#{conferenceBean.conference.description}" styleClass="masterControl"/>
 
                             <h:outputText title="Location of the Conference" value="Location"/>
-                            <h:inputText value="#{conferenceBean.conference.location}"/>
+                            <h:inputText value="#{conferenceBean.conference.location}" styleClass="masterControl"/>
 
                             <h:outputText title="Start Date of the Conference" value="Start Date"/>
-                            <rich:calendar value="#{conferenceBean.conference.startDate}"/>
+                            <rich:calendar value="#{conferenceBean.conference.startDate}"
+                                           inputClass="masterControlCal"/>
 
                             <h:outputText title="End Date of the Conference" value="End Date"/>
-                            <rich:calendar value="#{conferenceBean.conference.endDate}"/>
-
-                            <h:commandButton value="Save" action="#{conferenceBean.save()}"/>
-                            <h:commandButton value="Delete" action="#{conferenceBean.remove()}"/>
+                            <rich:calendar value="#{conferenceBean.conference.endDate}" inputClass="masterControlCal" />
 
                         </h:panelGrid>
+
+                        <h:commandButton value="Save" action="#{conferenceBean.save()}"/>
+                        <h:commandButton value="Delete" action="#{conferenceBean.remove()}"/>
+
                     </h:form>
 
                 </rich:panel>
 
-                <rich:panel>
+                <rich:panel header="References">
 
                     <rich:panel header="Talks">
 
@@ -81,7 +83,7 @@
                         </h:form>
 
                         <rich:dataTable id="talkTable" value="#{conferenceBean.talks}" var="talk"
-                                        rendered="#{not empty conferenceBean.talks}">
+                                        rendered="#{not empty conferenceBean.talks}" styleClass="linkTable">
 
                             <rich:column>
                                 <f:facet name="header">Name</f:facet>
@@ -117,6 +119,8 @@
 
                     </rich:panel>
 
+                    <div style="height: 20px"></div>
+
                     <rich:panel header="Rooms">
 
                         <h:form>
@@ -124,7 +128,7 @@
                         </h:form>
 
                         <rich:dataTable id="roomTable" value="#{conferenceBean.rooms}" var="room"
-                                        rendered="#{not empty conferenceBean.rooms}">
+                                        rendered="#{not empty conferenceBean.rooms}" styleClass="linkTable">
 
                             <rich:column>
                                 <f:facet name="header">Name</f:facet>
