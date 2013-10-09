@@ -100,4 +100,38 @@ public class TalkSpeaker implements Datatype {
 
 		this.speaker = speaker;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		TalkSpeaker that = (TalkSpeaker) o;
+
+		if (id != null ? !id.equals(that.id) : that.id != null) {
+			return false;
+		}
+		if (speaker != null ? !speaker.equals(that.speaker) : that.speaker != null) {
+			return false;
+		}
+		if (version != null ? !version.equals(that.version) : that.version != null) {
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+
+		int result = id != null ? id.hashCode() : 0;
+		result = 31 * result + (version != null ? version.hashCode() : 0);
+		result = 31 * result + (speaker != null ? speaker.hashCode() : 0);
+		return result;
+	}
 }

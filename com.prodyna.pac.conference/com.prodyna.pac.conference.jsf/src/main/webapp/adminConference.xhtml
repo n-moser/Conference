@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ The MIT License (MIT)
+  ~
+  ~ Copyright (c) 2013 Nicolas Moser
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of
+  ~ this software and associated documentation files (the "Software"), to deal in
+  ~ the Software without restriction, including without limitation the rights to
+  ~ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+  ~ the Software, and to permit persons to whom the Software is furnished to do so,
+  ~ subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  ~ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  ~ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  ~ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  ~ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+
+<h:body>
+
+    <ui:composition template="templates/layout.xhtml">
+
+        <ui:define name="content">
+
+            <f:facet name="header">
+                <h:outputText value="Conference Administration"></h:outputText>
+            </f:facet>
+
+            <h:panelGrid columns="2">
+
+                <rich:panel id="conference" header="Conference">
+
+                    <h:form>
+                        <h:panelGrid columns="2">
+
+                            <h:outputText title="Name of the Conference" value="Name"/>
+                            <h:inputText value="#{conferenceBean.conference.name}"/>
+
+                            <h:outputText title="Description of the Conference" value="Description"/>
+                            <h:inputText value="#{conferenceBean.conference.description}"/>
+
+                            <h:outputText title="Location of the Conference" value="Location"/>
+                            <h:inputText value="#{conferenceBean.conference.location}"/>
+
+                            <h:outputText title="Start Date of the Conference" value="Start Date"/>
+                            <rich:calendar value="#{conferenceBean.conference.startDate}"/>
+
+                            <h:outputText title="End Date of the Conference" value="End Date"/>
+                            <rich:calendar value="#{conferenceBean.conference.endDate}"/>
+
+                            <h:commandButton value="Save" action="#{conferenceBean.save()}"/>
+                            <h:commandButton value="Delete" action="#{conferenceBean.remove()}"/>
+
+                        </h:panelGrid>
+                    </h:form>
+
+                </rich:panel>
+
+                <rich:panel>
+
+                    <rich:panel header="Talks">
+
+                        <h:form>
+                            <h:commandButton value="Create new Talk" action="#{talkBean.edit(null)}"/>
+                        </h:form>
+
+                        <rich:dataTable id="talkTable" value="#{conferenceBean.talks}" var="talk"
+                                        rendered="#{not empty conferenceBean.talks}">
+
+                            <rich:column>
+                                <f:facet name="header">Name</f:facet>
+                                <h:outputText value="#{talk.name}"/>
+                            </rich:column>
+
+                            <rich:column>
+                                <f:facet name="header">Description</f:facet>
+                                <h:outputText value="#{talk.description}"/>
+                            </rich:column>
+
+                            <rich:column>
+                                <f:facet name="header">Duration</f:facet>
+                                <h:outputText value="#{talk.duration}"/>
+                            </rich:column>
+
+                            <rich:column>
+                                <f:facet name="header">Room</f:facet>
+                                <h:outputText value="#{talk.room.name}"/>
+                            </rich:column>
+
+                            <rich:column>
+                                <h:form>
+                                    <h:commandLink action="#{talkBean.edit(talk.id)}">
+                                        <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
+                                    </h:commandLink>
+                                </h:form>
+                            </rich:column>
+
+                        </rich:dataTable>
+
+                        <h:outputText value="No talks available." rendered="#{empty conferenceBean.talks}"/>
+
+                    </rich:panel>
+
+                    <rich:panel header="Rooms">
+
+                        <h:form>
+                            <h:commandButton value="Create new Room" action="#{roomBean.edit(null)}"/>
+                        </h:form>
+
+                        <rich:dataTable id="roomTable" value="#{conferenceBean.rooms}" var="room"
+                                        rendered="#{not empty conferenceBean.rooms}">
+
+                            <rich:column>
+                                <f:facet name="header">Name</f:facet>
+                                <h:outputText value="#{room.name}"/>
+                            </rich:column>
+
+                            <rich:column>
+                                <f:facet name="header">Capacity</f:facet>
+                                <h:outputText value="#{room.capacity}"/>
+                            </rich:column>
+
+                            <rich:column>
+                                <h:form>
+                                    <h:commandLink action="#{roomBean.edit(room.id)}">
+                                        <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
+                                    </h:commandLink>
+                                </h:form>
+                            </rich:column>
+
+                        </rich:dataTable>
+
+                        <h:outputText value="No rooms available." rendered="#{empty conferenceBean.rooms}"/>
+
+                    </rich:panel>
+
+                </rich:panel>
+
+            </h:panelGrid>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

@@ -24,6 +24,7 @@
 package com.prodyna.pac.conference.ejb.beans.service.talk;
 
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
+import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
@@ -46,6 +47,8 @@ import java.util.List;
 public class TalkServiceBean extends ServiceBean implements TalkService {
 
 	private static final String QUERY_FIND_ALL_TALKS = "Talk.findAllTalks";
+
+	private static final String QUERY_FIND_TALKS_BY_CONFERENCE = "Talk.findTalksByConference";
 
 	private static final String QUERY_FIND_TALK_BY_NAME = "Talk.findTalkByName";
 
@@ -86,6 +89,22 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 		try {
 			TypedQuery<Talk> query = this.entityManager.
 					createNamedQuery(QUERY_FIND_ALL_TALKS, Talk.class);
+
+			return query.getResultList();
+
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot list all Talk entities.", pe);
+		}
+	}
+
+	@Override
+	public List<Talk> getTalksByConference(Conference conference) throws ServiceException {
+
+		try {
+			TypedQuery<Talk> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_TALKS_BY_CONFERENCE, Talk.class);
+
+			query.setParameter("conference", conference);
 
 			return query.getResultList();
 

@@ -47,6 +47,8 @@ public class Room implements Datatype {
 
 	private Integer capacity;
 
+	private Conference conference;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Override
@@ -130,5 +132,71 @@ public class Room implements Datatype {
 	public void setCapacity(Integer capacity) {
 
 		this.capacity = capacity;
+	}
+
+	/**
+	 * Getter for the contained conference.
+	 *
+	 * @return the conference this room belongs to
+	 */
+	@NotNull
+	@JoinColumn
+	@ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER, optional = false)
+	public Conference getConference() {
+
+		return conference;
+	}
+
+	/**
+	 * Setter for the conference this room belongs to.
+	 *
+	 * @param conference
+	 * 		the conference to set
+	 */
+	public void setConference(Conference conference) {
+
+		this.conference = conference;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		Room room = (Room) o;
+
+		if (capacity != null ? !capacity.equals(room.capacity) : room.capacity != null) {
+			return false;
+		}
+		if (conference != null ? !conference.equals(room.conference) : room.conference != null) {
+			return false;
+		}
+		if (id != null ? !id.equals(room.id) : room.id != null) {
+			return false;
+		}
+		if (name != null ? !name.equals(room.name) : room.name != null) {
+			return false;
+		}
+		if (version != null ? !version.equals(room.version) : room.version != null) {
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+
+		int result = id != null ? id.hashCode() : 0;
+		result = 31 * result + (version != null ? version.hashCode() : 0);
+		result = 31 * result + (name != null ? name.hashCode() : 0);
+		result = 31 * result + (capacity != null ? capacity.hashCode() : 0);
+		result = 31 * result + (conference != null ? conference.hashCode() : 0);
+		return result;
 	}
 }

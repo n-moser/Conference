@@ -23,6 +23,7 @@
 
 package com.prodyna.pac.conference.ejb.facade.service.room;
 
+import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.datatype.Room;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.Service;
@@ -77,6 +78,19 @@ public interface RoomService extends Service {
 	List<Room> getAllRooms() throws ServiceException;
 
 	/**
+	 * Find all Room entity instances that hold a reference to the given conference.
+	 *
+	 * @param conference
+	 * 		the conference holding the rooms
+	 *
+	 * @return the list of all existing room instances of the given conference
+	 *
+	 * @throws ServiceException
+	 * 		when the Room query fails
+	 */
+	List<Room> getRoomsByConference(Conference conference) throws ServiceException;
+
+	/**
 	 * Persists a non-persistent Room entity to the database.
 	 *
 	 * @param Room
@@ -114,5 +128,4 @@ public interface RoomService extends Service {
 	 * 		when the entity cannot be removed
 	 */
 	Room removeRoom(Room Room) throws ServiceException;
-
 }

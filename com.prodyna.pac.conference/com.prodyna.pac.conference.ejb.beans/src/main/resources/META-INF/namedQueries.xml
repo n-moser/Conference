@@ -55,6 +55,15 @@
         </query>
     </named-query>
 
+    <named-query name="Room.findRoomsByConference">
+        <query>
+            <![CDATA[
+                SELECT r FROM Room r
+                WHERE r.conference = :conference
+            ]]>
+        </query>
+    </named-query>
+
     <named-query name="Room.findRoomByName">
         <query>
             <![CDATA[
@@ -74,6 +83,17 @@
         </query>
     </named-query>
 
+    <named-query name="Speaker.findSpeakersByTalk">
+        <query>
+            <![CDATA[
+                SELECT s FROM Talk t
+                inner join t.speakers ts
+                inner join ts.speaker s
+                WHERE t = :talk
+            ]]>
+        </query>
+    </named-query>
+
     <named-query name="Speaker.findSpeakerByName">
         <query>
             <![CDATA[
@@ -89,6 +109,15 @@
         <query>
             <![CDATA[
                 SELECT t FROM Talk t
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Talk.findTalksByConference">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                WHERE t.conference = :conference
             ]]>
         </query>
     </named-query>

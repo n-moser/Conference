@@ -41,12 +41,17 @@
                 <h:outputText value="Administration"></h:outputText>
             </f:facet>
 
-            <h:commandLink value="Create new Conference"/>
+            <h:form>
+                <h:commandButton value="Create new Conference" action="#{conferenceBean.edit(null)}"/>
+                <h:commandButton value="Create new Talk" action="#{talkBean.edit(null)}"/>
+                <h:commandButton value="Create new Room" action="#{roomBean.edit(null)}"/>
+                <h:commandButton value="Create new Speaker" action="#{conferenceBean.newConference()}"/>
+            </h:form>
 
             <rich:panel title="Conferences">
 
                 <rich:dataTable id="conferenceTable" value="#{conferenceListBean.conferences}" var="conf"
-                                iterationStatusVar="it">
+                                iterationStatusVar="it" rendered="#{not empty conferenceListBean.conferences}">
 
                     <rich:column>
                         <f:facet name="header">Name</f:facet>
@@ -56,6 +61,11 @@
                     <rich:column>
                         <f:facet name="header">Description</f:facet>
                         <h:outputText value="#{conf.description}"/>
+                    </rich:column>
+
+                    <rich:column>
+                        <f:facet name="header">Location</f:facet>
+                        <h:outputText value="#{conf.location}"/>
                     </rich:column>
 
                     <rich:column>
@@ -73,16 +83,11 @@
                     </rich:column>
 
                     <rich:column>
-                        <a4j:commandLink execute="@this" render="@none"
-                                         oncomplete="#{rich:component('confirmPane')}.show()">
-                            <h:graphicImage value="./resources/images/icons/delete.gif" alt="delete"/>
-                            <a4j:param value="#{it.index}" assignTo="#{conferenceBean.currentIndex}"/>
-                        </a4j:commandLink>
-                        <a4j:commandLink execute="@this" oncomplete="#{rich:component('editPane')}.show()">
-                            <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
-                            <a4j:param value="#{it.index}" assignTo="#{conferenceBean.currentIndex}"/>
-                            <f:setPropertyActionListener target="#{conferenceBean.editedConference}" value="#{car}"/>
-                        </a4j:commandLink>
+                        <h:form>
+                            <h:commandLink action="#{conferenceBean.edit(conf.id)}">
+                                <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
+                            </h:commandLink>
+                        </h:form>
                     </rich:column>
 
                 </rich:dataTable>
@@ -94,7 +99,7 @@
                 </rich:popupPanel>
 
                 <a4j:jsFunction name="removeConference" execute="@this" render="conferenceTable"
-                                action="#{conferenceBean.removeSelected()}"
+                                action="#{conferenceBean.remove()}"
                                 oncomplete="#{rich:component('confirmPane')}.hide();"/>
 
             </rich:panel>

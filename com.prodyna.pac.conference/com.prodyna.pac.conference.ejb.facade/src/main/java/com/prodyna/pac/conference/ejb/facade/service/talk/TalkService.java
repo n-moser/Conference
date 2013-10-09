@@ -23,6 +23,7 @@
 
 package com.prodyna.pac.conference.ejb.facade.service.talk;
 
+import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.Service;
@@ -77,6 +78,19 @@ public interface TalkService extends Service {
 	List<Talk> getAllTalks() throws ServiceException;
 
 	/**
+	 * Find all Talk entity instances that hold a reference to the given conference.
+	 *
+	 * @param conference
+	 * 		the conference holding the talks
+	 *
+	 * @return the list of all existing talk instances of the given conference
+	 *
+	 * @throws ServiceException
+	 * 		when the Talk query fails
+	 */
+	List<Talk> getTalksByConference(Conference conference) throws ServiceException;
+
+	/**
 	 * Persists a non-persistent Talk entity to the database.
 	 *
 	 * @param Talk
@@ -114,5 +128,4 @@ public interface TalkService extends Service {
 	 * 		when the entity cannot be removed
 	 */
 	Talk removeTalk(Talk Talk) throws ServiceException;
-
 }

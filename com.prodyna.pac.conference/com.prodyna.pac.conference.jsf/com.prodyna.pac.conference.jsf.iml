@@ -48,6 +48,7 @@
     <orderEntry type="library" exported="" name="richfaces-core-api-4.3.4.Final" level="project" />
     <orderEntry type="library" exported="" name="richfaces-core-impl-4.3.4.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="jboss-annotations-api_1.1_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="jboss-jsf-api_2.1_spec-2.0.1.Final" level="project" />
   </component>
 </module>
 

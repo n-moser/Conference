@@ -25,10 +25,11 @@ package com.prodyna.pac.conference.jsf;
 
 import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.datatype.Room;
+import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
+import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
 import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
 import org.slf4j.Logger;
 
@@ -37,89 +38,95 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 /**
- * ConferenceBean
+ * TalkBean
  * <p/>
  * Author: Nicolas Moser
- * Date: 26.09.13
- * Time: 18:46
+ * Date: 09.10.13
+ * Time: 09:51
  */
 @ManagedBean
 @SessionScoped
-@Named("conferenceBean")
-public class ConferenceBean implements Serializable {
+@Named("talkBean")
+public class TalkBean implements Serializable {
 
-	private Conference conference;
+	private Talk talk;
 
-	private List<Talk> talks;
+	private List<Speaker> speakers;
 
 	private List<Room> rooms;
-
-	@Inject
-	private ConferenceService conferenceService;
-
-	@Inject
-	private RoomService roomService;
 
 	@Inject
 	private TalkService talkService;
 
 	@Inject
+	private RoomService roomService;
+
+	@Inject
+	private SpeakerService speakerService;
+
+	@Inject
 	private Logger logger;
 
-	public Conference getConference() {
 
-		if (conference == null) {
-			conference = new Conference();
+	public Talk getTalk() {
+
+		if (talk == null) {
+			talk = new Talk();
 		}
-		return conference;
+		return talk;
 	}
 
-	public void setConference(Conference conference) {
+	public void setTalk(Talk conference) {
 
-		this.conference = conference;
+		this.talk = conference;
 	}
 
-	public List<Talk> getTalks() throws ServiceException {
+	public List<Speaker> getSpeakers() throws ServiceException {
 
-		if (conference != null && conference.getId() != null) {
-			this.talks = this.talkService.getTalksByConference(this.conference);
+		if (speakers == null) {
+			if (this.talk != null && this.talk.getId() != null) {
+				this.speakers = this.speakerService.getSpeakersByTalk(this.talk);
+			}
 		}
-		return talks;
+		return speakers;
 	}
 
 	public List<Room> getRooms() throws ServiceException {
 
-		if (conference != null && conference.getId() != null) {
-			this.rooms = this.roomService.getRoomsByConference(this.conference);
+		Conference conference = this.talk.getConference();
+		if (conference != null) {
+			return roomService.getRoomsByConference(conference);
 		}
-		return rooms;
+
+		return Collections.emptyList();
 	}
 
-	public String edit(Long conferenceId) throws ServiceException {
+	public String edit(Long talkId) throws ServiceException {
 
-		if (conferenceId != null) {
-			Conference conference = this.conferenceService.findConferenceById(conferenceId);
-			this.setConference(conference);
+		if (talkId != null) {
+			Talk talk = this.talkService.findTalkById(talkId);
+			this.setTalk(talk);
 		} else {
 
-			logger.warn("No Conference ID submitted!");
-			logger.warn("Creating new Conference Instance!");
+			logger.warn("No Talk ID submitted!");
+			logger.warn("Creating new Talk Instance!");
 
-			this.setConference(new Conference());
+			this.setTalk(new Talk());
 		}
-		return "adminConference";
+		return "adminTalk";
 	}
 
 	public String save() throws ServiceException {
 
-		if (conference != null) {
-			if (conference.getId() == null) {
-				conference = this.conferenceService.createConference(conference);
+		if (talk != null) {
+			if (talk.getId() == null) {
+				talk = this.talkService.createTalk(talk);
 			} else {
-				conference = this.conferenceService.updateConference(conference);
+				talk = this.talkService.updateTalk(talk);
 			}
 		}
 
@@ -128,15 +135,14 @@ public class ConferenceBean implements Serializable {
 
 	public String remove() throws ServiceException {
 
-		if (conference != null) {
-			if (conference.getId() == null) {
-				logger.warn("Cannot remove unpersistent Conference.");
+		if (talk != null) {
+			if (talk.getId() == null) {
+				logger.warn("Cannot remove unpersistent Talk.");
 			} else {
-				conference = this.conferenceService.removeConference(conference);
+				talk = this.talkService.removeTalk(talk);
 			}
 		}
 
 		return "admin";
 	}
-
 }

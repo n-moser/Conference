@@ -52,8 +52,8 @@ public class ConferenceServiceTest extends ServiceTest {
 		Conference conference = new Conference();
 		conference.setName("JAX");
 		conference.setDescription("Konferenz für die Java-Plattform");
-		conference.setStartDate(super.parseDate("01.10.2013"));
-		conference.setEndDate(super.parseDate("05.10.2013"));
+		conference.setStartDate(super.parseDate("01.10.2014"));
+		conference.setEndDate(super.parseDate("05.10.2014"));
 
 		Conference result = service.createConference(conference);
 

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ The MIT License (MIT)
+  ~
+  ~ Copyright (c) 2013 Nicolas Moser
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of
+  ~ this software and associated documentation files (the "Software"), to deal in
+  ~ the Software without restriction, including without limitation the rights to
+  ~ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+  ~ the Software, and to permit persons to whom the Software is furnished to do so,
+  ~ subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  ~ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  ~ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  ~ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  ~ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+
+<h:body>
+
+    <ui:composition template="templates/layout.xhtml">
+
+        <ui:define name="content">
+
+            <f:facet name="header">
+                <h:outputText value="Talk Administration"></h:outputText>
+            </f:facet>
+
+            <h:panelGrid columns="2">
+
+                <rich:panel id="talk" header="Talk">
+
+                    <h:form>
+                        <h:panelGrid columns="2">
+
+                            <h:outputText title="Name of the Talk" value="Name"/>
+                            <h:inputText value="#{talkBean.talk.name}" required="true"/>
+
+                            <h:outputText title="Description of the Talk" value="Description"/>
+                            <h:inputText value="#{talkBean.talk.description}"/>
+
+                            <h:outputText title="Date of the Talk" value="Date"/>
+                            <rich:calendar value="#{talkBean.talk.date}" required="true"/>
+
+                            <h:outputText title="Duration of the Talk in Minutes" value="Duration"/>
+                            <rich:inputNumberSpinner step="15" value="#{talkBean.talk.duration}" required="true"/>
+
+                            <h:outputText title="Conference of the Talk" value="Conference"/>
+                            <rich:select enableManualInput="false" defaultLabel="Select the Conference"
+                                         value="#{talkBean.talk.conference}" required="true"
+                                         converter="#{conferenceConverter}" rerender="roomPicker">
+                                <a4j:ajax render="roomPicker" event="change"/>
+                                <f:selectItems value="#{conferenceListBean.conferences}" var="conference"
+                                               itemValue="#{conference}" itemLabel="#{conference.name}"/>
+                            </rich:select>
+
+                            <h:outputText title="Room of the Talk" value="Room"/>
+                            <rich:select id="roomPicker" enableManualInput="false" defaultLabel="Select the Room"
+                                         immediate="true"
+                                         disabled="#{empty talkBean.rooms}"
+                                         value="#{talkBean.talk.room}" required="true" converter="#{roomConverter}">
+                                <f:selectItems value="#{talkBean.rooms}" var="room" itemValue="#{room}"
+                                               itemLabel="#{room.name}"/>
+                            </rich:select>
+
+                            <h:commandButton value="Save" action="#{talkBean.save()}"/>
+                            <h:commandButton value="Delete" action="#{talkBean.remove()}"/>
+
+                        </h:panelGrid>
+                    </h:form>
+
+                </rich:panel>
+
+                <rich:panel header="Speakers">
+
+                    <h:form>
+                        <h:commandButton value="Create new Speaker" action="#{speakerBean.edit(null)}"/>
+                    </h:form>
+
+                    <rich:dataTable id="speakerTable" value="#{talkBean.speakers}" var="speaker"
+                                    rendered="#{not empty talkBean.speakers}">
+
+                        <rich:column>
+                            <f:facet name="header">Name</f:facet>
+                            <h:outputText value="#{speaker.name}"/>
+                        </rich:column>
+
+                        <rich:column>
+                            <f:facet name="header">Description</f:facet>
+                            <h:outputText value="#{speaker.description}"/>
+                        </rich:column>
+
+                    </rich:dataTable>
+
+                    <h:outputText value="No speakers available." rendered="#{empty talkBean.speakers}"/>
+
+                </rich:panel>
+
+            </h:panelGrid>
+
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

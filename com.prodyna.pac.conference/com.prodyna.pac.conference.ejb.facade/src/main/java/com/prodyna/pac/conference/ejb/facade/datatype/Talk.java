@@ -24,11 +24,9 @@
 package com.prodyna.pac.conference.ejb.facade.datatype;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,6 +46,8 @@ public class Talk implements Datatype {
 	private String name;
 
 	private String description;
+
+	private Date date;
 
 	private Integer duration;
 
@@ -140,6 +140,31 @@ public class Talk implements Datatype {
 	public void setDescription(String description) {
 
 		this.description = description;
+	}
+
+	/**
+	 * Getter for the talk date.
+	 *
+	 * @return the date
+	 */
+	@Future
+	@NotNull
+	@Temporal(value = TemporalType.DATE)
+	@Column(nullable = false)
+	public Date getDate() {
+
+		return date;
+	}
+
+	/**
+	 * Setter for the talk date.
+	 *
+	 * @param date
+	 * 		the date to set
+	 */
+	public void setDate(Date date) {
+
+		this.date = date;
 	}
 
 	/**
@@ -241,5 +266,63 @@ public class Talk implements Datatype {
 	void setSpeakers(List<TalkSpeaker> speakers) {
 
 		this.speakers = speakers;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		Talk talk = (Talk) o;
+
+		if (conference != null ? !conference.equals(talk.conference) : talk.conference != null) {
+			return false;
+		}
+		if (date != null ? !date.equals(talk.date) : talk.date != null) {
+			return false;
+		}
+		if (description != null ? !description.equals(talk.description) : talk.description != null) {
+			return false;
+		}
+		if (duration != null ? !duration.equals(talk.duration) : talk.duration != null) {
+			return false;
+		}
+		if (id != null ? !id.equals(talk.id) : talk.id != null) {
+			return false;
+		}
+		if (name != null ? !name.equals(talk.name) : talk.name != null) {
+			return false;
+		}
+		if (room != null ? !room.equals(talk.room) : talk.room != null) {
+			return false;
+		}
+		if (speakers != null ? !speakers.equals(talk.speakers) : talk.speakers != null) {
+			return false;
+		}
+		if (version != null ? !version.equals(talk.version) : talk.version != null) {
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+
+		int result = id != null ? id.hashCode() : 0;
+		result = 31 * result + (version != null ? version.hashCode() : 0);
+		result = 31 * result + (name != null ? name.hashCode() : 0);
+		result = 31 * result + (description != null ? description.hashCode() : 0);
+		result = 31 * result + (date != null ? date.hashCode() : 0);
+		result = 31 * result + (duration != null ? duration.hashCode() : 0);
+		result = 31 * result + (room != null ? room.hashCode() : 0);
+		result = 31 * result + (conference != null ? conference.hashCode() : 0);
+		result = 31 * result + (speakers != null ? speakers.hashCode() : 0);
+		return result;
 	}
 }

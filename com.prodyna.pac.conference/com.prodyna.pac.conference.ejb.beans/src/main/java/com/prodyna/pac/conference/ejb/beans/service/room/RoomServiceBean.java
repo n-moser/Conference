@@ -24,6 +24,7 @@
 package com.prodyna.pac.conference.ejb.beans.service.room;
 
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
+import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.datatype.Room;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
@@ -46,6 +47,8 @@ import java.util.List;
 public class RoomServiceBean extends ServiceBean implements RoomService {
 
 	private static final String QUERY_FIND_ALL_ROOMS = "Room.findAllRooms";
+
+	private static final String QUERY_FIND_ROOMS_BY_CONFERENCE = "Room.findRoomsByConference";
 
 	private static final String QUERY_FIND_ROOM_BY_NAME = "Room.findRoomByName";
 
@@ -91,6 +94,22 @@ public class RoomServiceBean extends ServiceBean implements RoomService {
 
 		} catch (PersistenceException pe) {
 			throw new ServiceException("Cannot list all Room entities.", pe);
+		}
+	}
+
+	@Override
+	public List<Room> getRoomsByConference(Conference conference) throws ServiceException {
+
+		try {
+			TypedQuery<Room> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_ROOMS_BY_CONFERENCE, Room.class);
+
+			query.setParameter("conference", conference);
+
+			return query.getResultList();
+
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot list Room entities.", pe);
 		}
 	}
 

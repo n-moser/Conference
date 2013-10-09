@@ -21,58 +21,57 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.jsf;
+package com.prodyna.pac.conference.jsf.converter;
 
 import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
-import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.List;
 
 /**
- * ConferenceListBean
+ * ConferenceConverter
  * <p/>
  * Author: Nicolas Moser
- * Date: 26.09.13
- * Time: 20:16
+ * Date: 09.10.13
+ * Time: 18:17
  */
 @ManagedBean
-@RequestScoped
-@Named("conferenceListBean")
-public class ConferenceListBean {
+@Named("conferenceConverter")
+public class ConferenceConverter implements Converter {
+
+	// TODO: Change ServiceCall to ConferenceListBean Injection
 
 	@Inject
-	private ConferenceService service;
+	private ConferenceService conferenceService;
 
-	@Inject
-	private Logger logger;
+	@Override
+	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 
-	private List<Conference> conferences;
+		if (value != null && !value.isEmpty()) {
+			try {
+				return conferenceService.findConferenceByName(value);
+			} catch (ServiceException e) {
+				// TODO Error Handling
+				e.printStackTrace();
+			}
+		}
 
-	/**
-	 * Getter for the list of all conferences.
-	 *
-	 * @return all conferences
-	 */
-	public List<Conference> getConferences() {
-
-		return this.conferences;
+		return null;
 	}
 
-	@PostConstruct
-	public void init() {
+	@Override
+	public String getAsString(FacesContext context, UIComponent component, Object value) {
 
-		try {
-			this.conferences = service.getAllConferences();
-
-		} catch (ServiceException se) {
-			logger.error("Error retrieving Conferences.", se);
+		if (value instanceof Conference) {
+			return ((Conference) value).getName();
 		}
+
+		return null;
 	}
 }

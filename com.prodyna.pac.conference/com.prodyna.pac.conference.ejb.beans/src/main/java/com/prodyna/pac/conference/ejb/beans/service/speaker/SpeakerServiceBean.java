@@ -25,6 +25,7 @@ package com.prodyna.pac.conference.ejb.beans.service.speaker;
 
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
 import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
+import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
 
@@ -46,6 +47,8 @@ import java.util.List;
 public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 
 	private static final String QUERY_FIND_ALL_SPEAKERS = "Speaker.findAllSpeakers";
+
+	private static final String QUERY_FIND_SPEAKERS_BY_TALK = "Speaker.findSpeakersByTalk";
 
 	private static final String QUERY_FIND_SPEAKER_BY_NAME = "Speaker.findSpeakerByName";
 
@@ -83,9 +86,25 @@ public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 	@Override
 	public List<Speaker> getAllSpeakers() throws ServiceException {
 
-		try {
+			try {
 			TypedQuery<Speaker> query = this.entityManager.
 					createNamedQuery(QUERY_FIND_ALL_SPEAKERS, Speaker.class);
+
+			return query.getResultList();
+
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot list all Speaker entities.", pe);
+		}
+	}
+
+	@Override
+	public List<Speaker> getSpeakersByTalk(Talk talk) throws ServiceException{
+
+		try {
+			TypedQuery<Speaker> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_SPEAKERS_BY_TALK, Speaker.class);
+
+			query.setParameter("talk", talk);
 
 			return query.getResultList();
 

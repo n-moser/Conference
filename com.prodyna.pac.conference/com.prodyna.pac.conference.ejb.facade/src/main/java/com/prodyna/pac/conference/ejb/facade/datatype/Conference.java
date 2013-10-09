@@ -45,6 +45,8 @@ public class Conference implements Datatype {
 
 	private String name;
 
+	private String location;
+
 	private String description;
 
 	private Date startDate;
@@ -113,6 +115,30 @@ public class Conference implements Datatype {
 	}
 
 	/**
+	 * Getter for the conference location.
+	 *
+	 * @return the conference location
+	 */
+	@Size(min = 1, max = 255)
+	@NotNull
+	@Column(nullable = false, length = 255)
+	public String getLocation() {
+
+		return location;
+	}
+
+	/**
+	 * Setter for the conference location.
+	 *
+	 * @param location
+	 * 		the conference location to set
+	 */
+	public void setLocation(String location) {
+
+		this.location = location;
+	}
+
+	/**
 	 * Getter for the conference description.
 	 *
 	 * @return the conference description
@@ -134,6 +160,7 @@ public class Conference implements Datatype {
 
 		this.description = description;
 	}
+
 
 	/**
 	 * Getter for the conference start date.
@@ -183,5 +210,55 @@ public class Conference implements Datatype {
 	public void setEndDate(Date endDate) {
 
 		this.endDate = endDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		Conference that = (Conference) o;
+
+		if (description != null ? !description.equals(that.description) : that.description != null) {
+			return false;
+		}
+		if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) {
+			return false;
+		}
+		if (id != null ? !id.equals(that.id) : that.id != null) {
+			return false;
+		}
+		if (location != null ? !location.equals(that.location) : that.location != null) {
+			return false;
+		}
+		if (name != null ? !name.equals(that.name) : that.name != null) {
+			return false;
+		}
+		if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) {
+			return false;
+		}
+		if (version != null ? !version.equals(that.version) : that.version != null) {
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+
+		int result = id != null ? id.hashCode() : 0;
+		result = 31 * result + (version != null ? version.hashCode() : 0);
+		result = 31 * result + (name != null ? name.hashCode() : 0);
+		result = 31 * result + (location != null ? location.hashCode() : 0);
+		result = 31 * result + (description != null ? description.hashCode() : 0);
+		result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
+		result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
+		return result;
 	}
 }

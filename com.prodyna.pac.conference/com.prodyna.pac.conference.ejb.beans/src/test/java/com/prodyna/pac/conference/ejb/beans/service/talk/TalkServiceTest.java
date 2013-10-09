@@ -68,8 +68,8 @@ public class TalkServiceTest extends ServiceTest {
 		this.conference = new Conference();
 		this.conference.setName("JAX");
 		this.conference.setDescription("Konferenz für die Java-Plattform");
-		this.conference.setStartDate(super.parseDate("01.10.2013"));
-		this.conference.setEndDate(super.parseDate("05.10.2013"));
+		this.conference.setStartDate(super.parseDate("01.10.2014"));
+		this.conference.setEndDate(super.parseDate("05.10.2014"));
 
 		this.conference = conferenceService.createConference(this.conference);
 		Assert.assertNotNull(conference);
