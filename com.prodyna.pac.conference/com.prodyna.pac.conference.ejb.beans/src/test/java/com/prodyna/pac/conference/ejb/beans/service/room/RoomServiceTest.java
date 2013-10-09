@@ -24,10 +24,14 @@
 package com.prodyna.pac.conference.ejb.beans.service.room;
 
 import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
+import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.datatype.Room;
+import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
 import org.jboss.arquillian.junit.Arquillian;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -46,11 +50,38 @@ public class RoomServiceTest extends ServiceTest {
 	@Inject
 	private RoomService service;
 
+	@Inject
+	private ConferenceService conferenceService;
+
+	private Conference conference;
+
+	@Before
+	public void setUp() throws Exception {
+
+		this.conference = new Conference();
+		this.conference.setName("JAX");
+		this.conference.setLocation("Mainz");
+		this.conference.setDescription("Konferenz für die Java-Plattform");
+		this.conference.setStartDate(super.parseDate("01.10.2014"));
+		this.conference.setEndDate(super.parseDate("05.10.2014"));
+
+		this.conference = conferenceService.createConference(this.conference);
+		Assert.assertNotNull(conference);
+		Assert.assertNotNull(conference.getId());
+	}
+
+	@After
+	public void tearDown() throws Exception {
+
+		this.conferenceService.removeConference(conference);
+	}
+
 	@Test
 	public void createReadUpdateDeleteRoom() throws Exception {
 
 		Room room = new Room();
 		room.setCapacity(300);
+		room.setConference(conference);
 		room.setName("Snow White");
 
 		Room result = service.createRoom(room);

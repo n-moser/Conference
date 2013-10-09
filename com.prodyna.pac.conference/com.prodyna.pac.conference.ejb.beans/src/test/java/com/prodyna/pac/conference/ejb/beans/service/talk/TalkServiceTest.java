@@ -67,6 +67,7 @@ public class TalkServiceTest extends ServiceTest {
 
 		this.conference = new Conference();
 		this.conference.setName("JAX");
+		this.conference.setLocation("Mainz");
 		this.conference.setDescription("Konferenz für die Java-Plattform");
 		this.conference.setStartDate(super.parseDate("01.10.2014"));
 		this.conference.setEndDate(super.parseDate("05.10.2014"));
@@ -76,6 +77,7 @@ public class TalkServiceTest extends ServiceTest {
 		Assert.assertNotNull(conference.getId());
 
 		this.room = new Room();
+		this.room.setConference(conference);
 		this.room.setCapacity(300);
 		this.room.setName("Snow White");
 
@@ -86,6 +88,7 @@ public class TalkServiceTest extends ServiceTest {
 
 	@After
 	public void tearDown() throws Exception {
+
 		this.roomService.removeRoom(room);
 		this.conferenceService.removeConference(conference);
 	}
@@ -97,6 +100,7 @@ public class TalkServiceTest extends ServiceTest {
 		talk.setName("Java EE Webstack Performance");
 		talk.setConference(this.conference);
 		talk.setRoom(this.room);
+		talk.setDate(super.parseDate("03.10.2014"));
 		talk.setDuration(120);
 
 		Talk result = service.createTalk(talk);
