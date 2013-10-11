@@ -49,6 +49,8 @@ public class Talk implements Datatype {
 
 	private Date date;
 
+	private Date time;
+
 	private Integer duration;
 
 	private Room room;
@@ -149,7 +151,7 @@ public class Talk implements Datatype {
 	 */
 	@Future
 	@NotNull
-	@Temporal(value = TemporalType.DATE)
+	@Temporal(value = TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	public Date getDate() {
 

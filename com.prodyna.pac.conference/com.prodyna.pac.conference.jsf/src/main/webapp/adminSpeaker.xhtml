@@ -50,13 +50,13 @@
                         <h:panelGrid columns="2">
 
                             <h:outputText title="Name of the Speaker" value="Name"/>
-                            <h:inputText value="#{speakerBean.speaker.name}" required="true"/>
+                            <h:inputText value="#{speakerAdminBean.speaker.name}" required="true"/>
 
                             <h:outputText title="Name of the Description" value="Description"/>
-                            <h:inputText value="#{speakerBean.speaker.description}" required="true"/>
+                            <h:inputText value="#{speakerAdminBean.speaker.description}" required="true"/>
 
-                            <h:commandButton value="Save" action="#{speakerBean.save()}"/>
-                            <h:commandButton value="Delete" action="#{speakerBean.remove()}"/>
+                            <h:commandButton value="Save" action="#{speakerAdminBean.save()}"/>
+                            <h:commandButton value="Delete" action="#{speakerAdminBean.remove()}"/>
 
                         </h:panelGrid>
                     </h:form>

@@ -50,25 +50,25 @@
                         <h:panelGrid columns="2" styleClass="masterTable">
 
                             <h:outputText title="Name of the Conference" value="Name"/>
-                            <h:inputText value="#{conferenceBean.conference.name}" styleClass="masterControl"/>
+                            <h:inputText value="#{conferenceAdminBean.conference.name}" styleClass="masterControl"/>
 
                             <h:outputText title="Description of the Conference" value="Description"/>
-                            <h:inputText value="#{conferenceBean.conference.description}" styleClass="masterControl"/>
+                            <h:inputText value="#{conferenceAdminBean.conference.description}" styleClass="masterControl"/>
 
                             <h:outputText title="Location of the Conference" value="Location"/>
-                            <h:inputText value="#{conferenceBean.conference.location}" styleClass="masterControl"/>
+                            <h:inputText value="#{conferenceAdminBean.conference.location}" styleClass="masterControl"/>
 
                             <h:outputText title="Start Date of the Conference" value="Start Date"/>
-                            <rich:calendar value="#{conferenceBean.conference.startDate}"
+                            <rich:calendar value="#{conferenceAdminBean.conference.startDate}"
                                            inputClass="masterControlCal"/>
 
                             <h:outputText title="End Date of the Conference" value="End Date"/>
-                            <rich:calendar value="#{conferenceBean.conference.endDate}" inputClass="masterControlCal" />
+                            <rich:calendar value="#{conferenceAdminBean.conference.endDate}" inputClass="masterControlCal"/>
 
                         </h:panelGrid>
 
-                        <h:commandButton value="Save" action="#{conferenceBean.save()}"/>
-                        <h:commandButton value="Delete" action="#{conferenceBean.remove()}"/>
+                        <h:commandButton value="Save" action="#{conferenceAdminBean.save()}"/>
+                        <h:commandButton value="Delete" action="#{conferenceAdminBean.remove()}"/>
 
                     </h:form>
 
@@ -79,11 +79,12 @@
                     <rich:panel header="Talks">
 
                         <h:form>
-                            <h:commandButton value="Create new Talk" action="#{talkBean.edit(null)}"/>
+                            <h:commandButton value="Create new Talk" action="#{talkAdminBean.edit(null)}"
+                                             disabled="#{empty conferenceAdminBean.conference.id}"/>
                         </h:form>
 
-                        <rich:dataTable id="talkTable" value="#{conferenceBean.talks}" var="talk"
-                                        rendered="#{not empty conferenceBean.talks}" styleClass="linkTable">
+                        <rich:dataTable id="talkTable" value="#{conferenceAdminBean.talks}" var="talk"
+                                        rendered="#{not empty conferenceAdminBean.talks}" styleClass="linkTable">
 
                             <rich:column>
                                 <f:facet name="header">Name</f:facet>
@@ -93,6 +94,13 @@
                             <rich:column>
                                 <f:facet name="header">Description</f:facet>
                                 <h:outputText value="#{talk.description}"/>
+                            </rich:column>
+
+                            <rich:column>
+                                <f:facet name="header">Date</f:facet>
+                                <h:outputText value="#{talk.date}">
+                                    <f:convertDateTime type="date" pattern="dd.MM.yyyy HH:mm"/>
+                                </h:outputText>
                             </rich:column>
 
                             <rich:column>
@@ -107,7 +115,7 @@
 
                             <rich:column>
                                 <h:form>
-                                    <h:commandLink action="#{talkBean.edit(talk.id)}">
+                                    <h:commandLink action="#{talkAdminBean.edit(talk.id)}">
                                         <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
                                     </h:commandLink>
                                 </h:form>
@@ -115,7 +123,7 @@
 
                         </rich:dataTable>
 
-                        <h:outputText value="No talks available." rendered="#{empty conferenceBean.talks}"/>
+                        <h:outputText value="No talks available." rendered="#{empty conferenceAdminBean.talks}"/>
 
                     </rich:panel>
 
@@ -124,11 +132,12 @@
                     <rich:panel header="Rooms">
 
                         <h:form>
-                            <h:commandButton value="Create new Room" action="#{roomBean.edit(null)}"/>
+                            <h:commandButton value="Create new Room" action="#{roomAdminBean.edit(null)}"
+                                             disabled="#{empty conferenceAdminBean.conference.id}"/>
                         </h:form>
 
-                        <rich:dataTable id="roomTable" value="#{conferenceBean.rooms}" var="room"
-                                        rendered="#{not empty conferenceBean.rooms}" styleClass="linkTable">
+                        <rich:dataTable id="roomTable" value="#{conferenceAdminBean.rooms}" var="room"
+                                        rendered="#{not empty conferenceAdminBean.rooms}" styleClass="linkTable">
 
                             <rich:column>
                                 <f:facet name="header">Name</f:facet>
@@ -142,7 +151,7 @@
 
                             <rich:column>
                                 <h:form>
-                                    <h:commandLink action="#{roomBean.edit(room.id)}">
+                                    <h:commandLink action="#{roomAdminBean.edit(room.id)}">
                                         <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
                                     </h:commandLink>
                                 </h:form>
@@ -150,7 +159,7 @@
 
                         </rich:dataTable>
 
-                        <h:outputText value="No rooms available." rendered="#{empty conferenceBean.rooms}"/>
+                        <h:outputText value="No rooms available." rendered="#{empty conferenceAdminBean.rooms}"/>
 
                     </rich:panel>
 

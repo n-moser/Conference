@@ -23,89 +23,56 @@
 
 package com.prodyna.pac.conference.jsf;
 
-import com.prodyna.pac.conference.ejb.facade.datatype.Room;
+import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
+import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
+import java.util.List;
 
 /**
- * RoomBean
+ * ConferenceListBean
  * <p/>
  * Author: Nicolas Moser
- * Date: 09.10.13
- * Time: 09:51
+ * Date: 26.09.13
+ * Time: 20:16
  */
 @ManagedBean
-@SessionScoped
-@Named("roomBean")
-public class RoomBean implements Serializable {
-
-	private Room room;
+@RequestScoped
+@Named("speakerListBean")
+public class SpeakerListBean {
 
 	@Inject
-	private RoomService roomService;
+	private SpeakerService service;
 
 	@Inject
 	private Logger logger;
 
+	private List<Speaker> speakers;
 
-	public Room getRoom() {
+	/**
+	 * Getter for the list of all conferences.
+	 *
+	 * @return all conferences
+	 */
+	public List<Speaker> getSpeakers() {
 
-		if (room == null) {
-			room = new Room();
-		}
-		return room;
+		return this.speakers;
 	}
 
-	public void setRoom(Room conference) {
+	@PostConstruct
+	public void init() {
 
-		this.room = conference;
-	}
+		try {
+			this.speakers = service.getAllSpeakers();
 
-	public String edit(Long roomId) throws ServiceException {
-
-		if (roomId != null) {
-			Room room = this.roomService.findRoomById(roomId);
-			this.setRoom(room);
-		} else {
-
-			logger.warn("No Room ID submitted!");
-			logger.warn("Creating new Room Instance!");
-
-			this.setRoom(new Room());
+		} catch (ServiceException se) {
+			logger.error("Error retrieving Speakers.", se);
 		}
-		return "adminRoom";
-	}
-
-	public String save() throws ServiceException {
-
-		if (room != null) {
-			if (room.getId() == null) {
-				room = this.roomService.createRoom(room);
-			} else {
-				room = this.roomService.updateRoom(room);
-			}
-		}
-
-		return "admin";
-	}
-
-	public String remove() throws ServiceException {
-
-		if (room != null) {
-			if (room.getId() == null) {
-				logger.warn("Cannot remove unpersistent Room.");
-			} else {
-				room = this.roomService.removeRoom(room);
-			}
-		}
-
-		return "admin";
 	}
 }

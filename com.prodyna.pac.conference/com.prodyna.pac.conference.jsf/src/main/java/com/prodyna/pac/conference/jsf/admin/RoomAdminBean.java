@@ -21,65 +21,91 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.jsf.converter;
+package com.prodyna.pac.conference.jsf.admin;
 
 import com.prodyna.pac.conference.ejb.facade.datatype.Room;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.jsf.admin.TalkAdminBean;
+import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
+import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.List;
+import java.io.Serializable;
 
 /**
- * ConferenceConverter
+ * RoomAdminBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 09.10.13
- * Time: 18:17
+ * Time: 09:51
  */
 @ManagedBean
-@Named("roomConverter")
-public class RoomConverter implements Converter {
+@SessionScoped
+@Named("roomAdminBean")
+public class RoomAdminBean implements Serializable {
+
+	private Room room;
 
 	@Inject
-	private TalkAdminBean talkAdminBean;
+	private RoomService roomService;
 
-	@Override
-	public Object getAsObject(FacesContext context, UIComponent component, String value) {
+	@Inject
+	private Logger logger;
 
-		if (value != null && !value.isEmpty()) {
 
-			try {
-				List<Room> rooms = talkAdminBean.getRooms();
+	public Room getRoom() {
 
-				for (Room room : rooms) {
+		if (room == null) {
+			room = new Room();
+		}
+		return room;
+	}
 
-					if (room.getName().equals(value)) {
-						return room;
-					}
-				}
+	public void setRoom(Room conference) {
 
-			} catch (ServiceException e) {
-				// TODO Error Handling
-				e.printStackTrace();
+		this.room = conference;
+	}
+
+	public String edit(Long roomId) throws ServiceException {
+
+		if (roomId != null) {
+			Room room = this.roomService.findRoomById(roomId);
+			this.setRoom(room);
+		} else {
+
+			logger.warn("No Room ID submitted!");
+			logger.warn("Creating new Room Instance!");
+
+			this.setRoom(new Room());
+		}
+		return "adminRoom";
+	}
+
+	public String save() throws ServiceException {
+
+		if (room != null) {
+			if (room.getId() == null) {
+				room = this.roomService.createRoom(room);
+			} else {
+				room = this.roomService.updateRoom(room);
 			}
 		}
 
-		return null;
+		return "admin";
 	}
 
-	@Override
-	public String getAsString(FacesContext context, UIComponent component, Object value) {
+	public String remove() throws ServiceException {
 
-		if (value instanceof Room) {
-			return ((Room) value).getName();
+		if (room != null) {
+			if (room.getId() == null) {
+				logger.warn("Cannot remove unpersistent Room.");
+			} else {
+				room = this.roomService.removeRoom(room);
+			}
 		}
 
-		return null;
+		return "admin";
 	}
 }

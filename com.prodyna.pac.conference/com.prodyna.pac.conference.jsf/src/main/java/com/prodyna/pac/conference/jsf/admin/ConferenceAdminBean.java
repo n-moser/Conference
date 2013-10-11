@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.jsf;
+package com.prodyna.pac.conference.jsf.admin;
 
 import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.datatype.Room;
@@ -40,7 +40,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * ConferenceBean
+ * ConferenceAdminBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 26.09.13
@@ -48,8 +48,8 @@ import java.util.List;
  */
 @ManagedBean
 @SessionScoped
-@Named("conferenceBean")
-public class ConferenceBean implements Serializable {
+@Named("conferenceAdminBean")
+public class ConferenceAdminBean implements Serializable {
 
 	private Conference conference;
 
@@ -109,7 +109,15 @@ public class ConferenceBean implements Serializable {
 			logger.warn("Creating new Conference Instance!");
 
 			this.setConference(new Conference());
+
+			if (this.talks != null) {
+				this.talks.clear();
+			}
+			if (this.rooms != null) {
+				this.rooms.clear();
+			}
 		}
+
 		return "adminConference";
 	}
 

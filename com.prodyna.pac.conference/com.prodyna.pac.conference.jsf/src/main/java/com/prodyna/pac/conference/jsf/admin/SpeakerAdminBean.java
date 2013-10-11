@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.jsf;
+package com.prodyna.pac.conference.jsf.admin;
 
 import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
@@ -35,7 +35,7 @@ import javax.inject.Named;
 import java.io.Serializable;
 
 /**
- * SpeakerBean
+ * SpeakerAdminBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 09.10.13
@@ -43,8 +43,8 @@ import java.io.Serializable;
  */
 @ManagedBean
 @SessionScoped
-@Named("speakerBean")
-public class SpeakerBean implements Serializable {
+@Named("speakerAdminBean")
+public class SpeakerAdminBean implements Serializable {
 
 	private Speaker speaker;
 

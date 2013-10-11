@@ -42,68 +42,90 @@
             </f:facet>
 
             <h:form>
-                <h:commandButton value="Create new Conference" action="#{conferenceBean.edit(null)}"/>
-                <h:commandButton value="Create new Talk" action="#{talkBean.edit(null)}"/>
-                <h:commandButton value="Create new Room" action="#{roomBean.edit(null)}"/>
-                <h:commandButton value="Create new Speaker" action="#{speakerBean.edit(null)}"/>
+                <h:commandButton value="Create new Conference" action="#{conferenceAdminBean.edit(null)}"/>
+                <h:commandButton value="Create new Talk" action="#{talkAdminBean.edit(null)}"/>
+                <h:commandButton value="Create new Room" action="#{roomAdminBean.edit(null)}"/>
+                <h:commandButton value="Create new Speaker" action="#{speakerAdminBean.edit(null)}"/>
             </h:form>
 
-            <rich:panel title="Conferences">
+            <h:panelGrid columns="2" width="100%" styleClass="gridTable">
 
-                <rich:dataTable id="conferenceTable" value="#{conferenceListBean.conferences}" var="conf"
-                                iterationStatusVar="it" rendered="#{not empty conferenceListBean.conferences}"
-                                styleClass="linkTable">
+                <rich:panel header="Conferences">
 
-                    <rich:column>
-                        <f:facet name="header">Name</f:facet>
-                        <h:outputText value="#{conf.name}"/>
-                    </rich:column>
+                    <rich:dataTable id="conferenceTable" value="#{conferenceListBean.conferences}" var="conf"
+                                    iterationStatusVar="it" rendered="#{not empty conferenceListBean.conferences}"
+                                    styleClass="linkTable">
 
-                    <rich:column>
-                        <f:facet name="header">Description</f:facet>
-                        <h:outputText value="#{conf.description}"/>
-                    </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Name</f:facet>
+                            <h:outputText value="#{conf.name}"/>
+                        </rich:column>
 
-                    <rich:column>
-                        <f:facet name="header">Location</f:facet>
-                        <h:outputText value="#{conf.location}"/>
-                    </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Description</f:facet>
+                            <h:outputText value="#{conf.description}"/>
+                        </rich:column>
 
-                    <rich:column>
-                        <f:facet name="header">Start</f:facet>
-                        <h:outputText value="#{conf.startDate}">
-                            <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
-                        </h:outputText>
-                    </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Location</f:facet>
+                            <h:outputText value="#{conf.location}"/>
+                        </rich:column>
 
-                    <rich:column>
-                        <f:facet name="header">End</f:facet>
-                        <h:outputText value="#{conf.endDate}">
-                            <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
-                        </h:outputText>
-                    </rich:column>
+                        <rich:column>
+                            <f:facet name="header">Start</f:facet>
+                            <h:outputText value="#{conf.startDate}">
+                                <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                            </h:outputText>
+                        </rich:column>
 
-                    <rich:column>
-                        <h:form>
-                            <h:commandLink action="#{conferenceBean.edit(conf.id)}">
-                                <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
-                            </h:commandLink>
-                        </h:form>
-                    </rich:column>
+                        <rich:column>
+                            <f:facet name="header">End</f:facet>
+                            <h:outputText value="#{conf.endDate}">
+                                <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                            </h:outputText>
+                        </rich:column>
 
-                </rich:dataTable>
+                        <rich:column>
+                            <h:form>
+                                <h:commandLink action="#{conferenceAdminBean.edit(conf.id)}">
+                                    <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
+                                </h:commandLink>
+                            </h:form>
+                        </rich:column>
 
-                <rich:popupPanel id="confirmPane" autosized="true">
-                    Are you sure you want to delete the conference?
-                    <a4j:commandButton value="Cancel" onclick="#{rich:component('confirmPane')}.hide(); return false;"/>
-                    <a4j:commandButton value="Delete" onclick="removeConference(); return false;"/>
-                </rich:popupPanel>
+                    </rich:dataTable>
 
-                <a4j:jsFunction name="removeConference" execute="@this" render="conferenceTable"
-                                action="#{conferenceBean.remove()}"
-                                oncomplete="#{rich:component('confirmPane')}.hide();"/>
+                </rich:panel>
 
-            </rich:panel>
+                <rich:panel header="Speakers">
+
+                    <rich:dataTable id="speakersTable" value="#{speakerListBean.speakers}" var="speaker"
+                                    rendered="#{not empty speakerListBean.speakers}"
+                                    styleClass="linkTable">
+
+                        <rich:column>
+                            <f:facet name="header">Name</f:facet>
+                            <h:outputText value="#{speaker.name}"/>
+                        </rich:column>
+
+                        <rich:column>
+                            <f:facet name="header">Description</f:facet>
+                            <h:outputText value="#{speaker.description}"/>
+                        </rich:column>
+
+                        <rich:column>
+                            <h:form>
+                                <h:commandLink action="#{speakerAdminBean.edit(speaker.id)}">
+                                    <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
+                                </h:commandLink>
+                            </h:form>
+                        </rich:column>
+
+                    </rich:dataTable>
+
+                </rich:panel>
+
+            </h:panelGrid>
 
         </ui:define>
 
