@@ -57,9 +57,14 @@
                                 </h:outputText>
                             </f:facet>
 
-                            <rich:list value="#{conferenceBean.talks[index.count]}" var="talk" type="ordered">
-                                <h:outputText value="#{talk.name}" />
+                            <rich:list value="#{conferenceBean.talks[index.count]}" var="talk" type="ordered"
+                                       rendered="#{not empty conferenceBean.talks[index.count]}">
+                                <h:outputText value="#{talk.name}"/>
                             </rich:list>
+
+                            <h:outputText value="No Talks on this day."
+                                          rendered="#{empty conferenceBean.talks[index.count]}"/>
+
                         </rich:panel>
 
                     </c:forEach>
