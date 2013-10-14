@@ -29,6 +29,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
       xmlns:a4j="http://richfaces.org/a4j"
       xmlns:rich="http://richfaces.org/rich">
 
@@ -49,21 +50,21 @@
                     <h:form>
                         <h:panelGrid columns="2" styleClass="masterTable">
 
-                            <h:outputText title="Name of the Conference" value="Name"/>
+                            <h:outputText title="Name of the Conference" value="Name"  styleClass="label"/>
                             <h:inputText value="#{conferenceAdminBean.conference.name}" styleClass="masterControl"/>
 
-                            <h:outputText title="Description of the Conference" value="Description"/>
-                            <h:inputText value="#{conferenceAdminBean.conference.description}"
-                                         styleClass="masterControl"/>
+                            <h:outputText title="Description of the Conference" value="Description"  styleClass="label"/>
+                            <h:inputTextarea value="#{conferenceAdminBean.conference.description}"
+                                             styleClass="masterControl"/>
 
-                            <h:outputText title="Location of the Conference" value="Location"/>
+                            <h:outputText title="Location of the Conference" value="Location"  styleClass="label"/>
                             <h:inputText value="#{conferenceAdminBean.conference.location}" styleClass="masterControl"/>
 
-                            <h:outputText title="Start Date of the Conference" value="Start Date"/>
+                            <h:outputText title="Start Date of the Conference" value="Start Date"  styleClass="label"/>
                             <rich:calendar value="#{conferenceAdminBean.conference.startDate}"
                                            inputClass="masterControlCal" />
 
-                            <h:outputText title="End Date of the Conference" value="End Date"/>
+                            <h:outputText title="End Date of the Conference" value="End Date"  styleClass="label"/>
                             <rich:calendar value="#{conferenceAdminBean.conference.endDate}"
                                            inputClass="masterControlCal" />
 
@@ -78,7 +79,7 @@
 
                 <h:panelGrid columns="1" width="100%">
 
-                    <rich:panel header="Talks">
+                    <rich:panel header="Conference Talks">
 
                         <h:form styleClass="buttonForm">
                             <h:commandButton value="New Talk" action="#{talkAdminBean.edit(null)}"
@@ -96,7 +97,8 @@
 
                             <rich:column>
                                 <f:facet name="header">Description</f:facet>
-                                <h:outputText value="#{talk.description}"/>
+                                <h:outputText value="#{fn:substring(talk.description, 0, 50)}"/>
+                                <h:outputText value="..." rendered="#{fn:length(talk.description) > 50}" />
                             </rich:column>
 
                             <rich:column>
@@ -132,7 +134,7 @@
 
                     <div style="height: 10px"></div>
 
-                    <rich:panel header="Rooms">
+                    <rich:panel header="Conference Rooms">
 
                         <h:form styleClass="buttonForm">
                             <h:commandButton value="New Room" action="#{roomAdminBean.edit(null)}"

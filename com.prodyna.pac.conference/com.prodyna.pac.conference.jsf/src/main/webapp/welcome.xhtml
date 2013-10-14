@@ -58,22 +58,27 @@
                         </f:facet>
 
                         <h:panelGrid columns="2">
+                            <h:outputText value="Location:" styleClass="label"></h:outputText>
+                            <h:outputText value="#{conf.location}"/>
+
                             <h:outputText value="Description:" styleClass="label"></h:outputText>
                             <h:outputText value="#{conf.description}"/>
+
                             <h:outputText value="Start:" styleClass="label"></h:outputText>
                             <h:outputText value="#{conf.startDate}">
                                 <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
                             </h:outputText>
+
                             <h:outputText value="End:" styleClass="label"></h:outputText>
                             <h:outputText value="#{conf.endDate}">
                                 <f:convertDateTime type="date" pattern="dd.MM.yyyy" />
                             </h:outputText>
-                            <h:outputText value="Talks:" styleClass="label"></h:outputText>
-                            <h:outputText value="46"/>
 
                             <h:commandButton action="#{conferenceBean.open(conf.id)}" value="Show"/>
                         </h:panelGrid>
+
                     </rich:panel>
+
                 </rich:dataGrid>
             </h:form>
 

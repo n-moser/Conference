@@ -49,13 +49,13 @@
                     <h:form>
                         <h:panelGrid columns="2" styleClass="masterTable" rowClasses="masterTableRow">
 
-                            <h:outputText title="Name of the Room" value="Name"/>
+                            <h:outputText title="Name of the Room" value="Name" styleClass="label"/>
                             <h:inputText value="#{roomAdminBean.room.name}" required="true" styleClass="masterControl"/>
 
-                            <h:outputText title="Capacity of the Room in Minutes" value="Capacity"/>
+                            <h:outputText title="Capacity of the Room in Minutes" value="Capacity" styleClass="label"/>
                             <rich:inputNumberSpinner step="10" value="#{roomAdminBean.room.capacity}" required="true" />
 
-                            <h:outputText title="Conference of the Room" value="Conference"/>
+                            <h:outputText title="Conference of the Room" value="Conference" styleClass="label"/>
                             <rich:select enableManualInput="false" defaultLabel="Select the Conference"
                                          value="#{roomAdminBean.room.conference}" required="true"
                                          converter="#{conferenceConverter}">

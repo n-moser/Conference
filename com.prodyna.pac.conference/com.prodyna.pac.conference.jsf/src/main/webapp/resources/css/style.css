@@ -50,16 +50,16 @@ html,body {
 #content {
     margin: 0 100px 0 100px;
 	height: 100%;
-	min-height: 600px;
-}
-
-.label {
-    font-weight: bold;
+	min-height: 300px;
 }
 
 .pbody {
     width: 500px;
     border: none;
+}
+
+.label {
+    font-weight: bold;
 }
 
 .buttonForm {
@@ -81,6 +81,10 @@ html,body {
     margin: 0 auto;
 }
 
+.gridTable {
+    table-layout: fixed;
+}
+
 .gridTable tbody {
     vertical-align: baseline;
 }
@@ -98,7 +102,7 @@ html,body {
 }
 
 .masterControlCal {
-    margin-left: 0px;
+    margin-left: 0;
 }
 
 .linkTable {
@@ -110,6 +114,11 @@ html,body {
 */
 
 #footer {
+}
+
+.footerGrid {
+    margin: 0 auto;
+    padding-top: 20px;
 }
 
 .footerText {

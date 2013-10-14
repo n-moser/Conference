@@ -118,6 +118,7 @@
             <![CDATA[
                 SELECT t FROM Talk t
                 WHERE t.conference = :conference
+                ORDER BY t.date
             ]]>
         </query>
     </named-query>

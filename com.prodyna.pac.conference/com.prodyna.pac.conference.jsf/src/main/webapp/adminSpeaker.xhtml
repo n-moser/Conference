@@ -49,11 +49,11 @@
                     <h:form>
                         <h:panelGrid columns="2">
 
-                            <h:outputText title="Name of the Speaker" value="Name"/>
+                            <h:outputText title="Name of the Speaker" value="Name" styleClass="label"/>
                             <h:inputText value="#{speakerAdminBean.speaker.name}" required="true"/>
 
-                            <h:outputText title="Name of the Description" value="Description"/>
-                            <h:inputText value="#{speakerAdminBean.speaker.description}" required="true"/>
+                            <h:outputText title="Name of the Description" value="Description" styleClass="label"/>
+                            <h:inputTextarea value="#{speakerAdminBean.speaker.description}" required="true"/>
 
                             <h:commandButton value="Save" action="#{speakerAdminBean.save()}"/>
                             <h:commandButton value="Delete" action="#{speakerAdminBean.remove()}"/>

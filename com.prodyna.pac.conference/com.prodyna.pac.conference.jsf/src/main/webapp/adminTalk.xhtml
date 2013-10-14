@@ -49,19 +49,19 @@
                     <h:form>
                         <h:panelGrid columns="2" styleClass="masterTable" rowClasses="masterTableRow">
 
-                            <h:outputText title="Name of the Talk" value="Name"/>
+                            <h:outputText title="Name of the Talk" value="Name" styleClass="label"/>
                             <h:inputText value="#{talkAdminBean.talk.name}" required="true" styleClass="masterControl"/>
 
-                            <h:outputText title="Description of the Talk" value="Description"/>
-                            <h:inputText value="#{talkAdminBean.talk.description}" styleClass="masterControl"/>
+                            <h:outputText title="Description of the Talk" value="Description" styleClass="label"/>
+                            <h:inputTextarea value="#{talkAdminBean.talk.description}" styleClass="masterControl"/>
 
-                            <h:outputText title="Date of the Talk" value="Date"/>
+                            <h:outputText title="Date of the Talk" value="Date" styleClass="label"/>
                             <rich:calendar datePattern="dd.MM.yyyy HH:mm" value="#{talkAdminBean.talk.date}" required="true" inputClass="masterControlCal"/>
 
-                            <h:outputText title="Duration of the Talk in Minutes" value="Duration"/>
+                            <h:outputText title="Duration of the Talk in Minutes" value="Duration" styleClass="label"/>
                             <rich:inputNumberSpinner step="15" value="#{talkAdminBean.talk.duration}" required="true" />
 
-                            <h:outputText title="Conference of the Talk" value="Conference"/>
+                            <h:outputText title="Conference of the Talk" value="Conference" styleClass="label"/>
                             <rich:select enableManualInput="false" defaultLabel="Select the Conference"
                                          value="#{talkAdminBean.talk.conference}" required="true"
                                          converter="#{conferenceConverter}" rerender="roomPicker">
@@ -70,7 +70,7 @@
                                                itemValue="#{conference}" itemLabel="#{conference.name}"/>
                             </rich:select>
 
-                            <h:outputText title="Room of the Talk" value="Room"/>
+                            <h:outputText title="Room of the Talk" value="Room" styleClass="label"/>
                             <rich:select id="roomPicker" enableManualInput="false" defaultLabel="Select the Room"
                                          immediate="true" disabled="#{empty talkAdminBean.rooms}"
                                          value="#{talkAdminBean.talk.room}" required="true" converter="#{roomConverter}">
@@ -87,7 +87,7 @@
 
                 </rich:panel>
 
-                <rich:panel header="Speakers">
+                <rich:panel header="Talk Speakers">
 
                     <h:form>
                         <h:commandButton value="Create new Speaker" action="#{speakerAdminBean.edit(null)}"/>

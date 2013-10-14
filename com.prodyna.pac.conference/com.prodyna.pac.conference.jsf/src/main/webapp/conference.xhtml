@@ -81,10 +81,25 @@
                                     </h:outputText>
                                 </f:facet>
 
-                                <rich:list value="#{conferenceBean.talks[index.count]}" var="talk" type="ordered"
+                                <rich:list value="#{conferenceBean.talks[index.count]}" var="talk" type="definitions"
                                            rendered="#{not empty conferenceBean.talks[index.count]}">
 
-                                    <h:commandLink action="#{talkBean.open(talk.id)}" value="#{talk.name}"/>
+                                    <f:facet name="term">
+                                        <h:panelGroup layout="block">
+                                            <h:outputText value="#{talk.date}" style="font-weight:bold">
+                                                <f:convertDateTime type="date" pattern="HH:mm"/>
+                                            </h:outputText>
+                                            <h:outputText value=" "/>
+                                            <h:commandLink action="#{talkBean.open(talk.id)}" value="#{talk.name}"
+                                                           style="font-weight:bold"/>
+                                        </h:panelGroup>
+                                    </f:facet>
+
+                                    <h:outputText value="#{fn:substring(talk.description, 0, 40)}"/>
+                                    <h:outputText value="..." rendered="#{fn:length(talk.description) > 40}"/>
+
+                                    <div style="margin-bottom: 10px"></div>
+
                                 </rich:list>
 
                                 <h:outputText value="No Talks scheduled."

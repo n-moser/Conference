@@ -74,9 +74,11 @@
                     <h:outputText value="Speakers:" styleClass="label"/>
                     <h:outputText value="#{talkBean.talk.speakers}"/>
 
-                    <rich:list value="#{talkBean.talk.speakers}" var="speaker" type="ordered">
+                    <rich:list value="#{talkBean.talk.speakers}" var="speaker" type="ordered"
+                               rendered="#{not empty talkBean.talk.speakers}">
                         <h:commandLink value="#{speaker.speaker.name}"/>
                     </rich:list>
+
                 </h:panelGrid>
             </div>
 
