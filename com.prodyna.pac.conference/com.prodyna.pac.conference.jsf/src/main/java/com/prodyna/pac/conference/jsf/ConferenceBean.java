@@ -32,9 +32,10 @@ import com.prodyna.pac.conference.ejb.facade.util.DateIterator;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -48,9 +49,9 @@ import java.util.List;
  * Time: 17:48
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 @Named("conferenceBean")
-public class ConferenceBean {
+public class ConferenceBean implements Serializable {
 
 	@Inject
 	private ConferenceService conferenceService;
@@ -86,11 +87,14 @@ public class ConferenceBean {
 
 		this.dates.clear();
 
-		DateIterator dateIterator = new DateIterator(conference.getStartDate(), conference.getEndDate());
+		if (conference.getStartDate() != null && conference.getEndDate() != null) {
 
-		while (dateIterator.hasNext()) {
-			Date date = dateIterator.next();
-			this.dates.add(date);
+			DateIterator dateIterator = new DateIterator(conference.getStartDate(), conference.getEndDate());
+
+			while (dateIterator.hasNext()) {
+				Date date = dateIterator.next();
+				this.dates.add(date);
+			}
 		}
 
 		try {

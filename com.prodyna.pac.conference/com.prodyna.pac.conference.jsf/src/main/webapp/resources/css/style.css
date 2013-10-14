@@ -72,6 +72,11 @@ html,body {
     margin-right: 10px;
 }
 
+.summaryBox {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
 .overviewTable {
     margin: 0 auto;
 }
