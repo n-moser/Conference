@@ -21,34 +21,24 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.jsf.util;
+package com.prodyna.pac.conference.ejb.beans.event;
 
-import javax.annotation.ManagedBean;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-import java.util.TimeZone;
+import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 
-/**
- * TimeZoneBean
- * <p/>
- * Author: Nicolas Moser
- * Date: 14.10.13
- * Time: 12:22
- */
-@ManagedBean
-@ApplicationScoped
-@Named("timeZone")
-public class TimeZoneBean {
+public class TalkModificationEvent {
 
-	private TimeZone timeZone = TimeZone.getTimeZone("Europe/Berlin");
+	// TODO: Old Talk / New Talk
 
-	public TimeZone getTimeZone() {
+	private Talk talk;
 
-		return timeZone;
+	public TalkModificationEvent(Talk talk) {
+
+		this.talk = talk;
 	}
 
-	public void setTimeZone(TimeZone timeZone) {
+	public Talk getTalk() {
 
-		this.timeZone = timeZone;
+		return this.talk;
 	}
+
 }

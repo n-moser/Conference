@@ -24,9 +24,10 @@
 package com.prodyna.pac.conference.jsf;
 
 import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
+import com.prodyna.pac.conference.ejb.facade.datatype.Room;
 import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
+import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
 import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
 import com.prodyna.pac.conference.ejb.facade.util.DateIterator;
 import org.slf4j.Logger;
@@ -42,24 +43,24 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * ConferenceBean
+ * RoomBean
  * <p/>
  * Author: Nicolas Moser
- * Date: 11.10.13
- * Time: 17:48
+ * Date: 14.10.13
+ * Time: 12:50
  */
 @ManagedBean
 @SessionScoped
-@Named("conferenceBean")
-public class ConferenceBean implements Serializable {
+@Named("roomBean")
+public class RoomBean implements Serializable {
 
 	@Inject
-	private ConferenceService conferenceService;
+	private RoomService roomService;
 
 	@Inject
 	private TalkService talkService;
 
-	private Conference conference;
+	private Room room;
 
 	private List<Date> dates = new ArrayList<Date>();
 
@@ -68,36 +69,43 @@ public class ConferenceBean implements Serializable {
 	@Inject
 	private Logger logger;
 
-	public Conference getConference() {
+	public Room getRoom() {
 
-		return conference;
+		return room;
 	}
 
-	public void setConference(Conference conference) {
 
-		if (conference == null) {
-			logger.error("Cannot set Conference 'null'.");
-			this.conference = new Conference();
+
+	public void setRoom(Room room) {
+
+		if (room == null) {
+			logger.error("Cannot set Room 'null'.");
+			this.room = new Room();
 		} else {
-			this.conference = conference;
+			this.room = room;
 		}
 
 		this.dates.clear();
 
-		if (conference.getStartDate() != null && conference.getEndDate() != null) {
+		if (room.getConference() != null) {
 
-			DateIterator dateIterator = new DateIterator(conference.getStartDate(), conference.getEndDate());
+			Conference conference = room.getConference();
 
-			while (dateIterator.hasNext()) {
-				Date date = dateIterator.next();
-				this.dates.add(date);
+			if (conference.getStartDate() != null && conference.getEndDate() != null) {
+
+				DateIterator dateIterator = new DateIterator(conference.getStartDate(), conference.getEndDate());
+
+				while (dateIterator.hasNext()) {
+					Date date = dateIterator.next();
+					this.dates.add(date);
+				}
 			}
 		}
 
 		try {
 			this.talks = new List[dates.size()];
 
-			List<Talk> talks = talkService.getTalksByConference(conference);
+			List<Talk> talks = talkService.getTalksByRoom(room);
 
 			for (int i = 0; i < this.dates.size(); i++) {
 				Calendar date = Calendar.getInstance();
@@ -115,7 +123,7 @@ public class ConferenceBean implements Serializable {
 			}
 
 		} catch (ServiceException e) {
-			logger.error("Cannot load talks for conference {}", conference.getName(), e);
+			logger.error("Cannot load talks for room {}", room.getName(), e);
 		}
 
 	}
@@ -130,15 +138,15 @@ public class ConferenceBean implements Serializable {
 		return this.talks;
 	}
 
-	public String open(Long conferenceId) throws ServiceException {
+	public String open(Long roomId) throws ServiceException {
 
-		if (conferenceId == null) {
-			logger.error("No Conference ID submitted!");
+		if (roomId == null) {
+			logger.error("No Room ID submitted!");
 		} else {
-			Conference conference = this.conferenceService.findConferenceById(conferenceId);
-			this.setConference(conference);
+			Room room = this.roomService.findRoomById(roomId);
+			this.setRoom(room);
 		}
 
-		return "conference";
+		return "room";
 	}
 }

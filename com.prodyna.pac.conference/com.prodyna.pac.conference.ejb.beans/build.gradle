@@ -31,6 +31,8 @@ dependencies {
 
     compile project(':com.prodyna.pac.conference.ejb.facade')
 
+    provided group: 'org.jboss.spec.javax.jms', name: 'jboss-jms-api_1.1_spec', version: jmsVersion
+
     testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: hamcrestVersion
     testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-container', version: arquillianVersion
     testCompile group: 'org.jboss.arquillian.protocol', name: 'arquillian-protocol-servlet', version: arquillianVersion

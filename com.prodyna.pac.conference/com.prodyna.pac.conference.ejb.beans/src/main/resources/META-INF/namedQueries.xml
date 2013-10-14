@@ -123,6 +123,16 @@
         </query>
     </named-query>
 
+    <named-query name="Talk.findTalksByRoom">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                WHERE t.room = :room
+                ORDER BY t.date
+            ]]>
+        </query>
+    </named-query>
+
     <named-query name="Talk.findTalkByName">
         <query>
             <![CDATA[

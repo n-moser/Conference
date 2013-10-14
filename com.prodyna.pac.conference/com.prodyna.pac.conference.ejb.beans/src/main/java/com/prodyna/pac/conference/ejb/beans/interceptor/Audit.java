@@ -21,26 +21,23 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.cdi.producer;
+package com.prodyna.pac.conference.ejb.beans.interceptor;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.interceptor.InterceptorBinding;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-/**
- * LoggerProducer
- * <p/>
- * Author: Nicolas Moser
- * Date: 26.09.13
- * Time: 20:40
- */
-public class LoggerProducer {
+@InterceptorBinding
+@Inherited
+@Target({TYPE, METHOD})
+@Retention(RUNTIME)
+@Documented
+public @interface Audit {
 
-	@Produces
-	public Logger produceLogger(InjectionPoint ip) {
-
-		return LoggerFactory.getLogger(ip.getMember().getDeclaringClass());
-	}
 }

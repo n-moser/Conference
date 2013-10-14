@@ -25,4 +25,12 @@
 <beans xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
 
+    <interceptors>
+        <class>com.prodyna.pac.conference.ejb.beans.interceptor.AuditInterceptor</class>
+        <class>com.prodyna.pac.conference.ejb.beans.interceptor.PerformanceInterceptor</class>
+    </interceptors>
+
+    <decorators>
+        <class>com.prodyna.pac.conference.ejb.beans.decorator.TalkModificationDecorator</class>
+    </decorators>
 </beans>

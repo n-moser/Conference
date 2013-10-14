@@ -23,6 +23,7 @@
 
 package com.prodyna.pac.conference.ejb.beans.service.conference;
 
+import com.prodyna.pac.conference.ejb.beans.interceptor.Performance;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
 import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
@@ -44,6 +45,7 @@ import java.util.List;
  * Time: 16:49
  */
 @Stateless
+@Performance
 public class ConferenceServiceBean extends ServiceBean implements ConferenceServiceLocal, ConferenceServiceRemote {
 
 	private static final String QUERY_FIND_ALL_CONFERENCES = "Conference.findAllConferences";

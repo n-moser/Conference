@@ -41,7 +41,7 @@
         <ui:define name="content">
 
             <f:facet name="header">
-                <h:outputText value="Talk: #{talkBean.talk.name}"/>
+                <h:outputText value="Talk '#{talkBean.talk.name}'"/>
             </f:facet>
 
             <div class="summaryBox">
@@ -69,7 +69,11 @@
                     <h:outputText value="#{talkBean.talk.conference.name}"/>
 
                     <h:outputText value="Room:" styleClass="label"/>
-                    <h:outputText value="#{talkBean.talk.room.name}"/>
+
+                    <h:form>
+                        <h:commandLink value="#{talkBean.talk.room.name}"
+                                       action="#{roomBean.open(talkBean.talk.room.id)}"/>
+                    </h:form>
 
                     <h:outputText value="Speakers:" styleClass="label"/>
                     <h:outputText value="#{talkBean.talk.speakers}"/>

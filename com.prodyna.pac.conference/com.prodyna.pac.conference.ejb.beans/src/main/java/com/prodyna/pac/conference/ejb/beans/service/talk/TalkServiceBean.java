@@ -23,8 +23,10 @@
 
 package com.prodyna.pac.conference.ejb.beans.service.talk;
 
+import com.prodyna.pac.conference.ejb.beans.interceptor.Performance;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
 import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
+import com.prodyna.pac.conference.ejb.facade.datatype.Room;
 import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
@@ -44,11 +46,14 @@ import java.util.List;
  * Time: 16:49
  */
 @Stateless
+@Performance
 public class TalkServiceBean extends ServiceBean implements TalkService {
 
 	private static final String QUERY_FIND_ALL_TALKS = "Talk.findAllTalks";
 
 	private static final String QUERY_FIND_TALKS_BY_CONFERENCE = "Talk.findTalksByConference";
+
+	private static final String QUERY_FIND_TALKS_BY_ROOM = "Talk.findTalksByRoom";
 
 	private static final String QUERY_FIND_TALK_BY_NAME = "Talk.findTalkByName";
 
@@ -109,7 +114,23 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 			return query.getResultList();
 
 		} catch (PersistenceException pe) {
-			throw new ServiceException("Cannot list all Talk entities.", pe);
+			throw new ServiceException("Cannot list Talk entities for conference.", pe);
+		}
+	}
+
+	@Override
+	public List<Talk> getTalksByRoom(Room room) throws ServiceException {
+
+		try {
+			TypedQuery<Talk> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_TALKS_BY_ROOM, Talk.class);
+
+			query.setParameter("room", room);
+
+			return query.getResultList();
+
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot list Talk entities for conference.", pe);
 		}
 	}
 

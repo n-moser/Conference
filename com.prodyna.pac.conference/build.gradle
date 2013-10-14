@@ -30,6 +30,7 @@ ext {
     cdiVersion = '1.0-SP4'
     injectVersion = '1'
     javaeeVersion = '1.0.0.Final'
+    jmsVersion = '1.0.0.Final'
 
     hibernateVersion = '1.0.1.Final'
     hibernateValidatorVersion = '4.2.0.Final'

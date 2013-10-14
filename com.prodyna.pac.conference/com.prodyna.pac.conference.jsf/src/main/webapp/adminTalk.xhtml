@@ -89,8 +89,8 @@
 
                 <rich:panel header="Talk Speakers">
 
-                    <h:form>
-                        <h:commandButton value="Create new Speaker" action="#{speakerAdminBean.edit(null)}"/>
+                    <h:form styleClass="buttonForm">
+                        <h:commandButton value="New Speaker" action="#{speakerAdminBean.edit(null)}" styleClass="buttonCtrl"/>
                     </h:form>
 
                     <rich:dataTable id="speakerTable" value="#{talkAdminBean.speakers}" var="speaker"

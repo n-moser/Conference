@@ -86,7 +86,7 @@
     <orderEntry type="library" scope="TEST" name="jboss-interceptors-api_1.1_spec-1.0.0.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="jboss-remote-naming-1.0.2.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="mail-1.4.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="jboss-jms-api_1.1_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" exported="" name="jboss-jms-api_1.1_spec-1.0.0.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="jsr250-api-1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="jboss-remoting-3.2.3.GA" level="project" />
     <orderEntry type="library" scope="TEST" name="wagon-provider-api-1.0-beta-7" level="project" />

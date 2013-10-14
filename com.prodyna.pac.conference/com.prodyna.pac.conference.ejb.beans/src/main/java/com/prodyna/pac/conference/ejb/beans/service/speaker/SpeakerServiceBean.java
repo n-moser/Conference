@@ -23,6 +23,7 @@
 
 package com.prodyna.pac.conference.ejb.beans.service.speaker;
 
+import com.prodyna.pac.conference.ejb.beans.interceptor.Performance;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
 import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
@@ -44,6 +45,7 @@ import java.util.List;
  * Time: 16:49
  */
 @Stateless
+@Performance
 public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 
 	private static final String QUERY_FIND_ALL_SPEAKERS = "Speaker.findAllSpeakers";

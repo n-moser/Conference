@@ -21,23 +21,23 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.cdi.producer;
+package com.prodyna.pac.conference.ejb.beans.interceptor;
 
-import javax.enterprise.inject.Produces;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.interceptor.InterceptorBinding;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-/**
- * EntityManagerProducer
- * <p/>
- * Author: Nicolas Moser
- * Date: 11.09.13
- * Time: 18:53
- */
-public class EntityManagerProducer {
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-	@Produces
-	@PersistenceContext(unitName = "conferencePU")
-	private EntityManager entityManager;
+@InterceptorBinding
+@Inherited
+@Target({ TYPE, METHOD })
+@Retention(RUNTIME)
+@Documented
+public @interface Performance {
 
 }

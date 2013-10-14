@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
   ~ The MIT License (MIT)
   ~
@@ -11,7 +9,7 @@
   ~ the Software without restriction, including without limitation the rights to
   ~ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
   ~ the Software, and to permit persons to whom the Software is furnished to do so,
-  ~ security to the following conditions:
+  ~ subject to the following conditions:
   ~
   ~ The above copyright notice and this permission notice shall be included in all
   ~ copies or substantial portions of the Software.
@@ -23,6 +21,9 @@
   ~ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
   ~ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -40,37 +41,25 @@
         <ui:define name="content">
 
             <f:facet name="header">
-                <h:outputText value="Conference  '#{conferenceBean.conference.name}'"/>
+                <h:outputText value="Room '#{roomBean.room.name}'"/>
             </f:facet>
 
             <div class="summaryBox">
                 <h:panelGrid columns="2">
                     <h:outputText value="Name:" styleClass="label"/>
-                    <h:outputText value="#{conferenceBean.conference.name}"/>
+                    <h:outputText value="#{roomBean.room.name}"/>
 
-                    <h:outputText value="Location:" styleClass="label"/>
-                    <h:outputText value="#{conferenceBean.conference.location}"/>
+                    <h:outputText value="Capacity:" styleClass="label"/>
+                    <h:outputText value="#{roomBean.room.capacity} Seats"/>
 
-                    <h:outputText value="Start Date:" styleClass="label"/>
-                    <h:outputText value="#{conferenceBean.conference.startDate}">
-                        <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
-                    </h:outputText>
-
-                    <h:outputText value="End Date:" styleClass="label"/>
-                    <h:outputText value="#{conferenceBean.conference.endDate}">
-                        <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
-                    </h:outputText>
-
-                    <h:outputText value="Summary:" styleClass="label"/>
-                    <h:outputText value="#{conferenceBean.conference.description}"/>
                 </h:panelGrid>
             </div>
 
             <rich:panel header="Talks">
 
-                <h:panelGrid columns="#{fn:length(conferenceBean.dates)}" width="100%" styleClass="gridTable">
+                <h:panelGrid columns="#{fn:length(roomBean.dates)}" width="100%" styleClass="gridTable">
 
-                    <c:forEach var="date" items="#{conferenceBean.dates}" varStatus="index">
+                    <c:forEach var="date" items="#{roomBean.dates}" varStatus="index">
 
                         <h:form>
                             <rich:panel>
@@ -81,8 +70,8 @@
                                     </h:outputText>
                                 </f:facet>
 
-                                <rich:list value="#{conferenceBean.talks[index.count]}" var="talk" type="definitions"
-                                           rendered="#{not empty conferenceBean.talks[index.count]}">
+                                <rich:list value="#{roomBean.talks[index.count]}" var="talk" type="definitions"
+                                           rendered="#{not empty roomBean.talks[index.count]}">
 
                                     <f:facet name="term">
                                         <h:panelGroup layout="block">
@@ -103,7 +92,7 @@
                                 </rich:list>
 
                                 <h:outputText value="No Talks scheduled."
-                                              rendered="#{empty conferenceBean.talks[index.count]}"/>
+                                              rendered="#{empty roomBean.talks[index.count]}"/>
 
                             </rich:panel>
                         </h:form>
