@@ -41,11 +41,11 @@
                 <h:outputText value="Administration"></h:outputText>
             </f:facet>
 
-            <h:form>
-                <h:commandButton value="Create new Conference" action="#{conferenceAdminBean.edit(null)}"/>
-                <h:commandButton value="Create new Talk" action="#{talkAdminBean.edit(null)}"/>
-                <h:commandButton value="Create new Room" action="#{roomAdminBean.edit(null)}"/>
-                <h:commandButton value="Create new Speaker" action="#{speakerAdminBean.edit(null)}"/>
+            <h:form styleClass="buttonForm">
+                <h:commandButton styleClass="buttonCtrl" value="New Conference" action="#{conferenceAdminBean.edit(null)}"/>
+                <h:commandButton styleClass="buttonCtrl" value="New Talk" action="#{talkAdminBean.edit(null)}"/>
+                <h:commandButton styleClass="buttonCtrl" value="New Room" action="#{roomAdminBean.edit(null)}"/>
+                <h:commandButton styleClass="buttonCtrl" value="New Speaker" action="#{speakerAdminBean.edit(null)}"/>
             </h:form>
 
             <h:panelGrid columns="2" width="100%" styleClass="gridTable">

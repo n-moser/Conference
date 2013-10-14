@@ -48,8 +48,9 @@
                     }
                 </h:outputStylesheet>
 
-                <rich:dataGrid value="#{conferenceListBean.conferences}" var="conf" columns="1" elements="4"
-                               width="600px" border="0">
+                <rich:dataGrid value="#{conferenceListBean.conferences}" var="conf" columns="2" elements="8"
+                               width="100%" border="0" styleClass="overviewTable">
+
                     <rich:panel bodyClass="pbody">
 
                         <f:facet name="header">
@@ -65,12 +66,12 @@
                             </h:outputText>
                             <h:outputText value="End:" styleClass="label"></h:outputText>
                             <h:outputText value="#{conf.endDate}">
-                                <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                                <f:convertDateTime type="date" pattern="dd.MM.yyyy" />
                             </h:outputText>
                             <h:outputText value="Talks:" styleClass="label"></h:outputText>
-                            <h:outputText value="46" />
+                            <h:outputText value="46"/>
 
-                            <h:commandButton action="#{conferenceBean.open(conf.id)}" value="Show" />
+                            <h:commandButton action="#{conferenceBean.open(conf.id)}" value="Show"/>
                         </h:panelGrid>
                     </rich:panel>
                 </rich:dataGrid>

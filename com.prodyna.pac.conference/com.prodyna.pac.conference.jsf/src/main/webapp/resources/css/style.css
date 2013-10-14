@@ -13,6 +13,10 @@ html,body {
     height: 100%;
 }
 
+/*
+    Header
+*/
+
 #header {
 
 }
@@ -39,6 +43,10 @@ html,body {
     margin-bottom: 20px;
 }
 
+/*
+    Content
+*/
+
 #content {
     margin: 0 100px 0 100px;
 	height: 100%;
@@ -52,6 +60,20 @@ html,body {
 .pbody {
     width: 500px;
     border: none;
+}
+
+.buttonForm {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    text-align: end;
+}
+
+.buttonCtrl {
+    margin-right: 10px;
+}
+
+.overviewTable {
+    margin: 0 auto;
 }
 
 .gridTable tbody {
@@ -77,6 +99,10 @@ html,body {
 .linkTable {
     width: 100%;
 }
+
+/*
+    Footer
+*/
 
 #footer {
 }

@@ -44,7 +44,7 @@
 
             <h:panelGrid columns="2" width="100%" styleClass="gridTable">
 
-                <rich:panel id="conference">
+                <rich:panel id="conference" header="Conference">
 
                     <h:form>
                         <h:panelGrid columns="2" styleClass="masterTable">
@@ -53,17 +53,19 @@
                             <h:inputText value="#{conferenceAdminBean.conference.name}" styleClass="masterControl"/>
 
                             <h:outputText title="Description of the Conference" value="Description"/>
-                            <h:inputText value="#{conferenceAdminBean.conference.description}" styleClass="masterControl"/>
+                            <h:inputText value="#{conferenceAdminBean.conference.description}"
+                                         styleClass="masterControl"/>
 
                             <h:outputText title="Location of the Conference" value="Location"/>
                             <h:inputText value="#{conferenceAdminBean.conference.location}" styleClass="masterControl"/>
 
                             <h:outputText title="Start Date of the Conference" value="Start Date"/>
                             <rich:calendar value="#{conferenceAdminBean.conference.startDate}"
-                                           inputClass="masterControlCal"/>
+                                           inputClass="masterControlCal" />
 
                             <h:outputText title="End Date of the Conference" value="End Date"/>
-                            <rich:calendar value="#{conferenceAdminBean.conference.endDate}" inputClass="masterControlCal"/>
+                            <rich:calendar value="#{conferenceAdminBean.conference.endDate}"
+                                           inputClass="masterControlCal" />
 
                         </h:panelGrid>
 
@@ -74,13 +76,14 @@
 
                 </rich:panel>
 
-                <rich:panel>
+                <h:panelGrid columns="1" width="100%">
 
                     <rich:panel header="Talks">
 
-                        <h:form>
-                            <h:commandButton value="Create new Talk" action="#{talkAdminBean.edit(null)}"
-                                             disabled="#{empty conferenceAdminBean.conference.id}"/>
+                        <h:form styleClass="buttonForm">
+                            <h:commandButton value="New Talk" action="#{talkAdminBean.edit(null)}"
+                                             disabled="#{empty conferenceAdminBean.conference.id}"
+                                             styleClass="buttonCtrl"/>
                         </h:form>
 
                         <rich:dataTable id="talkTable" value="#{conferenceAdminBean.talks}" var="talk"
@@ -127,12 +130,12 @@
 
                     </rich:panel>
 
-                    <div style="height: 20px"></div>
+                    <div style="height: 10px"></div>
 
                     <rich:panel header="Rooms">
 
-                        <h:form>
-                            <h:commandButton value="Create new Room" action="#{roomAdminBean.edit(null)}"
+                        <h:form styleClass="buttonForm">
+                            <h:commandButton value="New Room" action="#{roomAdminBean.edit(null)}"
                                              disabled="#{empty conferenceAdminBean.conference.id}"/>
                         </h:form>
 
@@ -163,7 +166,7 @@
 
                     </rich:panel>
 
-                </rich:panel>
+                </h:panelGrid>
 
             </h:panelGrid>
 
