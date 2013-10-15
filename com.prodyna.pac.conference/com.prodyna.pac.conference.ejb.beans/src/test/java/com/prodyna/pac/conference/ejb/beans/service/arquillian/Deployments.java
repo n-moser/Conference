@@ -27,6 +27,8 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Deployments
@@ -37,6 +39,8 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
  */
 public class Deployments {
 
+	private static Logger logger = LoggerFactory.getLogger(Deployments.class);
+
 	@Deployment
 	public static Archive<?> createTestArchive() {
 
@@ -45,6 +49,9 @@ public class Deployments {
 		war.addAsWebInfResource("META-INF/beans.xml", "beans.xml");
 		war.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
 		war.addAsResource("META-INF/namedQueries.xml", "META-INF/namedQueries.xml");
+		war.addAsWebInfResource("talk-hornetq-jms.xml", "talk-hornetq-jms.xml");
+
+		logger.info(war.toString(true));
 
 		return war;
 	}
