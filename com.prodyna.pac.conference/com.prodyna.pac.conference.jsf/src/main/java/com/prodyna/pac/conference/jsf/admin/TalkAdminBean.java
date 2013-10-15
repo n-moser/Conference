@@ -28,6 +28,7 @@ import com.prodyna.pac.conference.ejb.facade.datatype.Room;
 import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
 import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
 import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
@@ -58,6 +59,9 @@ public class TalkAdminBean implements Serializable {
 	private List<Speaker> speakers;
 
 	private List<Room> rooms;
+
+	@Inject
+	private ConferenceService conferenceService;
 
 	@Inject
 	private TalkService talkService;
@@ -107,6 +111,11 @@ public class TalkAdminBean implements Serializable {
 
 	public String edit(Long talkId) throws ServiceException {
 
+		return this.edit(talkId, null);
+	}
+
+	public String edit(Long talkId, Long conferenceId) throws ServiceException {
+
 		if (talkId != null) {
 			Talk talk = this.talkService.findTalkById(talkId);
 			this.setTalk(talk);
@@ -124,6 +133,12 @@ public class TalkAdminBean implements Serializable {
 				this.speakers.clear();
 			}
 		}
+
+		if (conferenceId != null) {
+			Conference conference = conferenceService.findConferenceById(conferenceId);
+			this.talk.setConference(conference);
+		}
+
 		return "adminTalk";
 	}
 
@@ -137,7 +152,7 @@ public class TalkAdminBean implements Serializable {
 			}
 		}
 
-		return "admin";
+		return "adminConference";
 	}
 
 	public String remove() throws ServiceException {

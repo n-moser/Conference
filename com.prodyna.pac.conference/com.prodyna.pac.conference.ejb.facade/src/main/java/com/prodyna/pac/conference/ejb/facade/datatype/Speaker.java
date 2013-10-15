@@ -113,8 +113,8 @@ public class Speaker implements Datatype {
 	 *
 	 * @return the profile description
 	 */
-	@Size(min = 1, max = 255)
-	@Column(nullable = true, length = 255)
+	@Size(min = 1, max = 1000)
+	@Column(nullable = true, length = 1000)
 	public String getDescription() {
 
 		return description;

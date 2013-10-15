@@ -26,6 +26,7 @@ package com.prodyna.pac.conference.ejb.beans.service.talk;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
 import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.datatype.Room;
+import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
@@ -102,6 +103,11 @@ public class TalkServiceTest extends ServiceTest {
 		talk.setRoom(this.room);
 		talk.setDate(super.parseDate("03.10.2014"));
 		talk.setDuration(120);
+
+		Speaker speaker = new Speaker();
+		speaker.setName("Adam Bien");
+		speaker.setDescription(
+				"Bien works with many companies as a Java architecture consultant for enterprise applications, helping organizations design and implement high-performance Java solutions and troubleshooting mission-critical problems. He’s also the author of eight books and more than 100 articles on Java, architectures, and best practices.");
 
 		Talk result = service.createTalk(talk);
 

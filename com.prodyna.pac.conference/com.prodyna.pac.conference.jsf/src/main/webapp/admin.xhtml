@@ -43,7 +43,8 @@
             </f:facet>
 
             <h:form styleClass="buttonForm">
-                <h:commandButton styleClass="buttonCtrl" value="New Conference" action="#{conferenceAdminBean.edit(null)}"/>
+                <h:commandButton styleClass="buttonCtrl" value="New Conference"
+                                 action="#{conferenceAdminBean.edit(null)}"/>
                 <h:commandButton styleClass="buttonCtrl" value="New Talk" action="#{talkAdminBean.edit(null)}"/>
                 <h:commandButton styleClass="buttonCtrl" value="New Room" action="#{roomAdminBean.edit(null)}"/>
                 <h:commandButton styleClass="buttonCtrl" value="New Speaker" action="#{speakerAdminBean.edit(null)}"/>
@@ -96,6 +97,8 @@
 
                     </rich:dataTable>
 
+                    <h:outputText value="No Conferences" rendered="#{empty conferenceListBean.conferences}"/>
+
                 </rich:panel>
 
                 <rich:panel header="Speakers">
@@ -123,6 +126,8 @@
                         </rich:column>
 
                     </rich:dataTable>
+
+                    <h:outputText value="No Speakers" rendered="#{empty speakerListBean.speakers}"/>
 
                 </rich:panel>
 

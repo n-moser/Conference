@@ -32,6 +32,9 @@
 
         <!-- JBoss 7.1 must be defined in $JBOSS_HOME environment variable -->
 
+        <configuration>
+            <property name="serverConfig">standalone-full.xml</property>
+        </configuration>
     </container>
 
     <container qualifier="jboss_gradle">

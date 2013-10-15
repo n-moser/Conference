@@ -23,8 +23,10 @@
 
 package com.prodyna.pac.conference.jsf.admin;
 
+import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.datatype.Room;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
 import org.slf4j.Logger;
 
@@ -49,6 +51,9 @@ public class RoomAdminBean implements Serializable {
 	private Room room;
 
 	@Inject
+	private ConferenceService conferenceService;
+
+	@Inject
 	private RoomService roomService;
 
 	@Inject
@@ -70,6 +75,11 @@ public class RoomAdminBean implements Serializable {
 
 	public String edit(Long roomId) throws ServiceException {
 
+		return this.edit(roomId, null);
+	}
+
+	public String edit(Long roomId, Long conferenceId) throws ServiceException {
+
 		if (roomId != null) {
 			Room room = this.roomService.findRoomById(roomId);
 			this.setRoom(room);
@@ -80,6 +90,12 @@ public class RoomAdminBean implements Serializable {
 
 			this.setRoom(new Room());
 		}
+
+		if (conferenceId != null) {
+			Conference conference = conferenceService.findConferenceById(conferenceId);
+			this.room.setConference(conference);
+		}
+
 		return "adminRoom";
 	}
 
@@ -93,7 +109,7 @@ public class RoomAdminBean implements Serializable {
 			}
 		}
 
-		return "admin";
+		return "adminConference";
 	}
 
 	public String remove() throws ServiceException {

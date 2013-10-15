@@ -53,6 +53,10 @@ html,body {
 	min-height: 300px;
 }
 
+.contentPanel {
+    min-height: 300px;
+}
+
 .pbody {
     width: 500px;
     border: none;

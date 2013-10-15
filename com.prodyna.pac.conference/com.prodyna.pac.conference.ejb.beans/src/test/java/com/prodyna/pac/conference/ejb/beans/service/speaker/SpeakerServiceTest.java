@@ -51,6 +51,8 @@ public class SpeakerServiceTest extends ServiceTest {
 
 		Speaker speaker = new Speaker();
 		speaker.setName("Adam Bien");
+		speaker.setDescription(
+				"Bien works with many companies as a Java architecture consultant for enterprise applications, helping organizations design and implement high-performance Java solutions and troubleshooting mission-critical problems. He’s also the author of eight books and more than 100 articles on Java, architectures, and best practices.");
 
 		Speaker result = service.createSpeaker(speaker);
 
