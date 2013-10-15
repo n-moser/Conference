@@ -23,8 +23,11 @@
 
 package com.prodyna.pac.conference.jsf;
 
+import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
+import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
 import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
 import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
 import org.slf4j.Logger;
@@ -34,9 +37,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.*;
 
 /**
- * TalkBean
+ * SpeakerBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 14.10.13
@@ -44,13 +48,20 @@ import java.io.Serializable;
  */
 @ManagedBean
 @SessionScoped
-@Named("talkBean")
-public class TalkBean implements Serializable {
+@Named("speakerBean")
+public class SpeakerBean implements Serializable {
+
+	@Inject
+	private SpeakerService speakerService;
 
 	@Inject
 	private TalkService talkService;
 
-	private Talk talk;
+	private Speaker speaker;
+
+	private List<Conference> conferences = new ArrayList<Conference>();
+
+	private List<Talk>[] talks;
 
 	@Inject
 	private BreadCrumpBean breadCrumpBean;
@@ -58,29 +69,70 @@ public class TalkBean implements Serializable {
 	@Inject
 	private Logger logger;
 
-	public Talk getTalk() {
+	public Speaker getSpeaker() {
 
-		return talk;
+		return speaker;
 	}
 
-	public void setTalk(Talk talk) {
+	public void setSpeaker(Speaker speaker) {
 
-		this.talk = talk;
-	}
-
-	public String open(Long talkId) throws ServiceException {
-
-		if (talkId == null) {
-			logger.error("No Talk ID submitted!");
+		if (speaker == null) {
+			logger.error("Cannot set Speaker 'null'.");
+			this.speaker = new Speaker();
 		} else {
-			Talk talk = this.talkService.findTalkById(talkId);
-			this.setTalk(talk);
-
-			this.breadCrumpBean.setTalk(talk);
-			this.breadCrumpBean.setRoom(null);
-			this.breadCrumpBean.setSpeaker(null);
+			this.speaker = speaker;
 		}
 
-		return "talk";
+		try {
+			this.conferences.clear();
+
+			List<Talk> talks = talkService.getTalksBySpeaker(speaker);
+
+			Map<Conference, List<Talk>> talkMap = new LinkedHashMap<Conference, List<Talk>>();
+
+			for (Talk talk : talks) {
+
+				Conference conference = talk.getConference();
+
+				List<Talk> conferenceTalks = talkMap.get(conference);
+				if (conferenceTalks == null) {
+					conferenceTalks = new ArrayList<Talk>();
+					talkMap.put(conference, conferenceTalks);
+				}
+
+				conferenceTalks.add(talk);
+			}
+
+			this.conferences.addAll(talkMap.keySet());
+			this.talks = talkMap.values().toArray(new List[talkMap.size()]);
+
+		} catch (ServiceException e) {
+			logger.error("Cannot load talks for speaker {}", speaker.getName(), e);
+		}
+
+	}
+
+	public List<Conference> getConferences() {
+
+		return conferences;
+	}
+
+	public List<Talk>[] getTalks() {
+
+		return talks;
+	}
+
+	public String open(Long speakerId) throws ServiceException {
+
+		if (speakerId == null) {
+			logger.error("No Speaker ID submitted!");
+		} else {
+			Speaker speaker = this.speakerService.findSpeakerById(speakerId);
+			this.setSpeaker(speaker);
+
+			this.breadCrumpBean.setSpeaker(speaker);
+		}
+
+		return "speaker";
 	}
 }

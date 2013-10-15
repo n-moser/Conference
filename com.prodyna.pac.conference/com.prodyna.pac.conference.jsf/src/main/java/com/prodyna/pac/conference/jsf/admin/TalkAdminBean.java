@@ -23,10 +23,7 @@
 
 package com.prodyna.pac.conference.jsf.admin;
 
-import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
-import com.prodyna.pac.conference.ejb.facade.datatype.Room;
-import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
-import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
+import com.prodyna.pac.conference.ejb.facade.datatype.*;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
@@ -56,9 +53,9 @@ public class TalkAdminBean implements Serializable {
 
 	private Talk talk;
 
-	private List<Speaker> speakers;
-
 	private List<Room> rooms;
+
+	private Long speakerId;
 
 	@Inject
 	private ConferenceService conferenceService;
@@ -89,16 +86,6 @@ public class TalkAdminBean implements Serializable {
 		this.talk = conference;
 	}
 
-	public List<Speaker> getSpeakers() throws ServiceException {
-
-		if (speakers == null) {
-			if (this.talk != null && this.talk.getId() != null) {
-				this.speakers = this.speakerService.getSpeakersByTalk(this.talk);
-			}
-		}
-		return speakers;
-	}
-
 	public List<Room> getRooms() throws ServiceException {
 
 		Conference conference = this.talk.getConference();
@@ -107,6 +94,51 @@ public class TalkAdminBean implements Serializable {
 		}
 
 		return Collections.emptyList();
+	}
+
+	public Long getSpeakerId() {
+
+		return this.speakerId;
+	}
+
+	public void setSpeakerId(Long speakerId) {
+
+		this.speakerId = speakerId;
+	}
+
+	public void assignSpeaker() {
+
+		if (this.speakerId != null) {
+
+			try {
+				Speaker speaker = this.speakerService.findSpeakerById(this.speakerId);
+
+				TalkSpeaker talkSpeaker = new TalkSpeaker();
+				talkSpeaker.setSpeaker(speaker);
+
+				this.talk.getSpeakers().add(talkSpeaker);
+
+				this.speakerId = null;
+
+			} catch (ServiceException e) {
+				// TODO Exception Handling
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void unassignSpeaker(Long talkSpeakerId) {
+
+		if (talkSpeakerId != null) {
+
+			TalkSpeaker talkSpeaker = null;
+			for (TalkSpeaker speaker : this.talk.getSpeakers()) {
+				if (speaker.getId().equals(talkSpeakerId)) {
+					talkSpeaker = speaker;
+				}
+			}
+			this.talk.getSpeakers().remove(talkSpeaker);
+		}
 	}
 
 	public String edit(Long talkId) throws ServiceException {
@@ -128,9 +160,6 @@ public class TalkAdminBean implements Serializable {
 
 			if (this.rooms != null) {
 				this.rooms.clear();
-			}
-			if (this.speakers != null) {
-				this.speakers.clear();
 			}
 		}
 

@@ -41,42 +41,40 @@
         <ui:define name="content">
 
             <f:facet name="header">
-                <h:outputText value="Room '#{roomBean.room.name}'"/>
+                <h:outputText value="Speaker '#{speakerBean.speaker.name}'"/>
             </f:facet>
 
             <div class="summaryBox">
                 <h:panelGrid columns="2">
                     <h:outputText value="Name:" styleClass="label"/>
-                    <h:outputText value="#{roomBean.room.name}"/>
+                    <h:outputText value="#{speakerBean.speaker.name}"/>
 
-                    <h:outputText value="Capacity:" styleClass="label"/>
-                    <h:outputText value="#{roomBean.room.capacity} Seats"/>
+                    <h:outputText value="Bio:" styleClass="label"/>
+                    <h:outputText value="#{speakerBean.speaker.description}"/>
 
                 </h:panelGrid>
             </div>
 
             <rich:panel header="Talks">
 
-                <h:panelGrid columns="#{fn:length(roomBean.dates)}" width="100%" styleClass="gridTable">
+                <h:panelGrid columns="#{fn:length(speakerBean.conferences)}" width="100%" styleClass="gridTable">
 
-                    <c:forEach var="date" items="#{roomBean.dates}" varStatus="index">
+                    <c:forEach var="conference" items="#{speakerBean.conferences}" varStatus="index">
 
                         <h:form>
                             <rich:panel>
 
                                 <f:facet name="header">
-                                    <h:outputText value="#{date}">
-                                        <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
-                                    </h:outputText>
+                                    <h:outputText value="#{conference.name}" />
                                 </f:facet>
 
-                                <rich:list value="#{roomBean.talks[index.count - 1]}" var="talk" type="definitions"
-                                           rendered="#{not empty roomBean.talks[index.count - 1]}">
+                                <rich:list value="#{speakerBean.talks[index.count - 1]}" var="talk" type="definitions"
+                                           rendered="#{not empty speakerBean.talks[index.count - 1]}">
 
                                     <f:facet name="term">
                                         <h:panelGroup layout="block">
                                             <h:outputText value="#{talk.date}" style="font-weight:bold">
-                                                <f:convertDateTime type="date" pattern="HH:mm"/>
+                                                <f:convertDateTime type="date" pattern="dd.MM.yyyy (HH:mm)"/>
                                             </h:outputText>
                                             <h:outputText value=" "/>
                                             <h:commandLink action="#{talkBean.open(talk.id)}" value="#{talk.name}"
@@ -92,7 +90,7 @@
                                 </rich:list>
 
                                 <h:outputText value="No Talks scheduled."
-                                              rendered="#{empty roomBean.talks[index.count - 1]}"/>
+                                              rendered="#{empty speakerBean.talks[index.count - 1]}"/>
 
                             </rich:panel>
                         </h:form>

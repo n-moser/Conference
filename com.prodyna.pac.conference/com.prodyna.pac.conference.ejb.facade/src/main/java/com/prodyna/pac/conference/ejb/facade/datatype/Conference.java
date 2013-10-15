@@ -143,7 +143,7 @@ public class Conference implements Datatype {
 	 *
 	 * @return the conference description
 	 */
-	@Size(min = 1, max = 1000)
+	@Size(max = 1000)
 	@Column(nullable = true, length = 1000)
 	public String getDescription() {
 

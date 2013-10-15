@@ -49,15 +49,27 @@
                     <h:outputText value="Name:" styleClass="label"/>
                     <h:outputText value="#{talkBean.talk.name}"/>
 
-                    <h:outputText value="Summary:" styleClass="label"/>
+                    <h:outputText value="Abstract:" styleClass="label"/>
                     <h:outputText value="#{talkBean.talk.description}"/>
 
-                    <h:outputText value="Talk Date:" styleClass="label"/>
+                    <h:outputText value="Conference:" styleClass="label"/>
+                    <h:form>
+                        <h:commandLink value="#{talkBean.talk.conference.name}"
+                                       action="#{conferenceBean.open(talkBean.talk.conference.id)}"/>
+                    </h:form>
+
+                    <h:outputText value="Room:" styleClass="label"/>
+                    <h:form>
+                        <h:commandLink value="#{talkBean.talk.room.name}"
+                                       action="#{roomBean.open(talkBean.talk.room.id)}"/>
+                    </h:form>
+
+                    <h:outputText value="Date:" styleClass="label"/>
                     <h:outputText value="#{talkBean.talk.date}">
                         <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
                     </h:outputText>
 
-                    <h:outputText value="Talk Time:" styleClass="label"/>
+                    <h:outputText value="Time:" styleClass="label"/>
                     <h:outputText value="#{talkBean.talk.date}">
                         <f:convertDateTime type="date" pattern="HH:mm"/>
                     </h:outputText>
@@ -65,23 +77,17 @@
                     <h:outputText value="Duration:" styleClass="label"/>
                     <h:outputText value="#{talkBean.talk.duration} Minutes"/>
 
-                    <h:outputText value="Conference:" styleClass="label"/>
-                    <h:outputText value="#{talkBean.talk.conference.name}"/>
+                    <h:outputText value="Speakers:" styleClass="label"/>
 
-                    <h:outputText value="Room:" styleClass="label"/>
-
-                    <h:form>
-                        <h:commandLink value="#{talkBean.talk.room.name}"
-                                       action="#{roomBean.open(talkBean.talk.room.id)}"/>
+                    <h:form rendered="#{not empty talkBean.talk.speakers}">
+                        <rich:list value="#{talkBean.talk.speakers}" var="speaker" type="ordered"
+                                   rendered="#{not empty talkBean.talk.speakers}" styleClass="speakerList">
+                            <h:commandLink value="#{speaker.speaker.name}"
+                                           action="#{speakerBean.open(speaker.speaker.id)}"/>
+                        </rich:list>
                     </h:form>
 
-                    <h:outputText value="Speakers:" styleClass="label"/>
-                    <h:outputText value="#{talkBean.talk.speakers}"/>
-
-                    <rich:list value="#{talkBean.talk.speakers}" var="speaker" type="ordered"
-                               rendered="#{not empty talkBean.talk.speakers}">
-                        <h:commandLink value="#{speaker.speaker.name}"/>
-                    </rich:list>
+                    <h:outputText value="No speaker defined." rendered="#{empty talkBean.talk.speakers}"/>
 
                 </h:panelGrid>
             </div>

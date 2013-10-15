@@ -41,18 +41,13 @@
     <rich:toolbar height="26px" styleClass="toolbar">
 
         <rich:toolbarGroup location="left">
-            <h:outputLink value="welcome.jsf" styleClass="breadCrump">Conferences</h:outputLink>
+            <h:outputLink value="welcome.jsf" styleClass="breadCrump">Home</h:outputLink>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup location="left" rendered="#{not empty breadCrumpBean.conference}">
             <h:outputText value=">" styleClass="breadCrumpSeparator"/>
             <h:outputLink value="conference.jsf"
                           styleClass="breadCrump">#{breadCrumpBean.conference.name}</h:outputLink>
-        </rich:toolbarGroup>
-
-        <rich:toolbarGroup rendered="#{not empty breadCrumpBean.talk}">
-            <h:outputText value=">" styleClass="breadCrumpSeparator"/>
-            <h:outputLink value="talks.jsf" styleClass="breadCrump">Talks</h:outputLink>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup rendered="#{not empty breadCrumpBean.talk}">
@@ -114,7 +109,7 @@
                 <h:inputSecret value="#{securityBean.password}"/>
             </h:panelGrid>
 
-            <h:commandLink action="#{securityBean.login()}" value="Login"/>
+            <h:commandButton action="#{securityBean.login()}" value="Login"/>
 
         </h:form>
 

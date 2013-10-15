@@ -21,66 +21,22 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.jsf;
-
-import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
-import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
-import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
-import org.slf4j.Logger;
+package com.prodyna.pac.conference.jsf.admin;
 
 import javax.annotation.ManagedBean;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import java.io.Serializable;
 
 /**
- * TalkBean
+ * SpeakerPickerBean
  * <p/>
  * Author: Nicolas Moser
- * Date: 14.10.13
- * Time: 12:50
+ * Date: 15.10.13
+ * Time: 20:14
  */
 @ManagedBean
-@SessionScoped
-@Named("talkBean")
-public class TalkBean implements Serializable {
+@RequestScoped
+@Named("speakerPickerBean")
+public class SpeakerPickerBean {
 
-	@Inject
-	private TalkService talkService;
-
-	private Talk talk;
-
-	@Inject
-	private BreadCrumpBean breadCrumpBean;
-
-	@Inject
-	private Logger logger;
-
-	public Talk getTalk() {
-
-		return talk;
-	}
-
-	public void setTalk(Talk talk) {
-
-		this.talk = talk;
-	}
-
-	public String open(Long talkId) throws ServiceException {
-
-		if (talkId == null) {
-			logger.error("No Talk ID submitted!");
-		} else {
-			Talk talk = this.talkService.findTalkById(talkId);
-			this.setTalk(talk);
-
-			this.breadCrumpBean.setTalk(talk);
-			this.breadCrumpBean.setRoom(null);
-			this.breadCrumpBean.setSpeaker(null);
-		}
-
-		return "talk";
-	}
 }

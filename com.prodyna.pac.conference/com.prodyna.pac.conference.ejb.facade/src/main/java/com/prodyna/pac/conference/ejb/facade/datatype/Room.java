@@ -45,7 +45,7 @@ public class Room implements Datatype {
 
 	private String name;
 
-	private Integer capacity;
+	private Integer capacity = 50;
 
 	private Conference conference;
 

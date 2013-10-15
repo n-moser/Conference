@@ -44,6 +44,7 @@
             </f:facet>
 
             <div class="summaryBox">
+
                 <h:panelGrid columns="2">
                     <h:outputText value="Name:" styleClass="label"/>
                     <h:outputText value="#{conferenceBean.conference.name}"/>
@@ -81,8 +82,8 @@
                                     </h:outputText>
                                 </f:facet>
 
-                                <rich:list value="#{conferenceBean.talks[index.count]}" var="talk" type="definitions"
-                                           rendered="#{not empty conferenceBean.talks[index.count]}">
+                                <rich:list value="#{conferenceBean.talks[index.count - 1]}" var="talk" type="definitions"
+                                           rendered="#{not empty conferenceBean.talks[index.count - 1]}">
 
                                     <f:facet name="term">
                                         <h:panelGroup layout="block">
@@ -103,7 +104,7 @@
                                 </rich:list>
 
                                 <h:outputText value="No Talks scheduled."
-                                              rendered="#{empty conferenceBean.talks[index.count]}"/>
+                                              rendered="#{empty conferenceBean.talks[index.count - 1]}"/>
 
                             </rich:panel>
                         </h:form>

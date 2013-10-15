@@ -25,6 +25,7 @@ package com.prodyna.pac.conference.ejb.facade.service.talk;
 
 import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
 import com.prodyna.pac.conference.ejb.facade.datatype.Room;
+import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.Service;
@@ -103,6 +104,19 @@ public interface TalkService extends Service {
 	 * 		when the Talk query fails
 	 */
 	List<Talk> getTalksByRoom(Room room) throws	ServiceException;
+
+	/**
+	 * Find all Talk entity instances that are presented by the given speaker.
+	 *
+	 * @param speaker
+	 * 		the speaker holding the talks
+	 *
+	 * @return the list of all existing talk instances of the given speaker
+	 *
+	 * @throws ServiceException
+	 * 		when the Talk query fails
+	 */
+	List<Talk> getTalksBySpeaker(Speaker speaker) throws ServiceException;
 
 	/**
 	 * Persists a non-persistent Talk entity to the database.

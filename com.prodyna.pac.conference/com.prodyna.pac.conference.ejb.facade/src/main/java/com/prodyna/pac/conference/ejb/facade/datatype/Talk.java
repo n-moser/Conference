@@ -51,7 +51,7 @@ public class Talk implements Datatype {
 
 	private Date time;
 
-	private Integer duration;
+	private Integer duration = 60;
 
 	private Room room;
 
@@ -247,7 +247,7 @@ public class Talk implements Datatype {
 	 *
 	 * @return the list of speakers
 	 */
-	@JoinColumn
+	@JoinColumn(name = "talk_id")
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, orphanRemoval = true)
 	public List<TalkSpeaker> getSpeakers() {
 

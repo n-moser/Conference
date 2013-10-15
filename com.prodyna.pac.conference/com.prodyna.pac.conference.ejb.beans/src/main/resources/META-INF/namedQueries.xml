@@ -133,6 +133,17 @@
         </query>
     </named-query>
 
+    <named-query name="Talk.findTalksBySpeaker">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                inner join t.speakers ts
+                WHERE ts.speaker = :speaker
+                ORDER BY t.date
+            ]]>
+        </query>
+    </named-query>
+
     <named-query name="Talk.findTalkByName">
         <query>
             <![CDATA[

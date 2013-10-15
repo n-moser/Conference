@@ -53,7 +53,8 @@
                             <h:inputText value="#{roomAdminBean.room.name}" required="true" styleClass="masterControl"/>
 
                             <h:outputText title="Capacity of the Room in Minutes" value="Capacity" styleClass="label"/>
-                            <rich:inputNumberSpinner step="10" value="#{roomAdminBean.room.capacity}" required="true" />
+                            <rich:inputNumberSpinner step="10" minValue="10" maxValue="1000" enableManualInput="false"
+                                                     value="#{roomAdminBean.room.capacity}" required="true"/>
 
                             <h:outputText title="Conference of the Room" value="Conference" styleClass="label"/>
                             <rich:select enableManualInput="false" defaultLabel="Select the Conference"

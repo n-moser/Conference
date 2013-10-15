@@ -30,6 +30,7 @@ import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
 import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
 import com.prodyna.pac.conference.ejb.facade.util.DateIterator;
+import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
@@ -65,6 +66,9 @@ public class RoomBean implements Serializable {
 	private List<Date> dates = new ArrayList<Date>();
 
 	private List<Talk>[] talks;
+
+	@Inject
+	private BreadCrumpBean breadCrumpBean;
 
 	@Inject
 	private Logger logger;
@@ -145,6 +149,9 @@ public class RoomBean implements Serializable {
 		} else {
 			Room room = this.roomService.findRoomById(roomId);
 			this.setRoom(room);
+
+			this.breadCrumpBean.setRoom(room);
+			this.breadCrumpBean.setSpeaker(null);
 		}
 
 		return "room";
