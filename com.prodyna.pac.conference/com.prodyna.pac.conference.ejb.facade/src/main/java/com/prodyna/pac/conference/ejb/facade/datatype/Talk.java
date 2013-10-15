@@ -248,7 +248,7 @@ public class Talk implements Datatype {
 	 * @return the list of speakers
 	 */
 	@JoinColumn
-	@OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER, orphanRemoval = false)
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, orphanRemoval = true)
 	public List<TalkSpeaker> getSpeakers() {
 
 		if (speakers == null) {

@@ -48,6 +48,9 @@
                     }
                 </h:outputStylesheet>
 
+                <h:outputText value="No conferences scheduled."
+                              rendered="#{empty conferenceListBean.conferences}"/>
+
                 <rich:dataGrid value="#{conferenceListBean.conferences}" var="conf" columns="2" elements="8"
                                width="100%" border="0" styleClass="overviewTable">
 
@@ -71,7 +74,7 @@
 
                             <h:outputText value="End:" styleClass="label"></h:outputText>
                             <h:outputText value="#{conf.endDate}">
-                                <f:convertDateTime type="date" pattern="dd.MM.yyyy" />
+                                <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
                             </h:outputText>
 
                             <h:commandButton action="#{conferenceBean.open(conf.id)}" value="Show"/>

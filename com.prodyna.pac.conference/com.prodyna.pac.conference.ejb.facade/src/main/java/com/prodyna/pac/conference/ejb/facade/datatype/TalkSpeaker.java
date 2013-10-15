@@ -83,7 +83,7 @@ public class TalkSpeaker implements Datatype {
 	 *
 	 * @return the speaker
 	 */
-	@ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
+	@ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.DETACH})
 	@JoinColumn
 	public Speaker getSpeaker() {
 

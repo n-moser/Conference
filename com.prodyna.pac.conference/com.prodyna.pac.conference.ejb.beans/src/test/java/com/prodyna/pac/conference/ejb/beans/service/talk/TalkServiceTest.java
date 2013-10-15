@@ -24,12 +24,10 @@
 package com.prodyna.pac.conference.ejb.beans.service.talk;
 
 import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
-import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
-import com.prodyna.pac.conference.ejb.facade.datatype.Room;
-import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
-import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
+import com.prodyna.pac.conference.ejb.facade.datatype.*;
 import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
+import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
 import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.After;
@@ -59,9 +57,16 @@ public class TalkServiceTest extends ServiceTest {
 	@Inject
 	private ConferenceService conferenceService;
 
+	@Inject
+	private SpeakerService speakerService;
+
 	private Conference conference;
 
 	private Room room;
+
+	private Speaker adamBien;
+
+	private Speaker larsVogel;
 
 	@Before
 	public void setUp() throws Exception {
@@ -85,6 +90,24 @@ public class TalkServiceTest extends ServiceTest {
 		this.room = this.roomService.createRoom(room);
 		Assert.assertNotNull(room);
 		Assert.assertNotNull(room.getId());
+
+		this.adamBien = new Speaker();
+		this.adamBien.setName("Adam Bien");
+		this.adamBien.setDescription(
+				"Adam Bien works with many companies as a Java architecture consultant for enterprise applications, helping organizations design and implement high-performance Java solutions and troubleshooting mission-critical problems. He’s also the author of eight books and more than 100 articles on Java, architectures, and best practices.");
+
+		this.adamBien = this.speakerService.createSpeaker(this.adamBien);
+		Assert.assertNotNull(adamBien);
+		Assert.assertNotNull(adamBien.getId());
+
+		this.larsVogel = new Speaker();
+		this.larsVogel.setName("Lars Vogel");
+		this.larsVogel.setDescription(
+				"Lars Vogel is the founder and CEO of the vogella GmbH and works as an Eclipse, Git and Android consultant, trainer and book author. He is a regular speaker at international conferences, as for example EclipseCon, Devoxx, OOP, Droidcon and O'Reilly's Android Open and has presented at the Google Headquarters in Mountain View.");
+
+		this.larsVogel = this.speakerService.createSpeaker(this.larsVogel);
+		Assert.assertNotNull(larsVogel);
+		Assert.assertNotNull(larsVogel.getId());
 	}
 
 	@After
@@ -92,6 +115,8 @@ public class TalkServiceTest extends ServiceTest {
 
 		this.roomService.removeRoom(room);
 		this.conferenceService.removeConference(conference);
+		this.speakerService.removeSpeaker(adamBien);
+		this.speakerService.removeSpeaker(larsVogel);
 	}
 
 	@Test
@@ -104,10 +129,13 @@ public class TalkServiceTest extends ServiceTest {
 		talk.setDate(super.parseDate("03.10.2014"));
 		talk.setDuration(120);
 
-		Speaker speaker = new Speaker();
-		speaker.setName("Adam Bien");
-		speaker.setDescription(
-				"Bien works with many companies as a Java architecture consultant for enterprise applications, helping organizations design and implement high-performance Java solutions and troubleshooting mission-critical problems. He’s also the author of eight books and more than 100 articles on Java, architectures, and best practices.");
+		TalkSpeaker talkSpeaker = new TalkSpeaker();
+		talkSpeaker.setSpeaker(this.adamBien);
+		talk.getSpeakers().add(talkSpeaker);
+
+		talkSpeaker = new TalkSpeaker();
+		talkSpeaker.setSpeaker(this.larsVogel);
+		talk.getSpeakers().add(talkSpeaker);
 
 		Talk result = service.createTalk(talk);
 
@@ -116,6 +144,12 @@ public class TalkServiceTest extends ServiceTest {
 		Assert.assertNotNull(result.getVersion());
 		Assert.assertEquals(0L, result.getVersion().longValue());
 		Assert.assertEquals("Java EE Webstack Performance", result.getName());
+
+		Assert.assertEquals(2, result.getSpeakers().size());
+		Assert.assertNotNull(result.getSpeakers().get(0));
+		Assert.assertNotNull(result.getSpeakers().get(0).getId());
+		Assert.assertNotNull(result.getSpeakers().get(1));
+		Assert.assertNotNull(result.getSpeakers().get(1).getId());
 
 		System.out.println("Talk ID: " + result.getId());
 		System.out.println("Talk Version: " + result.getVersion());
