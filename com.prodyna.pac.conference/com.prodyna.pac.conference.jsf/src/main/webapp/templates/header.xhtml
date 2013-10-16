@@ -66,7 +66,7 @@
         </rich:toolbarGroup>
 
         <rich:toolbarGroup location="right">
-            <h:outputLink value="admin.jsf" styleClass="breadCrump">Administration</h:outputLink>
+            <h:outputLink value="admin.jsf" styleClass="breadCrump" onclick="#{rich:component(breadCrumpBean)}.clear()">Administration</h:outputLink>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup location="right">

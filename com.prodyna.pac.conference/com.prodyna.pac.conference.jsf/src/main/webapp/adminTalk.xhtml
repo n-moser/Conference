@@ -52,7 +52,7 @@
                                      styleClass="masterControl" immediate="true">
                             <rich:validator/>
                         </h:inputText>
-                        <rich:message for="name" />
+                        <rich:message for="name"/>
 
                         <h:outputText title="Description of the Talk" value="Description" styleClass="label"/>
                         <h:inputTextarea id="description" value="#{talkAdminBean.talk.description}"
@@ -100,22 +100,26 @@
 
                         <h:panelGrid columns="2">
 
-                            <rich:dataTable id="speakerTable" value="#{talkAdminBean.talk.speakers}" var="speaker"
-                                            rendered="#{not empty talkAdminBean.talk.speakers}">
+                            <a4j:outputPanel id="speakerPanel" ajaxRendered="true">
 
-                                <rich:column>
-                                    <h:outputText value="#{speaker.speaker.name}"/>
-                                </rich:column>
+                                <rich:dataTable id="speakerTable" value="#{talkAdminBean.talk.speakers}" var="speaker"
+                                                rendered="#{not empty talkAdminBean.talk.speakers}">
 
-                                <rich:column>
-                                    <h:commandLink action="#{talkAdminBean.unassignSpeaker(speaker.id)}">
-                                        <h:graphicImage value="./resources/images/icons/delete.gif" alt="delete"/>
-                                    </h:commandLink>
-                                </rich:column>
+                                    <rich:column>
+                                        <h:outputText value="#{speaker.speaker.name}"/>
+                                    </rich:column>
 
-                            </rich:dataTable>
+                                    <rich:column>
+                                        <h:commandLink action="#{talkAdminBean.unassignSpeaker(speaker.id)}">
+                                            <h:graphicImage value="./resources/images/icons/delete.gif" alt="delete"/>
+                                        </h:commandLink>
+                                    </rich:column>
 
-                            <h:outputText rendered="#{empty talkAdminBean.talk.speakers}" value="No Speakers"/>
+                                </rich:dataTable>
+
+                                <h:outputText rendered="#{empty talkAdminBean.talk.speakers}" value="No Speakers"/>
+
+                            </a4j:outputPanel>
 
                             <h:commandButton value="Add Speaker">
                                 <rich:componentControl target="speakerPopup" operation="show"/>
@@ -157,7 +161,8 @@
 
                     </h:panelGrid>
 
-                    <h:commandButton value="Submit" action="#{talkAdminBean.assignSpeaker}"/>
+                    <a4j:commandButton value="Submit" action="#{talkAdminBean.assignSpeaker}" execute="@form"
+                                       render="speakerPanel,speakerPicker" oncomplete="#{rich:component('speakerPopup')}.hide();"/>
                 </h:form>
 
             </rich:popupPanel>

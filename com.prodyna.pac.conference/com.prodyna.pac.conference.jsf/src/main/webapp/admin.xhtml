@@ -65,7 +65,8 @@
 
                         <rich:column>
                             <f:facet name="header">Description</f:facet>
-                            <h:outputText value="#{conf.description}"/>
+                            <h:outputText value="#{fn:substring(conf.description, 0, 200)}"/>
+                            <h:outputText value="..." rendered="#{fn:length(conf.description) > 200}"/>
                         </rich:column>
 
                         <rich:column>
@@ -87,7 +88,7 @@
                             </h:outputText>
                         </rich:column>
 
-                        <rich:column>
+                        <rich:column styleClass="editColumn">
                             <h:form>
                                 <h:commandLink action="#{conferenceAdminBean.edit(conf.id)}">
                                     <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
@@ -114,10 +115,11 @@
 
                         <rich:column>
                             <f:facet name="header">Description</f:facet>
-                            <h:outputText value="#{speaker.description}"/>
+                            <h:outputText value="#{fn:substring(speaker.description, 0, 100)}"/>
+                            <h:outputText value="..." rendered="#{fn:length(speaker.description) > 100}"/>
                         </rich:column>
 
-                        <rich:column>
+                        <rich:column styleClass="editColumn">
                             <h:form>
                                 <h:commandLink action="#{speakerAdminBean.edit(speaker.id)}">
                                     <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
