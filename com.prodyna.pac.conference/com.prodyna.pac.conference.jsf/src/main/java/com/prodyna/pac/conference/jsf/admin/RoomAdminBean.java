@@ -127,6 +127,10 @@ public class RoomAdminBean implements Serializable {
 			}
 		}
 
-		return "admin";
+		if (conferenceAdminBean.getConference() == null) {
+			return "admin";
+		}
+
+		return "adminConference";
 	}
 }

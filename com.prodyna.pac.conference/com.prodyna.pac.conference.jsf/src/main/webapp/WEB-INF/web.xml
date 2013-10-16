@@ -36,6 +36,11 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error.jsf</location>
+    </error-page>
+
     <!-- Context Parameter -->
     <context-param>
         <param-name>org.richfaces.skin</param-name>

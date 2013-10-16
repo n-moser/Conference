@@ -47,28 +47,39 @@
                 <rich:panel id="room" header="Room">
 
                     <h:form>
-                        <h:panelGrid columns="2" styleClass="masterTable" rowClasses="masterTableRow">
+                        <h:panelGrid columns="3" styleClass="masterTable" rowClasses="masterTableRow">
 
                             <h:outputText title="Name of the Room" value="Name" styleClass="label"/>
-                            <h:inputText value="#{roomAdminBean.room.name}" required="true" styleClass="masterControl"/>
+                            <h:inputText id="name" value="#{roomAdminBean.room.name}" styleClass="masterControl">
+                                <rich:validator/>
+                            </h:inputText>
+                            <rich:message for="name" styleClass="message"/>
 
                             <h:outputText title="Capacity of the Room in Minutes" value="Capacity" styleClass="label"/>
-                            <rich:inputNumberSpinner step="10" minValue="10" maxValue="1000" enableManualInput="false"
-                                                     value="#{roomAdminBean.room.capacity}" required="true"
-                                                     styleClass="masterSpin"/>
+                            <rich:inputNumberSpinner id="capacity" step="10" minValue="10" maxValue="1000"
+                                                     enableManualInput="false" value="#{roomAdminBean.room.capacity}"
+                                                     styleClass="masterSpin">
+                                <rich:validator/>
+                            </rich:inputNumberSpinner>
+                            <rich:message for="capacity" styleClass="message"/>
 
                             <h:outputText title="Conference of the Room" value="Conference" styleClass="label"/>
-                            <rich:select enableManualInput="false" defaultLabel="Select the Conference"
-                                         value="#{roomAdminBean.room.conference}" required="true"
+                            <rich:select id="conference" enableManualInput="false" defaultLabel="Select the Conference"
+                                         value="#{roomAdminBean.room.conference}"
                                          converter="#{conferenceConverter}">
+
                                 <f:selectItems value="#{conferenceListBean.conferences}" var="conference"
                                                itemValue="#{conference}" itemLabel="#{conference.name}"/>
+                                <rich:validator/>
+
                             </rich:select>
+                            <rich:message for="conference" styleClass="message"/>
 
                         </h:panelGrid>
 
                         <h:commandButton value="Save" action="#{roomAdminBean.save()}" styleClass="masterButton"/>
-                        <h:commandButton value="Delete" action="#{roomAdminBean.remove()}"/>
+                        <h:commandButton value="Delete" action="#{roomAdminBean.remove()}"
+                                         disabled="#{empty roomAdminBean.room.id}"/>
 
                     </h:form>
 

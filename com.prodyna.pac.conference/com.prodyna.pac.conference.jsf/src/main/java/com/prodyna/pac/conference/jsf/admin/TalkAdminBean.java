@@ -33,9 +33,13 @@ import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -70,8 +74,38 @@ public class TalkAdminBean implements Serializable {
 	private SpeakerService speakerService;
 
 	@Inject
+	private ConferenceAdminBean conferenceAdminBean;
+
+	@Inject
+	private FacesContext facesContext;
+
+	@Inject
 	private Logger logger;
 
+	private List<Speaker> speakers;
+
+	/**
+	 * Getter for the list of all conferences.
+	 *
+	 * @return all conferences
+	 */
+	public List<Speaker> getSpeakers() {
+
+		try {
+			List<Speaker> existingSpeakers = new ArrayList<Speaker>();
+			for (TalkSpeaker talkSpeaker : this.talk.getSpeakers()) {
+				existingSpeakers.add(talkSpeaker.getSpeaker());
+			}
+
+			this.speakers = speakerService.getAllSpeakers();
+			this.speakers.removeAll(existingSpeakers);
+
+		} catch (ServiceException se) {
+			logger.error("Error retrieving Speakers.", se);
+		}
+
+		return this.speakers;
+	}
 
 	public Talk getTalk() {
 
@@ -171,7 +205,29 @@ public class TalkAdminBean implements Serializable {
 		return "adminTalk";
 	}
 
+	/**
+	 * Validate that at least 1 speaker is assigned to the talk.
+	 *
+	 * @param event
+	 * 		the validation event
+	 */
+	public void validateSpeakers(ComponentSystemEvent event) {
+
+		if (talk.getSpeakers().isEmpty()) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage("talkForm:speakerPanel",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wert muss gewählt werden.",
+							"Mindestens ein Speaker muss gewählt werden."));
+
+			facesContext.validationFailed();
+		}
+	}
+
 	public String save() throws ServiceException {
+
+		if (facesContext.isValidationFailed()) {
+			return null;
+		}
 
 		if (talk != null) {
 			if (talk.getId() == null) {
@@ -180,6 +236,8 @@ public class TalkAdminBean implements Serializable {
 				talk = this.talkService.updateTalk(talk);
 			}
 		}
+
+		conferenceAdminBean.setConference(talk.getConference());
 
 		return "adminConference";
 	}
@@ -194,6 +252,10 @@ public class TalkAdminBean implements Serializable {
 			}
 		}
 
-		return "admin";
+		if (conferenceAdminBean.getConference() == null) {
+			return "admin";
+		}
+
+		return "adminConference";
 	}
 }

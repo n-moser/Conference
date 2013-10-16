@@ -29,7 +29,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
       xmlns:rich="http://richfaces.org/rich">
 
 <h:body>
@@ -39,36 +40,17 @@
         <ui:define name="content">
 
             <f:facet name="header">
-                <h:outputText value="Speaker Administration"></h:outputText>
+                <h:outputText value="Error"></h:outputText>
             </f:facet>
 
-            <rich:panel id="speaker" header="Speaker">
+            <h1>Ups....</h1>
 
-                <h:form>
-                    <h:panelGrid columns="3" styleClass="masterTable">
+            <h:outputText value="Something went wrong."/>
 
-                        <h:outputText title="Name of the Speaker" value="Name" styleClass="label"/>
-                        <h:inputText id="name" value="#{speakerAdminBean.speaker.name}" styleClass="masterControl">
-                            <rich:validator/>
-                        </h:inputText>
-                        <rich:message for="name" styleClass="message"/>
-
-                        <h:outputText title="Name of the Description" value="Description" styleClass="label"/>
-                        <h:inputTextarea id="description" value="#{speakerAdminBean.speaker.description}"
-                                         styleClass="masterText">
-                            <rich:validator/>
-                        </h:inputTextarea>
-                        <rich:message for="description" styleClass="message"/>
-
-                    </h:panelGrid>
-
-                    <h:commandButton value="Save" action="#{speakerAdminBean.save()}" styleClass="masterButton"/>
-                    <h:commandButton value="Delete" action="#{speakerAdminBean.remove()}"
-                                     disabled="#{empty speakerAdminBean.speaker.id}"/>
-
-                </h:form>
-
-            </rich:panel>
+            <rich:collapsiblePanel header="Stack Trace" switchType="client" expanded="false" styleClass="stackTrace"
+                                   bodyClass="stackTraceBody">
+                #{errorBean.stackTrace}
+            </rich:collapsiblePanel>
 
         </ui:define>
 

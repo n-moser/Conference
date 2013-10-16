@@ -24,6 +24,7 @@
 package com.prodyna.pac.conference.ejb.facade.datatype;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * TalkSpeaker
@@ -83,8 +84,9 @@ public class TalkSpeaker implements Datatype {
 	 *
 	 * @return the speaker
 	 */
-	@ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.DETACH})
+	@NotNull
 	@JoinColumn
+	@ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.DETACH})
 	public Speaker getSpeaker() {
 
 		return speaker;

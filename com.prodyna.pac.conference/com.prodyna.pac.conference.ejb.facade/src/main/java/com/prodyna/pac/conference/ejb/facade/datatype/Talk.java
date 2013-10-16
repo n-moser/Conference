@@ -24,6 +24,7 @@
 package com.prodyna.pac.conference.ejb.facade.datatype;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -126,7 +127,7 @@ public class Talk implements Datatype {
 	 *
 	 * @return the description
 	 */
-	@Size(min = 1, max = 1000)
+	@Size(max = 1000)
 	@Column(nullable = true, length = 1000)
 	public String getDescription() {
 
@@ -247,6 +248,8 @@ public class Talk implements Datatype {
 	 *
 	 * @return the list of speakers
 	 */
+	@Valid
+	@Size(min = 1)
 	@JoinColumn(name = "talk_id")
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, orphanRemoval = true)
 	public List<TalkSpeaker> getSpeakers() {

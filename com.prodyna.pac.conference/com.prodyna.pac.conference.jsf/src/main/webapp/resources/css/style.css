@@ -101,7 +101,6 @@ body {
 }
 
 .gridTableFirst {
-    width: 40%;
 }
 
 .editColumn {
@@ -117,7 +116,7 @@ body {
 }
 
 .masterControl {
-    width: 300px;
+    width: 350px;
 }
 
 .masterSpin .rf-insp-inp {
@@ -126,7 +125,7 @@ body {
 
 .masterText {
     resize: none;
-    width: 296px;
+    width: 346px;
     height: 100px;
 }
 
@@ -167,4 +166,13 @@ body {
     font-style: italic;
     font-weight: bold;
     font-size: x-small;
+}
+
+.stackTrace {
+    margin-top: 20px;
+}
+
+.stackTraceBody {
+    overflow: scroll;
+    height: 300px
 }

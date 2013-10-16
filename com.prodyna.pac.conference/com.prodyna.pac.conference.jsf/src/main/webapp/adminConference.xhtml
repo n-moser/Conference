@@ -43,41 +43,60 @@
                 <h:outputText value="Conference Administration"></h:outputText>
             </f:facet>
 
-            <h:panelGrid columns="2" width="100%" styleClass="gridTable" columnClasses="gridTableFirst">
+            <h:panelGrid columns="1" width="100%" styleClass="gridTable" columnClasses="gridTableFirst">
 
                 <rich:panel id="conference" header="Conference">
 
                     <h:form>
-                        <h:panelGrid columns="2" styleClass="masterTable">
+                        <h:panelGrid columns="3" styleClass="masterTable">
 
                             <h:outputText title="Name of the Conference" value="Name" styleClass="label"/>
-                            <h:inputText value="#{conferenceAdminBean.conference.name}" styleClass="masterControl"/>
+                            <h:inputText id="name" value="#{conferenceAdminBean.conference.name}"
+                                         styleClass="masterControl">
+                                <rich:validator/>
+                            </h:inputText>
+                            <rich:message for="name" styleClass="message"/>
 
                             <h:outputText title="Description of the Conference" value="Description" styleClass="label"/>
-                            <h:inputTextarea value="#{conferenceAdminBean.conference.description}"
-                                             styleClass="masterText"/>
+                            <h:inputTextarea id="description" value="#{conferenceAdminBean.conference.description}"
+                                             styleClass="masterText">
+                                <rich:validator/>
+                            </h:inputTextarea>
+                            <rich:message for="description" styleClass="message"/>
 
                             <h:outputText title="Location of the Conference" value="Location" styleClass="label"/>
-                            <h:inputText value="#{conferenceAdminBean.conference.location}" styleClass="masterControl"/>
+                            <h:inputText id="location" value="#{conferenceAdminBean.conference.location}"
+                                         styleClass="masterControl">
+                                <rich:validator/>
+                            </h:inputText>
+                            <rich:message for="location" styleClass="message"/>
 
                             <h:outputText title="Start Date of the Conference" value="Start Date" styleClass="label"/>
-                            <rich:calendar value="#{conferenceAdminBean.conference.startDate}"
-                                           inputClass="masterControlCal"/>
+                            <rich:calendar id="start" value="#{conferenceAdminBean.conference.startDate}"
+                                           inputClass="masterControlCal">
+                                <rich:validator/>
+                            </rich:calendar>
+                            <rich:message for="start" styleClass="message"/>
 
                             <h:outputText title="End Date of the Conference" value="End Date" styleClass="label"/>
-                            <rich:calendar value="#{conferenceAdminBean.conference.endDate}"
-                                           inputClass="masterControlCal"/>
+                            <rich:calendar id="end" value="#{conferenceAdminBean.conference.endDate}"
+                                           inputClass="masterControlCal">
+                                <rich:validator/>
+                            </rich:calendar>
+                            <rich:message for="end" styleClass="message"/>
 
                         </h:panelGrid>
 
                         <h:commandButton value="Save" action="#{conferenceAdminBean.save()}" styleClass="masterButton"/>
-                        <h:commandButton value="Delete" action="#{conferenceAdminBean.remove()}"/>
-
+                        <h:commandButton value="Delete" action="#{conferenceAdminBean.remove()}"
+                                         disabled="#{empty conferenceAdminBean.conference.id}"/>
                     </h:form>
 
                 </rich:panel>
 
-                <h:panelGrid columns="1" width="100%">
+                <div style="height: 10px"></div>
+
+                <h:panelGrid columns="2" width="100%" style="table-layout: fixed">
 
                     <rich:panel header="Conference Talks">
 
@@ -133,8 +152,6 @@
                         <h:outputText value="No talks available." rendered="#{empty conferenceAdminBean.talks}"/>
 
                     </rich:panel>
-
-                    <div style="height: 10px"></div>
 
                     <rich:panel header="Conference Rooms">
 

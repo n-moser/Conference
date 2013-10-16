@@ -21,22 +21,26 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.jsf.admin;
+package com.prodyna.pac.conference.jsf.producer;
 
-import javax.annotation.ManagedBean;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.enterprise.inject.Produces;
+import javax.faces.context.FacesContext;
 
 /**
- * SpeakerPickerBean
+ * FacesContextProducer
  * <p/>
  * Author: Nicolas Moser
- * Date: 15.10.13
- * Time: 20:14
+ * Date: 16.10.13
+ * Time: 14:25
  */
-@ManagedBean
-@RequestScoped
-@Named("speakerPickerBean")
-public class SpeakerPickerBean {
+public class FacesContextProducer {
+
+	@Produces
+	@RequestScoped
+	public FacesContext produceFacesContext() {
+
+		return FacesContext.getCurrentInstance();
+	}
 
 }
