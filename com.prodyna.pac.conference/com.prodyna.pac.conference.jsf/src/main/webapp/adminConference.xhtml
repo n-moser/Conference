@@ -96,7 +96,7 @@
 
                 <div style="height: 10px"></div>
 
-                <h:panelGrid columns="2" width="100%" style="table-layout: fixed">
+                <h:panelGrid columns="2" width="100%" style="table-layout: fixed" columnClasses="talkTable">
 
                     <rich:panel header="Conference Talks">
 
@@ -123,9 +123,16 @@
                             </rich:column>
 
                             <rich:column>
-                                <f:facet name="header">Date</f:facet>
-                                <h:outputText value="#{talk.date}">
-                                    <f:convertDateTime type="date" pattern="dd.MM.yyyy HH:mm"/>
+                                <f:facet name="header">Start Time</f:facet>
+                                <h:outputText value="#{talk.startDate}">
+                                    <f:convertDateTime type="startDate" pattern="dd.MM.yyyy HH:mm"/>
+                                </h:outputText>
+                            </rich:column>
+
+                            <rich:column>
+                                <f:facet name="header">End Time</f:facet>
+                                <h:outputText value="#{talk.endDate}">
+                                    <f:convertDateTime type="endDate" pattern="dd.MM.yyyy HH:mm"/>
                                 </h:outputText>
                             </rich:column>
 

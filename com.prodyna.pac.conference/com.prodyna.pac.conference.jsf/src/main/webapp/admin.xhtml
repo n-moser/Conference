@@ -77,14 +77,14 @@
                         <rich:column>
                             <f:facet name="header">Start</f:facet>
                             <h:outputText value="#{conf.startDate}">
-                                <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                                <f:convertDateTime type="startDate" pattern="dd.MM.yyyy"/>
                             </h:outputText>
                         </rich:column>
 
                         <rich:column>
                             <f:facet name="header">End</f:facet>
                             <h:outputText value="#{conf.endDate}">
-                                <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                                <f:convertDateTime type="startDate" pattern="dd.MM.yyyy"/>
                             </h:outputText>
                         </rich:column>
 

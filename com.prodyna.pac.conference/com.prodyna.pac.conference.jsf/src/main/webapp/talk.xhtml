@@ -65,13 +65,13 @@
                     </h:form>
 
                     <h:outputText value="Date:" styleClass="label"/>
-                    <h:outputText value="#{talkBean.talk.date}">
-                        <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                    <h:outputText value="#{talkBean.talk.startDate}">
+                        <f:convertDateTime type="startDate" pattern="dd.MM.yyyy"/>
                     </h:outputText>
 
                     <h:outputText value="Time:" styleClass="label"/>
-                    <h:outputText value="#{talkBean.talk.date}">
-                        <f:convertDateTime type="date" pattern="HH:mm"/>
+                    <h:outputText value="#{talkBean.talk.startDate}">
+                        <f:convertDateTime type="startDate" pattern="HH:mm"/>
                     </h:outputText>
 
                     <h:outputText value="Duration:" styleClass="label"/>

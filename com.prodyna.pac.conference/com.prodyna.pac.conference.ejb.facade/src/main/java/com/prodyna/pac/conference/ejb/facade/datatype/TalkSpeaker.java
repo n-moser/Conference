@@ -136,4 +136,15 @@ public class TalkSpeaker implements Datatype {
 		result = 31 * result + (speaker != null ? speaker.hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+
+		if (speaker != null) {
+			return this.getSpeaker().getName();
+		}
+
+		return "Undefined";
+	}
+
 }

@@ -31,6 +31,7 @@ import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.facade.service.Service;
 
 import javax.ejb.Local;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -103,7 +104,24 @@ public interface TalkService extends Service {
 	 * @throws ServiceException
 	 * 		when the Talk query fails
 	 */
-	List<Talk> getTalksByRoom(Room room) throws	ServiceException;
+	List<Talk> getTalksByRoom(Room room) throws ServiceException;
+
+	/**
+	 * Find all Talk entity instances that are presented in the given roomin the given time range.
+	 *
+	 * @param room
+	 * 		the room holding the talks
+	 * @param startTime
+	 * 		the start time
+	 * @param endTime
+	 * 		the end time.
+	 *
+	 * @return the list of all existing talk instances of the given room
+	 *
+	 * @throws ServiceException
+	 * 		when the Talk query fails
+	 */
+	List<Talk> getTalksByRoom(Room room, Date startTime, Date endTime) throws ServiceException;
 
 	/**
 	 * Find all Talk entity instances that are presented by the given speaker.
@@ -117,6 +135,23 @@ public interface TalkService extends Service {
 	 * 		when the Talk query fails
 	 */
 	List<Talk> getTalksBySpeaker(Speaker speaker) throws ServiceException;
+
+	/**
+	 * Find all Talk entity instances that are presented by the given speaker in the given time range.
+	 *
+	 * @param speaker
+	 * 		the speaker holding the talks
+	 * @param startTime
+	 * 		the start time
+	 * @param endTime
+	 * 		the end time
+	 *
+	 * @return the list of all existing talk instances of the given speaker
+	 *
+	 * @throws ServiceException
+	 * 		when the Talk query fails
+	 */
+	List<Talk> getTalksBySpeaker(Speaker speaker, Date startTime, Date endTime) throws ServiceException;
 
 	/**
 	 * Persists a non-persistent Talk entity to the database.
@@ -156,4 +191,16 @@ public interface TalkService extends Service {
 	 * 		when the entity cannot be removed
 	 */
 	Talk removeTalk(Talk Talk) throws ServiceException;
+
+	/**
+	 * Validate whether the talk collidates with another talk of any of the presenting speakers.
+	 *
+	 * @param talk
+	 * 		the talk to validateTalk
+	 *
+	 * @throws ServiceException
+	 * 		when the talk is not valid
+	 */
+	void validateTalk(Talk talk) throws ServiceException;
+
 }

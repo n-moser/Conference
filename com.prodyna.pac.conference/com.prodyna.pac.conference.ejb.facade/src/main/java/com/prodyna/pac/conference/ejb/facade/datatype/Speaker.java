@@ -168,4 +168,9 @@ public class Speaker implements Datatype {
 		result = 31 * result + (description != null ? description.hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return this.getName();
+	}
 }

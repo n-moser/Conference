@@ -21,39 +21,47 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.decorator;
+package com.prodyna.pac.conference.ejb.facade.exception;
 
-import com.prodyna.pac.conference.ejb.beans.event.TalkModificationEvent;
-import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
-import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
+import java.io.Serializable;
 
-import javax.decorator.Decorator;
-import javax.decorator.Delegate;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
+/**
+ * ValidationItem
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 17.10.13
+ * Time: 00:55
+ */
+public class ValidationItem implements Serializable {
 
-@Decorator
-public abstract class TalkModificationDecorator implements TalkService {
+	private String propertyName;
 
-	@Inject
-	@Delegate
-	private TalkService delegate;
+	private String message;
 
-	@Inject
-	private Event<TalkModificationEvent> event;
+	public ValidationItem(String propertyName, String message) {
 
-	@Override
-	public Talk updateTalk(Talk talk) throws ServiceException {
-
-		Talk modifiedTalk = this.delegate.updateTalk(talk);
-
-		if (modifiedTalk != null && modifiedTalk.getId() != null) {
-			TalkModificationEvent talkModificationEvent = new TalkModificationEvent(modifiedTalk);
-			this.event.fire(talkModificationEvent);
-		}
-
-		return modifiedTalk;
+		this.propertyName = propertyName;
+		this.message = message;
 	}
 
+	/**
+	 * Getter for the property propertyName.
+	 *
+	 * @return the property propertyName or null
+	 */
+	public String getPropertyName() {
+
+		return this.propertyName;
+	}
+
+	/**
+	 * Getter for the validation message.
+	 *
+	 * @return the validation message
+	 */
+	public String getMessage() {
+
+
+		return message;
+	}
 }

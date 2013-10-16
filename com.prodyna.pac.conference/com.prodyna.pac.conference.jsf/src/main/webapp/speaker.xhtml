@@ -73,8 +73,8 @@
 
                                     <f:facet name="term">
                                         <h:panelGroup layout="block">
-                                            <h:outputText value="#{talk.date}" style="font-weight:bold">
-                                                <f:convertDateTime type="date" pattern="dd.MM.yyyy (HH:mm)"/>
+                                            <h:outputText value="#{talk.startDate}" style="font-weight:bold">
+                                                <f:convertDateTime type="startDate" pattern="dd.MM.yyyy (HH:mm)"/>
                                             </h:outputText>
                                             <h:outputText value=" "/>
                                             <h:commandLink action="#{talkBean.open(talk.id)}" value="#{talk.name}"

@@ -31,7 +31,7 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>welcome</from-outcome>
-            <to-view-id>welcome.xhtml</to-view-id>
+            <to-view-id>/welcome.jsf</to-view-id>
         </navigation-case>
     </navigation-rule>
 

@@ -71,12 +71,12 @@
 
                             <h:outputText value="Start:" styleClass="label"></h:outputText>
                             <h:outputText value="#{conf.startDate}">
-                                <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                                <f:convertDateTime type="startDate" pattern="dd.MM.yyyy"/>
                             </h:outputText>
 
                             <h:outputText value="End:" styleClass="label"></h:outputText>
                             <h:outputText value="#{conf.endDate}">
-                                <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                                <f:convertDateTime type="startDate" pattern="dd.MM.yyyy"/>
                             </h:outputText>
 
                         </h:panelGrid>

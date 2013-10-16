@@ -126,7 +126,7 @@ public class TalkServiceTest extends ServiceTest {
 		talk.setName("Java EE Webstack Performance");
 		talk.setConference(this.conference);
 		talk.setRoom(this.room);
-		talk.setDate(super.parseDate("03.10.2014"));
+		talk.setStartDate(super.parseDate("03.10.2014"));
 		talk.setDuration(120);
 
 		TalkSpeaker talkSpeaker = new TalkSpeaker();

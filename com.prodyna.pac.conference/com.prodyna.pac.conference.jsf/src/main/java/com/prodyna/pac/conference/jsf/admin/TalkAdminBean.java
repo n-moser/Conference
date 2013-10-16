@@ -53,7 +53,7 @@ import java.util.List;
 @ManagedBean
 @SessionScoped
 @Named("talkAdminBean")
-public class TalkAdminBean implements Serializable {
+public class TalkAdminBean extends AdminBean implements Serializable {
 
 	private Talk talk;
 
@@ -140,9 +140,10 @@ public class TalkAdminBean implements Serializable {
 		this.speakerId = speakerId;
 	}
 
+	/** Assign the speaker with the id representaed in the property <b>speakerId</b> to the talk. */
 	public void assignSpeaker() {
 
-		if (this.speakerId != null) {
+		if (this.speakerId != null && !this.speakerId.equals(0L)) {
 
 			try {
 				Speaker speaker = this.speakerService.findSpeakerById(this.speakerId);
@@ -161,17 +162,31 @@ public class TalkAdminBean implements Serializable {
 		}
 	}
 
-	public void unassignSpeaker(Long talkSpeakerId) {
+	/**
+	 * Removes the speaker with the given id from the talk.
+	 *
+	 * @param speakerId
+	 * 		id of the speaker
+	 */
+	public void unassignSpeaker(Long speakerId) {
 
-		if (talkSpeakerId != null) {
+		if (speakerId != null) {
 
-			TalkSpeaker talkSpeaker = null;
-			for (TalkSpeaker speaker : this.talk.getSpeakers()) {
-				if (speaker.getId().equals(talkSpeakerId)) {
-					talkSpeaker = speaker;
+			TalkSpeaker speakerToRemove = null;
+			for (TalkSpeaker talkSpeaker : this.talk.getSpeakers()) {
+
+				Speaker speaker = talkSpeaker.getSpeaker();
+				if (speaker != null && speaker.getId() != null) {
+
+					if (speaker.getId().equals(speakerId)) {
+						speakerToRemove = talkSpeaker;
+					}
 				}
 			}
-			this.talk.getSpeakers().remove(talkSpeaker);
+
+			if (speakerToRemove != null) {
+				this.talk.getSpeakers().remove(speakerToRemove);
+			}
 		}
 	}
 
@@ -216,20 +231,22 @@ public class TalkAdminBean implements Serializable {
 		if (talk.getSpeakers().isEmpty()) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			facesContext.addMessage("talkForm:speakerPanel",
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wert muss gewählt werden.",
-							"Mindestens ein Speaker muss gewählt werden."));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "must be selected.",
+							"At least one speaker must be selected."));
 
 			facesContext.validationFailed();
 		}
 	}
 
-	public String save() throws ServiceException {
-
-		if (facesContext.isValidationFailed()) {
-			return null;
-		}
+	@Override
+	protected String internalSave() throws ServiceException {
 
 		if (talk != null) {
+
+			if (facesContext.isValidationFailed()) {
+				return null;
+			}
+
 			if (talk.getId() == null) {
 				talk = this.talkService.createTalk(talk);
 			} else {
@@ -242,7 +259,8 @@ public class TalkAdminBean implements Serializable {
 		return "adminConference";
 	}
 
-	public String remove() throws ServiceException {
+	@Override
+	protected String internalRemove() throws ServiceException {
 
 		if (talk != null) {
 			if (talk.getId() == null) {
@@ -257,5 +275,10 @@ public class TalkAdminBean implements Serializable {
 		}
 
 		return "adminConference";
+	}
+
+	@Override
+	protected String getFormName() {
+		return "talkForm";
 	}
 }

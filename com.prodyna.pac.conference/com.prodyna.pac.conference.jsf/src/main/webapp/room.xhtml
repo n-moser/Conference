@@ -65,14 +65,14 @@
 
                 <h:panelGrid columns="#{fn:length(roomBean.dates)}" width="100%" styleClass="gridTable">
 
-                    <c:forEach var="date" items="#{roomBean.dates}" varStatus="index">
+                    <c:forEach var="startDate" items="#{roomBean.dates}" varStatus="index">
 
                         <h:form>
                             <rich:panel>
 
                                 <f:facet name="header">
-                                    <h:outputText value="#{date}">
-                                        <f:convertDateTime type="date" pattern="dd.MM.yyyy"/>
+                                    <h:outputText value="#{startDate}">
+                                        <f:convertDateTime type="startDate" pattern="dd.MM.yyyy"/>
                                     </h:outputText>
                                 </f:facet>
 
@@ -81,8 +81,8 @@
 
                                     <f:facet name="term">
                                         <h:panelGroup layout="block">
-                                            <h:outputText value="#{talk.date}" style="font-weight:bold">
-                                                <f:convertDateTime type="date" pattern="HH:mm"/>
+                                            <h:outputText value="#{talk.startDate}" style="font-weight:bold">
+                                                <f:convertDateTime type="startDate" pattern="HH:mm"/>
                                             </h:outputText>
                                             <h:outputText value=" "/>
                                             <h:commandLink action="#{talkBean.open(talk.id)}" value="#{talk.name}"

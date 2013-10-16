@@ -27,6 +27,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -48,9 +49,9 @@ public class Talk implements Datatype {
 
 	private String description;
 
-	private Date date;
+	private Date startDate;
 
-	private Date time;
+	private Date endDate;
 
 	private Integer duration = 60;
 
@@ -146,28 +147,71 @@ public class Talk implements Datatype {
 	}
 
 	/**
-	 * Getter for the talk date.
+	 * Getter for the talk startDate.
 	 *
-	 * @return the date
+	 * @return the startDate
 	 */
 	@Future
 	@NotNull
 	@Temporal(value = TemporalType.TIMESTAMP)
 	@Column(nullable = false)
-	public Date getDate() {
+	public Date getStartDate() {
 
-		return date;
+		return startDate;
 	}
 
 	/**
-	 * Setter for the talk date.
+	 * Setter for the talk startDate.
 	 *
-	 * @param date
-	 * 		the date to set
+	 * @param startDate
+	 * 		the startDate to set
 	 */
-	public void setDate(Date date) {
+	public void setStartDate(Date startDate) {
 
-		this.date = date;
+		this.startDate = startDate;
+
+		this.internalSetEndDate();
+	}
+
+	/**
+	 * Getter for the talk endDate.
+	 *
+	 * @return the endDate
+	 */
+	@Future
+	@NotNull
+	@Temporal(value = TemporalType.TIMESTAMP)
+	@Column(nullable = false)
+	public Date getEndDate() {
+
+		return endDate;
+	}
+
+	/**
+	 * Setter for the talk endDate.
+	 *
+	 * @param endDate
+	 * 		the endDate to set
+	 */
+	public void setEndDate(Date endDate) {
+
+		this.endDate = endDate;
+	}
+
+	/** Transperently set the talks end date appropriate to its start date plus duration in minutes. */
+	private void internalSetEndDate() {
+
+		if (this.startDate != null && this.duration != null) {
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(this.startDate);
+			calendar.add(Calendar.MINUTE, this.duration);
+
+			Date newEndDate = calendar.getTime();
+
+			if (!newEndDate.equals(this.endDate)) {
+				this.endDate = newEndDate;
+			}
+		}
 	}
 
 	/**
@@ -193,6 +237,8 @@ public class Talk implements Datatype {
 	public void setDuration(Integer duration) {
 
 		this.duration = duration;
+
+		this.internalSetEndDate();
 	}
 
 	/**
@@ -288,7 +334,7 @@ public class Talk implements Datatype {
 		if (conference != null ? !conference.equals(talk.conference) : talk.conference != null) {
 			return false;
 		}
-		if (date != null ? !date.equals(talk.date) : talk.date != null) {
+		if (startDate != null ? !startDate.equals(talk.startDate) : talk.startDate != null) {
 			return false;
 		}
 		if (description != null ? !description.equals(talk.description) : talk.description != null) {
@@ -323,11 +369,17 @@ public class Talk implements Datatype {
 		result = 31 * result + (version != null ? version.hashCode() : 0);
 		result = 31 * result + (name != null ? name.hashCode() : 0);
 		result = 31 * result + (description != null ? description.hashCode() : 0);
-		result = 31 * result + (date != null ? date.hashCode() : 0);
+		result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
 		result = 31 * result + (duration != null ? duration.hashCode() : 0);
 		result = 31 * result + (room != null ? room.hashCode() : 0);
 		result = 31 * result + (conference != null ? conference.hashCode() : 0);
 		result = 31 * result + (speakers != null ? speakers.hashCode() : 0);
 		return result;
+	}
+
+	@Override
+	public String toString() {
+
+		return this.getName();
 	}
 }

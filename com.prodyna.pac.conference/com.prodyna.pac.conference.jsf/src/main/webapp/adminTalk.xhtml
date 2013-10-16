@@ -38,11 +38,11 @@
 
         <ui:define name="content">
 
+            <rich:messages globalOnly="true" showSummary="false" showDetail="true" styleClass="globalMessages"/>
+
             <f:facet name="header">
                 <h:outputText value="Talk Administration"></h:outputText>
             </f:facet>
-
-            <rich:messages globalOnly="true"/>
 
             <rich:panel id="talk" header="Talk">
 
@@ -50,8 +50,8 @@
                     <h:panelGrid columns="3" styleClass="masterTable" rowClasses="masterTableRow">
 
                         <h:outputText title="Name of the Talk" value="Name" styleClass="label"/>
-                        <h:inputText id="name" value="#{talkAdminBean.talk.name}"
-                                     styleClass="masterControl" immediate="true">
+                        <h:inputText id="name" value="#{talkAdminBean.talk.name}" styleClass="masterControl"
+                                     immediate="true">
                             <rich:validator/>
                         </h:inputText>
                         <rich:message for="name" styleClass="message"/>
@@ -63,17 +63,17 @@
                         </h:inputTextarea>
                         <rich:message for="description"/>
 
-                        <h:outputText title="Date of the Talk" value="Date" styleClass="label"/>
-                        <rich:calendar id="date" datePattern="dd.MM.yyyy HH:mm" value="#{talkAdminBean.talk.date}"
-                                       inputClass="masterControlCal">
+                        <h:outputText title="Start Date of the Talk" value="Start Date" styleClass="label"/>
+                        <rich:calendar id="startDate" datePattern="dd.MM.yyyy HH:mm" immediate="true"
+                                       value="#{talkAdminBean.talk.startDate}" inputClass="masterControlCal">
                             <rich:validator/>
                         </rich:calendar>
-                        <rich:message for="date"/>
+                        <rich:message for="startDate"/>
 
                         <h:outputText title="Duration of the Talk in Minutes" value="Duration" styleClass="label"/>
                         <rich:inputNumberSpinner id="duration" step="15" enableManualInput="false" minValue="15"
                                                  maxValue="480" value="#{talkAdminBean.talk.duration}"
-                                                 styleClass="masterSpin">
+                                                 styleClass="masterSpin" immediate="true">
                             <rich:validator/>
                         </rich:inputNumberSpinner>
                         <rich:message for="duration"/>
@@ -81,9 +81,9 @@
                         <h:outputText title="Conference of the Talk" value="Conference" styleClass="label"/>
                         <rich:select id="conference" enableManualInput="false" defaultLabel="Select the Conference"
                                      value="#{talkAdminBean.talk.conference}" immediate="true"
-                                     converter="#{conferenceConverter}" rerender="roomPicker">
+                                     converter="#{conferenceConverter}">
 
-                            <a4j:ajax render="roomPicker" event="change"/>
+                            <a4j:ajax render="room" event="change"/>
 
                             <f:selectItems value="#{conferenceListBean.conferences}" var="conference"
                                            itemValue="#{conference}" itemLabel="#{conference.name}"/>
@@ -93,8 +93,8 @@
                         <rich:message for="conference"/>
 
                         <h:outputText title="Room of the Talk" value="Room" styleClass="label"/>
-                        <rich:select id="roomPicker" enableManualInput="false" defaultLabel="Select the Room"
-                                     immediate="true" disabled="#{empty talkAdminBean.rooms}"
+                        <rich:select id="room" enableManualInput="false" defaultLabel="Select the Room"
+                                     disabled="#{empty talkAdminBean.rooms}" immediate="true"
                                      value="#{talkAdminBean.talk.room}" converter="#{roomConverter}">
 
                             <f:selectItems value="#{talkAdminBean.rooms}" var="room" itemValue="#{room}"
@@ -103,13 +103,13 @@
                             <rich:validator/>
 
                         </rich:select>
-                        <rich:message for="roomPicker"/>
+                        <rich:message for="room"/>
 
                         <h:outputText title="Speakers of the Talk" value="Speakers" styleClass="label"/>
 
                         <h:panelGrid columns="2">
 
-                            <a4j:outputPanel id="speakerPanel" ajaxRendered="true">
+                            <a4j:outputPanel id="speakers" ajaxRendered="true">
 
                                 <rich:dataTable id="speakerTable" value="#{talkAdminBean.talk.speakers}" var="speaker"
                                                 rendered="#{not empty talkAdminBean.talk.speakers}">
@@ -119,7 +119,8 @@
                                     </rich:column>
 
                                     <rich:column>
-                                        <h:commandLink action="#{talkAdminBean.unassignSpeaker(speaker.id)}">
+                                        <h:commandLink action="#{talkAdminBean.unassignSpeaker(speaker.speaker.id)}"
+                                                       immediate="true">
                                             <h:graphicImage value="./resources/images/icons/delete.gif" alt="delete"/>
                                         </h:commandLink>
                                     </rich:column>
@@ -128,7 +129,7 @@
 
                                 <h:outputText rendered="#{empty talkAdminBean.talk.speakers}" value="No Speakers"/>
 
-                                <f:event type="preValidate" listener="#{talkAdminBean.validateSpeakers}" />
+                                <f:event type="preValidate" listener="#{talkAdminBean.validateSpeakers}"/>
 
                             </a4j:outputPanel>
 
@@ -138,7 +139,7 @@
 
                         </h:panelGrid>
 
-                        <rich:message for="speakerPanel"/>
+                        <rich:message for="speakers"/>
 
                     </h:panelGrid>
 
@@ -173,8 +174,8 @@
 
                     </h:panelGrid>
 
-                    <a4j:commandButton value="Submit" action="#{talkAdminBean.assignSpeaker}" execute="@form"
-                                       render="speakerPanel,speakerPicker"
+                    <a4j:commandButton id="submitButton" value="Submit" action="#{talkAdminBean.assignSpeaker}"
+                                       execute="@form" render="speakers,speakerPicker"
                                        oncomplete="#{rich:component('speakerPopup')}.hide();"/>
                 </h:form>
 

@@ -118,7 +118,7 @@ public class RoomBean implements Serializable {
 
 				for (Talk talk : talks) {
 					Calendar talkDate = Calendar.getInstance();
-					talkDate.setTime(talk.getDate());
+					talkDate.setTime(talk.getStartDate());
 
 					if (date.get(Calendar.DAY_OF_YEAR) == talkDate.get(Calendar.DAY_OF_YEAR)) {
 						this.talks[i].add(talk);

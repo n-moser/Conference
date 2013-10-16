@@ -25,18 +25,18 @@ package com.prodyna.pac.conference.ejb.beans.service.talk;
 
 import com.prodyna.pac.conference.ejb.beans.interceptor.Performance;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
-import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
-import com.prodyna.pac.conference.ejb.facade.datatype.Room;
-import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
-import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
+import com.prodyna.pac.conference.ejb.facade.datatype.*;
 import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.facade.exception.ValidationException;
 import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
+import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -56,7 +56,11 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 
 	private static final String QUERY_FIND_TALKS_BY_ROOM = "Talk.findTalksByRoom";
 
+	private static final String QUERY_FIND_TALKS_BY_ROOM_IN_TIME = "Talk.findTalksByRoomInTime";
+
 	private static final String QUERY_FIND_TALKS_BY_SPEAKER = "Talk.findTalksBySpeaker";
+
+	private static final String QUERY_FIND_TALKS_BY_SPEAKER_IN_TIME = "Talk.findTalksBySpeakerInTime";
 
 	private static final String QUERY_FIND_TALK_BY_NAME = "Talk.findTalkByName";
 
@@ -138,6 +142,24 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 	}
 
 	@Override
+	public List<Talk> getTalksByRoom(Room room, Date startTime, Date endTime) throws ServiceException {
+
+		try {
+			TypedQuery<Talk> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_TALKS_BY_ROOM_IN_TIME, Talk.class);
+
+			query.setParameter("room", room);
+			query.setParameter("startTime", startTime, TemporalType.TIMESTAMP);
+			query.setParameter("endTime", endTime, TemporalType.TIMESTAMP);
+
+			return query.getResultList();
+
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot list Talk entities for room.", pe);
+		}
+	}
+
+	@Override
 	public List<Talk> getTalksBySpeaker(Speaker speaker) throws ServiceException {
 
 		try {
@@ -154,7 +176,27 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 	}
 
 	@Override
+	public List<Talk> getTalksBySpeaker(Speaker speaker, Date startTime, Date endTime) throws ServiceException {
+
+		try {
+			TypedQuery<Talk> query = this.entityManager.
+					createNamedQuery(QUERY_FIND_TALKS_BY_SPEAKER_IN_TIME, Talk.class);
+
+			query.setParameter("speaker", speaker);
+			query.setParameter("startTime", startTime, TemporalType.TIMESTAMP);
+			query.setParameter("endTime", endTime, TemporalType.TIMESTAMP);
+
+			return query.getResultList();
+
+		} catch (PersistenceException pe) {
+			throw new ServiceException("Cannot list Talk entities for speaker.", pe);
+		}
+	}
+
+	@Override
 	public Talk createTalk(Talk talk) throws ServiceException {
+
+		this.validateTalk(talk);
 
 		try {
 			this.entityManager.persist(talk);
@@ -168,6 +210,8 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 
 	@Override
 	public Talk updateTalk(Talk talk) throws ServiceException {
+
+		this.validateTalk(talk);
 
 		try {
 			talk = this.entityManager.merge(talk);
@@ -192,5 +236,73 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 		}
 
 		return talk;
+	}
+
+	@Override
+	public void validateTalk(Talk talk) throws ServiceException {
+
+		ValidationException exception = new ValidationException("Error validating Talk.");
+
+		Date startTime = talk.getStartDate();
+		Date endTime = talk.getEndDate();
+
+		Conference conference = talk.getConference();
+		if (conference != null) {
+
+			if (startTime.before(conference.getStartDate())) {
+				exception.addItem("startDate",
+						"Talk must be within the timeframe of conference '" + conference.getName() + "'.");
+			}
+			if (endTime.after(conference.getEndDate())) {
+				exception.addItem("startDate",
+						"Talk must be within the timeframe of conference '" + conference.getName() + "'.");
+			}
+		}
+
+		for (TalkSpeaker talkSpeaker : talk.getSpeakers()) {
+
+			Speaker speaker = talkSpeaker.getSpeaker();
+
+			if (speaker != null) {
+				List<Talk> talks = this.getTalksBySpeaker(speaker, startTime, endTime);
+
+				if (!talks.isEmpty()) {
+
+					if (talks.size() == 1) {
+						Talk intersectingTalk = talks.get(0);
+						if (talk.getId().equals(intersectingTalk.getId())) {
+							// Skip if intersected Talk is validated Talk.
+							continue;
+						}
+					}
+
+					exception.addItem("speakers",
+							"The talk intersects another talk of speaker '" + speaker.getName() + "'.");
+				}
+			}
+		}
+
+		Room room = talk.getRoom();
+
+		if (room != null) {
+			List<Talk> talks = this.getTalksByRoom(room, startTime, endTime);
+
+			if (!talks.isEmpty()) {
+
+				if (talks.size() == 1) {
+					Talk intersectingTalk = talks.get(0);
+					if (talk.getId().equals(intersectingTalk.getId())) {
+						// Skip if intersected Talk is validated Talk.
+						return;
+					}
+				}
+
+				exception.addItem("room", "The talk intersects another talk in room '" + room.getName() + "'.");
+			}
+		}
+
+		if (exception.hasItems()) {
+			throw exception;
+		}
 	}
 }

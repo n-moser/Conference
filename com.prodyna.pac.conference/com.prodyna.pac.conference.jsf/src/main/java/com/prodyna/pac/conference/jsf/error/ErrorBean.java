@@ -50,49 +50,52 @@ public class ErrorBean {
 		Map<String, Object> requestMap = context.getExternalContext().getRequestMap();
 
 		// Fetch the exception
-		Throwable ex = (Throwable) requestMap.get("javax.servlet.error.exception");
+		Throwable exception = (Throwable) requestMap.get("javax.servlet.error.exception");
 
 		// Create a writer for keeping the stacktrace of the exception
 		StringWriter writer = new StringWriter();
-		PrintWriter pw = new PrintWriter(writer);
+		PrintWriter printWriter = new PrintWriter(writer);
 
 		// Fill the stack trace into the write
-		fillStackTrace(ex, pw);
+		fillStackTrace(exception, printWriter);
 
-		return writer.toString();
+		String stack = "<pre>" + writer.toString() + "</pre>";
+
+		return stack;
 	}
 
 	/**
 	 * Write the stack trace from an exception into a writer.
 	 *
-	 * @param ex
-	 * 		Exception for which to get the stack trace
-	 * @param pw
-	 * 		PrintWriter to write the stack trace
+	 * @param exception
+	 * 		exception for which to get the stack trace
+	 * @param writer
+	 * 		writer to write the stack trace
 	 */
-	private void fillStackTrace(Throwable ex, PrintWriter pw) {
+	private void fillStackTrace(Throwable exception, PrintWriter writer) {
 
-		if (null == ex) {
+		if (null == exception) {
 			return;
 		}
 
-		ex.printStackTrace(pw);
+		exception.printStackTrace(writer);
 
 		// The first time fillStackTrace is called it will always
 		//  be a ServletException
-		if (ex instanceof ServletException) {
-			Throwable cause = ((ServletException) ex).getRootCause();
+		if (exception instanceof ServletException) {
+			Throwable cause = ((ServletException) exception).getRootCause();
 			if (null != cause) {
-				pw.println("Root Cause:");
-				fillStackTrace(cause, pw);
+				writer.println("Root Cause:");
+				writer.println("<br/>");
+				fillStackTrace(cause, writer);
 			}
 		} else {
 			// Embedded cause inside the ServletException
-			Throwable cause = ex.getCause();
+			Throwable cause = exception.getCause();
 
 			if (null != cause) {
-				pw.println("Cause:");
-				fillStackTrace(cause, pw);
+				writer.println("Cause:");
+				fillStackTrace(cause, writer);
 			}
 		}
 	}

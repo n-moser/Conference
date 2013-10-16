@@ -199,4 +199,10 @@ public class Room implements Datatype {
 		result = 31 * result + (conference != null ? conference.hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+
+		return this.getName();
+	}
 }

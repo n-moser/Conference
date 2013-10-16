@@ -139,6 +139,14 @@ body {
     margin-right: 20px;
 }
 
+.talkTable {
+    width: 60%;
+}
+
+.globalMessages .rf-msgs-err {
+    margin-bottom: 10px;
+}
+
 .message {
 }
 

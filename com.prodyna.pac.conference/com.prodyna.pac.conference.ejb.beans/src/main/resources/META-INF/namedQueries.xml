@@ -118,7 +118,7 @@
             <![CDATA[
                 SELECT t FROM Talk t
                 WHERE t.conference = :conference
-                ORDER BY t.date
+                ORDER BY t.startDate
             ]]>
         </query>
     </named-query>
@@ -128,7 +128,18 @@
             <![CDATA[
                 SELECT t FROM Talk t
                 WHERE t.room = :room
-                ORDER BY t.date
+                ORDER BY t.startDate
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Talk.findTalksByRoomInTime">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                WHERE t.room = :room
+                AND ((t.startDate BETWEEN :startTime AND :endTime) OR (t.endDate BETWEEN :startTime AND :endTime) OR (t.startDate <= :startTime AND t.endDate >= :endTime))
+                ORDER BY t.startDate
             ]]>
         </query>
     </named-query>
@@ -139,7 +150,19 @@
                 SELECT t FROM Talk t
                 inner join t.speakers ts
                 WHERE ts.speaker = :speaker
-                ORDER BY t.date
+                ORDER BY t.startDate
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Talk.findTalksBySpeakerInTime">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                inner join t.speakers ts
+                WHERE ts.speaker = :speaker
+                AND ((t.startDate BETWEEN :startTime AND :endTime) OR (t.endDate BETWEEN :startTime AND :endTime) OR (t.startDate <= :startTime AND t.endDate >= :endTime))
+                ORDER BY t.startDate
             ]]>
         </query>
     </named-query>

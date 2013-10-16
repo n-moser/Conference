@@ -79,7 +79,7 @@ public class TalkModificationEventHandler {
 			StringBuilder message = new StringBuilder();
 
 			message.append("Talk: ").append(event.getTalk().getName()).append("\n");
-			message.append("Date: ").append(event.getTalk().getDate()).append("\n");
+			message.append("Date: ").append(event.getTalk().getStartDate()).append("\n");
 			message.append("Room: ").append(event.getTalk().getRoom().getName()).append("\n");
 			message.append("Conference: ").append(event.getTalk().getConference()).append("\n");
 			return message.toString();
