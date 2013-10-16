@@ -51,7 +51,7 @@
         </rich:toolbarGroup>
 
         <rich:toolbarGroup rendered="#{not empty breadCrumpBean.talk}">
-            <h:outputText value=">" styleClass="breadCrumpSeparator" />
+            <h:outputText value=">" styleClass="breadCrumpSeparator"/>
             <h:outputLink value="talk.jsf" styleClass="breadCrump">#{breadCrumpBean.talk.name}</h:outputLink>
         </rich:toolbarGroup>
 
@@ -66,7 +66,9 @@
         </rich:toolbarGroup>
 
         <rich:toolbarGroup location="right">
-            <h:outputLink value="admin.jsf" styleClass="breadCrump" onclick="#{rich:component(breadCrumpBean)}.clear()">Administration</h:outputLink>
+            <h:form>
+                <h:commandLink action="#{breadCrumpBean.admin}" styleClass="breadCrump">Administration</h:commandLink>
+            </h:form>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup location="right">

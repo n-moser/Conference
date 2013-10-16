@@ -42,28 +42,27 @@
                 <h:outputText value="Speaker Administration"></h:outputText>
             </f:facet>
 
-            <h:panelGrid columns="2">
+            <rich:panel id="speaker" header="Speaker">
 
-                <rich:panel id="speaker" header="Speaker">
+                <h:form>
+                    <h:panelGrid columns="2" styleClass="masterTable">
 
-                    <h:form>
-                        <h:panelGrid columns="2">
+                        <h:outputText title="Name of the Speaker" value="Name" styleClass="label"/>
+                        <h:inputText value="#{speakerAdminBean.speaker.name}" required="true"
+                                     styleClass="masterControl"/>
 
-                            <h:outputText title="Name of the Speaker" value="Name" styleClass="label"/>
-                            <h:inputText value="#{speakerAdminBean.speaker.name}" required="true"/>
+                        <h:outputText title="Name of the Description" value="Description" styleClass="label"/>
+                        <h:inputTextarea value="#{speakerAdminBean.speaker.description}" required="true"
+                                         styleClass="masterText"/>
 
-                            <h:outputText title="Name of the Description" value="Description" styleClass="label"/>
-                            <h:inputTextarea value="#{speakerAdminBean.speaker.description}" required="true"/>
+                    </h:panelGrid>
 
-                            <h:commandButton value="Save" action="#{speakerAdminBean.save()}"/>
-                            <h:commandButton value="Delete" action="#{speakerAdminBean.remove()}"/>
+                    <h:commandButton value="Save" action="#{speakerAdminBean.save()}" styleClass="masterButton"/>
+                    <h:commandButton value="Delete" action="#{speakerAdminBean.remove()}"/>
 
-                        </h:panelGrid>
-                    </h:form>
+                </h:form>
 
-                </rich:panel>
-
-            </h:panelGrid>
+            </rich:panel>
 
         </ui:define>
 

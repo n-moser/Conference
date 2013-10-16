@@ -57,6 +57,9 @@ public class RoomAdminBean implements Serializable {
 	private RoomService roomService;
 
 	@Inject
+	private ConferenceAdminBean conferenceAdminBean;
+
+	@Inject
 	private Logger logger;
 
 
@@ -108,6 +111,8 @@ public class RoomAdminBean implements Serializable {
 				room = this.roomService.updateRoom(room);
 			}
 		}
+
+		conferenceAdminBean.setConference(room.getConference());
 
 		return "adminConference";
 	}

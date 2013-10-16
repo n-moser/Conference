@@ -1,17 +1,18 @@
-html, body {
+html {
+    margin: 0;
+    height: 100%;
+}
+
+body {
     margin: 0;
 
     background: -webkit-gradient(linear, left top, left bottom, from(#9c9c9c), to(#ddd));
     background: -moz-linear-gradient(top, #9c9c9c, #ddd);
 
-    /*
-    background-color: #bebebe;
-    */
-
     font-family: Arial, sans-serif;
     font-size: 1em;
 
-    height: 100%;
+    height: 97%;
 }
 
 /*
@@ -66,7 +67,7 @@ html, body {
 
 .label {
     font-weight: bold;
-    margin-right: 10px;
+    margin-right: 40px;
 }
 
 .buttonForm {
@@ -99,24 +100,47 @@ html, body {
     vertical-align: baseline;
 }
 
+.gridTableFirst {
+    width: 40%;
+}
+
 .editColumn {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.masterTable tbody {
     vertical-align: middle;
 }
 
-.masterTable {
-    width: 100%;
-}
-
 .masterTableRow {
-    vertical-align: bottom;
 }
 
 .masterControl {
-    width: 100%;
+    width: 300px;
+}
+
+.masterSpin .rf-insp-inp {
+    width: 182px;
+}
+
+.masterText {
+    resize: none;
+    width: 296px;
+    height: 100px;
 }
 
 .masterControlCal {
     margin-left: 0;
+    width: 179px;
+}
+
+.masterButton {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.message {
 }
 
 .linkTable {

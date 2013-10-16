@@ -52,11 +52,11 @@
                                      styleClass="masterControl" immediate="true">
                             <rich:validator/>
                         </h:inputText>
-                        <rich:message for="name"/>
+                        <rich:message for="name" styleClass="message"/>
 
                         <h:outputText title="Description of the Talk" value="Description" styleClass="label"/>
                         <h:inputTextarea id="description" value="#{talkAdminBean.talk.description}"
-                                         styleClass="masterControl" immediate="true">
+                                         styleClass="masterText" immediate="true">
                             <rich:validator/>
                         </h:inputTextarea>
                         <rich:message for="description"/>
@@ -70,7 +70,8 @@
 
                         <h:outputText title="Duration of the Talk in Minutes" value="Duration" styleClass="label"/>
                         <rich:inputNumberSpinner id="duration" step="15" enableManualInput="false" minValue="15"
-                                                 maxValue="480" value="#{talkAdminBean.talk.duration}" required="true">
+                                                 maxValue="480" value="#{talkAdminBean.talk.duration}" required="true"
+                                                 styleClass="masterSpin">
                             <rich:validator/>
                         </rich:inputNumberSpinner>
                         <rich:message for="duration"/>
@@ -131,7 +132,7 @@
 
                     </h:panelGrid>
 
-                    <h:commandButton value="Save" action="#{talkAdminBean.save()}"/>
+                    <h:commandButton value="Save" action="#{talkAdminBean.save()}" styleClass="masterButton"/>
                     <h:commandButton value="Delete" action="#{talkAdminBean.remove()}"/>
 
                 </h:form>
@@ -162,7 +163,8 @@
                     </h:panelGrid>
 
                     <a4j:commandButton value="Submit" action="#{talkAdminBean.assignSpeaker}" execute="@form"
-                                       render="speakerPanel,speakerPicker" oncomplete="#{rich:component('speakerPopup')}.hide();"/>
+                                       render="speakerPanel,speakerPicker"
+                                       oncomplete="#{rich:component('speakerPopup')}.hide();"/>
                 </h:form>
 
             </rich:popupPanel>

@@ -108,9 +108,17 @@ public class BreadCrumpBean implements Serializable {
 	}
 
 	public void clear() {
+
 		this.setConference(null);
 		this.setTalk(null);
 		this.setRoom(null);
 		this.setSpeaker(null);
+	}
+
+	public String admin() {
+
+		this.clear();
+
+		return "admin";
 	}
 }
