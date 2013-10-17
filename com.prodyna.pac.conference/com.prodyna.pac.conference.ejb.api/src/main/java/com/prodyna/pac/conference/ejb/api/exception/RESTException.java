@@ -21,36 +21,59 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.prodyna.pac.conference.ejb.api.exception;
 
+import javax.ejb.ApplicationException;
 
-test {
+/**
+ * ServiceException
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 16:44
+ */
+@ApplicationException(rollback = true)
+public class RESTException extends Exception {
 
-    // explicitly include tests
-    include 'com/prodyna/pac/conference/**'
+	/** Creates a new REST exception without parameters. */
+	public RESTException() {
 
-    // show standard out and standard error of the test JVM(s) on the console
-    // testLogging.showStandardStreams = true
+		super();
+	}
 
-    // set heap size for the test JVM(s)
-    minHeapSize = "128m"
-    maxHeapSize = "512m"
+	/**
+	 * Creates a new REST exception with the given error message.
+	 *
+	 * @param message
+	 * 		the error message
+	 */
+	public RESTException(String message) {
 
-    // set JVM arguments for the test JVM(s)
-    jvmArgs '-XX:MaxPermSize=256m'
+		super(message);
+	}
 
-    // set system properties for the test JVM(s)
-    systemProperty 'arquillian.launch', 'jboss_gradle'
+	/**
+	 * Creates a new REST exception with the given error cause.
+	 *
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public RESTException(Exception cause) {
 
-    // listen to events in the test execution lifecycle
-    beforeTest { descriptor ->
-        logger.lifecycle("Running test: " + descriptor)
-        println("JAVA_HOME: " + System.getenv('JAVA_HOME') + new File(System.getenv('JAVA_HOME')).isDirectory())
-    }
+		super(cause);
+	}
 
-    // listen to standard out and standard error of the test JVM(s)
-    onOutput { descriptor, event ->
-        // logger.lifecycle("\tTest: " + descriptor + " produced standard out/err: " + event.message)
-        logger.lifecycle("\t" + event.message)
-    }
+	/**
+	 * Creates a new REST exception with the given error message and cause.
+	 *
+	 * @param message
+	 * 		the error message
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public RESTException(String message, Exception cause) {
+
+		super(message, cause);
+	}
 
 }

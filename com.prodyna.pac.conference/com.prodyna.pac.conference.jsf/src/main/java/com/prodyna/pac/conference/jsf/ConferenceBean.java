@@ -77,6 +77,7 @@ public class ConferenceBean implements Serializable {
 		return conference;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setConference(Conference conference) {
 
 		if (conference == null) {

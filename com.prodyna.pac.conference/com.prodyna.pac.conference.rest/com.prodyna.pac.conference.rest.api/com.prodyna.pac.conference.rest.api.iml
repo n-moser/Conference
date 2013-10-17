@@ -24,7 +24,7 @@
     <orderEntry type="library" scope="TEST" name="log4j-1.2.17" level="project" />
     <orderEntry type="library" scope="TEST" name="junit-4.11" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="slf4j-api-1.7.5" level="project" />
-    <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.api" exported="" />
+    <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.api" scope="PROVIDED" />
   </component>
 </module>
 

@@ -21,36 +21,47 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+package com.prodyna.pac.conference.ejb.api.exception;
+
+import java.io.Serializable;
+
+/**
+ * ValidationItem
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 17.10.13
+ * Time: 00:55
+ */
+public class ValidationItem implements Serializable {
+
+	private String propertyName;
+
+	private String message;
+
+	public ValidationItem(String propertyName, String message) {
+
+		this.propertyName = propertyName;
+		this.message = message;
+	}
+
+	/**
+	 * Getter for the property propertyName.
+	 *
+	 * @return the property propertyName or null
+	 */
+	public String getPropertyName() {
+
+		return this.propertyName;
+	}
+
+	/**
+	 * Getter for the validation message.
+	 *
+	 * @return the validation message
+	 */
+	public String getMessage() {
 
 
-test {
-
-    // explicitly include tests
-    include 'com/prodyna/pac/conference/**'
-
-    // show standard out and standard error of the test JVM(s) on the console
-    // testLogging.showStandardStreams = true
-
-    // set heap size for the test JVM(s)
-    minHeapSize = "128m"
-    maxHeapSize = "512m"
-
-    // set JVM arguments for the test JVM(s)
-    jvmArgs '-XX:MaxPermSize=256m'
-
-    // set system properties for the test JVM(s)
-    systemProperty 'arquillian.launch', 'jboss_gradle'
-
-    // listen to events in the test execution lifecycle
-    beforeTest { descriptor ->
-        logger.lifecycle("Running test: " + descriptor)
-        println("JAVA_HOME: " + System.getenv('JAVA_HOME') + new File(System.getenv('JAVA_HOME')).isDirectory())
-    }
-
-    // listen to standard out and standard error of the test JVM(s)
-    onOutput { descriptor, event ->
-        // logger.lifecycle("\tTest: " + descriptor + " produced standard out/err: " + event.message)
-        logger.lifecycle("\t" + event.message)
-    }
-
+		return message;
+	}
 }

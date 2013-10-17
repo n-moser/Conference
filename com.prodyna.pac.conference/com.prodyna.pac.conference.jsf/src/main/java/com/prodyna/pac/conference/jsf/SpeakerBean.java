@@ -74,6 +74,7 @@ public class SpeakerBean implements Serializable {
 		return speaker;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setSpeaker(Speaker speaker) {
 
 		if (speaker == null) {

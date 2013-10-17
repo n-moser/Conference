@@ -252,9 +252,9 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 			} else {
 				talk = this.talkService.updateTalk(talk);
 			}
-		}
 
-		conferenceAdminBean.setConference(talk.getConference());
+			conferenceAdminBean.setConference(talk.getConference());
+		}
 
 		return "adminConference";
 	}
@@ -279,6 +279,7 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 
 	@Override
 	protected String getFormName() {
+
 		return "talkForm";
 	}
 }

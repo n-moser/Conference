@@ -78,8 +78,7 @@ public class RoomBean implements Serializable {
 		return room;
 	}
 
-
-
+	@SuppressWarnings("unchecked")
 	public void setRoom(Room room) {
 
 		if (room == null) {

@@ -23,9 +23,6 @@
 
 package com.prodyna.pac.conference.ejb.beans.service;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-
 /**
  * AllTests
  * <p/>
@@ -33,13 +30,6 @@ import org.junit.runners.Suite;
  * Date: 10.10.13
  * Time: 00:09
  */
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-	com.prodyna.pac.conference.ejb.beans.service.conference.ConferenceServiceTest.class,
-	com.prodyna.pac.conference.ejb.beans.service.room.RoomServiceTest.class,
-	com.prodyna.pac.conference.ejb.beans.service.speaker.SpeakerServiceTest.class,
-	com.prodyna.pac.conference.ejb.beans.service.talk.TalkServiceTest.class
-})
 public class AllTests {
 
 }
