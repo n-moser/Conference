@@ -22,8 +22,9 @@
  */
 
 include "com.prodyna.pac.conference.application"
-include "com.prodyna.pac.conference.ejb.api"
-include "com.prodyna.pac.conference.ejb.beans"
+include "com.prodyna.pac.conference.ejb"
+include "com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api"
+include "com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.beans"
 include "com.prodyna.pac.conference.rest"
 include "com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api"
 include "com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.beans"

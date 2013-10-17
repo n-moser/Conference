@@ -24,7 +24,7 @@
 apply plugin: 'war'
 
 dependencies {
-    providedCompile project(':com.prodyna.pac.conference.ejb.api')
+    providedCompile project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
 
     providedCompile group: 'org.jboss.spec.javax.servlet', name: 'jboss-servlet-api_3.0_spec', version: servletVersion
     providedCompile group: 'org.jboss.spec.javax.faces', name: 'jboss-jsf-api_2.1_spec', version: '2.0.1.Final'

@@ -26,8 +26,8 @@ apply plugin: 'ear'
 description = 'This project is responsible for creating the Conference enterprise application archive (ear).'
 
 dependencies {
-    deploy project(':com.prodyna.pac.conference.ejb.api')
-    deploy project(':com.prodyna.pac.conference.ejb.beans')
+    deploy project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
+    deploy project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.beans')
     deploy project(path: ':com.prodyna.pac.conference.jsf', configuration: 'archives')
     deploy project(path: ':com.prodyna.pac.conference.rest', configuration: 'archives')
 }
