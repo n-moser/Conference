@@ -230,7 +230,7 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 
 		if (talk.getSpeakers().isEmpty()) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage("talkForm:speakerPanel",
+			facesContext.addMessage("talkForm:speakers",
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "must be selected.",
 							"At least one speaker must be selected."));
 
