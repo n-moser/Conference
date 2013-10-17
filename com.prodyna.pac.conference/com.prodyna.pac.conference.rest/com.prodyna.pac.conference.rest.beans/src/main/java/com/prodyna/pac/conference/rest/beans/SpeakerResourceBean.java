@@ -21,84 +21,76 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans.resources;
+package com.prodyna.pac.conference.rest.beans;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
+import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
+import com.prodyna.pac.conference.rest.api.SpeakerResource;
 
 import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.PathParam;
 import java.util.List;
 
 /**
- * TalkResource
+ * SpeakerResourceBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 19.09.13
  * Time: 18:28
  */
-@Path("talk")
-public class TalkResource {
+public class SpeakerResourceBean implements SpeakerResource {
 
 	@Inject
-	private TalkService talkService;
+	private SpeakerService speakerService;
 
-	@GET
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Talk findTalk(@PathParam("id") Long id) throws RESTException {
+	@Override
+	public Speaker findSpeaker(@PathParam("id") Long id) throws RESTException {
 
 		try {
-			return this.talkService.findTalkById(id);
+			return this.speakerService.findSpeakerById(id);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Talk> getAllTasks() throws RESTException {
+	@Override
+	public List<Speaker> getAllSpeakers() throws RESTException {
+
 		try {
-			return this.talkService.getAllTalks();
+			return this.speakerService.getAllSpeakers();
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Talk createTalk(Talk talk) throws RESTException {
+	@Override
+	public Speaker createSpeaker(Speaker speaker) throws RESTException {
 
 		try {
-			return this.talkService.createTalk(talk);
+			return this.speakerService.createSpeaker(speaker);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Talk updateTalk(Talk talk) throws RESTException {
+	@Override
+	public Speaker updateSpeaker(Speaker speaker) throws RESTException {
 
 		try {
-			return this.talkService.updateTalk(talk);
+			return this.speakerService.updateSpeaker(speaker);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
-	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
-	public Talk deleteTalk(Long id) throws RESTException {
+	@Override
+	public Speaker deleteSpeaker(Long id) throws RESTException {
 
 		try {
-			Talk talk = this.talkService.findTalkById(id);
-			return this.talkService.removeTalk(talk);
+			Speaker speaker = this.speakerService.findSpeakerById(id);
+			return this.speakerService.removeSpeaker(speaker);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}

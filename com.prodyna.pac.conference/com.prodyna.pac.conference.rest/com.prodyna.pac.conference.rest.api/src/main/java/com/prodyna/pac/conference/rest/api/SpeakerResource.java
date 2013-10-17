@@ -21,10 +21,45 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.rest.api;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
+import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
+
+/**
+ * SpeakerResource
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 17.10.13
+ * Time: 15:46
+ */
+@Path("speaker")
+public interface SpeakerResource {
+
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	Speaker findSpeaker(@PathParam("id") Long id) throws RESTException;
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	List<Speaker> getAllSpeakers() throws RESTException;
+
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Speaker createSpeaker(Speaker speaker) throws RESTException;
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Speaker updateSpeaker(Speaker speaker) throws RESTException;
+
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	Speaker deleteSpeaker(Long id) throws RESTException;
 }

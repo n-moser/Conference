@@ -21,14 +21,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans.resources;
+package com.prodyna.pac.conference.rest.api;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -37,72 +34,32 @@ import java.util.List;
  * ConferenceResource
  * <p/>
  * Author: Nicolas Moser
- * Date: 19.09.13
- * Time: 18:28
+ * Date: 17.10.13
+ * Time: 15:43
  */
 @Path("conference")
-public class ConferenceResource {
-
-	@Inject
-	private ConferenceService conferenceService;
+public interface ConferenceResource {
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Conference findConference(@PathParam("id") Long id) throws RESTException {
-
-		try {
-			return this.conferenceService.findConferenceById(id);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
+	Conference findConference(@PathParam("id") Long id) throws RESTException;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Conference> getAllTasks() throws RESTException {
-
-		try {
-			return this.conferenceService.getAllConferences();
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
+	List<Conference> getAllConferences() throws RESTException;
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Conference createConference(Conference conference) throws RESTException {
-
-		try {
-			return this.conferenceService.createConference(conference);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
+	Conference createConference(Conference conference) throws RESTException;
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Conference updateConference(Conference conference) throws RESTException {
-
-		try {
-			return this.conferenceService.updateConference(conference);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
+	Conference updateConference(Conference conference) throws RESTException;
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	public Conference deleteConference(Long id) throws RESTException {
-
-		try {
-			Conference conference = this.conferenceService.findConferenceById(id);
-			return this.conferenceService.removeConference(conference);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
+	Conference deleteConference(Long id) throws RESTException;
 }

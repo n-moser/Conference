@@ -21,34 +21,31 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans.resources;
+package com.prodyna.pac.conference.rest.beans;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
+import com.prodyna.pac.conference.rest.api.RoomResource;
 
 import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.PathParam;
 import java.util.List;
 
 /**
- * RoomResource
+ * RoomResourceBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 19.09.13
  * Time: 18:28
  */
-@Path("room")
-public class RoomResource {
+public class RoomResourceBean implements RoomResource {
 
 	@Inject
 	private RoomService roomService;
 
-	@GET
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Override
 	public Room findRoom(@PathParam("id") Long id) throws RESTException {
 
 		try {
@@ -58,9 +55,9 @@ public class RoomResource {
 		}
 	}
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Room> getAllTasks() throws RESTException {
+	@Override
+	public List<Room> getAllRooms() throws RESTException {
+
 		try {
 			return this.roomService.getAllRooms();
 		} catch (ServiceException e) {
@@ -69,9 +66,7 @@ public class RoomResource {
 	}
 
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
+	@Override
 	public Room createRoom(Room room) throws RESTException {
 
 		try {
@@ -81,9 +76,7 @@ public class RoomResource {
 		}
 	}
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
+	@Override
 	public Room updateRoom(Room room) throws RESTException {
 
 		try {
@@ -93,8 +86,7 @@ public class RoomResource {
 		}
 	}
 
-	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
+	@Override
 	public Room deleteRoom(Long id) throws RESTException {
 
 		try {

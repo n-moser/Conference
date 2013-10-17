@@ -21,10 +21,45 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.rest.api;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import com.prodyna.pac.conference.ejb.api.datatype.Room;
+import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
+
+/**
+ * RoomResource
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 17.10.13
+ * Time: 15:45
+ */
+@Path("room")
+public interface RoomResource {
+
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	Room findRoom(@PathParam("id") Long id) throws RESTException;
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	List<Room> getAllRooms() throws RESTException;
+
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Room createRoom(Room room) throws RESTException;
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Room updateRoom(Room room) throws RESTException;
+
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	Room deleteRoom(Long id) throws RESTException;
 }
