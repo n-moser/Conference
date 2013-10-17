@@ -24,10 +24,8 @@
 apply plugin: 'war'
 
 dependencies {
-    compile project(':com.prodyna.pac.conference.rest.api')
-    compile project(':com.prodyna.pac.conference.rest.beans')
-
-    providedCompile group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+    compile project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
+    compile project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.beans')
 }
 
 war {

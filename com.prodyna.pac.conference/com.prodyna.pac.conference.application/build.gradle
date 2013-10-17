@@ -29,7 +29,7 @@ dependencies {
     deploy project(':com.prodyna.pac.conference.ejb.facade')
     deploy project(':com.prodyna.pac.conference.ejb.beans')
     deploy project(path: ':com.prodyna.pac.conference.jsf', configuration: 'archives')
-    deploy project(path: ':com.prodyna.pac.conference.rest.war', configuration: 'archives')
+    deploy project(path: ':com.prodyna.pac.conference.rest', configuration: 'archives')
 }
 
 ear {

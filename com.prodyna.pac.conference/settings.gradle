@@ -21,4 +21,10 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-include "com.prodyna.pac.conference.application", "com.prodyna.pac.conference.ejb.facade", "com.prodyna.pac.conference.ejb.beans", "com.prodyna.pac.conference.rest.api", "com.prodyna.pac.conference.rest.beans", "com.prodyna.pac.conference.jsf"
+include "com.prodyna.pac.conference.application"
+include "com.prodyna.pac.conference.ejb.facade"
+include "com.prodyna.pac.conference.ejb.beans"
+include "com.prodyna.pac.conference.rest"
+include "com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api"
+include "com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.beans"
+include "com.prodyna.pac.conference.jsf"
