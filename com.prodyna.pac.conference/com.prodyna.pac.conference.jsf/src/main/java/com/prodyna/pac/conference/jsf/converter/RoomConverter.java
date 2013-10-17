@@ -23,8 +23,8 @@
 
 package com.prodyna.pac.conference.jsf.converter;
 
-import com.prodyna.pac.conference.ejb.facade.datatype.Room;
-import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.datatype.Room;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.jsf.admin.TalkAdminBean;
 
 import javax.annotation.ManagedBean;

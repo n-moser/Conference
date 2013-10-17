@@ -24,10 +24,10 @@
 package com.prodyna.pac.conference.ejb.beans.service.room;
 
 import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
-import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
-import com.prodyna.pac.conference.ejb.facade.datatype.Room;
-import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
-import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
+import com.prodyna.pac.conference.ejb.api.datatype.Conference;
+import com.prodyna.pac.conference.ejb.api.datatype.Room;
+import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
+import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.After;
 import org.junit.Assert;

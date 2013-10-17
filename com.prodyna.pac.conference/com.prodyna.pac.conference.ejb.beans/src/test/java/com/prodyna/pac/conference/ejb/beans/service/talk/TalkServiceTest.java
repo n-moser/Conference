@@ -24,11 +24,11 @@
 package com.prodyna.pac.conference.ejb.beans.service.talk;
 
 import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
-import com.prodyna.pac.conference.ejb.facade.datatype.*;
-import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
-import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
-import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
-import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
+import com.prodyna.pac.conference.ejb.api.datatype.*;
+import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
+import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
+import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
+import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.After;
 import org.junit.Assert;

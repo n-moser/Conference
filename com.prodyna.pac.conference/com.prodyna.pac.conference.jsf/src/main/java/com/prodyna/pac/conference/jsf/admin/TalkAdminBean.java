@@ -23,12 +23,12 @@
 
 package com.prodyna.pac.conference.jsf.admin;
 
-import com.prodyna.pac.conference.ejb.facade.datatype.*;
-import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.service.conference.ConferenceService;
-import com.prodyna.pac.conference.ejb.facade.service.room.RoomService;
-import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
-import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
+import com.prodyna.pac.conference.ejb.api.datatype.*;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
+import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
+import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
+import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;

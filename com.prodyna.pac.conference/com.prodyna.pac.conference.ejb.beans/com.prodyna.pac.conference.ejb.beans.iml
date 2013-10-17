@@ -180,7 +180,7 @@
     <orderEntry type="library" scope="TEST" name="jstl-1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="plexus-cipher-1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="arquillian-testenricher-resource-1.0.0.CR7" level="project" />
-    <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.facade" exported="" />
+    <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.api" exported="" />
   </component>
 </module>
 

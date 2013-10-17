@@ -23,7 +23,7 @@
 
 package com.prodyna.pac.conference.ejb.beans.service;
 
-import com.prodyna.pac.conference.ejb.facade.service.Service;
+import com.prodyna.pac.conference.ejb.api.service.Service;
 
 /**
  * ServiceBean

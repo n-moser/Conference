@@ -23,7 +23,7 @@
 
 package com.prodyna.pac.conference.ejb.beans.event;
 
-import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 
 public class TalkModificationEvent {
 

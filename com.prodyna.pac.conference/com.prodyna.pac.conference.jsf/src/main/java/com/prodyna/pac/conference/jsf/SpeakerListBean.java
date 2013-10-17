@@ -23,9 +23,9 @@
 
 package com.prodyna.pac.conference.jsf;
 
-import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
-import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
+import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;

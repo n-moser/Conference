@@ -23,8 +23,8 @@
 
 package com.prodyna.pac.conference.ejb.beans.persistence;
 
-import com.prodyna.pac.conference.ejb.facade.datatype.Datatype;
-import com.prodyna.pac.conference.ejb.facade.exception.PersistenceException;
+import com.prodyna.pac.conference.ejb.api.datatype.Datatype;
+import com.prodyna.pac.conference.ejb.api.exception.PersistenceException;
 
 /**
  * PersistenceManager

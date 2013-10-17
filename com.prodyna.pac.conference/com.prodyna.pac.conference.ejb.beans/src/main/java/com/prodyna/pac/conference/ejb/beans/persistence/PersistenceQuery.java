@@ -23,7 +23,7 @@
 
 package com.prodyna.pac.conference.ejb.beans.persistence;
 
-import com.prodyna.pac.conference.ejb.facade.exception.PersistenceException;
+import com.prodyna.pac.conference.ejb.api.exception.PersistenceException;
 
 import javax.persistence.Parameter;
 import java.util.List;

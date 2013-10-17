@@ -24,9 +24,9 @@
 package com.prodyna.pac.conference.ejb.beans.decorator;
 
 import com.prodyna.pac.conference.ejb.beans.event.TalkModificationEvent;
-import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
-import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;

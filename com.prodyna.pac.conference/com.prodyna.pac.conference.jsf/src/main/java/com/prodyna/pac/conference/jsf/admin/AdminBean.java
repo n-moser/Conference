@@ -23,9 +23,9 @@
 
 package com.prodyna.pac.conference.jsf.admin;
 
-import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.exception.ValidationException;
-import com.prodyna.pac.conference.ejb.facade.exception.ValidationItem;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.exception.ValidationException;
+import com.prodyna.pac.conference.ejb.api.exception.ValidationItem;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

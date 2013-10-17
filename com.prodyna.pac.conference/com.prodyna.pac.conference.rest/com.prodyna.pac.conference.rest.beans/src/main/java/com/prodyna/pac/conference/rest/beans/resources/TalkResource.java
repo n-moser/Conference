@@ -23,10 +23,10 @@
 
 package com.prodyna.pac.conference.rest.beans.resources;
 
-import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
-import com.prodyna.pac.conference.ejb.facade.exception.RESTException;
-import com.prodyna.pac.conference.ejb.facade.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.facade.service.talk.TalkService;
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;

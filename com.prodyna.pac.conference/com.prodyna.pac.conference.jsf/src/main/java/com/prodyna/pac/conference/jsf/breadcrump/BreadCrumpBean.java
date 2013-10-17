@@ -23,10 +23,10 @@
 
 package com.prodyna.pac.conference.jsf.breadcrump;
 
-import com.prodyna.pac.conference.ejb.facade.datatype.Conference;
-import com.prodyna.pac.conference.ejb.facade.datatype.Room;
-import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
-import com.prodyna.pac.conference.ejb.facade.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.datatype.Conference;
+import com.prodyna.pac.conference.ejb.api.datatype.Room;
+import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;

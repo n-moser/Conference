@@ -24,8 +24,8 @@
 package com.prodyna.pac.conference.ejb.beans.service.speaker;
 
 import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
-import com.prodyna.pac.conference.ejb.facade.datatype.Speaker;
-import com.prodyna.pac.conference.ejb.facade.service.speaker.SpeakerService;
+import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
+import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Assert;
 import org.junit.Test;

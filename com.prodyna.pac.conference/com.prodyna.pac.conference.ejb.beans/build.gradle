@@ -29,7 +29,7 @@ configurations {
 
 dependencies {
 
-    compile project(':com.prodyna.pac.conference.ejb.facade')
+    compile project(':com.prodyna.pac.conference.ejb.api')
 
     provided group: 'org.jboss.spec.javax.jms', name: 'jboss-jms-api_1.1_spec', version: jmsVersion
 
