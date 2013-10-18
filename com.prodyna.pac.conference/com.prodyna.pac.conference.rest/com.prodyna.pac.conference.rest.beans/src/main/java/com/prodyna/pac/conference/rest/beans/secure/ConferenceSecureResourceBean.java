@@ -21,59 +21,64 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans;
+package com.prodyna.pac.conference.rest.beans.secure;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
-import com.prodyna.pac.conference.rest.api.TalkResource;
+import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
+import com.prodyna.pac.conference.rest.api.secure.ConferenceSecureResource;
+import com.prodyna.pac.conference.rest.beans.ConferenceResourceBean;
 
 import javax.inject.Inject;
-import javax.ws.rs.PathParam;
-import java.util.List;
 
 /**
- * TalkResourceBean
+ * ConferenceResourceBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 19.09.13
  * Time: 18:28
  */
-public class TalkResourceBean implements TalkResource {
+public class ConferenceSecureResourceBean extends ConferenceResourceBean implements ConferenceSecureResource {
 
 	@Inject
-	private TalkService talkService;
+	private ConferenceService conferenceService;
 
 	@Override
-	public Talk findTalk(@PathParam("id") Long id) throws RESTException {
+	public Conference createConference(Conference conference) throws RESTException {
 
 		try {
-			return this.getTalkService().findTalkById(id);
+			return this.conferenceService.createConference(conference);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	public List<Talk> getAllTalks() throws RESTException {
+	public Conference updateConference(Conference conference) throws RESTException {
 
 		try {
-			return this.getTalkService().getAllTalks();
+			return this.conferenceService.updateConference(conference);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
-	/**
-	 * Getter for the talk service EJB.
-	 *
-	 * @return the talk service
-	 */
-	protected TalkService getTalkService() {
+	@Override
+	public Conference deleteConference(Long id) throws RESTException {
 
-		return this.talkService;
+		try {
+			Conference conference = this.conferenceService.findConferenceById(id);
+			return this.conferenceService.removeConference(conference);
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
 	}
 
+	@Override
+	protected ConferenceService getConferenceService() {
+
+		return this.conferenceService;
+	}
 
 }

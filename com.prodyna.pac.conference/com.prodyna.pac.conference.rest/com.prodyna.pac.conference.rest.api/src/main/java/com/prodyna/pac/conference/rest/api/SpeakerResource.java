@@ -26,7 +26,10 @@ package com.prodyna.pac.conference.rest.api;
 import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -49,17 +52,4 @@ public interface SpeakerResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	List<Speaker> getAllSpeakers() throws RESTException;
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Speaker createSpeaker(Speaker speaker) throws RESTException;
-
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Speaker updateSpeaker(Speaker speaker) throws RESTException;
-
-	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
-	Speaker deleteSpeaker(Long id) throws RESTException;
 }

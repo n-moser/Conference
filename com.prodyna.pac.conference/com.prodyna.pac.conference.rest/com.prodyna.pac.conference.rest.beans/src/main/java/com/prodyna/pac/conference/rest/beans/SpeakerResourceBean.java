@@ -49,7 +49,7 @@ public class SpeakerResourceBean implements SpeakerResource {
 	public Speaker findSpeaker(@PathParam("id") Long id) throws RESTException {
 
 		try {
-			return this.speakerService.findSpeakerById(id);
+			return this.getSpeakerService().findSpeakerById(id);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
@@ -59,41 +59,20 @@ public class SpeakerResourceBean implements SpeakerResource {
 	public List<Speaker> getAllSpeakers() throws RESTException {
 
 		try {
-			return this.speakerService.getAllSpeakers();
+			return this.getSpeakerService().getAllSpeakers();
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
-	@Override
-	public Speaker createSpeaker(Speaker speaker) throws RESTException {
+	/**
+	 * Getter for the speaker service EJB.
+	 *
+	 * @return the speaker service
+	 */
+	protected SpeakerService getSpeakerService() {
 
-		try {
-			return this.speakerService.createSpeaker(speaker);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	public Speaker updateSpeaker(Speaker speaker) throws RESTException {
-
-		try {
-			return this.speakerService.updateSpeaker(speaker);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	public Speaker deleteSpeaker(Long id) throws RESTException {
-
-		try {
-			Speaker speaker = this.speakerService.findSpeakerById(id);
-			return this.speakerService.removeSpeaker(speaker);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
+		return this.speakerService;
 	}
 
 }

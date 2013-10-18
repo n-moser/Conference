@@ -26,7 +26,11 @@ package com.prodyna.pac.conference.rest.api;
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
 
-import javax.ws.rs.*;
+import javax.annotation.security.PermitAll;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -37,6 +41,7 @@ import java.util.List;
  * Date: 17.10.13
  * Time: 15:43
  */
+@PermitAll
 @Path("conference")
 public interface ConferenceResource {
 
@@ -49,17 +54,4 @@ public interface ConferenceResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	List<Conference> getAllConferences() throws RESTException;
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Conference createConference(Conference conference) throws RESTException;
-
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Conference updateConference(Conference conference) throws RESTException;
-
-	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
-	Conference deleteConference(Long id) throws RESTException;
 }

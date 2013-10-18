@@ -21,17 +21,16 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans;
+package com.prodyna.pac.conference.rest.beans.secure;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
-import com.prodyna.pac.conference.rest.api.TalkResource;
+import com.prodyna.pac.conference.rest.api.secure.TalkSecureResource;
+import com.prodyna.pac.conference.rest.beans.TalkResourceBean;
 
 import javax.inject.Inject;
-import javax.ws.rs.PathParam;
-import java.util.List;
 
 /**
  * TalkResourceBean
@@ -40,40 +39,46 @@ import java.util.List;
  * Date: 19.09.13
  * Time: 18:28
  */
-public class TalkResourceBean implements TalkResource {
+public class TalkSecureResourceBean extends TalkResourceBean implements TalkSecureResource {
 
 	@Inject
 	private TalkService talkService;
 
 	@Override
-	public Talk findTalk(@PathParam("id") Long id) throws RESTException {
+	public Talk createTalk(Talk talk) throws RESTException {
 
 		try {
-			return this.getTalkService().findTalkById(id);
+			return this.talkService.createTalk(talk);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	public List<Talk> getAllTalks() throws RESTException {
+	public Talk updateTalk(Talk talk) throws RESTException {
 
 		try {
-			return this.getTalkService().getAllTalks();
+			return this.talkService.updateTalk(talk);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
-	/**
-	 * Getter for the talk service EJB.
-	 *
-	 * @return the talk service
-	 */
+	@Override
+	public Talk deleteTalk(Long id) throws RESTException {
+
+		try {
+			Talk talk = this.talkService.findTalkById(id);
+			return this.talkService.removeTalk(talk);
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	@Override
 	protected TalkService getTalkService() {
 
 		return this.talkService;
 	}
-
 
 }

@@ -49,7 +49,7 @@ public class ConferenceResourceBean implements ConferenceResource {
 	public Conference findConference(@PathParam("id") Long id) throws RESTException {
 
 		try {
-			return this.conferenceService.findConferenceById(id);
+			return this.getConferenceService().findConferenceById(id);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
@@ -59,41 +59,20 @@ public class ConferenceResourceBean implements ConferenceResource {
 	public List<Conference> getAllConferences() throws RESTException {
 
 		try {
-			return this.conferenceService.getAllConferences();
+			return this.getConferenceService().getAllConferences();
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
-	@Override
-	public Conference createConference(Conference conference) throws RESTException {
+	/**
+	 * Getter for the conference service EJB.
+	 *
+	 * @return the conference service
+	 */
+	protected ConferenceService getConferenceService() {
 
-		try {
-			return this.conferenceService.createConference(conference);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	public Conference updateConference(Conference conference) throws RESTException {
-
-		try {
-			return this.conferenceService.updateConference(conference);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	public Conference deleteConference(Long id) throws RESTException {
-
-		try {
-			Conference conference = this.conferenceService.findConferenceById(id);
-			return this.conferenceService.removeConference(conference);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
+		return this.conferenceService;
 	}
 
 }

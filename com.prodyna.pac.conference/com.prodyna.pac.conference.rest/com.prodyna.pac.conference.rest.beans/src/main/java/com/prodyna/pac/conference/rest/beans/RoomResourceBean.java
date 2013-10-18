@@ -49,7 +49,7 @@ public class RoomResourceBean implements RoomResource {
 	public Room findRoom(@PathParam("id") Long id) throws RESTException {
 
 		try {
-			return this.roomService.findRoomById(id);
+			return this.getRoomService().findRoomById(id);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
@@ -59,42 +59,20 @@ public class RoomResourceBean implements RoomResource {
 	public List<Room> getAllRooms() throws RESTException {
 
 		try {
-			return this.roomService.getAllRooms();
+			return this.getRoomService().getAllRooms();
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
+	/**
+	 * Getter for the room service EJB.
+	 *
+	 * @return the room service
+	 */
+	protected RoomService getRoomService() {
 
-	@Override
-	public Room createRoom(Room room) throws RESTException {
-
-		try {
-			return this.roomService.createRoom(room);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	public Room updateRoom(Room room) throws RESTException {
-
-		try {
-			return this.roomService.updateRoom(room);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	public Room deleteRoom(Long id) throws RESTException {
-
-		try {
-			Room room = this.roomService.findRoomById(id);
-			return this.roomService.removeRoom(room);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
+		return this.roomService;
 	}
 
 }

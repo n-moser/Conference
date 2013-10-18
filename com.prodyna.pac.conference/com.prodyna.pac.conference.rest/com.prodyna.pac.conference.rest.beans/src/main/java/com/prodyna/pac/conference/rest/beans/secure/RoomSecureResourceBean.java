@@ -21,34 +21,64 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api;
+package com.prodyna.pac.conference.rest.beans.secure;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
+import com.prodyna.pac.conference.rest.api.secure.RoomSecureResource;
+import com.prodyna.pac.conference.rest.beans.RoomResourceBean;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import java.util.List;
+import javax.inject.Inject;
 
 /**
- * RoomResource
+ * RoomResourceBean
  * <p/>
  * Author: Nicolas Moser
- * Date: 17.10.13
- * Time: 15:45
+ * Date: 19.09.13
+ * Time: 18:28
  */
-@Path("room")
-public interface RoomResource {
+public class RoomSecureResourceBean extends RoomResourceBean implements RoomSecureResource {
 
-	@GET
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	Room findRoom(@PathParam("id") Long id) throws RESTException;
+	@Inject
+	private RoomService roomService;
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	List<Room> getAllRooms() throws RESTException;
+	@Override
+	public Room createRoom(Room room) throws RESTException {
+
+		try {
+			return this.roomService.createRoom(room);
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	@Override
+	public Room updateRoom(Room room) throws RESTException {
+
+		try {
+			return this.roomService.updateRoom(room);
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	@Override
+	public Room deleteRoom(Long id) throws RESTException {
+
+		try {
+			Room room = this.roomService.findRoomById(id);
+			return this.roomService.removeRoom(room);
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	@Override
+	protected RoomService getRoomService() {
+
+		return this.roomService;
+	}
+
 }

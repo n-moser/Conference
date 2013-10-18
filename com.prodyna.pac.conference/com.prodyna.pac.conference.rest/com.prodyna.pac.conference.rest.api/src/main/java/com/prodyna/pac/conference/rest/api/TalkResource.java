@@ -26,7 +26,10 @@ package com.prodyna.pac.conference.rest.api;
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -48,18 +51,4 @@ public interface TalkResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	List<Talk> getAllTalks() throws RESTException;
-
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Talk createTalk(Talk talk) throws RESTException;
-
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Talk updateTalk(Talk talk) throws RESTException;
-
-	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
-	Talk deleteTalk(Long id) throws RESTException;
 }
