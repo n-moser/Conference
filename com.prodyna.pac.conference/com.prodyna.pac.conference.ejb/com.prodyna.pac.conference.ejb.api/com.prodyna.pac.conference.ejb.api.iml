@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-  <component name="FacetManager">
-    <facet type="javaeeApplication" name="javaEEApplication">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="application.xml" url="file://$MODULE_DIR$/build/tmp/ear/application.xml" />
-        </descriptors>
-      </configuration>
-    </facet>
-  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../com.prodyna.pac.conference.ejb.facade/src/main/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../com.prodyna.pac.conference.ejb.facade/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../com.prodyna.pac.conference.ejb.facade/src/test/resources" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../com.prodyna.pac.conference.ejb.facade/.gradle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="hamcrest-core-1.3" level="project" />
+    <orderEntry type="library" exported="" name="hibernate-validator-4.2.0.Final" level="project" />
+    <orderEntry type="library" exported="" name="validation-api-1.0.0.GA" level="project" />
+    <orderEntry type="library" exported="" name="jboss-ejb-api_3.1_spec-1.0.1.Final" level="project" />
+    <orderEntry type="library" exported="" name="hibernate-jpa-2.0-api-1.0.1.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="junit-4.11" level="project" />
+    <orderEntry type="library" exported="" name="slf4j-api-1.6.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="slf4j-api-1.7.5" level="project" />
     <orderEntry type="library" scope="TEST" name="log4j-1.2.17" level="project" />
     <orderEntry type="library" scope="TEST" name="slf4j-log4j12-1.7.5" level="project" />
+    <orderEntry type="library" exported="" name="cdi-api-1.0-SP4" level="project" />
+    <orderEntry type="library" exported="" name="jsr250-api-1.0" level="project" />
+    <orderEntry type="library" exported="" name="jboss-interceptors-api_1.1_spec-1.0.0.Beta1" level="project" />
+    <orderEntry type="library" exported="" name="javax.inject-1" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>

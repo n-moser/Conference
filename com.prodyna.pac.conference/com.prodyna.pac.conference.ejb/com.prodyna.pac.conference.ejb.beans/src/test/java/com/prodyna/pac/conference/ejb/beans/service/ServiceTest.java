@@ -21,12 +21,51 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.ejb.beans.service;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    testRuntime group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+/**
+ * ServiceTest
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 12.09.13
+ * Time: 12:37
+ */
+public abstract class ServiceTest {
+
+	private static final DateFormat FORMAT = new SimpleDateFormat("dd.MM.yyyy");
+
+	/**
+	 * Parse the given date string in the pattern 'dd.MM.yyyy' as Date.
+	 *
+	 * @param date
+	 * 		the date as string
+	 *
+	 * @return the date instance
+	 *
+	 * @throws ParseException
+	 * 		when the date is not in the given format
+	 */
+	protected Date parseDate(String date) throws ParseException {
+
+		return FORMAT.parse(date);
+	}
+
+	/**
+	 * Prints the date to the given format 'dd.MM.yyyy'.
+	 *
+	 * @param date
+	 * 		the date instance
+	 *
+	 * @return the date as string
+	 */
+	protected String format(Date date) {
+
+		return FORMAT.format(date);
+	}
+
 }

@@ -21,12 +21,38 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.ejb.beans.service.arquillian;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.shrinkwrap.api.Archive;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    testRuntime group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+/**
+ * Deployments
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 18.09.13
+ * Time: 09:10
+ */
+public class Deployments {
+
+	private static Logger logger = LoggerFactory.getLogger(Deployments.class);
+
+	@Deployment
+	public static Archive<?> createTestArchive() {
+
+		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
+		war.addPackages(true, "com.prodyna.pac.conference");
+		war.addAsWebInfResource("META-INF/beans.xml", "beans.xml");
+		war.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
+		war.addAsResource("META-INF/namedQueries.xml", "META-INF/namedQueries.xml");
+		war.addAsWebInfResource("talk-hornetq-jms.xml", "talk-hornetq-jms.xml");
+
+		logger.info(war.toString(true));
+
+		return war;
+	}
 }

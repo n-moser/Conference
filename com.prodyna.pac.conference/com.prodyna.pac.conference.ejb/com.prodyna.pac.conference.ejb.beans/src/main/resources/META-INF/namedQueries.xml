@@ -1,0 +1,179 @@
+<!--
+  ~ The MIT License (MIT)
+  ~
+  ~ Copyright (c) 2013 Nicolas Moser
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of
+  ~ this software and associated documentation files (the "Software"), to deal in
+  ~ the Software without restriction, including without limitation the rights to
+  ~ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+  ~ the Software, and to permit persons to whom the Software is furnished to do so,
+  ~ security to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  ~ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  ~ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  ~ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  ~ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+                 version="2.0">
+
+    <!-- Conference -->
+
+    <named-query name="Conference.findAllConferences">
+        <query>
+            <![CDATA[
+                SELECT c FROM Conference c
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Conference.findConferenceByName">
+        <query>
+            <![CDATA[
+                SELECT c FROM Conference c
+                WHERE c.name = :name
+            ]]>
+        </query>
+    </named-query>
+
+    <!-- Room -->
+
+    <named-query name="Room.findAllRooms">
+        <query>
+            <![CDATA[
+                SELECT r FROM Room r
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Room.findRoomsByConference">
+        <query>
+            <![CDATA[
+                SELECT r FROM Room r
+                WHERE r.conference = :conference
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Room.findRoomByName">
+        <query>
+            <![CDATA[
+                SELECT r FROM Room r
+                WHERE r.name = :name
+            ]]>
+        </query>
+    </named-query>
+
+    <!-- Speaker -->
+
+    <named-query name="Speaker.findAllSpeakers">
+        <query>
+            <![CDATA[
+                SELECT s FROM Speaker s
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Speaker.findSpeakersByTalk">
+        <query>
+            <![CDATA[
+                SELECT s FROM Talk t
+                inner join t.speakers ts
+                inner join ts.speaker s
+                WHERE t = :talk
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Speaker.findSpeakerByName">
+        <query>
+            <![CDATA[
+                SELECT s FROM Speaker s
+                WHERE s.name = :name
+            ]]>
+        </query>
+    </named-query>
+
+    <!-- Talk -->
+
+    <named-query name="Talk.findAllTalks">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Talk.findTalksByConference">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                WHERE t.conference = :conference
+                ORDER BY t.startDate
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Talk.findTalksByRoom">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                WHERE t.room = :room
+                ORDER BY t.startDate
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Talk.findTalksByRoomInTime">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                WHERE t.room = :room
+                AND ((t.startDate BETWEEN :startTime AND :endTime) OR (t.endDate BETWEEN :startTime AND :endTime) OR (t.startDate <= :startTime AND t.endDate >= :endTime))
+                ORDER BY t.startDate
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Talk.findTalksBySpeaker">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                inner join t.speakers ts
+                WHERE ts.speaker = :speaker
+                ORDER BY t.startDate
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Talk.findTalksBySpeakerInTime">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                inner join t.speakers ts
+                WHERE ts.speaker = :speaker
+                AND ((t.startDate BETWEEN :startTime AND :endTime) OR (t.endDate BETWEEN :startTime AND :endTime) OR (t.startDate <= :startTime AND t.endDate >= :endTime))
+                ORDER BY t.startDate
+            ]]>
+        </query>
+    </named-query>
+
+    <named-query name="Talk.findTalkByName">
+        <query>
+            <![CDATA[
+                SELECT t FROM Talk t
+                WHERE t.name = :name
+            ]]>
+        </query>
+    </named-query>
+
+</entity-mappings>

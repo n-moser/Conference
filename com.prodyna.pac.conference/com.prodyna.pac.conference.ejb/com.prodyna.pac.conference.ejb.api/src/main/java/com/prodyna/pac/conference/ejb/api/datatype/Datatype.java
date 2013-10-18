@@ -21,12 +21,31 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.ejb.api.datatype;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import java.io.Serializable;
 
-    testRuntime group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+/**
+ * Datatype
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 06.09.13
+ * Time: 17:35
+ */
+public interface Datatype extends Serializable {
+
+	/**
+	 * Getter for the Datatype Identifier.
+	 *
+	 * @return the Identifier
+	 */
+	Long getId();
+
+	/**
+	 * Getter for the Datatype Version.
+	 *
+	 * @return the Version
+	 */
+	Long getVersion();
+
 }

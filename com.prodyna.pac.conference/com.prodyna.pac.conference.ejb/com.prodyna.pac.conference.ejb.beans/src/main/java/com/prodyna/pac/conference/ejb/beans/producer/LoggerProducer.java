@@ -21,12 +21,26 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.ejb.beans.producer;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    testRuntime group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
+
+/**
+ * LoggerProducer
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 26.09.13
+ * Time: 20:40
+ */
+public class LoggerProducer {
+
+	@Produces
+	public Logger produceLogger(InjectionPoint ip) {
+
+		return LoggerFactory.getLogger(ip.getMember().getDeclaringClass());
+	}
 }

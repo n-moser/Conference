@@ -1,0 +1,83 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2013 Nicolas Moser
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+description = 'This project holds the EJB Implementations.'
+
+configurations {
+    jbossAS7ManagedTestRuntime { extendsFrom testRuntime }
+    jbossAS7Distribution
+    mysqlDriver
+}
+
+dependencies {
+
+    compile project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
+
+    provided group: 'org.jboss.spec.javax.jms', name: 'jboss-jms-api_1.1_spec', version: jmsVersion
+
+    testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: hamcrestVersion
+    testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-container', version: arquillianVersion
+    testCompile group: 'org.jboss.arquillian.protocol', name: 'arquillian-protocol-servlet', version: arquillianVersion
+
+    testCompile group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-api-javaee', version: shrinkwrapVersion
+
+    testRuntime group: 'org.jboss.shrinkwrap.descriptors', name: 'shrinkwrap-descriptors-impl-javaee', version: shrinkwrapVersion
+
+    testRuntime group: 'javax.enterprise', name: 'cdi-api', version: cdiVersion
+    testRuntime group: 'org.jboss.as', name: 'jboss-as-arquillian-container-managed', version: jbossVersion
+    testRuntime group: 'org.jboss.spec', name: 'jboss-javaee-6.0', version: javaeeVersion
+
+//    testRuntime group: 'org.jacoco', name:'org.jacoco.core', version:'0.6.0.201210061924'
+//    testRuntime group: 'org.jboss.arquillian.extension', name: 'arquillian-jacoco', version: '1.0.0.Alpha5'
+
+    jbossAS7Distribution('org.jboss.as:jboss-as-dist:7.1.1.Final@zip')
+    mysqlDriver group: 'mysql', name: 'mysql-connector-java', version: mysqlDriverVersion
+
+}
+
+task explodeJBoss(type: Copy) {
+
+    def jbossDir = file("${buildDir}")
+    def jbossDeployDir = file("${buildDir}/jboss-as-7.1.1.Final/standalone/deployments")
+
+    from zipTree(configurations.jbossAS7Distribution.singleFile)
+    into jbossDir
+
+    doFirst {
+        logger.lifecycle("Exploding JBoss " + configurations.jbossAS7Distribution.singleFile)
+    }
+
+    doLast {
+        copy {
+            from configurations.mysqlDriver.singleFile
+            into jbossDeployDir
+        }
+
+        copy {
+            from file("${projectDir}/src/test/resources/test-ds.xml")
+            into jbossDeployDir
+        }
+    }
+}
+
+test.dependsOn explodeJBoss

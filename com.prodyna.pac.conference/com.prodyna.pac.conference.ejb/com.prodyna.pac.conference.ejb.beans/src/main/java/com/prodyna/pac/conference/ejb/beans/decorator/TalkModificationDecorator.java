@@ -21,12 +21,39 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.ejb.beans.decorator;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import com.prodyna.pac.conference.ejb.beans.event.TalkModificationEvent;
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 
-    testRuntime group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+import javax.decorator.Decorator;
+import javax.decorator.Delegate;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
+
+@Decorator
+public abstract class TalkModificationDecorator implements TalkService {
+
+	@Inject
+	@Delegate
+	private TalkService delegate;
+
+	@Inject
+	private Event<TalkModificationEvent> event;
+
+	@Override
+	public Talk updateTalk(Talk talk) throws ServiceException {
+
+		Talk modifiedTalk = this.delegate.updateTalk(talk);
+
+		if (modifiedTalk != null && modifiedTalk.getId() != null) {
+			TalkModificationEvent talkModificationEvent = new TalkModificationEvent(modifiedTalk);
+			this.event.fire(talkModificationEvent);
+		}
+
+		return modifiedTalk;
+	}
+
 }

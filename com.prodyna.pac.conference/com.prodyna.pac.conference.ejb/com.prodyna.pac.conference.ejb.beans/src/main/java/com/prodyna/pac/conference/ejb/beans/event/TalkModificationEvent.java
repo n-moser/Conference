@@ -21,12 +21,24 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.ejb.beans.event;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 
-    testRuntime group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+public class TalkModificationEvent {
+
+	// TODO: Old Talk / New Talk
+
+	private Talk talk;
+
+	public TalkModificationEvent(Talk talk) {
+
+		this.talk = talk;
+	}
+
+	public Talk getTalk() {
+
+		return this.talk;
+	}
+
 }

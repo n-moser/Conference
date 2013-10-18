@@ -9,6 +9,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../com.prodyna.pac.conference.rest.beans/src/test/resources" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../com.prodyna.pac.conference.rest.beans/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/../../com.prodyna.pac.conference.rest.beans/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../com.prodyna.pac.conference.rest.beans/build" />
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
@@ -24,6 +26,29 @@
     <orderEntry type="library" scope="PROVIDED" name="jboss-jaxrs-api_1.1_spec-1.0.0.Final" level="project" />
     <orderEntry type="module" module-name="com.prodyna.pac.conference.rest.api" scope="PROVIDED" />
     <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.api" scope="PROVIDED" />
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/jar/6b262da268f8ad9eff941b25503a9198f0a0ac93/slf4j-api-1.7.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/source/654135274d4c27132ea208a4ec07f344bdb83bcb/slf4j-api-1.7.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" scope="TEST" name="commons-httpclient-3.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="jsr250-api-1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="commons-logging-1.1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="jcip-annotations-1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="commons-codec-1.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="httpclient-4.1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="activation-1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="httpcore-4.1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="jaxrs-api-2.3.2.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="resteasy-jaxrs-2.3.2.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="scannotation-1.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="javassist-3.12.1.GA" level="project" />
   </component>
 </module>
 

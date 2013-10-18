@@ -21,12 +21,59 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.ejb.api.exception;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import javax.ejb.ApplicationException;
 
-    testRuntime group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+/**
+ * ServiceException
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 16:44
+ */
+@ApplicationException(rollback = true)
+public class ServiceException extends Exception {
+
+	/** Creates a new service exception without parameters. */
+	public ServiceException() {
+
+		super();
+	}
+
+	/**
+	 * Creates a new service exception with the given error message.
+	 *
+	 * @param message
+	 * 		the error message
+	 */
+	public ServiceException(String message) {
+
+		super(message);
+	}
+
+	/**
+	 * Creates a new service exception with the given error cause.
+	 *
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public ServiceException(Exception cause) {
+
+		super(cause);
+	}
+
+	/**
+	 * Creates a new service exception with the given error message and cause.
+	 *
+	 * @param message
+	 * 		the error message
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public ServiceException(String message, Exception cause) {
+
+		super(message, cause);
+	}
+
 }

@@ -29,6 +29,7 @@ ext {
     ejbVersion = '1.0.1.Final'
     cdiVersion = '1.0-SP4'
     injectVersion = '1'
+    annotationVersion = '1.0.0.Final'
     javaeeVersion = '1.0.0.Final'
     jmsVersion = '1.0.0.Final'
 
@@ -38,6 +39,9 @@ ext {
     servletVersion = '1.0.0.Final'
     jaxrsVersion = '1.0.0.Final'
 
+    resteasyVersion = '2.3.2.Final'
+
+    jsfVersion = '2.0.1.Final'
     richfacesVersion = '4.3.4.Final'
 
     jbossVersion = '7.1.1.Final'

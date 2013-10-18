@@ -21,12 +21,39 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.ejb.beans.interceptor;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import org.slf4j.Logger;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
-    testRuntime group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+import javax.inject.Inject;
+import javax.interceptor.AroundInvoke;
+import javax.interceptor.Interceptor;
+import javax.interceptor.InvocationContext;
+import java.lang.reflect.Method;
+
+@Audit
+@Interceptor
+public class AuditInterceptor {
+
+	private static final String MARKER_AUDIT = "AUDIT";
+
+	@Inject
+	private Logger logger;
+
+	@AroundInvoke
+	public Object audit(InvocationContext context) throws Exception {
+		Marker marker = MarkerFactory.getMarker(MARKER_AUDIT);
+
+		// TODO: Username
+
+		String user = "userName";
+		Method method = context.getMethod();
+
+		logger.info(marker, "User '{}' accessed service operation '{}'.", user,
+				method.getName());
+		
+		return context.proceed();
+	}
 }

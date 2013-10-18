@@ -21,12 +21,47 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-description = 'This project holds the REST implementations.'
+package com.prodyna.pac.conference.ejb.api.exception;
 
-dependencies {
-    provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
-    provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
-    provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
+import java.io.Serializable;
 
-    testRuntime group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+/**
+ * ValidationItem
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 17.10.13
+ * Time: 00:55
+ */
+public class ValidationItem implements Serializable {
+
+	private String propertyName;
+
+	private String message;
+
+	public ValidationItem(String propertyName, String message) {
+
+		this.propertyName = propertyName;
+		this.message = message;
+	}
+
+	/**
+	 * Getter for the property propertyName.
+	 *
+	 * @return the property propertyName or null
+	 */
+	public String getPropertyName() {
+
+		return this.propertyName;
+	}
+
+	/**
+	 * Getter for the validation message.
+	 *
+	 * @return the validation message
+	 */
+	public String getMessage() {
+
+
+		return message;
+	}
 }
