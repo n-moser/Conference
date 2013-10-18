@@ -10,4 +10,4 @@ before_script:
   - mysql -e 'create database conference;'
 
 script:
-  - TERM=dumb gradle clean check
+  - TERM=dumb gradle check
