@@ -44,7 +44,8 @@ test {
     // listen to events in the test execution lifecycle
     beforeTest { descriptor ->
         logger.lifecycle("Running test: " + descriptor)
-        println("JAVA_HOME: " + System.getenv('JAVA_HOME') + new File(System.getenv('JAVA_HOME')).isDirectory())
+        logger.debug("Using JAVA_HOME: " + System.getenv('JAVA_HOME'))
+        logger.debug("Java Directory: " + new File(System.getenv('JAVA_HOME')).isDirectory())
     }
 
     // listen to standard out and standard error of the test JVM(s)
