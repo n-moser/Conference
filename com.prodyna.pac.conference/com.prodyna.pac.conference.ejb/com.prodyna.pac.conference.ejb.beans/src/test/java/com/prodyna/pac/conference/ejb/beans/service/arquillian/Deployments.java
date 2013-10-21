@@ -32,6 +32,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Deployments
@@ -45,7 +46,7 @@ public class Deployments {
 	private static Logger logger = LoggerFactory.getLogger(Deployments.class);
 
 	@Deployment
-	public static Archive<?> createTestArchive() {
+	public static Archive<?> createTestArchive() throws IOException {
 
 		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
 		war.addPackages(true, "com.prodyna.pac.conference");
@@ -56,7 +57,14 @@ public class Deployments {
 
 		logger.info(war.toString(true));
 
-		File tempFile = new File("build/arquillian/latest-ejb.war");
+		File tempFile = new File("build/arquillian/latest-rest.war");
+		if (!tempFile.exists()) {
+			File arquillianFolder = tempFile.getParentFile();
+			if (!arquillianFolder.exists()) {
+				arquillianFolder.mkdirs();
+			}
+			tempFile.createNewFile();
+		}
 		war.as(ZipExporter.class).exportTo(tempFile, true);
 
 		return war;

@@ -23,7 +23,6 @@
 
 package com.prodyna.pac.conference.rest.beans;
 
-import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
 import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
@@ -40,21 +39,11 @@ import javax.enterprise.inject.Produces;
  */
 public class Mocks {
 
-	private ConferenceService conferenceMock;
-
 	private TalkService talkMock;
 
 	private RoomService roomMock;
 
 	private SpeakerService speakerMock;
-
-
-	@Produces
-	public ConferenceService createConferenceMock() {
-
-		this.conferenceMock = Mockito.mock(ConferenceService.class);
-		return conferenceMock;
-	}
 
 
 	@Produces
