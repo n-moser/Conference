@@ -25,6 +25,8 @@
 
 test {
 
+    ext.debugMode = false
+
     // explicitly include tests
     include 'com/prodyna/pac/conference/**'
 
@@ -51,7 +53,10 @@ test {
     // listen to standard out and standard error of the test JVM(s)
     onOutput { descriptor, event ->
         // logger.lifecycle("\tTest: " + descriptor + " produced standard out/err: " + event.message)
-        logger.lifecycle("\t" + event.message)
+
+        if (test.debugMode) {
+            logger.lifecycle("\t" + event.message)
+        }
     }
 
 }

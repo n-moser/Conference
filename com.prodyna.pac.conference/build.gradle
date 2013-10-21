@@ -53,6 +53,9 @@ ext {
 
     arquillianVersion = '1.1.1.Final'
     shrinkwrapVersion = '2.0.0-alpha-3'
+
+    // Additional Options
+
 }
 
 subprojects {
@@ -87,6 +90,11 @@ subprojects {
 
 }
 
-task clean << {
-    delete 'build'
+task clean() {
+
+    description = 'Cleans the root build directory'
+
+    doLast {
+        delete 'build'
+    }
 }

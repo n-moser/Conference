@@ -54,6 +54,8 @@ dependencies {
 
 task explodeJBoss(type: Copy) {
 
+    description = 'Extracts JBoss AS 7 into the build directory and deploys MySQL Driver and Datasource'
+
     def jbossDir = file("${buildDir}")
     def jbossDeployDir = file("${buildDir}/jboss-as-7.1.1.Final/standalone/deployments")
 
