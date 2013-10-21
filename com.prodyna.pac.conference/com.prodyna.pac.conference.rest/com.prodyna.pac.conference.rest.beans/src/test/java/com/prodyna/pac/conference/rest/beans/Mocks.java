@@ -21,44 +21,62 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.service.arquillian;
+package com.prodyna.pac.conference.rest.beans;
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.exporter.ZipExporter;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
+import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
+import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
+import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
+import org.mockito.Mockito;
 
-import java.io.File;
+import javax.enterprise.inject.Produces;
 
 /**
- * Deployments
+ * Mocks
  * <p/>
  * Author: Nicolas Moser
- * Date: 18.09.13
- * Time: 09:10
+ * Date: 21.10.13
+ * Time: 16:11
  */
-public class Deployments {
+public class Mocks {
 
-	private static Logger logger = LoggerFactory.getLogger(Deployments.class);
+	private ConferenceService conferenceMock;
 
-	@Deployment
-	public static Archive<?> createTestArchive() {
+	private TalkService talkMock;
 
-		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
-		war.addPackages(true, "com.prodyna.pac.conference");
-		war.addAsWebInfResource("META-INF/beans.xml", "beans.xml");
-		war.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
-		war.addAsResource("META-INF/namedQueries.xml", "META-INF/namedQueries.xml");
-		war.addAsWebInfResource("talk-hornetq-jms.xml", "talk-hornetq-jms.xml");
+	private RoomService roomMock;
 
-		logger.info(war.toString(true));
+	private SpeakerService speakerMock;
 
-		File tempFile = new File("build/arquillian/latest-ejb.war");
-		war.as(ZipExporter.class).exportTo(tempFile, true);
 
-		return war;
+	@Produces
+	public ConferenceService createConferenceMock() {
+
+		this.conferenceMock = Mockito.mock(ConferenceService.class);
+		return conferenceMock;
+	}
+
+
+	@Produces
+	public TalkService createTalkMock() {
+
+		this.talkMock = Mockito.mock(TalkService.class);
+		return talkMock;
+	}
+
+
+	@Produces
+	public RoomService createRoomMock() {
+
+		this.roomMock = Mockito.mock(RoomService.class);
+		return roomMock;
+	}
+
+
+	@Produces
+	public SpeakerService createSpeakerMock() {
+
+		this.speakerMock = Mockito.mock(SpeakerService.class);
+		return speakerMock;
 	}
 }

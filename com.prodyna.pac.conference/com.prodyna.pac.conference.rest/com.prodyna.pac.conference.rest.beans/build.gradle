@@ -23,10 +23,42 @@
 
 description = 'This project holds the REST implementations.'
 
+apply from: "$rootDir/config/gradle/arquillian.gradle"
+
+configurations {
+    mockito
+}
+
 dependencies {
     provided project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
     provided project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
     provided group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_1.1_spec', version: jaxrsVersion
 
-    testRuntime group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+    testCompile group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
+    testCompile group: 'org.jboss.resteasy', name: 'resteasy-jackson-provider', version: resteasyVersion
+
+    testCompile group: 'org.mockito', name:'mockito-all', version: '1.9.5'
+    mockito group: 'org.mockito', name:'mockito-all', version: '1.9.5'
+
+    testRuntime project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
+    testRuntime project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')
 }
+
+task copyMockitoForArquillian(type: Copy) {
+
+    def arquillianLibDir = file("${rootDir}/build/arquillian/lib")
+    def arquillianLibDirBuild = file("${buildDir}/arquillian/lib")
+
+    from configurations.mockito.singleFile
+    into arquillianLibDir
+
+
+    from configurations.mockito.singleFile
+    into arquillianLibDirBuild
+
+    doFirst {
+        logger.lifecycle("Copying Mockito " + configurations.mockito.singleFile)
+    }
+}
+
+test.dependsOn copyMockitoForArquillian

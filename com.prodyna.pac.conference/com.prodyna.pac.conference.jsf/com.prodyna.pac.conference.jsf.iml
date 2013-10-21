@@ -49,51 +49,7 @@
     <orderEntry type="library" scope="PROVIDED" name="jboss-annotations-api_1.1_spec-1.0.0.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="jboss-jsf-api_2.1_spec-2.0.1.Final" level="project" />
     <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.api" scope="PROVIDED" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.servlet/jboss-servlet-api_3.0_spec/1.0.0.Final/jar/44fb8e9dff4a0ec4081bb5492b9a3a9ab9c3466b/jboss-servlet-api_3.0_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.servlet/jboss-servlet-api_3.0_spec/1.0.0.Final/source/c4d0c1b8f52aaf0b73b5277c0ec0bdfdb7f2ecbe/jboss-servlet-api_3.0_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.faces/jboss-jsf-api_2.1_spec/2.0.1.Final/jar/3f1d6ca5f8eed6cccc40e76f31529f57fb17316b/jboss-jsf-api_2.1_spec-2.0.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.faces/jboss-jsf-api_2.1_spec/2.0.1.Final/source/e8490856d1dd756d4b90239a19e28ebf4bde6010/jboss-jsf-api_2.1_spec-2.0.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.annotation/jboss-annotations-api_1.1_spec/1.0.0.Final/jar/394e909e8b61259bcd63e9ba8b0d7a636d8db479/jboss-annotations-api_1.1_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.annotation/jboss-annotations-api_1.1_spec/1.0.0.Final/source/749eb3ec8063d0a1ae2bb965640a5604181d7c2a/jboss-annotations-api_1.1_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
     <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.api" exported="" />
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/jar/6b262da268f8ad9eff941b25503a9198f0a0ac93/slf4j-api-1.7.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/source/654135274d4c27132ea208a4ec07f344bdb83bcb/slf4j-api-1.7.5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
   </component>
 </module>
 
