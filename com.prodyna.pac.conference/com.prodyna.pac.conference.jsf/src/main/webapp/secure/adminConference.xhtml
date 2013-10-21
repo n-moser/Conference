@@ -35,7 +35,7 @@
 
 <h:body>
 
-    <ui:composition template="templates/layout.xhtml">
+    <ui:composition template="../templates/layout.xhtml">
 
         <ui:define name="content">
 
@@ -149,7 +149,7 @@
                             <rich:column styleClass="editColumn">
                                 <h:form>
                                     <h:commandLink action="#{talkAdminBean.edit(talk.id)}">
-                                        <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
+                                        <h:graphicImage value="../resources/images/icons/edit.gif" alt="edit"/>
                                     </h:commandLink>
                                 </h:form>
                             </rich:column>
@@ -184,7 +184,7 @@
                             <rich:column styleClass="editColumn">
                                 <h:form>
                                     <h:commandLink action="#{roomAdminBean.edit(room.id)}">
-                                        <h:graphicImage value="./resources/images/icons/edit.gif" alt="edit"/>
+                                        <h:graphicImage value="../resources/images/icons/edit.gif" alt="edit"/>
                                     </h:commandLink>
                                 </h:form>
                             </rich:column>

@@ -32,6 +32,7 @@ import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -52,6 +53,7 @@ import java.util.List;
  */
 @ManagedBean
 @SessionScoped
+@RolesAllowed("admin")
 @Named("talkAdminBean")
 public class TalkAdminBean extends AdminBean implements Serializable {
 
@@ -217,7 +219,7 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 			this.talk.setConference(conference);
 		}
 
-		return "adminTalk";
+		return "adminTalk?faces-redirect=true";
 	}
 
 	/**
@@ -256,7 +258,7 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 			conferenceAdminBean.setConference(talk.getConference());
 		}
 
-		return "adminConference";
+		return "adminConference?faces-redirect=true";
 	}
 
 	@Override
@@ -271,10 +273,10 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 		}
 
 		if (conferenceAdminBean.getConference() == null) {
-			return "admin";
+			return "admin?faces-redirect=true";
 		}
 
-		return "adminConference";
+		return "adminConference?faces-redirect=true";
 	}
 
 	@Override

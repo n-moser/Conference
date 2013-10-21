@@ -31,6 +31,7 @@ import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -45,6 +46,7 @@ import java.io.Serializable;
  */
 @ManagedBean
 @SessionScoped
+@RolesAllowed("admin")
 @Named("roomAdminBean")
 public class RoomAdminBean implements Serializable {
 
@@ -99,7 +101,7 @@ public class RoomAdminBean implements Serializable {
 			this.room.setConference(conference);
 		}
 
-		return "adminRoom";
+		return "adminRoom?faces-redirect=true";
 	}
 
 	public String save() throws ServiceException {
@@ -114,7 +116,7 @@ public class RoomAdminBean implements Serializable {
 
 		conferenceAdminBean.setConference(room.getConference());
 
-		return "adminConference";
+		return "adminConference?faces-redirect=true";
 	}
 
 	public String remove() throws ServiceException {
@@ -128,9 +130,9 @@ public class RoomAdminBean implements Serializable {
 		}
 
 		if (conferenceAdminBean.getConference() == null) {
-			return "admin";
+			return "admin?faces-redirect=true";
 		}
 
-		return "adminConference";
+		return "adminConference?faces-redirect=true";
 	}
 }

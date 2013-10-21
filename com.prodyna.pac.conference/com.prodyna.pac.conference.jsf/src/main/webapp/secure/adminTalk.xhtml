@@ -34,7 +34,7 @@
 
 <h:body>
 
-    <ui:composition template="templates/layout.xhtml">
+    <ui:composition template="../templates/layout.xhtml">
 
         <ui:define name="content">
 
@@ -121,7 +121,7 @@
                                     <rich:column>
                                         <h:commandLink action="#{talkAdminBean.unassignSpeaker(speaker.speaker.id)}"
                                                        immediate="true">
-                                            <h:graphicImage value="./resources/images/icons/delete.gif" alt="delete"/>
+                                            <h:graphicImage value="../resources/images/icons/delete.gif" alt="delete"/>
                                         </h:commandLink>
                                     </rich:column>
 

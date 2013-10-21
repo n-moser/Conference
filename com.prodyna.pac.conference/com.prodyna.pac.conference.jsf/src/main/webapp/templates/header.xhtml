@@ -26,6 +26,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:rich="http://richfaces.org/rich"
       xmlns:a4j="http://richfaces.org/a4j">
@@ -38,7 +39,9 @@
         <div class="subTitle">Powered by PRODYNA</div>
     </div>
 
-    <rich:toolbar height="26px" styleClass="toolbar">
+    <h:message for="loginForm"/>
+
+    <rich:toolbar id="toolbar" height="26px" styleClass="toolbar">
 
         <rich:toolbarGroup location="left">
             <h:outputLink value="welcome.jsf" styleClass="breadCrump">Home</h:outputLink>
@@ -67,7 +70,8 @@
 
         <rich:toolbarGroup location="right">
             <h:form>
-                <h:commandLink action="#{breadCrumpBean.admin}" styleClass="breadCrump">Administration</h:commandLink>
+                <h:commandLink action="#{breadCrumpBean.admin}" rendered="#{securityBean.loggedIn}"
+                               styleClass="breadCrump">Administration</h:commandLink>
             </h:form>
         </rich:toolbarGroup>
 
@@ -102,7 +106,7 @@
     <rich:popupPanel id="loginPanel" autosized="true" modal="true" moveable="false" resizeable="false"
                      followByScroll="false" onmaskclick="#{rich:component('loginPanel')}.hide()">
 
-        <h:form id="loginForm" onsubmit="#{securityBean.login()}">
+        <h:form id="loginForm">
 
             <h:panelGrid columns="2">
                 <h:outputText value="Login"/>
@@ -111,7 +115,11 @@
                 <h:inputSecret value="#{securityBean.password}"/>
             </h:panelGrid>
 
-            <h:commandButton action="#{securityBean.login()}" value="Login"/>
+            <h:commandButton action="#{securityBean.login()}" value="Login">
+                <f:ajax execute="@form" render="@all" onevent="#{rich:component('loginPanel')}.hide()"/>
+            </h:commandButton>
+
+            <h:commandButton type="reset" value="Reset"/>
 
         </h:form>
 

@@ -27,8 +27,13 @@ import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
 /**
@@ -84,33 +89,56 @@ public class SecurityBean implements Serializable {
 		this.password = password;
 	}
 
+	/**
+	 * Login the user with given username and password.
+	 *
+	 * @return the login direction
+	 */
 	public String login() {
 
-		if (this.userName != null && !this.userName.isEmpty()) {
+		if (!this.isLoggedIn()) {
 
-			logger.info("Authenticating User {}.", this.userName);
+			if (this.userName != null && !this.userName.isEmpty()) {
 
-			if (ADMIN.equals(this.userName) && ADMIN.equals(this.password)) {
-				logger.info("Authentication of User {} succeeded.", this.userName);
-				this.loggedIn = true;
-			} else {
-				logger.info("Authentication of User {} failed.", this.userName);
+				logger.info("Authenticating User {}.", this.userName);
+
+				FacesContext context = FacesContext.getCurrentInstance();
+				HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+
+				try {
+					request.login(this.userName, this.password);
+
+					logger.info("Authentication of User {} succeeded.", this.userName);
+					this.loggedIn = true;
+
+				} catch (ServletException e) {
+					logger.warn("Authentication of User {} failed.", this.userName);
+					context.addMessage("loginForm",
+							new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username or Password invalid.",
+									"Please try again."));
+				}
 			}
-
-			return "admin";
-
-		} else {
-			return "welcome";
 		}
+
+		return null;
 	}
 
+	/**
+	 * Logout the user from the current session.
+	 *
+	 * @return the welcome page navigation
+	 */
 	public String logout() {
 
 		this.loggedIn = false;
 
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = facesContext.getExternalContext();
+		externalContext.invalidateSession();
+
 		this.userName = null;
 		this.password = null;
 
-		return "welcome";
+		return "welcome?faces-redirect=true";
 	}
 }

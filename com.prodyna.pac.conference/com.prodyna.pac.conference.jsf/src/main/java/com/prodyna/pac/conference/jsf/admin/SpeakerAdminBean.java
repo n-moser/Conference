@@ -29,6 +29,7 @@ import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -43,6 +44,7 @@ import java.io.Serializable;
  */
 @ManagedBean
 @SessionScoped
+@RolesAllowed("admin")
 @Named("speakerAdminBean")
 public class SpeakerAdminBean implements Serializable {
 
@@ -80,7 +82,7 @@ public class SpeakerAdminBean implements Serializable {
 
 			this.setSpeaker(new Speaker());
 		}
-		return "adminSpeaker";
+		return "adminSpeaker?faces-redirect=true";
 	}
 
 	public String save() throws ServiceException {
@@ -93,7 +95,7 @@ public class SpeakerAdminBean implements Serializable {
 			}
 		}
 
-		return "admin";
+		return "admin?faces-redirect=true";
 	}
 
 	public String remove() throws ServiceException {
@@ -106,6 +108,6 @@ public class SpeakerAdminBean implements Serializable {
 			}
 		}
 
-		return "admin";
+		return "admin?faces-redirect=true";
 	}
 }

@@ -30,6 +30,7 @@ import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -107,6 +108,7 @@ public class BreadCrumpBean implements Serializable {
 		this.room = room;
 	}
 
+	/** Clears all breadcrump state. */
 	public void clear() {
 
 		this.setConference(null);
@@ -115,10 +117,16 @@ public class BreadCrumpBean implements Serializable {
 		this.setSpeaker(null);
 	}
 
+	/**
+	 * Opens the administration view.
+	 *
+	 * @return the admin view
+	 */
+	@RolesAllowed("admin")
 	public String admin() {
 
 		this.clear();
 
-		return "admin";
+		return "secure/admin?faces-redirect=true";
 	}
 }
