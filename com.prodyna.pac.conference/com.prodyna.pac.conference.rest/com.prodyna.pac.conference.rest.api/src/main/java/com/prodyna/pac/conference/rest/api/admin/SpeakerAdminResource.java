@@ -21,38 +21,39 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api.secure;
+package com.prodyna.pac.conference.rest.api.admin;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.rest.api.TalkResource;
+import com.prodyna.pac.conference.rest.api.SpeakerResource;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
- * TalkResource
+ * SpeakerResource
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
- * Time: 15:47
+ * Time: 15:46
  */
 @RolesAllowed("admin")
-@Path("secure/talk")
-public interface TalkSecureResource extends TalkResource {
+@Path("admin/speaker")
+public interface SpeakerAdminResource extends SpeakerResource {
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	Talk createTalk(Talk talk) throws RESTException;
+	Speaker createSpeaker(Speaker speaker) throws RESTException;
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	Talk updateTalk(Talk talk) throws RESTException;
+	Speaker updateSpeaker(Speaker speaker) throws RESTException;
 
 	@DELETE
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	Talk deleteTalk(Long id) throws RESTException;
+	Speaker deleteSpeaker(@PathParam("id") Long id) throws RESTException;
 }

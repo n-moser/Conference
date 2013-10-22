@@ -60,3 +60,9 @@ test {
     }
 
 }
+
+task checkCI (dependsOn: check) {
+
+    test.ext.debugMode = true
+
+}

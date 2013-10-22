@@ -25,9 +25,10 @@ package com.prodyna.pac.conference.rest.beans;
 
 
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
+import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
-import com.prodyna.pac.conference.rest.api.admin.ConferenceAdminResource;
+import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
+import com.prodyna.pac.conference.rest.api.admin.RoomAdminResource;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Assert;
@@ -41,54 +42,58 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * ConferenceResourceTest
+ * RoomResourceTest
  * <p/>
  * Author: Nicolas Moser
  * Date: 18.10.13
  * Time: 15:26
  */
 @RunWith(Arquillian.class)
-public class ConferenceResourceTest extends ResourceTest {
+public class RoomResourceTest extends ResourceTest {
 
-	private ConferenceAdminResource conferenceResource;
+	private RoomAdminResource roomResource;
 
 	@Before
 	public void setUp() {
 
 		super.setUp();
 
-		this.conferenceResource = super.getResource(ConferenceAdminResource.class);
+		this.roomResource = super.getResource(RoomAdminResource.class);
 	}
 
 	@Produces
-	public ConferenceService createConferenceMock() throws ServiceException {
+	public RoomService createRoomMock() throws ServiceException {
 
-		ConferenceService conferenceMock = Mockito.mock(ConferenceService.class);
+		RoomService roomMock = Mockito.mock(RoomService.class);
 
-		Conference conference = new Conference();
-		conference.setId(1L);
-		conference.setName("JAX");
-
-		Mockito.when(conferenceMock.createConference(Mockito.any(Conference.class))).thenReturn(conference);
-		Mockito.when(conferenceMock.updateConference(Mockito.any(Conference.class))).thenReturn(conference);
-
-		Mockito.when(conferenceMock.findConferenceById(2L)).thenReturn(conference);
-		Mockito.when(conferenceMock.removeConference(Mockito.any(Conference.class))).thenReturn(conference);
-
-		Mockito.when(conferenceMock.getAllConferences()).thenReturn(Arrays.asList(conference));
-
-		return conferenceMock;
-	}
-
-
-	@Test
-	@RunAsClient
-	public void createConference() throws Exception {
+		Room room = new Room();
+		room.setId(1L);
+		room.setName("Red Room");
 
 		Conference conference = new Conference();
 		conference.setId(2L);
+		room.setConference(conference);
 
-		Conference result = this.conferenceResource.createConference(conference);
+		Mockito.when(roomMock.createRoom(Mockito.any(Room.class))).thenReturn(room);
+		Mockito.when(roomMock.updateRoom(Mockito.any(Room.class))).thenReturn(room);
+
+		Mockito.when(roomMock.findRoomById(2L)).thenReturn(room);
+		Mockito.when(roomMock.removeRoom(Mockito.any(Room.class))).thenReturn(room);
+
+		Mockito.when(roomMock.getAllRooms()).thenReturn(Arrays.asList(room));
+
+		return roomMock;
+	}
+
+
+	@Test
+	@RunAsClient
+	public void createRoom() throws Exception {
+
+		Room room = new Room();
+		room.setId(2L);
+
+		Room result = this.roomResource.createRoom(room);
 
 		Assert.assertNotNull(result);
 		Assert.assertEquals(1L, result.getId().longValue());
@@ -96,22 +101,12 @@ public class ConferenceResourceTest extends ResourceTest {
 
 	@Test
 	@RunAsClient
-	public void updateConference() throws Exception {
+	public void updateRoom() throws Exception {
 
-		Conference conference = new Conference();
-		conference.setId(2L);
+		Room room = new Room();
+		room.setId(2L);
 
-		Conference result = this.conferenceResource.createConference(conference);
-
-		Assert.assertNotNull(result);
-		Assert.assertEquals(1L, result.getId().longValue());
-	}
-
-	@Test
-	@RunAsClient
-	public void deleteConference() throws Exception {
-
-		Conference result = this.conferenceResource.deleteConference(2L);
+		Room result = this.roomResource.createRoom(room);
 
 		Assert.assertNotNull(result);
 		Assert.assertEquals(1L, result.getId().longValue());
@@ -119,17 +114,30 @@ public class ConferenceResourceTest extends ResourceTest {
 
 	@Test
 	@RunAsClient
-	public void getAllConferences() throws Exception {
+	public void deleteRoom() throws Exception {
 
-		List<Conference> conferences = this.conferenceResource.getAllConferences();
+		Room result = this.roomResource.deleteRoom(2L);
 
-		Assert.assertNotNull(conferences);
-		Assert.assertEquals(1, conferences.size());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(1L, result.getId().longValue());
+	}
 
-		Assert.assertNotNull(conferences.get(0));
-		Assert.assertNotNull(conferences.get(0).getId());
-		Assert.assertEquals(1L, conferences.get(0).getId().longValue());
-		Assert.assertEquals("JAX", conferences.get(0).getName());
+	@Test
+	@RunAsClient
+	public void getAllRooms() throws Exception {
+
+		List<Room> rooms = this.roomResource.getAllRooms();
+
+		Assert.assertNotNull(rooms);
+		Assert.assertEquals(1, rooms.size());
+
+		Assert.assertNotNull(rooms.get(0));
+		Assert.assertNotNull(rooms.get(0).getId());
+		Assert.assertEquals(1L, rooms.get(0).getId().longValue());
+		Assert.assertEquals("Red Room", rooms.get(0).getName());
+
+		Assert.assertNotNull(rooms.get(0).getConference());
+		Assert.assertEquals(2L, rooms.get(0).getConference().getId().longValue());
 	}
 
 }

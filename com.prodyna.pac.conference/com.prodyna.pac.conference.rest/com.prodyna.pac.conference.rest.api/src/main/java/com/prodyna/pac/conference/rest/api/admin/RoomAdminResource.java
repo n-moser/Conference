@@ -21,64 +21,39 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans.secure;
+package com.prodyna.pac.conference.rest.api.admin;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
-import com.prodyna.pac.conference.rest.api.secure.RoomSecureResource;
-import com.prodyna.pac.conference.rest.beans.RoomResourceBean;
+import com.prodyna.pac.conference.rest.api.RoomResource;
 
-import javax.inject.Inject;
+import javax.annotation.security.RolesAllowed;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 /**
- * RoomResourceBean
+ * RoomResource
  * <p/>
  * Author: Nicolas Moser
- * Date: 19.09.13
- * Time: 18:28
+ * Date: 17.10.13
+ * Time: 15:45
  */
-public class RoomSecureResourceBean extends RoomResourceBean implements RoomSecureResource {
+@RolesAllowed("admin")
+@Path("admin/room")
+public interface RoomAdminResource extends RoomResource {
 
-	@Inject
-	private RoomService roomService;
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Room createRoom(Room room) throws RESTException;
 
-	@Override
-	public Room createRoom(Room room) throws RESTException {
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Room updateRoom(Room room) throws RESTException;
 
-		try {
-			return this.roomService.createRoom(room);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	public Room updateRoom(Room room) throws RESTException {
-
-		try {
-			return this.roomService.updateRoom(room);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	public Room deleteRoom(Long id) throws RESTException {
-
-		try {
-			Room room = this.roomService.findRoomById(id);
-			return this.roomService.removeRoom(room);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	protected RoomService getRoomService() {
-
-		return this.roomService;
-	}
-
+	@DELETE
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	Room deleteRoom(@PathParam("id") Long id) throws RESTException;
 }

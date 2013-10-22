@@ -41,7 +41,7 @@ import java.util.List;
  * Time: 15:45
  */
 @Path("room")
-public interface RoomResource {
+public interface RoomResource extends Resource {
 
 	@GET
 	@Path("/{id}")

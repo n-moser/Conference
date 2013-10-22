@@ -43,7 +43,7 @@ import java.util.List;
  */
 @PermitAll
 @Path("conference")
-public interface ConferenceResource {
+public interface ConferenceResource extends Resource {
 
 	@GET
 	@Path("/{id}")

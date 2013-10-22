@@ -21,51 +21,39 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans;
+package com.prodyna.pac.conference.rest.api.admin;
 
-import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
-import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
-import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
-import org.mockito.Mockito;
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+import com.prodyna.pac.conference.rest.api.TalkResource;
 
-import javax.enterprise.inject.Produces;
+import javax.annotation.security.RolesAllowed;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 /**
- * Mocks
+ * TalkResource
  * <p/>
  * Author: Nicolas Moser
- * Date: 21.10.13
- * Time: 16:11
+ * Date: 17.10.13
+ * Time: 15:47
  */
-public class Mocks {
+@RolesAllowed("admin")
+@Path("admin/talk")
+public interface TalkAdminResource extends TalkResource {
 
-	private TalkService talkMock;
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Talk createTalk(Talk talk) throws RESTException;
 
-	private RoomService roomMock;
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Talk updateTalk(Talk talk) throws RESTException;
 
-	private SpeakerService speakerMock;
-
-
-	@Produces
-	public TalkService createTalkMock() {
-
-		this.talkMock = Mockito.mock(TalkService.class);
-		return talkMock;
-	}
-
-
-	@Produces
-	public RoomService createRoomMock() {
-
-		this.roomMock = Mockito.mock(RoomService.class);
-		return roomMock;
-	}
-
-
-	@Produces
-	public SpeakerService createSpeakerMock() {
-
-		this.speakerMock = Mockito.mock(SpeakerService.class);
-		return speakerMock;
-	}
+	@DELETE
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	Talk deleteTalk(@PathParam("id") Long id) throws RESTException;
 }

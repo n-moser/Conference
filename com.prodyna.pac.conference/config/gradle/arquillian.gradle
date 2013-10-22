@@ -23,7 +23,6 @@
 
 
 configurations {
-    jbossAS7ManagedTestRuntime { extendsFrom testRuntime }
     jbossAS7Distribution
     mysqlDriver
 }

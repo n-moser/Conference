@@ -21,13 +21,13 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans.secure;
+package com.prodyna.pac.conference.rest.beans.admin;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
-import com.prodyna.pac.conference.rest.api.secure.TalkSecureResource;
+import com.prodyna.pac.conference.rest.api.admin.TalkAdminResource;
 import com.prodyna.pac.conference.rest.beans.TalkResourceBean;
 
 import javax.inject.Inject;
@@ -39,7 +39,7 @@ import javax.inject.Inject;
  * Date: 19.09.13
  * Time: 18:28
  */
-public class TalkSecureResourceBean extends TalkResourceBean implements TalkSecureResource {
+public class TalkAdminResourceBean extends TalkResourceBean implements TalkAdminResource {
 
 	@Inject
 	private TalkService talkService;

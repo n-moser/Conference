@@ -46,4 +46,8 @@
 
     </container>
 
+    <extension qualifier="suite">
+        <property name="deploymentClass">com.prodyna.pac.conference.rest.beans.arquillian.Deployments</property>
+    </extension>
+
 </arquillian>

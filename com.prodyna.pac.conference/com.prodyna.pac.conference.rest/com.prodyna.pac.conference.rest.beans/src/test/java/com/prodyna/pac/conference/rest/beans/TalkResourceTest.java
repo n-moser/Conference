@@ -25,9 +25,10 @@ package com.prodyna.pac.conference.rest.beans;
 
 
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
-import com.prodyna.pac.conference.rest.api.admin.ConferenceAdminResource;
+import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
+import com.prodyna.pac.conference.rest.api.admin.TalkAdminResource;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Assert;
@@ -41,54 +42,58 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * ConferenceResourceTest
+ * TalkResourceTest
  * <p/>
  * Author: Nicolas Moser
  * Date: 18.10.13
  * Time: 15:26
  */
 @RunWith(Arquillian.class)
-public class ConferenceResourceTest extends ResourceTest {
+public class TalkResourceTest extends ResourceTest {
 
-	private ConferenceAdminResource conferenceResource;
+	private TalkAdminResource talkResource;
 
 	@Before
 	public void setUp() {
 
 		super.setUp();
 
-		this.conferenceResource = super.getResource(ConferenceAdminResource.class);
+		this.talkResource = super.getResource(TalkAdminResource.class);
 	}
 
 	@Produces
-	public ConferenceService createConferenceMock() throws ServiceException {
+	public TalkService createTalkMock() throws ServiceException {
 
-		ConferenceService conferenceMock = Mockito.mock(ConferenceService.class);
+		TalkService talkMock = Mockito.mock(TalkService.class);
 
-		Conference conference = new Conference();
-		conference.setId(1L);
-		conference.setName("JAX");
-
-		Mockito.when(conferenceMock.createConference(Mockito.any(Conference.class))).thenReturn(conference);
-		Mockito.when(conferenceMock.updateConference(Mockito.any(Conference.class))).thenReturn(conference);
-
-		Mockito.when(conferenceMock.findConferenceById(2L)).thenReturn(conference);
-		Mockito.when(conferenceMock.removeConference(Mockito.any(Conference.class))).thenReturn(conference);
-
-		Mockito.when(conferenceMock.getAllConferences()).thenReturn(Arrays.asList(conference));
-
-		return conferenceMock;
-	}
-
-
-	@Test
-	@RunAsClient
-	public void createConference() throws Exception {
+		Talk talk = new Talk();
+		talk.setId(1L);
+		talk.setName("Testing Android");
 
 		Conference conference = new Conference();
 		conference.setId(2L);
+		talk.setConference(conference);
 
-		Conference result = this.conferenceResource.createConference(conference);
+		Mockito.when(talkMock.createTalk(Mockito.any(Talk.class))).thenReturn(talk);
+		Mockito.when(talkMock.updateTalk(Mockito.any(Talk.class))).thenReturn(talk);
+
+		Mockito.when(talkMock.findTalkById(2L)).thenReturn(talk);
+		Mockito.when(talkMock.removeTalk(Mockito.any(Talk.class))).thenReturn(talk);
+
+		Mockito.when(talkMock.getAllTalks()).thenReturn(Arrays.asList(talk));
+
+		return talkMock;
+	}
+
+
+	@Test
+	@RunAsClient
+	public void createTalk() throws Exception {
+
+		Talk talk = new Talk();
+		talk.setId(2L);
+
+		Talk result = this.talkResource.createTalk(talk);
 
 		Assert.assertNotNull(result);
 		Assert.assertEquals(1L, result.getId().longValue());
@@ -96,22 +101,12 @@ public class ConferenceResourceTest extends ResourceTest {
 
 	@Test
 	@RunAsClient
-	public void updateConference() throws Exception {
+	public void updateTalk() throws Exception {
 
-		Conference conference = new Conference();
-		conference.setId(2L);
+		Talk talk = new Talk();
+		talk.setId(2L);
 
-		Conference result = this.conferenceResource.createConference(conference);
-
-		Assert.assertNotNull(result);
-		Assert.assertEquals(1L, result.getId().longValue());
-	}
-
-	@Test
-	@RunAsClient
-	public void deleteConference() throws Exception {
-
-		Conference result = this.conferenceResource.deleteConference(2L);
+		Talk result = this.talkResource.createTalk(talk);
 
 		Assert.assertNotNull(result);
 		Assert.assertEquals(1L, result.getId().longValue());
@@ -119,17 +114,30 @@ public class ConferenceResourceTest extends ResourceTest {
 
 	@Test
 	@RunAsClient
-	public void getAllConferences() throws Exception {
+	public void deleteTalk() throws Exception {
 
-		List<Conference> conferences = this.conferenceResource.getAllConferences();
+		Talk result = this.talkResource.deleteTalk(2L);
 
-		Assert.assertNotNull(conferences);
-		Assert.assertEquals(1, conferences.size());
+		Assert.assertNotNull(result);
+		Assert.assertEquals(1L, result.getId().longValue());
+	}
 
-		Assert.assertNotNull(conferences.get(0));
-		Assert.assertNotNull(conferences.get(0).getId());
-		Assert.assertEquals(1L, conferences.get(0).getId().longValue());
-		Assert.assertEquals("JAX", conferences.get(0).getName());
+	@Test
+	@RunAsClient
+	public void getAllTalks() throws Exception {
+
+		List<Talk> talks = this.talkResource.getAllTalks();
+
+		Assert.assertNotNull(talks);
+		Assert.assertEquals(1, talks.size());
+
+		Assert.assertNotNull(talks.get(0));
+		Assert.assertNotNull(talks.get(0).getId());
+		Assert.assertEquals(1L, talks.get(0).getId().longValue());
+		Assert.assertEquals("Testing Android", talks.get(0).getName());
+
+		Assert.assertNotNull(talks.get(0).getConference());
+		Assert.assertEquals(2L, talks.get(0).getConference().getId().longValue());
 	}
 
 }

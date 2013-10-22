@@ -37,8 +37,8 @@ dependencies {
     testCompile group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: resteasyVersion
     testCompile group: 'org.jboss.resteasy', name: 'resteasy-jackson-provider', version: resteasyVersion
 
-    testCompile group: 'org.mockito', name:'mockito-all', version: '1.9.5'
-    mockito group: 'org.mockito', name:'mockito-all', version: '1.9.5'
+    testCompile group: 'org.mockito', name:'mockito-all', version: mockitoVersion
+    mockito group: 'org.mockito', name:'mockito-all', version: mockitoVersion
 
     testRuntime project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
     testRuntime project(':com.prodyna.pac.conference.rest:com.prodyna.pac.conference.rest.api')

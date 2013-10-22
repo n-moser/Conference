@@ -21,38 +21,39 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api.secure;
+package com.prodyna.pac.conference.rest.api.admin;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Room;
+import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.rest.api.RoomResource;
+import com.prodyna.pac.conference.rest.api.ConferenceResource;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
- * RoomResource
+ * ConferenceResource
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
- * Time: 15:45
+ * Time: 15:43
  */
 @RolesAllowed("admin")
-@Path("secure/room")
-public interface RoomSecureResource extends RoomResource {
+@Path("admin/conference")
+public interface ConferenceAdminResource extends ConferenceResource {
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	Room createRoom(Room room) throws RESTException;
+	Conference createConference(Conference conference) throws RESTException;
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	Room updateRoom(Room room) throws RESTException;
+	Conference updateConference(Conference conference) throws RESTException;
 
 	@DELETE
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	Room deleteRoom(Long id) throws RESTException;
+	Conference deleteConference(@PathParam("id") Long id) throws RESTException;
 }

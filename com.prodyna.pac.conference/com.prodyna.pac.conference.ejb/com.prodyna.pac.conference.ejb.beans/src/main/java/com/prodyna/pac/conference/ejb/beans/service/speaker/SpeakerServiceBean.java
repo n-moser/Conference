@@ -23,12 +23,12 @@
 
 package com.prodyna.pac.conference.ejb.beans.service.speaker;
 
-import com.prodyna.pac.conference.ejb.beans.interceptor.Performance;
-import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
 import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
+import com.prodyna.pac.conference.ejb.beans.interceptor.Performance;
+import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

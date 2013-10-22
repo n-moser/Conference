@@ -49,7 +49,7 @@ ear {
 
 task deployJBoss(type: Copy, dependsOn: ear) {
 
-    description = 'Deploys the application ear to JBoss AS 7'
+    description = 'Deploys the application ear to JBoss AS 7 (depending on $JBOSS_HOME)'
 
     onlyIf {
         System.getenv('JBOSS_HOME') != null

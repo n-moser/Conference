@@ -21,13 +21,13 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans.secure;
+package com.prodyna.pac.conference.rest.beans.admin;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
-import com.prodyna.pac.conference.rest.api.secure.ConferenceSecureResource;
+import com.prodyna.pac.conference.rest.api.admin.ConferenceAdminResource;
 import com.prodyna.pac.conference.rest.beans.ConferenceResourceBean;
 
 import javax.inject.Inject;
@@ -39,7 +39,7 @@ import javax.inject.Inject;
  * Date: 19.09.13
  * Time: 18:28
  */
-public class ConferenceSecureResourceBean extends ConferenceResourceBean implements ConferenceSecureResource {
+public class ConferenceAdminResourceBean extends ConferenceResourceBean implements ConferenceAdminResource {
 
 	@Inject
 	private ConferenceService conferenceService;

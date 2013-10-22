@@ -23,6 +23,12 @@
 
 package com.prodyna.pac.conference.rest.beans;
 
+import com.prodyna.pac.conference.rest.api.Resource;
+import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
+import org.jboss.resteasy.client.ProxyFactory;
+import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
+import org.jboss.resteasy.spi.ResteasyProviderFactory;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,6 +44,30 @@ import java.util.Date;
 public abstract class ResourceTest {
 
 	private static final DateFormat FORMAT = new SimpleDateFormat("dd.MM.yyyy");
+
+	/** Setup the test environment. */
+	protected void setUp() {
+
+		ResteasyProviderFactory factory = ResteasyProviderFactory.getInstance();
+		factory.addMessageBodyReader(new JacksonJsonProvider());
+
+		RegisterBuiltin.register(factory);
+	}
+
+	/**
+	 * Retrieve the given resource from resteasy proxy factory.
+	 *
+	 * @param resourceClass
+	 * 		the resource class
+	 * @param <R>
+	 * 		the resource type
+	 *
+	 * @return the resource instance
+	 */
+	protected <R extends Resource> R getResource(Class<R> resourceClass) {
+
+		return ProxyFactory.create(resourceClass, "http://localhost:8080/conference/");
+	}
 
 	/**
 	 * Parse the given date string in the pattern 'dd.MM.yyyy' as Date.

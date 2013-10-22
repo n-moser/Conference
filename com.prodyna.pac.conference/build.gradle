@@ -54,6 +54,8 @@ ext {
     arquillianVersion = '1.1.1.Final'
     shrinkwrapVersion = '2.0.0-alpha-3'
 
+    mockitoVersion = '1.9.5'
+
     // Additional Options
 
 }
