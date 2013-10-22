@@ -25,7 +25,6 @@ description = 'This project holds the EJB Interfaces.'
 
 dependencies {
 
-    // TODO Move to Common
     compile group: 'javax.enterprise', name: 'cdi-api', version: cdiVersion
     compile group: 'javax.inject', name: 'javax.inject', version: injectVersion
 

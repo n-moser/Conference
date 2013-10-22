@@ -26,6 +26,7 @@ package com.prodyna.pac.conference.jsf.converter;
 import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.jsf.admin.TalkAdminBean;
+import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
 import javax.faces.component.UIComponent;
@@ -49,6 +50,9 @@ public class RoomConverter implements Converter {
 	@Inject
 	private TalkAdminBean talkAdminBean;
 
+	@Inject
+	private Logger logger;
+
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 
@@ -63,10 +67,8 @@ public class RoomConverter implements Converter {
 						return room;
 					}
 				}
-
 			} catch (ServiceException e) {
-				// TODO Error Handling
-				e.printStackTrace();
+				logger.error("Error loading rooms.", e);
 			}
 		}
 

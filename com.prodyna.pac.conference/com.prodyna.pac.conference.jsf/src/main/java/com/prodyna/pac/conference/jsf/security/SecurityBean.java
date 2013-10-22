@@ -23,6 +23,7 @@
 
 package com.prodyna.pac.conference.jsf.security;
 
+import com.prodyna.pac.conference.ejb.api.session.UserSession;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
@@ -51,6 +52,9 @@ public class SecurityBean implements Serializable {
 	@Inject
 	private Logger logger;
 
+	@Inject
+	private UserSession userSession;
+
 	private boolean loggedIn;
 
 	private String userName;
@@ -59,6 +63,11 @@ public class SecurityBean implements Serializable {
 
 	private static final String ADMIN = "admin";
 
+	/**
+	 * Checks whether the user is logged in or not.
+	 *
+	 * @return <b>true</b> if the user is currently logged in, <b>false</b> if not
+	 */
 	public boolean isLoggedIn() {
 
 		return loggedIn;
@@ -110,6 +119,8 @@ public class SecurityBean implements Serializable {
 
 					logger.info("Authentication of User {} succeeded.", this.userName);
 					this.loggedIn = true;
+
+					this.userSession.setUserName(this.userName);
 
 				} catch (ServletException e) {
 					logger.warn("Authentication of User {} failed.", this.userName);

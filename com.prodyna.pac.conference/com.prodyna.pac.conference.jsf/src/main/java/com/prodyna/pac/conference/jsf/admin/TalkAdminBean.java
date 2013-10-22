@@ -142,25 +142,24 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 		this.speakerId = speakerId;
 	}
 
-	/** Assign the speaker with the id representaed in the property <b>speakerId</b> to the talk. */
-	public void assignSpeaker() {
+	/**
+	 * Assign the speaker with the id representaed in the property <b>speakerId</b> to the talk.
+	 *
+	 * @throws ServiceException
+	 * 		when the speaker does not exist in the database
+	 */
+	public void assignSpeaker() throws ServiceException {
 
 		if (this.speakerId != null && !this.speakerId.equals(0L)) {
 
-			try {
-				Speaker speaker = this.speakerService.findSpeakerById(this.speakerId);
+			Speaker speaker = this.speakerService.findSpeakerById(this.speakerId);
 
-				TalkSpeaker talkSpeaker = new TalkSpeaker();
-				talkSpeaker.setSpeaker(speaker);
+			TalkSpeaker talkSpeaker = new TalkSpeaker();
+			talkSpeaker.setSpeaker(speaker);
 
-				this.talk.getSpeakers().add(talkSpeaker);
+			this.talk.getSpeakers().add(talkSpeaker);
 
-				this.speakerId = null;
-
-			} catch (ServiceException e) {
-				// TODO Exception Handling
-				e.printStackTrace();
-			}
+			this.speakerId = null;
 		}
 	}
 

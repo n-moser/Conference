@@ -27,4 +27,6 @@ apply from: "$rootDir/config/gradle/arquillian.gradle"
 
 dependencies {
     compile project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
+
+    compile group: 'org.jboss.spec.javax.annotation', name: 'jboss-annotations-api_1.1_spec', version: annotationVersion
 }

@@ -26,7 +26,7 @@ package com.prodyna.pac.conference.ejb.beans.service;
 import com.prodyna.pac.conference.ejb.api.service.Service;
 
 /**
- * ServiceBean
+ * Abstract base class for all session bean implementations.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13

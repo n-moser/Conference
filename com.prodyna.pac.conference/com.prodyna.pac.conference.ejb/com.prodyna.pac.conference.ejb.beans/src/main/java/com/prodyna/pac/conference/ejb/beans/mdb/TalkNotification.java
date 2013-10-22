@@ -20,7 +20,6 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
 package com.prodyna.pac.conference.ejb.beans.mdb;
 
 import org.slf4j.Logger;
@@ -34,7 +33,7 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 /**
- * TalkNotification
+ * Message Driven Bean that handles the JMS Queue <b>queue/talk</b>.
  * <p/>
  * Author: Nicolas Moser
  * Date: 15.10.13

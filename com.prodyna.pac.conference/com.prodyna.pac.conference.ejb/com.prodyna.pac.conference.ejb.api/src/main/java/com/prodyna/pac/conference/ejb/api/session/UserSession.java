@@ -21,18 +21,32 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.api.service.conference;
+package com.prodyna.pac.conference.ejb.api.session;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
+import java.io.Serializable;
 
 /**
- * ConferenceService
+ * Service for storing the user name.
  * <p/>
  * Author: Nicolas Moser
- * Date: 11.09.13
- * Time: 16:43
+ * Date: 22.10.13
+ * Time: 16:56
  */
-@Remote
-public interface ConferenceServiceRemote extends ConferenceService {
+@Local
+public interface UserSession extends Serializable {
 
+	/**
+	 * Getter for the user name.
+	 *
+	 * @return the user name
+	 */
+	String getUserName();
+
+	/**
+	 * Setter for the
+	 *
+	 * @param userName
+	 */
+	void setUserName(String userName);
 }

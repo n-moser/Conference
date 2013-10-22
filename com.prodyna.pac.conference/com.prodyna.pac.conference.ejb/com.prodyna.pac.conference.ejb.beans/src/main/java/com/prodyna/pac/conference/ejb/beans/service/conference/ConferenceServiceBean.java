@@ -25,8 +25,8 @@ package com.prodyna.pac.conference.ejb.beans.service.conference;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceServiceLocal;
-import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceServiceRemote;
+import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
+import com.prodyna.pac.conference.ejb.beans.interceptor.Audit;
 import com.prodyna.pac.conference.ejb.beans.interceptor.Performance;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
 
@@ -38,7 +38,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
- * ConferenceServiceBean
+ * Default implementation of the ConferenceService session bean.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13
@@ -46,7 +46,7 @@ import java.util.List;
  */
 @Stateless
 @Performance
-public class ConferenceServiceBean extends ServiceBean implements ConferenceServiceLocal, ConferenceServiceRemote {
+public class ConferenceServiceBean extends ServiceBean implements ConferenceService {
 
 	private static final String QUERY_FIND_ALL_CONFERENCES = "Conference.findAllConferences";
 
@@ -96,6 +96,7 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 		}
 	}
 
+	@Audit
 	@Override
 	public Conference createConference(Conference conference) throws ServiceException {
 
@@ -110,6 +111,7 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 		return conference;
 	}
 
+	@Audit
 	@Override
 	public Conference updateConference(Conference conference) throws ServiceException {
 
@@ -123,6 +125,7 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 		return conference;
 	}
 
+	@Audit
 	@Override
 	public Conference removeConference(Conference conference) throws ServiceException {
 

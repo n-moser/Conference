@@ -25,20 +25,81 @@ package com.prodyna.pac.conference.ejb.beans.event;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 
+/**
+ * Event holding talk modification information.
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 16:41
+ */
 public class TalkModificationEvent {
 
-	// TODO: Old Talk / New Talk
+	private Talk oldTalk;
 
-	private Talk talk;
+	private Talk newTalk;
 
-	public TalkModificationEvent(Talk talk) {
+	/**
+	 * Creates a new TalkModificationEvent for the old and new Talk.
+	 *
+	 * @param oldTalk
+	 * 		the old talk
+	 * @param newTalk
+	 * 		the new talk
+	 */
+	public TalkModificationEvent(Talk oldTalk, Talk newTalk) {
 
-		this.talk = talk;
+		if (oldTalk == null && newTalk == null) {
+			throw new IllegalArgumentException(
+					"Cannot create talk modification event for old talk 'null' and new talk 'null'.");
+		}
+
+		this.oldTalk = oldTalk;
 	}
 
-	public Talk getTalk() {
+	/**
+	 * Getter for the old Talk.
+	 *
+	 * @return the old talk
+	 */
+	public Talk getOldTalk() {
 
-		return this.talk;
+		return this.oldTalk;
 	}
 
+	/**
+	 * Getter for the new Talk.
+	 *
+	 * @return the new talk
+	 */
+	public Talk getNewTalk() {
+
+		return this.newTalk;
+	}
+
+	/**
+	 * Retrieves the talk changes as string.
+	 *
+	 * @return the diff between the two talk instances as string
+	 */
+	public String getChanges() {
+
+		StringBuilder result = new StringBuilder();
+
+		if (oldTalk == null) {
+			return "Talk '" + newTalk.getName() + "' has been created.";
+		}
+
+		if (newTalk == null) {
+			return "Talk '" + oldTalk.getName() + "' has been removed.";
+		}
+
+		// TODO Diff
+
+		result.append("Talk: ").append(oldTalk.getName()).append("\n");
+		result.append("Date: ").append(oldTalk.getStartDate()).append("\n");
+		result.append("Room: ").append(oldTalk.getRoom().getName()).append("\n");
+		result.append("Conference: ").append(oldTalk.getConference()).append("\n");
+
+		return result.toString();
+	}
 }

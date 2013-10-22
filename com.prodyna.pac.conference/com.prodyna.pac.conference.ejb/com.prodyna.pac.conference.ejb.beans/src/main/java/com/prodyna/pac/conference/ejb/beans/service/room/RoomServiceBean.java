@@ -27,6 +27,7 @@ import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
+import com.prodyna.pac.conference.ejb.beans.interceptor.Audit;
 import com.prodyna.pac.conference.ejb.beans.interceptor.Performance;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
 
@@ -38,7 +39,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
- * RoomServiceBean
+ * Default implementation of the RoomService session bean.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13
@@ -115,6 +116,7 @@ public class RoomServiceBean extends ServiceBean implements RoomService {
 		}
 	}
 
+	@Audit
 	@Override
 	public Room createRoom(Room room) throws ServiceException {
 
@@ -128,6 +130,7 @@ public class RoomServiceBean extends ServiceBean implements RoomService {
 		return room;
 	}
 
+	@Audit
 	@Override
 	public Room updateRoom(Room room) throws ServiceException {
 
@@ -142,6 +145,7 @@ public class RoomServiceBean extends ServiceBean implements RoomService {
 
 	}
 
+	@Audit
 	@Override
 	public Room removeRoom(Room room) throws ServiceException {
 

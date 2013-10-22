@@ -21,18 +21,34 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.api.service.conference;
+package com.prodyna.pac.conference.ejb.beans.session;
 
-import javax.ejb.Local;
+import com.prodyna.pac.conference.ejb.api.session.UserSession;
+
+import javax.ejb.Stateful;
 
 /**
- * ConferenceService
+ * Default implementation of the UserSession session bean.
  * <p/>
  * Author: Nicolas Moser
- * Date: 11.09.13
- * Time: 16:43
+ * Date: 22.10.13
+ * Time: 16:37
  */
-@Local
-public interface ConferenceServiceLocal extends ConferenceService {
+@Stateful
+public class UserSessionBean implements UserSession {
 
+	private String userName;
+
+
+	@Override
+	public String getUserName() {
+
+		return userName;
+	}
+
+	@Override
+	public void setUserName(String userName) {
+
+		this.userName = userName;
+	}
 }

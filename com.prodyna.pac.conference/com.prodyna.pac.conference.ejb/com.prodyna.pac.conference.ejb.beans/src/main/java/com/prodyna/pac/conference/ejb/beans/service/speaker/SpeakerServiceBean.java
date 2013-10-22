@@ -27,6 +27,7 @@ import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
+import com.prodyna.pac.conference.ejb.beans.interceptor.Audit;
 import com.prodyna.pac.conference.ejb.beans.interceptor.Performance;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceBean;
 
@@ -38,7 +39,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
- * SpeakerServiceBean
+ * Default implementation of the SpeakerService session bean.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13
@@ -115,6 +116,7 @@ public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 		}
 	}
 
+	@Audit
 	@Override
 	public Speaker createSpeaker(Speaker speaker) throws ServiceException {
 
@@ -129,6 +131,7 @@ public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 		return speaker;
 	}
 
+	@Audit
 	@Override
 	public Speaker updateSpeaker(Speaker speaker) throws ServiceException {
 
@@ -143,6 +146,7 @@ public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 
 	}
 
+	@Audit
 	@Override
 	public Speaker removeSpeaker(Speaker speaker) throws ServiceException {
 

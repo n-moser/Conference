@@ -33,6 +33,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -73,6 +74,7 @@ public class ConferenceListBean {
 
 		} catch (ServiceException se) {
 			logger.error("Error retrieving Conferences.", se);
+			this.conferences = Collections.emptyList();
 		}
 	}
 }

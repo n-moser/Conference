@@ -33,6 +33,13 @@ import javax.decorator.Delegate;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
+/**
+ * Java EE Decorator that intersects TalkService and sends modifications of Talk entity as Java EE.
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 16:41
+ */
 @Decorator
 public abstract class TalkModificationDecorator implements TalkService {
 
@@ -46,14 +53,23 @@ public abstract class TalkModificationDecorator implements TalkService {
 	@Override
 	public Talk updateTalk(Talk talk) throws ServiceException {
 
-		Talk modifiedTalk = this.delegate.updateTalk(talk);
+		Talk newTalk;
 
-		if (modifiedTalk != null && modifiedTalk.getId() != null) {
-			TalkModificationEvent talkModificationEvent = new TalkModificationEvent(modifiedTalk);
-			this.event.fire(talkModificationEvent);
+		if (talk != null && talk.getId() != null) {
+
+			Talk oldTalk = this.delegate.findTalkById(talk.getId());
+
+			newTalk = this.delegate.updateTalk(talk);
+
+			if (newTalk != null && newTalk.getId() != null) {
+				TalkModificationEvent talkModificationEvent = new TalkModificationEvent(oldTalk, newTalk);
+				this.event.fire(talkModificationEvent);
+			}
+		} else {
+			newTalk = this.delegate.updateTalk(talk);
 		}
 
-		return modifiedTalk;
+		return newTalk;
 	}
 
 }

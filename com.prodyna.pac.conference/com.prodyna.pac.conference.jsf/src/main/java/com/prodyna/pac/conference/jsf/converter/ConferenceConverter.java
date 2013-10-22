@@ -24,8 +24,8 @@
 package com.prodyna.pac.conference.jsf.converter;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
-import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
+import com.prodyna.pac.conference.jsf.ConferenceListBean;
+import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
 import javax.faces.component.UIComponent;
@@ -33,6 +33,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
 
 /**
  * ConferenceConverter
@@ -45,20 +46,24 @@ import javax.inject.Named;
 @Named("conferenceConverter")
 public class ConferenceConverter implements Converter {
 
-	// TODO: Change ServiceCall to ConferenceListBean Injection
+	@Inject
+	private ConferenceListBean conferenceListBean;
 
 	@Inject
-	private ConferenceService conferenceService;
+	private Logger logger;
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 
 		if (value != null && !value.isEmpty()) {
-			try {
-				return conferenceService.findConferenceByName(value);
-			} catch (ServiceException e) {
-				// TODO Error Handling
-				e.printStackTrace();
+
+			List<Conference> conferences = conferenceListBean.getConferences();
+
+			for (Conference conference : conferences) {
+
+				if (conference.getName().equals(value)) {
+					return conference;
+				}
 			}
 		}
 

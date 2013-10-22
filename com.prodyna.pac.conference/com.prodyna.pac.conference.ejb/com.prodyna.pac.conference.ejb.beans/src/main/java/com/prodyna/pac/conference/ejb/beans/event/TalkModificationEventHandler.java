@@ -33,6 +33,13 @@ import javax.enterprise.event.TransactionPhase;
 import javax.inject.Inject;
 import javax.jms.*;
 
+/**
+ * Handles the TalkModificationEvent by delegating it to the JMS Queue 'queue/talk'.
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 16:41
+ */
 @Stateless
 public class TalkModificationEventHandler {
 
@@ -51,6 +58,12 @@ public class TalkModificationEventHandler {
 	@Inject
 	private Logger logger;
 
+	/**
+	 * Accepts the TalkModificationEvent and sends it to the JMS queue.
+	 *
+	 * @param event
+	 * 		the modification event received after successful transaction phase
+	 */
 	@Asynchronous
 	public void accept(@Observes(during = TransactionPhase.AFTER_SUCCESS) TalkModificationEvent event) {
 
@@ -58,7 +71,6 @@ public class TalkModificationEventHandler {
 			String message = this.createMessage(event);
 			sendMessage(message);
 		} catch (JMSException e) {
-			// TODO: Exception Handling
 			logger.error("Error sending Message to JMS Queue.", e);
 		}
 	}
@@ -73,16 +85,8 @@ public class TalkModificationEventHandler {
 	 */
 	private String createMessage(TalkModificationEvent event) {
 
-		if (event != null && event.getTalk() != null) {
-
-			// TODO Better Message
-			StringBuilder message = new StringBuilder();
-
-			message.append("Talk: ").append(event.getTalk().getName()).append("\n");
-			message.append("Date: ").append(event.getTalk().getStartDate()).append("\n");
-			message.append("Room: ").append(event.getTalk().getRoom().getName()).append("\n");
-			message.append("Conference: ").append(event.getTalk().getConference()).append("\n");
-			return message.toString();
+		if (event != null) {
+			return event.getChanges();
 		}
 
 		return "Undefined Talk Change";
@@ -100,7 +104,6 @@ public class TalkModificationEventHandler {
 	private void sendMessage(String messageBody) throws JMSException {
 
 		try {
-			// TODO: CDI Producer
 			this.connection = this.connectionFactory.createConnection();
 			this.connection.start();
 
