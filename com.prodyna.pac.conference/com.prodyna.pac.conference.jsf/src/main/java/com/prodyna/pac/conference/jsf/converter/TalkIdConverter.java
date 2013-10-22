@@ -21,39 +21,61 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api.admin;
+package com.prodyna.pac.conference.jsf.converter;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.rest.api.TalkResource;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
+import org.slf4j.Logger;
 
-import javax.annotation.security.RolesAllowed;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.annotation.ManagedBean;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
- * TalkResource
+ * TalkIdConverter
  * <p/>
  * Author: Nicolas Moser
- * Date: 17.10.13
- * Time: 15:47
+ * Date: 22.10.13
+ * Time: 22:25
  */
-@RolesAllowed("admin")
-@Path("secure/talk")
-public interface TalkAdminResource extends TalkResource {
+@ManagedBean
+@Named("talkIdConverter")
+public class TalkIdConverter implements Converter {
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Talk createTalk(Talk talk) throws RESTException;
+	@Inject
+	private TalkService talkService;
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Talk updateTalk(Talk talk) throws RESTException;
+	@Inject
+	private Logger logger;
 
-	@DELETE
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	Talk deleteTalk(@PathParam("id") Long id) throws RESTException;
+	@Override
+	public Object getAsObject(FacesContext context, UIComponent component, String value) {
+
+		try {
+			Long id = Long.parseLong(value);
+
+			return talkService.findTalkById(id);
+
+		} catch (NumberFormatException e) {
+			logger.error("Cannot parse Talk-ID: {}", value);
+		} catch (ServiceException e) {
+			logger.error("Cannot load Talk with ID: {}", value);
+		}
+
+		return null;
+	}
+
+	@Override
+	public String getAsString(FacesContext context, UIComponent component, Object value) {
+
+		if (value instanceof Talk) {
+			return String.valueOf(((Talk) value).getId());
+		}
+
+		return null;
+	}
 }

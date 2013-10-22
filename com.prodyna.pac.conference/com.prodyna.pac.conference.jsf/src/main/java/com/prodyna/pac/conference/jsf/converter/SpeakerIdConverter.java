@@ -21,98 +21,61 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.jsf.breadcrump;
+package com.prodyna.pac.conference.jsf.converter;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Conference;
-import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
-import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
 
 /**
- * BreadCrumpBean
+ * SpeakerIdConverter
  * <p/>
  * Author: Nicolas Moser
- * Date: 01.10.13
- * Time: 00:22
+ * Date: 22.10.13
+ * Time: 22:25
  */
 @ManagedBean
-@SessionScoped
-@Named("breadCrumpBean")
-public class BreadCrumpBean implements Serializable {
+@Named("speakerIdConverter")
+public class SpeakerIdConverter implements Converter {
+
+	@Inject
+	private SpeakerService speakerService;
 
 	@Inject
 	private Logger logger;
 
-	private Conference conference;
+	@Override
+	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 
-	private Talk talk;
+		try {
+			Long id = Long.parseLong(value);
 
-	private Speaker speaker;
+			return speakerService.findSpeakerById(id);
 
-	private Room room;
-
-	public Conference getConference() {
-
-		return conference;
-	}
-
-	public void setConference(Conference conference) {
-
-		this.conference = conference;
-	}
-
-	public Talk getTalk() {
-
-		return talk;
-	}
-
-	public void setTalk(Talk talk) {
-
-		this.talk = talk;
-	}
-
-	public Speaker getSpeaker() {
-
-		return speaker;
-	}
-
-	public void setSpeaker(Speaker speaker) {
-
-		if (speaker != null) {
-			this.room = null;
+		} catch (NumberFormatException e) {
+			logger.error("Cannot parse Speaker-ID: {}", value);
+		} catch (ServiceException e) {
+			logger.error("Cannot load Speaker with ID: {}", value);
 		}
 
-		this.speaker = speaker;
+		return null;
 	}
 
-	public Room getRoom() {
+	@Override
+	public String getAsString(FacesContext context, UIComponent component, Object value) {
 
-		return room;
-	}
-
-	public void setRoom(Room room) {
-
-		if (room != null) {
-			this.speaker = null;
+		if (value instanceof Speaker) {
+			return String.valueOf(((Speaker) value).getId());
 		}
 
-		this.room = room;
+		return null;
 	}
-
-	/** Clears all breadcrump state. */
-	public void clear() {
-
-		this.setConference(null);
-		this.setTalk(null);
-		this.setRoom(null);
-		this.setSpeaker(null);
-	}
-
 }

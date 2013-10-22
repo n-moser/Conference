@@ -40,6 +40,14 @@
 
         <ui:define name="content">
 
+            <f:metadata>
+                <f:viewParam id="roomId" name="id" value="#{roomBean.room}" converter="#{roomIdConverter}"
+                             required="true" requiredMessage="Invalid page access. Room ID must be specified."/>
+            </f:metadata>
+
+            <h:message for="roomId"/>
+
+
             <f:facet name="header">
                 <h:outputText value="Room '#{roomBean.room.name}'"/>
             </f:facet>
@@ -53,10 +61,9 @@
                     <h:outputText value="#{roomBean.room.capacity} Seats"/>
 
                     <h:outputText value="Conference:" styleClass="label"/>
-                    <h:form>
-                        <h:commandLink value="#{roomBean.room.conference.name}"
-                                       action="#{conferenceBean.open(talkBean.talk.conference.id)}"/>
-                    </h:form>
+                    <h:link value="#{roomBean.room.conference.name}" style="font-weight:bold" outcome="conference">
+                        <f:param name="id" value="#{roomBean.room.conference.id}"/>
+                    </h:link>
 
                 </h:panelGrid>
             </div>
@@ -85,8 +92,9 @@
                                                 <f:convertDateTime type="startDate" pattern="HH:mm"/>
                                             </h:outputText>
                                             <h:outputText value=" "/>
-                                            <h:commandLink action="#{talkBean.open(talk.id)}" value="#{talk.name}"
-                                                           style="font-weight:bold"/>
+                                            <h:link value="#{talk.name}" style="font-weight:bold" outcome="talk">
+                                                <f:param name="id" value="#{talk.id}" />
+                                            </h:link>
                                         </h:panelGroup>
                                     </f:facet>
 

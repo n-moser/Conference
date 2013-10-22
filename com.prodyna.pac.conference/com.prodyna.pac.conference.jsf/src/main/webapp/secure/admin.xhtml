@@ -38,6 +38,8 @@
 
         <ui:define name="content">
 
+            <f:event type="preRenderView" listener="#{breadCrumpBean.clear}" />
+
             <f:facet name="header">
                 <h:outputText value="Administration"></h:outputText>
             </f:facet>

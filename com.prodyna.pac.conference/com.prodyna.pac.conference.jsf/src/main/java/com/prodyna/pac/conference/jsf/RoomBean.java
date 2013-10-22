@@ -34,26 +34,25 @@ import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 /**
- * RoomBean
+ * Managed Bean responsible for displaying a single room.
  * <p/>
  * Author: Nicolas Moser
  * Date: 14.10.13
  * Time: 12:50
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 @Named("roomBean")
-public class RoomBean implements Serializable {
+public class RoomBean {
 
 	@Inject
 	private RoomService roomService;
@@ -61,23 +60,54 @@ public class RoomBean implements Serializable {
 	@Inject
 	private TalkService talkService;
 
-	private Room room;
-
-	private List<Date> dates = new ArrayList<Date>();
-
-	private List<Talk>[] talks;
-
 	@Inject
 	private BreadCrumpBean breadCrumpBean;
 
 	@Inject
 	private Logger logger;
 
+	private Room room;
+
+	private List<Date> dates = new ArrayList<Date>();
+
+	private List<Talk>[] talks;
+
+	/**
+	 * Getter for the list of dates of this room.
+	 *
+	 * @return the list of dates
+	 */
+	public List<Date> getDates() {
+
+		return this.dates;
+	}
+
+	/**
+	 * Getter for the list of talks of this room.
+	 *
+	 * @return the list of talks
+	 */
+	public List<Talk>[] getTalks() {
+
+		return this.talks;
+	}
+
+	/**
+	 * Getter for the room entity.
+	 *
+	 * @return the room entity
+	 */
 	public Room getRoom() {
 
 		return room;
 	}
 
+	/**
+	 * Setter for the room entity.
+	 *
+	 * @param room
+	 * 		the room to set
+	 */
 	@SuppressWarnings("unchecked")
 	public void setRoom(Room room) {
 
@@ -87,6 +117,13 @@ public class RoomBean implements Serializable {
 		} else {
 			this.room = room;
 		}
+
+		this.loadDates(room);
+		this.initBreadCrump();
+	}
+
+	/** Load the dates for the current room. */
+	private void loadDates(Room room) {
 
 		this.dates.clear();
 
@@ -128,31 +165,12 @@ public class RoomBean implements Serializable {
 		} catch (ServiceException e) {
 			logger.error("Cannot load talks for room {}", room.getName(), e);
 		}
-
 	}
 
-	public List<Date> getDates() {
+	/** Initialize the Breadcrump for showing the selected conference. */
+	private void initBreadCrump() {
 
-		return this.dates;
-	}
-
-	public List<Talk>[] getTalks() {
-
-		return this.talks;
-	}
-
-	public String open(Long roomId) throws ServiceException {
-
-		if (roomId == null) {
-			logger.error("No Room ID submitted!");
-		} else {
-			Room room = this.roomService.findRoomById(roomId);
-			this.setRoom(room);
-
-			this.breadCrumpBean.setRoom(room);
-			this.breadCrumpBean.setSpeaker(null);
-		}
-
-		return "room";
+		this.breadCrumpBean.setRoom(room);
+		this.breadCrumpBean.setSpeaker(null);
 	}
 }

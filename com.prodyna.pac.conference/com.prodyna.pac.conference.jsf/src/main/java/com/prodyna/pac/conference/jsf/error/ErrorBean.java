@@ -44,6 +44,11 @@ import java.util.Map;
 @Named("errorBean")
 public class ErrorBean {
 
+	/**
+	 * Getter for the excpetion stack trace.
+	 *
+	 * @return the stack trace as string
+	 */
 	public String getStackTrace() {
 		// Get the current JSF context
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -59,7 +64,7 @@ public class ErrorBean {
 		// Fill the stack trace into the write
 		fillStackTrace(exception, printWriter);
 
-		String stack = "<pre>" + writer.toString() + "</pre>";
+		String stack = writer.toString();
 
 		return stack;
 	}
@@ -86,7 +91,6 @@ public class ErrorBean {
 			Throwable cause = ((ServletException) exception).getRootCause();
 			if (null != cause) {
 				writer.println("Root Cause:");
-				writer.println("<br/>");
 				fillStackTrace(cause, writer);
 			}
 		} else {

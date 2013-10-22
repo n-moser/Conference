@@ -54,6 +54,9 @@
         <div id="content">
 
             <rich:panel styleClass="contentPanel">
+
+                <rich:messages globalOnly="true" showSummary="false" showDetail="true" styleClass="globalMessages"/>
+
                 <ui:insert name="content">
                     <ui:include src="content.xhtml"/>
                 </ui:insert>

@@ -108,8 +108,8 @@
         <auth-method>FORM</auth-method>
         <realm-name>ApplicationRealm</realm-name>
         <form-login-config>
-            <form-login-page>/welcome.jsf</form-login-page>
-            <form-error-page>/error.jsf</form-error-page>
+            <form-login-page>/welcome.jsf?faces-redirect=true</form-login-page>
+            <form-error-page>/error.jsf?faces-redirect=true</form-error-page>
         </form-login-config>
     </login-config>
 

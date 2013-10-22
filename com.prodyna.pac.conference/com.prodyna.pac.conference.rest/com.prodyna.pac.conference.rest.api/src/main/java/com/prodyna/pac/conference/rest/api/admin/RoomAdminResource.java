@@ -39,7 +39,7 @@ import javax.ws.rs.core.MediaType;
  * Time: 15:45
  */
 @RolesAllowed("admin")
-@Path("admin/room")
+@Path("secure/room")
 public interface RoomAdminResource extends RoomResource {
 
 	@PUT

@@ -274,7 +274,7 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 
 					if (talks.size() == 1) {
 						Talk intersectingTalk = talks.get(0);
-						if (talk.getId().equals(intersectingTalk.getId())) {
+						if (intersectingTalk.getId().equals(talk.getId())) {
 							// Skip if intersected Talk is validated Talk.
 							continue;
 						}
@@ -295,7 +295,7 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 
 				if (talks.size() == 1) {
 					Talk intersectingTalk = talks.get(0);
-					if (talk.getId().equals(intersectingTalk.getId())) {
+					if (intersectingTalk.getId().equals(talk.getId())) {
 						// Skip if intersected Talk is validated Talk.
 						return;
 					}

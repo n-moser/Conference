@@ -40,6 +40,13 @@
 
         <ui:define name="content">
 
+            <f:metadata>
+                <f:viewParam id="talkId" name="id" value="#{talkBean.talk}" converter="#{talkIdConverter}"
+                             required="true" requiredMessage="Invalid page access. Talk ID must be specified."/>
+            </f:metadata>
+
+            <h:message for="talkId"/>
+
             <f:facet name="header">
                 <h:outputText value="Talk '#{talkBean.talk.name}'"/>
             </f:facet>
@@ -53,16 +60,14 @@
                     <h:outputText value="#{talkBean.talk.description}"/>
 
                     <h:outputText value="Conference:" styleClass="label"/>
-                    <h:form>
-                        <h:commandLink value="#{talkBean.talk.conference.name}"
-                                       action="#{conferenceBean.open(talkBean.talk.conference.id)}"/>
-                    </h:form>
+                    <h:link value="#{talkBean.talk.conference.name}" style="font-weight:bold" outcome="conference">
+                        <f:param name="id" value="#{talkBean.talk.conference.id}"/>
+                    </h:link>
 
                     <h:outputText value="Room:" styleClass="label"/>
-                    <h:form>
-                        <h:commandLink value="#{talkBean.talk.room.name}"
-                                       action="#{roomBean.open(talkBean.talk.room.id)}"/>
-                    </h:form>
+                    <h:link value="#{talkBean.talk.room.name}" style="font-weight:bold" outcome="room">
+                        <f:param name="id" value="#{talkBean.talk.room.id}"/>
+                    </h:link>
 
                     <h:outputText value="Date:" styleClass="label"/>
                     <h:outputText value="#{talkBean.talk.startDate}">
@@ -80,10 +85,14 @@
                     <h:outputText value="Speakers:" styleClass="label"/>
 
                     <h:form rendered="#{not empty talkBean.talk.speakers}">
+
                         <rich:list value="#{talkBean.talk.speakers}" var="speaker" type="ordered"
                                    rendered="#{not empty talkBean.talk.speakers}" styleClass="speakerList">
-                            <h:commandLink value="#{speaker.speaker.name}"
-                                           action="#{speakerBean.open(speaker.speaker.id)}"/>
+
+                            <h:link value="#{speaker.speaker.name}" style="font-weight:bold" outcome="speaker">
+                                <f:param name="id" value="#{speaker.speaker.id}"/>
+                            </h:link>
+
                         </rich:list>
                     </h:form>
 

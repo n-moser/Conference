@@ -33,10 +33,9 @@ import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -50,9 +49,9 @@ import java.util.List;
  * Time: 17:48
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 @Named("conferenceBean")
-public class ConferenceBean implements Serializable {
+public class ConferenceBean {
 
 	@Inject
 	private ConferenceService conferenceService;
@@ -72,6 +71,16 @@ public class ConferenceBean implements Serializable {
 	@Inject
 	private Logger logger;
 
+	public List<Date> getDates() {
+
+		return this.dates;
+	}
+
+	public List<Talk>[] getTalks() {
+
+		return this.talks;
+	}
+
 	public Conference getConference() {
 
 		return conference;
@@ -86,6 +95,13 @@ public class ConferenceBean implements Serializable {
 		} else {
 			this.conference = conference;
 		}
+
+		this.loadDates();
+		this.initBreadCrump();
+	}
+
+	/** Load the dates for the current conference. */
+	private void loadDates() {
 
 		this.dates.clear();
 
@@ -122,33 +138,14 @@ public class ConferenceBean implements Serializable {
 		} catch (ServiceException e) {
 			logger.error("Cannot load talks for conference {}", conference.getName(), e);
 		}
-
 	}
 
-	public List<Date> getDates() {
+	/** Initialize the Breadcrump for showing the selected conference. */
+	private void initBreadCrump() {
 
-		return this.dates;
-	}
-
-	public List<Talk>[] getTalks() {
-
-		return this.talks;
-	}
-
-	public String open(Long conferenceId) throws ServiceException {
-
-		if (conferenceId == null) {
-			logger.error("No Conference ID submitted!");
-		} else {
-			Conference conference = this.conferenceService.findConferenceById(conferenceId);
-			this.setConference(conference);
-
-			this.breadCrumpBean.setConference(conference);
-			this.breadCrumpBean.setTalk(null);
-			this.breadCrumpBean.setRoom(null);
-			this.breadCrumpBean.setSpeaker(null);
-		}
-
-		return "conference";
+		this.breadCrumpBean.setConference(conference);
+		this.breadCrumpBean.setTalk(null);
+		this.breadCrumpBean.setRoom(null);
+		this.breadCrumpBean.setSpeaker(null);
 	}
 }

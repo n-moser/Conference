@@ -51,7 +51,7 @@
 
             <rich:collapsiblePanel header="Stack Trace" switchType="client" expanded="false" styleClass="stackTrace"
                                    bodyClass="stackTraceBody">
-                #{errorBean.stackTrace}
+                <pre>#{errorBean.stackTrace}</pre>
             </rich:collapsiblePanel>
 
         </ui:define>

@@ -24,28 +24,26 @@
 package com.prodyna.pac.conference.jsf;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
-import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
 
 /**
- * TalkBean
+ * Managed Bean responsible for displaying a single talk.
  * <p/>
  * Author: Nicolas Moser
  * Date: 14.10.13
  * Time: 12:50
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 @Named("talkBean")
-public class TalkBean implements Serializable {
+public class TalkBean {
 
 	@Inject
 	private TalkService talkService;
@@ -58,29 +56,39 @@ public class TalkBean implements Serializable {
 	@Inject
 	private Logger logger;
 
+	/**
+	 * Getter for the displayed talk entity.
+	 *
+	 * @return the talk entity
+	 */
 	public Talk getTalk() {
 
 		return talk;
 	}
 
+	/**
+	 * Setter for the displayed talk entity.
+	 *
+	 * @param talk
+	 * 		the talk entity
+	 */
 	public void setTalk(Talk talk) {
 
-		this.talk = talk;
-	}
-
-	public String open(Long talkId) throws ServiceException {
-
-		if (talkId == null) {
-			logger.error("No Talk ID submitted!");
+		if (talk == null) {
+			logger.error("Cannot set Talk 'null'.");
+			this.talk = new Talk();
 		} else {
-			Talk talk = this.talkService.findTalkById(talkId);
-			this.setTalk(talk);
-
-			this.breadCrumpBean.setTalk(talk);
-			this.breadCrumpBean.setRoom(null);
-			this.breadCrumpBean.setSpeaker(null);
+			this.talk = talk;
 		}
 
-		return "talk";
+		initBreadCrump();
+	}
+
+	/** Initialize the Breadcrump for showing the selected conference. */
+	private void initBreadCrump() {
+
+		this.breadCrumpBean.setTalk(talk);
+		this.breadCrumpBean.setRoom(null);
+		this.breadCrumpBean.setSpeaker(null);
 	}
 }

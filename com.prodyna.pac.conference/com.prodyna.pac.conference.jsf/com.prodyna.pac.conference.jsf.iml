@@ -48,76 +48,10 @@
     <orderEntry type="library" exported="" name="richfaces-core-impl-4.3.4.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="jboss-annotations-api_1.1_spec-1.0.0.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="jboss-jsf-api_2.1_spec-2.0.1.Final" level="project" />
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/jar/6b262da268f8ad9eff941b25503a9198f0a0ac93/slf4j-api-1.7.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/source/654135274d4c27132ea208a4ec07f344bdb83bcb/slf4j-api-1.7.5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.servlet/jboss-servlet-api_3.0_spec/1.0.0.Final/jar/44fb8e9dff4a0ec4081bb5492b9a3a9ab9c3466b/jboss-servlet-api_3.0_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.servlet/jboss-servlet-api_3.0_spec/1.0.0.Final/source/c4d0c1b8f52aaf0b73b5277c0ec0bdfdb7f2ecbe/jboss-servlet-api_3.0_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.faces/jboss-jsf-api_2.1_spec/2.0.1.Final/jar/3f1d6ca5f8eed6cccc40e76f31529f57fb17316b/jboss-jsf-api_2.1_spec-2.0.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.faces/jboss-jsf-api_2.1_spec/2.0.1.Final/source/e8490856d1dd756d4b90239a19e28ebf4bde6010/jboss-jsf-api_2.1_spec-2.0.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.annotation/jboss-annotations-api_1.1_spec/1.0.0.Final/jar/394e909e8b61259bcd63e9ba8b0d7a636d8db479/jboss-annotations-api_1.1_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.annotation/jboss-annotations-api_1.1_spec/1.0.0.Final/source/749eb3ec8063d0a1ae2bb965640a5604181d7c2a/jboss-annotations-api_1.1_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
     <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.api" scope="PROVIDED" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.richfaces.ui/richfaces-components-ui/4.3.4.Final/jar/e195998505ec4765b90182c6cccad49f4d44b215/richfaces-components-ui-4.3.4.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.richfaces.ui/richfaces-components-ui/4.3.4.Final/source/876cfd8f7e3fdd2edf08d2cd3185778f080ee5a6/richfaces-components-ui-4.3.4.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.richfaces.core/richfaces-core-impl/4.3.4.Final/jar/13ee19e60a0c468031900c5e113f9b5c4d39cb59/richfaces-core-impl-4.3.4.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.richfaces.core/richfaces-core-impl/4.3.4.Final/source/5b65ccc3513690dff904572300ce084f6c111b1b/richfaces-core-impl-4.3.4.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.servlet/jboss-servlet-api_3.0_spec/1.0.0.Final/jar/44fb8e9dff4a0ec4081bb5492b9a3a9ab9c3466b/jboss-servlet-api_3.0_spec-1.0.0.Final.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -145,61 +79,6 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.annotation/jboss-annotations-api_1.1_spec/1.0.0.Final/source/749eb3ec8063d0a1ae2bb965640a5604181d7c2a/jboss-annotations-api_1.1_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/com.google.guava/guava/13.0.1/jar/d6f22b1e60a2f1ef99e22c9f5fde270b2088365/guava-13.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/com.google.guava/guava/13.0.1/source/ea42e17f75a65e72d12cd311b7d1e7d6356bbb3f/guava-13.0.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.richfaces.core/richfaces-core-api/4.3.4.Final/jar/f3aab318aa8ac8970d52714dd20e810b985eee42/richfaces-core-api-4.3.4.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.richfaces.core/richfaces-core-api/4.3.4.Final/source/55054b837d93400aee233212efd723e78ced36e5/richfaces-core-api-4.3.4.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.richfaces.ui/richfaces-components-api/4.3.4.Final/jar/7ccec89809205915e7d7afde2a059b83096380d2/richfaces-components-api-4.3.4.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.richfaces.ui/richfaces-components-api/4.3.4.Final/source/6d2ef8b44274f3ee5dd6b684c236e1f5c66f8aa3/richfaces-components-api-4.3.4.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.w3c.css/sac/1.3/jar/cdb2dcb4e22b83d6b32b93095f644c3462739e82/sac-1.3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.w3c.css/sac/1.3/source/d0eab9163d161293dcd1e291bc2b6b09b4b5c717/sac-1.3-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/net.sourceforge.cssparser/cssparser/0.9.5/jar/7222f4a7e50fc57a88a546a228088524bdbbdaea/cssparser-0.9.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/net.sourceforge.cssparser/cssparser/0.9.5/source/58cc6bd1c19526776abe6943d29d10bd81dbad5f/cssparser-0.9.5-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -207,55 +86,11 @@
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.11/jar/4e031bb61df09069aeb2bffb4019e7a5034a4ee0/junit-4.11.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.11/source/28e0ad201304e4a4abf999ca0570b7cffc352c3c/junit-4.11-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-log4j12/1.7.5/jar/6edffc576ce104ec769d954618764f39f0f0f10d/slf4j-log4j12-1.7.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-log4j12/1.7.5/source/65ffa6d644792e8b09cf6479d5c01ed95bb153a0/slf4j-log4j12-1.7.5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.hamcrest/hamcrest-core/1.3/jar/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.hamcrest/hamcrest-core/1.3/source/1dc37250fbc78e23a65a67fbbaf71d2e9cbc3c0b/hamcrest-core-1.3-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/jar/6b262da268f8ad9eff941b25503a9198f0a0ac93/slf4j-api-1.7.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/source/654135274d4c27132ea208a4ec07f344bdb83bcb/slf4j-api-1.7.5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/log4j/log4j/1.2.17/bundle/5af35056b4d257e4b64b9e8069c0746e8b08629f/log4j-1.2.17.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/log4j/log4j/1.2.17/source/677abe279b68c5e7490d6d50c6951376238d7d3e/log4j-1.2.17-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

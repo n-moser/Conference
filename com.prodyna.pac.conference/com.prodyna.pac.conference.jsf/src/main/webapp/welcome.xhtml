@@ -38,6 +38,8 @@
 
         <ui:define name="content">
 
+            <f:event type="preRenderView" listener="#{breadCrumpBean.clear}" />
+
             <f:facet name="header">
                 <h:outputText value="Upcoming Conferences"></h:outputText>
             </f:facet>
@@ -81,7 +83,9 @@
 
                         </h:panelGrid>
 
-                        <h:commandButton action="#{conferenceBean.open(conf.id)}" value="Show" styleClass="buttonCtrl"/>
+                        <h:button outcome="conference" value="Show" styleClass="buttonCtrl">
+                            <f:param name="id" value="#{conf.id}" />
+                        </h:button>
 
                     </rich:panel>
 

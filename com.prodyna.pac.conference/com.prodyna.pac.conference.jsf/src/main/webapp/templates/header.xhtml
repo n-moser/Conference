@@ -39,40 +39,46 @@
         <div class="subTitle">Powered by PRODYNA</div>
     </div>
 
-    <h:message for="loginForm"/>
-
     <rich:toolbar id="toolbar" height="26px" styleClass="toolbar">
 
         <rich:toolbarGroup location="left">
-            <h:outputLink value="welcome.jsf" styleClass="breadCrump">Home</h:outputLink>
+            <h:link outcome="welcome" value="Home" styleClass="breadCrump"/>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup location="left" rendered="#{not empty breadCrumpBean.conference}">
             <h:outputText value=">" styleClass="breadCrumpSeparator"/>
-            <h:outputLink value="conference.jsf"
-                          styleClass="breadCrump">#{breadCrumpBean.conference.name}</h:outputLink>
+            <h:link outcome="conference" styleClass="breadCrump" value="#{breadCrumpBean.conference.name}">
+                <f:param name="id" value="#{breadCrumpBean.conference.id}"/>
+            </h:link>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup rendered="#{not empty breadCrumpBean.talk}">
             <h:outputText value=">" styleClass="breadCrumpSeparator"/>
-            <h:outputLink value="talk.jsf" styleClass="breadCrump">#{breadCrumpBean.talk.name}</h:outputLink>
+            <h:link outcome="talk" styleClass="breadCrump" value="#{breadCrumpBean.talk.name}">
+                <f:param name="id" value="#{breadCrumpBean.talk.id}"/>
+            </h:link>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup rendered="#{not empty breadCrumpBean.speaker}">
             <h:outputText value=">" styleClass="breadCrumpSeparator"/>
-            <h:outputLink value="speaker.jsf" styleClass="breadCrump">#{breadCrumpBean.speaker.name}</h:outputLink>
+            <h:link outcome="speaker" styleClass="breadCrump" value="#{breadCrumpBean.speaker.name}">
+                <f:param name="id" value="#{breadCrumpBean.speaker.id}"/>
+            </h:link>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup rendered="#{not empty breadCrumpBean.room}">
             <h:outputText value=">" styleClass="breadCrumpSeparator"/>
-            <h:outputLink value="room.jsf" styleClass="breadCrump">#{breadCrumpBean.room.name}</h:outputLink>
+            <h:link outcome="room" styleClass="breadCrump" value="#{breadCrumpBean.room.name}">
+                <f:param name="id" value="#{breadCrumpBean.room.id}"/>
+            </h:link>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup location="right">
-            <h:form>
-                <h:commandLink action="#{breadCrumpBean.admin}" rendered="#{securityBean.loggedIn}"
-                               styleClass="breadCrump">Administration</h:commandLink>
-            </h:form>
+            <rich:message for="loginForm"/>
+        </rich:toolbarGroup>
+
+        <rich:toolbarGroup location="right">
+            <h:link value="Administration" outcome="admin" styleClass="breadCrump" rendered="#{securityBean.loggedIn}"/>
         </rich:toolbarGroup>
 
         <rich:toolbarGroup location="right">
@@ -96,7 +102,7 @@
 
             <h:outputText value="Logged in as '#{securityBean.userName}'" rendered="#{securityBean.loggedIn}"/>
 
-            <h:form>
+            <h:form id="logoutForm">
                 <h:commandLink value="Logout" action="#{securityBean.logout()}" rendered="#{securityBean.loggedIn}"/>
             </h:form>
 
@@ -116,7 +122,7 @@
             </h:panelGrid>
 
             <h:commandButton action="#{securityBean.login()}" value="Login">
-                <f:ajax execute="@form" render="@all" onevent="#{rich:component('loginPanel')}.hide()"/>
+                <f:ajax execute="loginForm" render="@all" onevent="#{rich:component('loginPanel')}.hide(); return false"/>
             </h:commandButton>
 
             <h:commandButton type="reset" value="Reset"/>

@@ -39,6 +39,14 @@
 
         <ui:define name="content">
 
+            <f:metadata>
+                <f:viewParam id="conferenceId" name="id" value="#{conferenceBean.conference}"
+                             converter="#{conferenceIdConverter}"
+                             required="true" requiredMessage="Invalid page access. Conference ID must be specified."/>
+            </f:metadata>
+
+            <h:message for="conferenceId"/>
+
             <f:facet name="header">
                 <h:outputText value="Conference  '#{conferenceBean.conference.name}'"/>
             </f:facet>
@@ -82,7 +90,8 @@
                                     </h:outputText>
                                 </f:facet>
 
-                                <rich:list value="#{conferenceBean.talks[index.count - 1]}" var="talk" type="definitions"
+                                <rich:list value="#{conferenceBean.talks[index.count - 1]}" var="talk"
+                                           type="definitions"
                                            rendered="#{not empty conferenceBean.talks[index.count - 1]}">
 
                                     <f:facet name="term">
@@ -91,8 +100,9 @@
                                                 <f:convertDateTime type="startDate" pattern="HH:mm"/>
                                             </h:outputText>
                                             <h:outputText value=" "/>
-                                            <h:commandLink action="#{talkBean.open(talk.id)}" value="#{talk.name}"
-                                                           style="font-weight:bold"/>
+                                            <h:link value="#{talk.name}" style="font-weight:bold" outcome="talk">
+                                                <f:param name="id" value="#{talk.id}" />
+                                            </h:link>
                                         </h:panelGroup>
                                     </f:facet>
 

@@ -73,39 +73,65 @@ public class SecurityBean implements Serializable {
 		return loggedIn;
 	}
 
+	/**
+	 * Sets the loggedin flag.
+	 *
+	 * @param loggedIn
+	 * 		the loggedIn flag
+	 */
 	public void setLoggedIn(boolean loggedIn) {
 
 		this.loggedIn = loggedIn;
 	}
 
+	/**
+	 * Getter for the username.
+	 *
+	 * @return the username
+	 */
 	public String getUserName() {
 
 		return userName;
 	}
 
+	/**
+	 * Setter for the username.
+	 *
+	 * @param userName
+	 * 		the username to set
+	 */
 	public void setUserName(String userName) {
 
 		this.userName = userName;
 	}
 
+	/**
+	 * Getter for the password.
+	 *
+	 * @return the password as string
+	 */
 	public String getPassword() {
 
 		return password;
 	}
 
+	/**
+	 * Setter for the password.
+	 *
+	 * @param password
+	 * 		the password as string
+	 */
 	public void setPassword(String password) {
 
 		this.password = password;
 	}
 
-	/**
-	 * Login the user with given username and password.
-	 *
-	 * @return the login direction
-	 */
-	public String login() {
+	/** Login the user with given username and password. */
+	public void login() {
 
-		if (!this.isLoggedIn()) {
+		if (this.isLoggedIn()) {
+			logger.info("User is already logged in!");
+		} else {
 
 			if (this.userName != null && !this.userName.isEmpty()) {
 
@@ -130,8 +156,6 @@ public class SecurityBean implements Serializable {
 				}
 			}
 		}
-
-		return null;
 	}
 
 	/**
@@ -140,6 +164,8 @@ public class SecurityBean implements Serializable {
 	 * @return the welcome page navigation
 	 */
 	public String logout() {
+
+		logger.info("Logging out user {}", this.userName);
 
 		this.loggedIn = false;
 
@@ -150,6 +176,6 @@ public class SecurityBean implements Serializable {
 		this.userName = null;
 		this.password = null;
 
-		return "welcome?faces-redirect=true";
+		return "welcome";
 	}
 }

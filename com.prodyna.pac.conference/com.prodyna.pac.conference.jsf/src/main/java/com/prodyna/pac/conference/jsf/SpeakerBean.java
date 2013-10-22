@@ -33,23 +33,25 @@ import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * SpeakerBean
+ * Managed Bean responsible for displaying a single speaker.
  * <p/>
  * Author: Nicolas Moser
  * Date: 14.10.13
  * Time: 12:50
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 @Named("speakerBean")
-public class SpeakerBean implements Serializable {
+public class SpeakerBean {
 
 	@Inject
 	private SpeakerService speakerService;
@@ -57,23 +59,54 @@ public class SpeakerBean implements Serializable {
 	@Inject
 	private TalkService talkService;
 
-	private Speaker speaker;
-
-	private List<Conference> conferences = new ArrayList<Conference>();
-
-	private List<Talk>[] talks;
-
 	@Inject
 	private BreadCrumpBean breadCrumpBean;
 
 	@Inject
 	private Logger logger;
 
+	private Speaker speaker;
+
+	private List<Conference> conferences = new ArrayList<Conference>();
+
+	private List<Talk>[] talks;
+
+	/**
+	 * Getter for the list of conferences on which this speaker is presenting a talk.
+	 *
+	 * @return the list of conferences
+	 */
+	public List<Conference> getConferences() {
+
+		return conferences;
+	}
+
+	/**
+	 * Getter for the list of talks the speaker is presenting.
+	 *
+	 * @return the list of talks
+	 */
+	public List<Talk>[] getTalks() {
+
+		return talks;
+	}
+
+	/**
+	 * Getter for the displayed speaker entity.
+	 *
+	 * @return the speaker entity
+	 */
 	public Speaker getSpeaker() {
 
 		return speaker;
 	}
 
+	/**
+	 * Setter for the displayed speaker entity.
+	 *
+	 * @param speaker
+	 * 		the speaker to set
+	 */
 	@SuppressWarnings("unchecked")
 	public void setSpeaker(Speaker speaker) {
 
@@ -83,6 +116,13 @@ public class SpeakerBean implements Serializable {
 		} else {
 			this.speaker = speaker;
 		}
+
+		this.loadConferences();
+		this.initBreadCrump();
+	}
+
+	/** Load the list of conferences of the current speaker. */
+	private void loadConferences() {
 
 		try {
 			this.conferences.clear();
@@ -110,30 +150,11 @@ public class SpeakerBean implements Serializable {
 		} catch (ServiceException e) {
 			logger.error("Cannot load talks for speaker {}", speaker.getName(), e);
 		}
-
 	}
 
-	public List<Conference> getConferences() {
+	/** Initialize the Breadcrump for showing the selected conference. */
+	public void initBreadCrump() {
 
-		return conferences;
-	}
-
-	public List<Talk>[] getTalks() {
-
-		return talks;
-	}
-
-	public String open(Long speakerId) throws ServiceException {
-
-		if (speakerId == null) {
-			logger.error("No Speaker ID submitted!");
-		} else {
-			Speaker speaker = this.speakerService.findSpeakerById(speakerId);
-			this.setSpeaker(speaker);
-
-			this.breadCrumpBean.setSpeaker(speaker);
-		}
-
-		return "speaker";
+		this.breadCrumpBean.setSpeaker(speaker);
 	}
 }

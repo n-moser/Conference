@@ -39,7 +39,7 @@ import javax.ws.rs.core.MediaType;
  * Time: 15:43
  */
 @RolesAllowed("admin")
-@Path("admin/conference")
+@Path("secure/conference")
 public interface ConferenceAdminResource extends ConferenceResource {
 
 	@PUT
