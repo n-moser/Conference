@@ -36,7 +36,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * SpeakerIdConverter
+ * Converts a speaker ID to the related speaker instance and vice versa.
  * <p/>
  * Author: Nicolas Moser
  * Date: 22.10.13

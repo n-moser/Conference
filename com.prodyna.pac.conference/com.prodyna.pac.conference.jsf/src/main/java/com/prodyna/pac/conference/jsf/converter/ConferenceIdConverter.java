@@ -36,7 +36,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * ConferenceIdConverter
+ * Converts a conference ID to the related conference instance and vice versa.
  * <p/>
  * Author: Nicolas Moser
  * Date: 22.10.13

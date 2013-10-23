@@ -36,7 +36,7 @@ import javax.inject.Named;
 import java.io.Serializable;
 
 /**
- * BreadCrumpBean
+ * Bean holding all breadcrump entities in the session.
  * <p/>
  * Author: Nicolas Moser
  * Date: 01.10.13
@@ -58,31 +58,65 @@ public class BreadCrumpBean implements Serializable {
 
 	private Room room;
 
+	/**
+	 * Getter for the conference entity.
+	 *
+	 * @return the conference
+	 */
 	public Conference getConference() {
 
 		return conference;
 	}
 
+	/**
+	 * Setter for the conference.
+	 *
+	 * @param conference
+	 * 		the conference to set
+	 */
 	public void setConference(Conference conference) {
 
 		this.conference = conference;
 	}
 
+	/**
+	 * Getter for the talk entity.
+	 *
+	 * @return the talk
+	 */
 	public Talk getTalk() {
 
 		return talk;
 	}
 
+	/**
+	 * Setter for the talk entity.
+	 *
+	 * @param talk
+	 * 		the talk to set
+	 */
 	public void setTalk(Talk talk) {
 
 		this.talk = talk;
 	}
 
+
+	/**
+	 * Getter for the speaker entity.
+	 *
+	 * @return the speaker
+	 */
 	public Speaker getSpeaker() {
 
 		return speaker;
 	}
 
+	/**
+	 * Setter for the speaker entity.
+	 *
+	 * @param speaker
+	 * 		the speaker to set
+	 */
 	public void setSpeaker(Speaker speaker) {
 
 		if (speaker != null) {
@@ -92,11 +126,22 @@ public class BreadCrumpBean implements Serializable {
 		this.speaker = speaker;
 	}
 
+	/**
+	 * Getter for the room entity.
+	 *
+	 * @return the room
+	 */
 	public Room getRoom() {
 
 		return room;
 	}
 
+	/**
+	 * Setter for the room entity.
+	 *
+	 * @param room
+	 * 		the room to set
+	 */
 	public void setRoom(Room room) {
 
 		if (room != null) {

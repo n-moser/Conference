@@ -45,7 +45,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * TalkAdminBean
+ * Responsible for admin (CRUD) operations on Talk entity instances.
  * <p/>
  * Author: Nicolas Moser
  * Date: 09.10.13

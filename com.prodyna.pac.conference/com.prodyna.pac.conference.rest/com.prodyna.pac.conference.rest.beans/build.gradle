@@ -57,7 +57,7 @@ task copyMockitoForArquillian(type: Copy) {
     into arquillianLibDirBuild
 
     doFirst {
-        logger.lifecycle("Copying Mockito " + configurations.mockito.singleFile)
+        logger.info("Copying Mockito " + configurations.mockito.singleFile)
     }
 }
 

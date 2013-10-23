@@ -41,7 +41,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * ConferenceAdminBean
+ * Responsible for admin (CRUD) operations on Conference entity instances.
  * <p/>
  * Author: Nicolas Moser
  * Date: 26.09.13

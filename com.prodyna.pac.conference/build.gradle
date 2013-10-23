@@ -56,8 +56,6 @@ ext {
 
     mockitoVersion = '1.9.5'
 
-    // Additional Options
-
 }
 
 subprojects {

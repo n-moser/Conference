@@ -33,7 +33,7 @@ import java.io.StringWriter;
 import java.util.Map;
 
 /**
- * ErrorBean
+ * Bean for handling/displaying unexpected exceptions.
  * <p/>
  * Author: Nicolas Moser
  * Date: 16.10.13

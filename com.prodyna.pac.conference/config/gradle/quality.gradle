@@ -23,11 +23,8 @@
 
 apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
-apply plugin: 'jacoco'
 apply plugin: 'pmd'
 apply plugin: 'project-report'
-
-jacocoTestReport.dependsOn(build)
 
 checkstyle {
     ignoreFailures = true

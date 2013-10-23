@@ -36,7 +36,7 @@ import javax.inject.Named;
 import java.util.List;
 
 /**
- * ConferenceListBean
+ * Bean holding all speaker instances from the database.
  * <p/>
  * Author: Nicolas Moser
  * Date: 26.09.13
@@ -65,6 +65,7 @@ public class SpeakerListBean {
 		return this.speakers;
 	}
 
+	/** Initialize the SpeakerListBean by loading all speakers from DB. */
 	@PostConstruct
 	public void init() {
 

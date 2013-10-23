@@ -36,7 +36,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * RoomIdConverter
+ * Converts a room ID to the related room instance and vice versa.
  * <p/>
  * Author: Nicolas Moser
  * Date: 22.10.13

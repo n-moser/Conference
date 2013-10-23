@@ -22,6 +22,7 @@
  */
 
 
+apply plugin: 'jacoco'
 
 test {
 
@@ -45,24 +46,32 @@ test {
 
     // listen to events in the test execution lifecycle
     beforeTest { descriptor ->
-        logger.lifecycle("Running test: " + descriptor)
+        logger.lifecycle("\nRunning test: " + descriptor)
         logger.debug("Using JAVA_HOME: " + System.getenv('JAVA_HOME'))
         logger.debug("Java Directory: " + new File(System.getenv('JAVA_HOME')).isDirectory())
     }
 
     // listen to standard out and standard error of the test JVM(s)
     onOutput { descriptor, event ->
-        // logger.lifecycle("\tTest: " + descriptor + " produced standard out/err: " + event.message)
 
         if (test.debugMode) {
-            logger.lifecycle("\t" + event.message)
+            def msg = event.message
+            msg = msg.replace("\r\n", "");
+            msg = msg.replace("\n", "");
+            logger.lifecycle("\t" + msg)
         }
     }
 
 }
 
-task checkCI (dependsOn: check) {
+task checkCI(dependsOn: check) {
 
-    test.ext.debugMode = true
+    doFirst {
+        test.ext.debugMode = true
+    }
+
+//    check.mustRunAfter(checkCI)
 
 }
+
+jacocoTestReport.dependsOn(build)

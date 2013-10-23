@@ -37,7 +37,7 @@ import javax.inject.Named;
 import java.util.List;
 
 /**
- * ConferenceConverter
+ * Converts a room name to the related room instance and vice versa.
  * <p/>
  * Author: Nicolas Moser
  * Date: 09.10.13

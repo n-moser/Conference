@@ -36,7 +36,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * TalkIdConverter
+ * Converts a talk ID to the related talk instance and vice versa.
  * <p/>
  * Author: Nicolas Moser
  * Date: 22.10.13

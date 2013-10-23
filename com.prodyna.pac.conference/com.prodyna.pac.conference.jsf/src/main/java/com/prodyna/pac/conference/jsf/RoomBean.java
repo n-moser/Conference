@@ -123,6 +123,7 @@ public class RoomBean {
 	}
 
 	/** Load the dates for the current room. */
+	@SuppressWarnings("unchecked")
 	private void loadDates(Room room) {
 
 		this.dates.clear();

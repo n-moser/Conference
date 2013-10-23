@@ -36,7 +36,7 @@ import javax.inject.Named;
 import java.io.Serializable;
 
 /**
- * SpeakerAdminBean
+ * Responsible for admin (CRUD) operations on Speaker entity instances.
  * <p/>
  * Author: Nicolas Moser
  * Date: 09.10.13

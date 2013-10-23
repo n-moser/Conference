@@ -62,7 +62,7 @@ task explodeJBoss(type: Copy) {
     into jbossDir
 
     doFirst {
-        logger.lifecycle("Exploding JBoss " + configurations.jbossAS7Distribution.singleFile)
+        logger.info("Exploding JBoss " + configurations.jbossAS7Distribution.singleFile)
     }
 
     doLast {

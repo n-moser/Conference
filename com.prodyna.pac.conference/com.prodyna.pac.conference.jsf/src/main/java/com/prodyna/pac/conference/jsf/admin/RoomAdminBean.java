@@ -38,7 +38,7 @@ import javax.inject.Named;
 import java.io.Serializable;
 
 /**
- * RoomAdminBean
+ * Responsible for admin (CRUD) operations on Room entity instances.
  * <p/>
  * Author: Nicolas Moser
  * Date: 09.10.13
@@ -65,6 +65,11 @@ public class RoomAdminBean implements Serializable {
 	private Logger logger;
 
 
+	/**
+	 * Getter for the room instance.
+	 *
+	 * @return the room
+	 */
 	public Room getRoom() {
 
 		if (room == null) {
@@ -73,16 +78,46 @@ public class RoomAdminBean implements Serializable {
 		return room;
 	}
 
-	public void setRoom(Room conference) {
+	/**
+	 * Setter for the room instance.
+	 *
+	 * @param room
+	 * 		the room to set
+	 */
+	public void setRoom(Room room) {
 
-		this.room = conference;
+		this.room = room;
 	}
 
+	/**
+	 * Edit the room with the given id.
+	 *
+	 * @param roomId
+	 * 		the room ID
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the room cannot be loaded
+	 */
 	public String edit(Long roomId) throws ServiceException {
 
 		return this.edit(roomId, null);
 	}
 
+	/**
+	 * Edit the room with the given id and an optional conference ID.
+	 *
+	 * @param roomId
+	 * 		the room ID
+	 * @param conferenceId
+	 * 		the conference ID of the default conference (optional)
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the room cannot be loaded
+	 */
 	public String edit(Long roomId, Long conferenceId) throws ServiceException {
 
 		if (roomId != null) {
@@ -104,6 +139,14 @@ public class RoomAdminBean implements Serializable {
 		return "adminRoom?faces-redirect=true";
 	}
 
+	/**
+	 * Save the current room instance.
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the room cannot be saved
+	 */
 	public String save() throws ServiceException {
 
 		if (room != null) {
@@ -119,6 +162,14 @@ public class RoomAdminBean implements Serializable {
 		return "adminConference?faces-redirect=true";
 	}
 
+	/**
+	 * Remove the current room instance.
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the room cannot be removed
+	 */
 	public String remove() throws ServiceException {
 
 		if (room != null) {

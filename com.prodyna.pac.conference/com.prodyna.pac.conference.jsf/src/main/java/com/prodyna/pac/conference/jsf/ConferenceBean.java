@@ -42,7 +42,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * ConferenceBean
+ * Managed Bean responsible for displaying a single conference.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.10.13
@@ -59,34 +59,54 @@ public class ConferenceBean {
 	@Inject
 	private TalkService talkService;
 
-	private Conference conference;
-
-	private List<Date> dates = new ArrayList<Date>();
-
-	private List<Talk>[] talks;
-
 	@Inject
 	private BreadCrumpBean breadCrumpBean;
 
 	@Inject
 	private Logger logger;
 
+	private Conference conference;
+
+	private List<Date> dates = new ArrayList<Date>();
+
+	private List<Talk>[] talks;
+
+	/**
+	 * Getter for the list of dates.
+	 *
+	 * @return the list of dates
+	 */
 	public List<Date> getDates() {
 
 		return this.dates;
 	}
 
+	/**
+	 * Getter for the list of talks.
+	 *
+	 * @return the list of talks
+	 */
 	public List<Talk>[] getTalks() {
 
 		return this.talks;
 	}
 
+	/**
+	 * Getter for the conference entity.
+	 *
+	 * @return the conference instance
+	 */
 	public Conference getConference() {
 
 		return conference;
 	}
 
-	@SuppressWarnings("unchecked")
+	/**
+	 * Setter for the conference instance.
+	 *
+	 * @param conference
+	 * 		the conference to set
+	 */
 	public void setConference(Conference conference) {
 
 		if (conference == null) {
@@ -101,6 +121,7 @@ public class ConferenceBean {
 	}
 
 	/** Load the dates for the current conference. */
+	@SuppressWarnings("unchecked")
 	private void loadDates() {
 
 		this.dates.clear();

@@ -37,7 +37,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * ConferenceListBean
+ * Bean holding all conference instances from the database.
  * <p/>
  * Author: Nicolas Moser
  * Date: 26.09.13
@@ -66,6 +66,7 @@ public class ConferenceListBean {
 		return this.conferences;
 	}
 
+	/** Initialize the ConferenceListBean by loading all conferences from DB. */
 	@PostConstruct
 	public void init() {
 

@@ -28,7 +28,7 @@ import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
 
 /**
- * FacesContextProducer
+ * Provides a FacesContext instance to the CDI container.
  * <p/>
  * Author: Nicolas Moser
  * Date: 16.10.13
@@ -36,6 +36,11 @@ import javax.faces.context.FacesContext;
  */
 public class FacesContextProducer {
 
+	/**
+	 * Produces a FacesContext instance by calling FacesContext.getCurrentInstance().
+	 *
+	 * @return the FacesContext instance
+	 */
 	@Produces
 	@RequestScoped
 	public FacesContext produceFacesContext() {

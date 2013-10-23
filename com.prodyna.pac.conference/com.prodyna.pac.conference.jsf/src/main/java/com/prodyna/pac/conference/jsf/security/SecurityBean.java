@@ -38,7 +38,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
 /**
- * SecurityBean
+ * Bean for handling user authentication and provision of user information.
  * <p/>
  * Author: Nicolas Moser
  * Date: 30.09.13

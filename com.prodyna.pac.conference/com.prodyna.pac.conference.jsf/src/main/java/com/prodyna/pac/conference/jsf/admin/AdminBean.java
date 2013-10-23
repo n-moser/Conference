@@ -32,7 +32,7 @@ import javax.faces.context.FacesContext;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * AdminBean
+ * Abstract Bean class for managing entity instances and provide support utilities (like exception handling.
  * <p/>
  * Author: Nicolas Moser
  * Date: 16.10.13
@@ -110,11 +110,17 @@ public abstract class AdminBean {
 	 */
 	protected abstract String getFormName();
 
-	private void addMessage(ValidationException ve) {
+	/**
+	 * Add a message for the given exception to the FacesContext.
+	 *
+	 * @param exception
+	 * 		the exception to handle
+	 */
+	private void addMessage(ValidationException exception) {
 
-		if (ve.hasItems()) {
+		if (exception.hasItems()) {
 
-			for (ValidationItem item : ve.getItems()) {
+			for (ValidationItem item : exception.getItems()) {
 
 				String clientId = this.getFormName() + ":" + item.getPropertyName();
 
@@ -126,12 +132,24 @@ public abstract class AdminBean {
 		}
 	}
 
-	private void addMessage(ServiceException se) {
+	/**
+	 * Add a message for the given exception to the FacesContext.
+	 *
+	 * @param exception
+	 * 		the exception to handle
+	 */
+	private void addMessage(ServiceException exception) {
 
 		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Server Error", se.getMessage()));
+				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Server Error", exception.getMessage()));
 	}
 
+	/**
+	 * Add a message for the given exception to the FacesContext.
+	 *
+	 * @param exception
+	 * 		the exception to handle
+	 */
 	private void addMessage(Exception exception) {
 
 		FacesContext context = FacesContext.getCurrentInstance();

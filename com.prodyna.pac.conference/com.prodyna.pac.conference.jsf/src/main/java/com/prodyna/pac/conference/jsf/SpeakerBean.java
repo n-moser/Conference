@@ -122,6 +122,7 @@ public class SpeakerBean {
 	}
 
 	/** Load the list of conferences of the current speaker. */
+	@SuppressWarnings("unchecked")
 	private void loadConferences() {
 
 		try {

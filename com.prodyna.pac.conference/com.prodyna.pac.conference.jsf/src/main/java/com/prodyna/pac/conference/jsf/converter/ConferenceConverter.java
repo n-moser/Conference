@@ -36,7 +36,7 @@ import javax.inject.Named;
 import java.util.List;
 
 /**
- * ConferenceConverter
+ * Converts a conference name to the related conference instance and vice versa.
  * <p/>
  * Author: Nicolas Moser
  * Date: 09.10.13
