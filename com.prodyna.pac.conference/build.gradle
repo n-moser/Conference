@@ -56,6 +56,9 @@ ext {
 
     mockitoVersion = '1.9.5'
 
+    jacocoVersion = '0.6.0.201210061924'
+    jacocoExtensionVersion = '1.0.0.Alpha5'
+
 }
 
 subprojects {

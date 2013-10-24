@@ -59,13 +59,15 @@ public class Deployments {
 			tempFile.createNewFile();
 		}
 
+		File mockitoLib = new File(arquillianLibFolder, "mockito-all-1.9.5.jar");
+		if (!mockitoLib.exists()) {
+			throw new IllegalStateException("Mockito Lib is not deployed!");
+		}
 
 		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
 		war.addPackages(true, "com.prodyna.pac.conference");
-		war.addAsLibraries(new File(arquillianLibFolder, "mockito-all-1.9.5.jar"));
+		war.addAsLibraries(mockitoLib);
 		war.addAsWebInfResource("META-INF/test-beans.xml", "beans.xml");
-//		war.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
-//		war.addAsResource("META-INF/test-namedQueries.xml", "META-INF/namedQueries.xml");
 		war.setWebXML("WEB-INF/test-web.xml");
 
 		war.as(ZipExporter.class).exportTo(tempFile, true);

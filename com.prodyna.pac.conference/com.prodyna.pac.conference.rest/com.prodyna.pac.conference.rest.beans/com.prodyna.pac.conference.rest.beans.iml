@@ -14,7 +14,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../com.prodyna.pac.conference.rest.beans/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../com.prodyna.pac.conference.rest.beans/build" />
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
-      <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -197,8 +196,44 @@
     <orderEntry type="library" scope="TEST" name="jboss-ejb-api_3.1_spec-1.0.1.Final" level="project" />
     <orderEntry type="module" module-name="com.prodyna.pac.conference.rest.api" scope="PROVIDED" />
     <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.api" scope="PROVIDED" />
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jacoco/org.jacoco.agent/0.6.0.201210061924/eclipse-plugin/a452a1af148a98b581da5d0e8a92079008f09728/org.jacoco.agent-0.6.0.201210061924.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jacoco/org.jacoco.agent/0.6.0.201210061924/source/fef964bf1a336192ff3e6d2b249adcbeaa31a9cf/org.jacoco.agent-0.6.0.201210061924-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/jar/6b262da268f8ad9eff941b25503a9198f0a0ac93/slf4j-api-1.7.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/source/654135274d4c27132ea208a4ec07f344bdb83bcb/slf4j-api-1.7.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.jms/jboss-jms-api_1.1_spec/1.0.0.Final/jar/fcf14e80bb363847b0ed955df0a5a01242b9f26/jboss-jms-api_1.1_spec-1.0.0.Final.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.jms/jboss-jms-api_1.1_spec/1.0.0.Final/source/7bdd9af5da9f5299f8cc691d868f8680cd9eb63e/jboss-jms-api_1.1_spec-1.0.0.Final-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
     <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.api" scope="TEST" />
     <orderEntry type="module" module-name="com.prodyna.pac.conference.rest.api" scope="TEST" />
+    <orderEntry type="library" scope="TEST" name="arquillian-jacoco-1.0.0.Alpha5" level="project" />
+    <orderEntry type="library" scope="TEST" name="asm-all-4.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.jacoco.core-0.6.0.201210061924" level="project" />
   </component>
 </module>
 

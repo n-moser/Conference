@@ -25,12 +25,23 @@ description = 'This project holds the JSF client.'
 
 apply plugin: 'war'
 
+apply from: "$rootDir/config/gradle/arquillian.gradle"
+
+jar.enabled = false
+
+configurations {
+    mockito
+}
+
 dependencies {
     providedCompile project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
 
     providedCompile group: 'org.jboss.spec.javax.servlet', name: 'jboss-servlet-api_3.0_spec', version: servletVersion
     providedCompile group: 'org.jboss.spec.javax.faces', name: 'jboss-jsf-api_2.1_spec', version: jsfVersion
     providedCompile group: 'org.jboss.spec.javax.annotation', name: 'jboss-annotations-api_1.1_spec', version: annotationVersion
+
+    testCompile group: 'org.mockito', name:'mockito-all', version: mockitoVersion
+    mockito group: 'org.mockito', name:'mockito-all', version: mockitoVersion
 
     compile group: 'org.richfaces.ui', name: 'richfaces-components-ui', version: richfacesVersion
     compile group: 'org.richfaces.ui', name: 'richfaces-components-ui', version: richfacesVersion
@@ -51,4 +62,22 @@ idea {
     }
 }
 
-jar.enabled = false
+task copyMockitoForArquillian(type: Copy) {
+
+    def arquillianLibDir = file("${rootDir}/build/arquillian/lib")
+    def arquillianLibDirBuild = file("${buildDir}/arquillian/lib")
+
+    from configurations.mockito.singleFile
+    into arquillianLibDir
+
+
+    from configurations.mockito.singleFile
+    into arquillianLibDirBuild
+
+    doFirst {
+        logger.info("Copying Mockito " + configurations.mockito.singleFile)
+    }
+}
+
+test.dependsOn copyMockitoForArquillian
+

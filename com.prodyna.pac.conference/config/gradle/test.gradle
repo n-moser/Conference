@@ -24,6 +24,13 @@
 
 apply plugin: 'jacoco'
 
+dependencies {
+
+    testCompile group: 'org.jacoco', name: 'org.jacoco.core', version: jacocoVersion
+    testCompile group: 'org.jboss.arquillian.extension', name: 'arquillian-jacoco', version: jacocoExtensionVersion
+
+}
+
 test {
 
     ext.debugMode = false
@@ -37,7 +44,6 @@ test {
     // set heap size for the test JVM(s)
     minHeapSize = "128m"
     maxHeapSize = "512m"
-
     // set JVM arguments for the test JVM(s)
     jvmArgs '-XX:MaxPermSize=256m'
 
@@ -46,7 +52,7 @@ test {
 
     // listen to events in the test execution lifecycle
     beforeTest { descriptor ->
-        logger.lifecycle("\nRunning test: " + descriptor)
+        logger.lifecycle("\n\tRunning " + descriptor)
         logger.debug("Using JAVA_HOME: " + System.getenv('JAVA_HOME'))
         logger.debug("Java Directory: " + new File(System.getenv('JAVA_HOME')).isDirectory())
     }
@@ -64,13 +70,17 @@ test {
 
 }
 
-task checkCI(dependsOn: check) {
+jacoco {
+    toolVersion = jacocoVersion
+}
+
+task checkCI() {
+
+    finalizedBy check
 
     doFirst {
         test.ext.debugMode = true
     }
-
-//    check.mustRunAfter(checkCI)
 
 }
 
