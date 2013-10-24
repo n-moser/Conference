@@ -28,6 +28,7 @@ apply plugin: 'war'
 jar.enabled = false
 
 dependencies {
+    compile project(':com.prodyna.pac.conference.jsf:com.prodyna.pac.conference.jsf.api')
     compile project(':com.prodyna.pac.conference.jsf:com.prodyna.pac.conference.jsf.beans')
 }
 
