@@ -66,9 +66,9 @@ public class ConferenceResourceTest extends ResourceTest {
 	public void writeOutJacocoData() {
 
 		try {
-			Class rtClass = Thread.currentThread().getContextClassLoader().getParent().loadClass(
+			Class<?> rtClass = Thread.currentThread().getContextClassLoader().getParent().loadClass(
 					"org.jacoco.agent.rt.RT");
-			Object jacocoAgent = rtClass.getMethod("getAgent", (Class) null).invoke(null);
+			Object jacocoAgent = rtClass.getMethod("getAgent", (Class<?>) null).invoke(null);
 			Method dumpMethod = jacocoAgent.getClass().getMethod("dump", boolean.class);
 			Object result = dumpMethod.invoke(jacocoAgent, false);
 			System.out.println("Dump result: " + result);
