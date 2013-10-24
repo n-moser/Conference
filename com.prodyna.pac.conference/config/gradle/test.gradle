@@ -25,10 +25,8 @@
 apply plugin: 'jacoco'
 
 dependencies {
-
     testCompile group: 'org.jacoco', name: 'org.jacoco.core', version: jacocoVersion
     testCompile group: 'org.jboss.arquillian.extension', name: 'arquillian-jacoco', version: jacocoExtensionVersion
-
 }
 
 test {
@@ -67,21 +65,10 @@ test {
             logger.lifecycle("\t" + msg)
         }
     }
-
 }
 
 jacoco {
     toolVersion = jacocoVersion
-}
-
-task checkCI() {
-
-    finalizedBy check
-
-    doFirst {
-        test.ext.debugMode = true
-    }
-
 }
 
 jacocoTestReport.dependsOn(build)
