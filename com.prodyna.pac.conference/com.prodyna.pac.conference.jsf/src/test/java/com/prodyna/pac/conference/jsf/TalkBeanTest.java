@@ -25,66 +25,51 @@ package com.prodyna.pac.conference.jsf;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
-import org.slf4j.Logger;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.Archive;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-import javax.annotation.ManagedBean;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 /**
- * Managed Bean responsible for displaying a single talk.
+ * ConferenceBeanTest
  * <p/>
  * Author: Nicolas Moser
- * Date: 14.10.13
- * Time: 12:50
+ * Date: 24.10.13
+ * Time: 08:34
  */
-@ManagedBean
-@RequestScoped
-@Named("talkBean")
-public class TalkBean {
+@RunWith(Arquillian.class)
+public class TalkBeanTest extends JSFTest {
 
-	private Talk talk;
+	@Inject
+	private TalkBean talkBean;
 
 	@Inject
 	private BreadCrumpBean breadCrumpBean;
 
-	@Inject
-	private Logger logger;
+	@Deployment
+	public static Archive<?> createTestArchive() throws Exception {
 
-	/**
-	 * Getter for the displayed talk entity.
-	 *
-	 * @return the talk entity
-	 */
-	public Talk getTalk() {
-
-		return talk;
+		return JSFTest.createTestArchive(TalkBean.class, TalkBeanTest.class);
 	}
 
-	/**
-	 * Setter for the displayed talk entity.
-	 *
-	 * @param talk
-	 * 		the talk entity
-	 */
-	public void setTalk(Talk talk) {
+	@Test
+	public void setTalk() throws Exception {
 
-		if (talk == null) {
-			logger.error("Cannot set Talk 'null'.");
-			this.talk = new Talk();
-		} else {
-			this.talk = talk;
-		}
+		talkBean.setTalk(new Talk());
 
-		initBreadCrump();
+		Assert.assertNotNull(breadCrumpBean.getTalk());
 	}
 
-	/** Initialize the Breadcrump for showing the selected conference. */
-	private void initBreadCrump() {
+	@Test
+	public void setTalkNull() throws Exception {
 
-		this.breadCrumpBean.setTalk(talk);
-		this.breadCrumpBean.setRoom(null);
-		this.breadCrumpBean.setSpeaker(null);
+		talkBean.setTalk(null);
+
+		Assert.assertNotNull(talkBean.getTalk());
 	}
+
 }

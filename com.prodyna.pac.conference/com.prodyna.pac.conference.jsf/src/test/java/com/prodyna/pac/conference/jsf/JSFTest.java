@@ -23,9 +23,16 @@
 
 package com.prodyna.pac.conference.jsf;
 
+import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
+import com.prodyna.pac.conference.jsf.util.LoggerProducer;
+import org.jboss.shrinkwrap.api.Archive;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.exporter.ZipExporter;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -45,6 +52,52 @@ public abstract class JSFTest {
 	private static final DateFormat DATETIME_FORMAT = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
 
 	private static Logger logger = LoggerFactory.getLogger(JSFTest.class);
+
+	/**
+	 * Creates the default JSF test archive and adds the given classes.
+	 *
+	 * @param classes
+	 * 		additional classes to add into the archive
+	 *
+	 * @return the archive
+	 *
+	 * @throws Exception when the archive cannot be created
+	 */
+	protected static Archive<?> createTestArchive(Class<?>... classes) throws Exception {
+
+		// Workaround for Arquillian, since no Gradle Resolver is available.
+		File tempFile = new File("build/arquillian/latest-rest.war");
+		File arquillianFolder = tempFile.getParentFile();
+		File arquillianLibFolder = new File(arquillianFolder, "lib");
+		if (!tempFile.exists()) {
+			if (!arquillianFolder.exists()) {
+				arquillianFolder.mkdirs();
+			}
+			tempFile.createNewFile();
+		}
+
+		File mockitoLib = new File(arquillianLibFolder, "mockito-all-1.9.5.jar");
+		if (!mockitoLib.exists()) {
+			throw new IllegalStateException("Mockito Lib is not deployed!");
+		}
+
+		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
+		war.addPackages(true, "com.prodyna.pac.conference.ejb");
+		war.addClass(BreadCrumpBean.class);
+		war.addClasses(LoggerProducer.class);
+		war.addClass(JSFTest.class);
+		war.addClasses(classes);
+		war.addAsLibraries(mockitoLib);
+		war.addAsWebInfResource("META-INF/test-beans.xml", "beans.xml");
+		war.addAsWebInfResource("WEB-INF/test-faces-config.xml", "faces-config.xml");
+		war.setWebXML("WEB-INF/test-web.xml");
+
+		war.as(ZipExporter.class).exportTo(tempFile, true);
+
+		war.toString(true);
+
+		return war;
+	}
 
 	/**
 	 * Parse the given date string in the pattern 'dd.MM.yyyy' as Date.

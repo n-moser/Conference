@@ -24,6 +24,7 @@
 package com.prodyna.pac.conference.jsf;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
+import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
@@ -48,10 +49,10 @@ import java.util.Arrays;
  * Time: 08:34
  */
 @RunWith(Arquillian.class)
-public class ConferenceBeanTest extends JSFTest {
+public class RoomBeanTest extends JSFTest {
 
 	@Inject
-	private ConferenceBean conferenceBean;
+	private RoomBean roomBean;
 
 	@Inject
 	private BreadCrumpBean breadCrumpBean;
@@ -59,7 +60,7 @@ public class ConferenceBeanTest extends JSFTest {
 	@Deployment
 	public static Archive<?> createTestArchive() throws Exception {
 
-		return JSFTest.createTestArchive(ConferenceBean.class, ConferenceBeanTest.class);
+		return JSFTest.createTestArchive(RoomBean.class, RoomBeanTest.class);
 	}
 
 	@Produces
@@ -72,41 +73,45 @@ public class ConferenceBeanTest extends JSFTest {
 		talk.setName("Testing Android");
 		talk.setStartDate(super.parseDateTime("01.01.2014 10:00:00"));
 
-		Mockito.when(talkMock.getTalksByConference(Mockito.any(Conference.class))).thenReturn(Arrays.asList(talk));
+		Mockito.when(talkMock.getTalksByRoom(Mockito.any(Room.class))).thenReturn(Arrays.asList(talk));
 
 		return talkMock;
 	}
 
 	@Test
-	public void setConference() throws Exception {
+	public void setRoom() throws Exception {
+
+		Room room = new Room();
 
 		Conference conference = new Conference();
 		conference.setStartDate(super.parseDate("01.01.2014"));
 		conference.setEndDate(super.parseDate("02.01.2014"));
+		room.setConference(conference);
 
-		conferenceBean.setConference(conference);
-		Assert.assertNotNull(conferenceBean.getConference());
+		roomBean.setRoom(room);
 
-		Assert.assertNotNull(conferenceBean.getDates());
-		Assert.assertEquals(2, conferenceBean.getDates().size());
+		Assert.assertNotNull(roomBean.getRoom());
 
-		Assert.assertNotNull(conferenceBean.getTalks());
-		Assert.assertEquals(2, conferenceBean.getTalks().length);
+		Assert.assertNotNull(roomBean.getDates());
+		Assert.assertEquals(2, roomBean.getDates().size());
 
-		Assert.assertNotNull(conferenceBean.getTalks()[0]);
-		Assert.assertEquals(1, conferenceBean.getTalks()[0].size());
-		Assert.assertNotNull(conferenceBean.getTalks()[1]);
-		Assert.assertEquals(0, conferenceBean.getTalks()[1].size());
+		Assert.assertNotNull(roomBean.getTalks());
+		Assert.assertEquals(2, roomBean.getTalks().length);
 
-		Assert.assertNotNull(breadCrumpBean.getConference());
+		Assert.assertNotNull(roomBean.getTalks()[0]);
+		Assert.assertEquals(1, roomBean.getTalks()[0].size());
+		Assert.assertNotNull(roomBean.getTalks()[1]);
+		Assert.assertEquals(0, roomBean.getTalks()[1].size());
+
+		Assert.assertNotNull(breadCrumpBean.getRoom());
 	}
 
 	@Test
-	public void setConferenceNull() throws Exception {
+	public void setRoomNull() throws Exception {
 
-		conferenceBean.setConference(null);
+		roomBean.setRoom(null);
 
-		Assert.assertNotNull(conferenceBean.getConference());
+		Assert.assertNotNull(roomBean.getRoom());
 	}
 
 }

@@ -21,70 +21,26 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.jsf;
+package com.prodyna.pac.conference.jsf.util;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Talk;
-import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.annotation.ManagedBean;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
 
 /**
- * Managed Bean responsible for displaying a single talk.
+ * LoggerProducer
  * <p/>
  * Author: Nicolas Moser
- * Date: 14.10.13
- * Time: 12:50
+ * Date: 26.09.13
+ * Time: 20:40
  */
-@ManagedBean
-@RequestScoped
-@Named("talkBean")
-public class TalkBean {
+public class LoggerProducer {
 
-	private Talk talk;
+	@Produces
+	public Logger produceLogger(InjectionPoint ip) {
 
-	@Inject
-	private BreadCrumpBean breadCrumpBean;
-
-	@Inject
-	private Logger logger;
-
-	/**
-	 * Getter for the displayed talk entity.
-	 *
-	 * @return the talk entity
-	 */
-	public Talk getTalk() {
-
-		return talk;
-	}
-
-	/**
-	 * Setter for the displayed talk entity.
-	 *
-	 * @param talk
-	 * 		the talk entity
-	 */
-	public void setTalk(Talk talk) {
-
-		if (talk == null) {
-			logger.error("Cannot set Talk 'null'.");
-			this.talk = new Talk();
-		} else {
-			this.talk = talk;
-		}
-
-		initBreadCrump();
-	}
-
-	/** Initialize the Breadcrump for showing the selected conference. */
-	private void initBreadCrump() {
-
-		this.breadCrumpBean.setTalk(talk);
-		this.breadCrumpBean.setRoom(null);
-		this.breadCrumpBean.setSpeaker(null);
+		return LoggerFactory.getLogger(ip.getMember().getDeclaringClass());
 	}
 }

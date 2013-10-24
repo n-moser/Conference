@@ -27,7 +27,6 @@ import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
 import org.slf4j.Logger;
@@ -52,9 +51,6 @@ import java.util.Map;
 @RequestScoped
 @Named("speakerBean")
 public class SpeakerBean {
-
-	@Inject
-	private SpeakerService speakerService;
 
 	@Inject
 	private TalkService talkService;

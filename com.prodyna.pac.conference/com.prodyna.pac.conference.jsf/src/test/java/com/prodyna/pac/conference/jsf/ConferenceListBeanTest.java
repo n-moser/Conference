@@ -24,9 +24,8 @@
 package com.prodyna.pac.conference.jsf;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
-import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
+import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
 import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -39,6 +38,7 @@ import org.mockito.Mockito;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * ConferenceBeanTest
@@ -48,10 +48,10 @@ import java.util.Arrays;
  * Time: 08:34
  */
 @RunWith(Arquillian.class)
-public class ConferenceBeanTest extends JSFTest {
+public class ConferenceListBeanTest extends JSFTest {
 
 	@Inject
-	private ConferenceBean conferenceBean;
+	private ConferenceListBean conferenceListBean;
 
 	@Inject
 	private BreadCrumpBean breadCrumpBean;
@@ -59,54 +59,33 @@ public class ConferenceBeanTest extends JSFTest {
 	@Deployment
 	public static Archive<?> createTestArchive() throws Exception {
 
-		return JSFTest.createTestArchive(ConferenceBean.class, ConferenceBeanTest.class);
+		return JSFTest.createTestArchive(ConferenceListBean.class, ConferenceListBeanTest.class);
 	}
 
 	@Produces
-	public TalkService createTalkMock() throws ServiceException {
+	public ConferenceService createConferenceMock() throws ServiceException {
 
-		TalkService talkMock = Mockito.mock(TalkService.class);
-
-		Talk talk = new Talk();
-		talk.setId(1L);
-		talk.setName("Testing Android");
-		talk.setStartDate(super.parseDateTime("01.01.2014 10:00:00"));
-
-		Mockito.when(talkMock.getTalksByConference(Mockito.any(Conference.class))).thenReturn(Arrays.asList(talk));
-
-		return talkMock;
-	}
-
-	@Test
-	public void setConference() throws Exception {
+		ConferenceService conferenceMock = Mockito.mock(ConferenceService.class);
 
 		Conference conference = new Conference();
-		conference.setStartDate(super.parseDate("01.01.2014"));
-		conference.setEndDate(super.parseDate("02.01.2014"));
+		conference.setId(1L);
+		conference.setName("JAX");
 
-		conferenceBean.setConference(conference);
-		Assert.assertNotNull(conferenceBean.getConference());
+		Mockito.when(conferenceMock.getAllConferences()).thenReturn(Arrays.asList(conference));
 
-		Assert.assertNotNull(conferenceBean.getDates());
-		Assert.assertEquals(2, conferenceBean.getDates().size());
-
-		Assert.assertNotNull(conferenceBean.getTalks());
-		Assert.assertEquals(2, conferenceBean.getTalks().length);
-
-		Assert.assertNotNull(conferenceBean.getTalks()[0]);
-		Assert.assertEquals(1, conferenceBean.getTalks()[0].size());
-		Assert.assertNotNull(conferenceBean.getTalks()[1]);
-		Assert.assertEquals(0, conferenceBean.getTalks()[1].size());
-
-		Assert.assertNotNull(breadCrumpBean.getConference());
+		return conferenceMock;
 	}
 
 	@Test
-	public void setConferenceNull() throws Exception {
+	public void getConferences() throws Exception {
 
-		conferenceBean.setConference(null);
+		List<Conference> conferences = conferenceListBean.getConferences();
 
-		Assert.assertNotNull(conferenceBean.getConference());
+		Assert.assertNotNull(conferences);
+		Assert.assertEquals(1, conferences.size());
+
+		Assert.assertNotNull(conferences.get(0));
+		Assert.assertEquals("JAX", conferences.get(0).getName());
 	}
 
 }

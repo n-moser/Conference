@@ -27,7 +27,6 @@ import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 import com.prodyna.pac.conference.ejb.api.util.DateIterator;
 import com.prodyna.pac.conference.jsf.breadcrump.BreadCrumpBean;
@@ -53,9 +52,6 @@ import java.util.List;
 @RequestScoped
 @Named("roomBean")
 public class RoomBean {
-
-	@Inject
-	private RoomService roomService;
 
 	@Inject
 	private TalkService talkService;
@@ -118,13 +114,13 @@ public class RoomBean {
 			this.room = room;
 		}
 
-		this.loadDates(room);
+		this.loadDates();
 		this.initBreadCrump();
 	}
 
 	/** Load the dates for the current room. */
 	@SuppressWarnings("unchecked")
-	private void loadDates(Room room) {
+	private void loadDates() {
 
 		this.dates.clear();
 
