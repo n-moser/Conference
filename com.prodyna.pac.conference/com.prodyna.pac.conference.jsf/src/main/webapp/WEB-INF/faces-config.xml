@@ -37,7 +37,7 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>welcome</from-outcome>
-            <to-view-id>welcome.xhtml</to-view-id>
+            <to-view-id>/welcome.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>
@@ -46,7 +46,7 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>admin</from-outcome>
-            <to-view-id>secure/admin.xhtml</to-view-id>
+            <to-view-id>/secure/admin.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>
@@ -56,7 +56,7 @@
         <navigation-case>
             <from-action>#{securityBean.logout}</from-action>
             <from-outcome>welcome</from-outcome>
-            <to-view-id>welcome.xhtml</to-view-id>
+            <to-view-id>/welcome.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>
