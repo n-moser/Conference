@@ -47,7 +47,7 @@
     </container>
 
     <extension qualifier="suite">
-        <property name="deploymentClass">com.prodyna.pac.conference.ejb.beans.service.arquillian.Deployments</property>
+        <property name="deploymentClass">com.prodyna.pac.conference.ejb.beans.arquillian.Deployments</property>
     </extension>
 
 </arquillian>

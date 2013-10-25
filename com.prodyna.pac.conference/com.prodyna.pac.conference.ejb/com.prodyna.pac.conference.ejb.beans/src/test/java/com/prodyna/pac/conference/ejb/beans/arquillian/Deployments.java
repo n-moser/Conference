@@ -21,12 +21,13 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.service.arquillian;
+package com.prodyna.pac.conference.ejb.beans.arquillian;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.exporter.ZipExporter;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,15 +50,23 @@ public class Deployments {
 	public static Archive<?> createTestArchive() throws IOException {
 
 		WebArchive war = ShrinkWrap.create(WebArchive.class, "conference.war");
-		war.addPackages(true, "com.prodyna.pac.conference");
-		war.addAsWebInfResource("META-INF/beans.xml", "beans.xml");
-		war.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
-		war.addAsResource("META-INF/namedQueries.xml", "META-INF/namedQueries.xml");
+
+		// Workaround since WAR archives does not apply Decorators.
+		JavaArchive jar = ShrinkWrap.create(JavaArchive.class, "conference.jar");
+		jar.addPackages(true, "com.prodyna.pac.conference");
+		jar.addAsManifestResource("META-INF/test-beans.xml", "beans.xml");
+		jar.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
+		jar.addAsResource("META-INF/namedQueries.xml", "META-INF/namedQueries.xml");
+
+		war.addAsLibraries(jar);
+
+		// *-hornetq-jms.xml files cannot be placed inside JAR files.
 		war.addAsWebInfResource("talk-hornetq-jms.xml", "talk-hornetq-jms.xml");
 
 		logger.info(war.toString(true));
+		logger.info(jar.toString(true));
 
-		File tempFile = new File("build/arquillian/latest-rest.war");
+		File tempFile = new File("build/arquillian/latest-ejb.jar");
 		if (!tempFile.exists()) {
 			File arquillianFolder = tempFile.getParentFile();
 			if (!arquillianFolder.exists()) {

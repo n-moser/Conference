@@ -24,6 +24,9 @@
 package com.prodyna.pac.conference.ejb.beans.event;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.datatype.TalkSpeaker;
+
+import java.util.ArrayList;
 
 /**
  * Event holding talk modification information.
@@ -54,6 +57,7 @@ public class TalkModificationEvent {
 		}
 
 		this.oldTalk = oldTalk;
+		this.newTalk = newTalk;
 	}
 
 	/**
@@ -83,8 +87,6 @@ public class TalkModificationEvent {
 	 */
 	public String getChanges() {
 
-		StringBuilder result = new StringBuilder();
-
 		if (oldTalk == null) {
 			return "Talk '" + newTalk.getName() + "' has been created.";
 		}
@@ -93,12 +95,49 @@ public class TalkModificationEvent {
 			return "Talk '" + oldTalk.getName() + "' has been removed.";
 		}
 
-		// TODO Diff
+		StringBuilder result = new StringBuilder();
+		result.append("Talk Changes: \n");
 
-		result.append("Talk: ").append(oldTalk.getName()).append("\n");
-		result.append("Date: ").append(oldTalk.getStartDate()).append("\n");
-		result.append("Room: ").append(oldTalk.getRoom().getName()).append("\n");
-		result.append("Conference: ").append(oldTalk.getConference()).append("\n");
+		if (oldTalk.getName() != null && !oldTalk.getName().equals(newTalk.getName())) {
+			result.append("\tName: ").append(oldTalk.getName()).append(" -> ");
+			result.append(newTalk.getName()).append("\n");
+		}
+
+		if (oldTalk.getDescription() != null && !oldTalk.getDescription().equals(newTalk.getDescription())) {
+			result.append("\tDescription: ").append(oldTalk.getDescription()).append(" -> ");
+			result.append(newTalk.getDescription()).append("\n");
+		}
+
+		if (oldTalk.getStartDate() != null && oldTalk.getStartDate().getTime() != newTalk.getStartDate().getTime()) {
+			result.append("\tStart Date: ").append(oldTalk.getStartDate()).append(" -> ");
+			result.append(newTalk.getStartDate()).append("\n");
+		}
+
+		if (newTalk.getEndDate() != null && oldTalk.getEndDate().getTime() != newTalk.getEndDate().getTime()) {
+			result.append("\tEnd Date: ").append(oldTalk.getEndDate()).append(" -> ");
+			result.append(newTalk.getEndDate()).append("\n");
+		}
+
+		if (newTalk.getDuration() != null && !oldTalk.getDuration().equals(newTalk.getDuration())) {
+			result.append("\tDuration: ").append(oldTalk.getDuration()).append(" -> ");
+			result.append(newTalk.getDuration()).append("\n");
+		}
+
+		if (oldTalk.getRoom() != null && !oldTalk.getRoom().equals(newTalk.getRoom())) {
+			result.append("\tRoom: ").append(oldTalk.getRoom().getName()).append(" -> ");
+			result.append(newTalk.getRoom()).append("\n");
+		}
+
+		if (oldTalk.getConference() != null && !oldTalk.getConference().equals(newTalk.getConference())) {
+			result.append("\tConference: ").append(oldTalk.getConference()).append(" -> ");
+			result.append(newTalk.getConference()).append("\n");
+		}
+
+		if (!new ArrayList<TalkSpeaker>(oldTalk.getSpeakers()).equals(
+				new ArrayList<TalkSpeaker>(newTalk.getSpeakers()))) {
+			result.append("\tSpeakers: ").append(oldTalk.getSpeakers()).append(" -> ");
+			result.append(newTalk.getSpeakers()).append("\n");
+		}
 
 		return result.toString();
 	}

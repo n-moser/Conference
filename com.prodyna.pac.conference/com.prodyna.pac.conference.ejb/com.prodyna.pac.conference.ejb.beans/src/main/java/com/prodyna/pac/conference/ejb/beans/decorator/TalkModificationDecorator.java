@@ -23,15 +23,18 @@
 
 package com.prodyna.pac.conference.ejb.beans.decorator;
 
-import com.prodyna.pac.conference.ejb.beans.event.TalkModificationEvent;
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.ejb.api.datatype.TalkSpeaker;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
+import com.prodyna.pac.conference.ejb.beans.event.TalkModificationEvent;
+import org.slf4j.Logger;
 
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
+import java.util.ArrayList;
 
 /**
  * Java EE Decorator that intersects TalkService and sends modifications of Talk entity as Java EE.
@@ -50,26 +53,76 @@ public abstract class TalkModificationDecorator implements TalkService {
 	@Inject
 	private Event<TalkModificationEvent> event;
 
+	@Inject
+	private Logger logger;
+
 	@Override
 	public Talk updateTalk(Talk talk) throws ServiceException {
 
-		Talk newTalk;
+		if (talk == null || talk.getId() == null) {
+			return this.delegate.updateTalk(talk);
+		}
 
-		if (talk != null && talk.getId() != null) {
+		Talk oldTalk = this.delegate.findTalkById(talk.getId());
+		Talk newTalk = this.delegate.updateTalk(talk);
 
-			Talk oldTalk = this.delegate.findTalkById(talk.getId());
+		if (newTalk != null && newTalk.getId() != null) {
 
-			newTalk = this.delegate.updateTalk(talk);
-
-			if (newTalk != null && newTalk.getId() != null) {
+			if (this.hasChanged(oldTalk, newTalk)) {
 				TalkModificationEvent talkModificationEvent = new TalkModificationEvent(oldTalk, newTalk);
 				this.event.fire(talkModificationEvent);
 			}
-		} else {
-			newTalk = this.delegate.updateTalk(talk);
 		}
 
 		return newTalk;
+	}
+
+	/**
+	 * Check whether the talk has changed or not.
+	 *
+	 * @param oldTalk
+	 * 		the old talk
+	 * @param newTalk
+	 * 		th new talk
+	 *
+	 * @return <b>true</b> if the talk has changes, <b>false</b> if not
+	 */
+	private boolean hasChanged(Talk oldTalk, Talk newTalk) {
+
+		if (oldTalk.getName() != null && !oldTalk.getName().equals(newTalk.getName())) {
+			return true;
+		}
+
+		if (oldTalk.getDescription() != null && !oldTalk.getDescription().equals(newTalk.getDescription())) {
+			return true;
+		}
+
+		if (oldTalk.getStartDate() != null && oldTalk.getStartDate().getTime() != newTalk.getStartDate().getTime()) {
+			return true;
+		}
+
+		if (newTalk.getEndDate() != null && oldTalk.getEndDate().getTime() != newTalk.getEndDate().getTime()) {
+			return true;
+		}
+
+		if (newTalk.getDuration() != null && !oldTalk.getDuration().equals(newTalk.getDuration())) {
+			return true;
+		}
+
+		if (oldTalk.getRoom() != null && !oldTalk.getRoom().equals(newTalk.getRoom())) {
+			return true;
+		}
+
+		if (oldTalk.getConference() != null && !oldTalk.getConference().equals(newTalk.getConference())) {
+			return true;
+		}
+
+		if (!new ArrayList<TalkSpeaker>(oldTalk.getSpeakers()).equals(
+				new ArrayList<TalkSpeaker>(newTalk.getSpeakers()))) {
+			return true;
+		}
+
+		return false;
 	}
 
 }

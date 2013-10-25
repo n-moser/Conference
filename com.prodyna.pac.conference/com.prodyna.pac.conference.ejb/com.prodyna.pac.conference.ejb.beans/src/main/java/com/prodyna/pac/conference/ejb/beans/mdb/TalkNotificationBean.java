@@ -44,7 +44,7 @@ import javax.jms.TextMessage;
 				propertyValue = "javax.jms.Queue"), @ActivationConfigProperty(propertyName = "destination",
 				propertyValue = "queue/talk"), @ActivationConfigProperty(propertyName = "destinationType",
 				propertyValue = "javax.jms.Queue")})
-public class TalkNotification implements MessageListener {
+public class TalkNotificationBean implements MessageListener {
 
 	@Inject
 	private Logger logger;
@@ -56,11 +56,12 @@ public class TalkNotification implements MessageListener {
 			logger.info("Received Notification {}.", message.getJMSMessageID());
 
 			if (message instanceof TextMessage) {
-				logger.info("Message: {}.", ((TextMessage) message).getText());
+				logger.info("Message: \n {}.", ((TextMessage) message).getText());
 			}
 
 		} catch (JMSException e) {
 			logger.error("Error serializing JMS message.", e);
 		}
 	}
+
 }

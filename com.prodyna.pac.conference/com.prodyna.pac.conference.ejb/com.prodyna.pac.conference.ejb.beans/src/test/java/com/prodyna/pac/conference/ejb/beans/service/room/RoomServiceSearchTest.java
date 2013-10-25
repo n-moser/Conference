@@ -26,7 +26,7 @@ package com.prodyna.pac.conference.ejb.beans.service.room;
 import com.prodyna.pac.conference.ejb.api.datatype.*;
 import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
-import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
+import com.prodyna.pac.conference.ejb.beans.EJBTest;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.After;
 import org.junit.Assert;
@@ -45,7 +45,7 @@ import java.util.List;
  * Time: 12:34
  */
 @RunWith(Arquillian.class)
-public class RoomServiceSearchTest extends ServiceTest {
+public class RoomServiceSearchTest extends EJBTest {
 
 	@Inject
 	private RoomService roomService;

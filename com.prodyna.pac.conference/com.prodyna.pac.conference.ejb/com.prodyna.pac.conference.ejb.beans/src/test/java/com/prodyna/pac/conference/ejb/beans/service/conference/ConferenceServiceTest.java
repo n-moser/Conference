@@ -23,7 +23,7 @@
 
 package com.prodyna.pac.conference.ejb.beans.service.conference;
 
-import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
+import com.prodyna.pac.conference.ejb.beans.EJBTest;
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
 import org.jboss.arquillian.junit.Arquillian;
@@ -41,7 +41,7 @@ import javax.inject.Inject;
  * Time: 12:34
  */
 @RunWith(Arquillian.class)
-public class ConferenceServiceTest extends ServiceTest {
+public class ConferenceServiceTest extends EJBTest {
 
 	@Inject
 	private ConferenceService service;

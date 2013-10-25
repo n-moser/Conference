@@ -21,15 +21,45 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.service;
+package com.prodyna.pac.conference.ejb.beans.decorator;
+
+import com.prodyna.pac.conference.ejb.beans.event.TalkModificationEvent;
+
+import javax.enterprise.event.Observes;
+import javax.inject.Singleton;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
- * AllTests
+ * TestTalkModificationEventHandler
  * <p/>
  * Author: Nicolas Moser
- * Date: 10.10.13
- * Time: 00:09
+ * Date: 25.10.13
+ * Time: 12:11
  */
-public class AllTests {
+@Singleton
+public class TestTalkModificationEventHandler {
 
+	private Queue<TalkModificationEvent> eventQueue = new LinkedList<TalkModificationEvent>();
+
+	/**
+	 * Test accept the event.
+	 *
+	 * @param event
+	 * 		accept the event
+	 */
+	public void accept(@Observes TalkModificationEvent event) {
+
+		eventQueue.offer(event);
+	}
+
+	/**
+	 * Getter for the event queue.
+	 *
+	 * @return the event queue
+	 */
+	public Queue<TalkModificationEvent> getEventQueue() {
+
+		return eventQueue;
+	}
 }

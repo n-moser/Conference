@@ -51,6 +51,8 @@ task deployJBoss(type: Copy, dependsOn: ear) {
 
     description = 'Deploys the application ear to JBoss AS 7 (depending on $JBOSS_HOME)'
 
+    group = 'JBoss'
+
     onlyIf {
         System.getenv('JBOSS_HOME') != null
     }
@@ -60,4 +62,18 @@ task deployJBoss(type: Copy, dependsOn: ear) {
 
     from ear
     into destDir
+}
+
+task undeployJBoss(type: Delete) {
+
+    description = 'Removes the applicatoin ear from JBoss AS 7 (depending on $JBOSS_HOME)'
+
+    group = 'JBoss'
+
+    def jbossHome = System.getenv('JBOSS_HOME')
+
+    def earFile = file(jbossHome + "/standalone/deployments/" + ear.archiveName);
+    def earDeployedFile = file(jbossHome + "/standalone/deployments/" + ear.archiveName + ".deployed");
+
+    delete earFile, earDeployedFile
 }

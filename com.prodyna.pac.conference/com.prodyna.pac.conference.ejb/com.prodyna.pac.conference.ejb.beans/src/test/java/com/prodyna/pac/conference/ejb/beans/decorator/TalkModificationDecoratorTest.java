@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.service.talk;
+package com.prodyna.pac.conference.ejb.beans.decorator;
 
 import com.prodyna.pac.conference.ejb.api.datatype.*;
 import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
@@ -29,6 +29,7 @@ import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
 import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 import com.prodyna.pac.conference.ejb.beans.EJBTest;
+import com.prodyna.pac.conference.ejb.beans.event.TalkModificationEvent;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.After;
 import org.junit.Assert;
@@ -37,17 +38,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
-import java.util.List;
 
 /**
- * SpeakerServiceTest
+ * TalkModificationDecoratorTest
  * <p/>
  * Author: Nicolas Moser
- * Date: 12.09.13
- * Time: 12:34
+ * Date: 25.10.13
+ * Time: 11:57
  */
 @RunWith(Arquillian.class)
-public class TalkServiceSearchTest extends EJBTest {
+public class TalkModificationDecoratorTest extends EJBTest {
 
 	@Inject
 	private TalkService talkService;
@@ -60,6 +60,9 @@ public class TalkServiceSearchTest extends EJBTest {
 
 	@Inject
 	private ConferenceService conferenceService;
+
+	@Inject
+	private TestTalkModificationEventHandler eventHandler;
 
 	private Conference conference;
 
@@ -137,107 +140,52 @@ public class TalkServiceSearchTest extends EJBTest {
 	}
 
 	@Test
-	public void findTalkById() throws Exception {
+	public void testTalkUpdateWithoutModification() throws Exception {
 
-		Talk result = talkService.findTalkById(talk.getId());
+		Talk newTalk = new Talk();
+		newTalk.setId(talk.getId());
+		newTalk.setVersion(talk.getVersion());
+		newTalk.setName(talk.getName());
+		newTalk.setConference(talk.getConference());
+		newTalk.setRoom(talk.getRoom());
+		newTalk.setStartDate(talk.getStartDate());
+		newTalk.setDuration(talk.getDuration());
+		newTalk.getSpeakers().addAll(talk.getSpeakers());
 
-		Assert.assertNotNull(result);
-		Assert.assertNotNull(result.getId());
-		Assert.assertNotNull(result.getVersion());
-		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Java EE Webstack Performance", result.getName());
+		Assert.assertEquals(talk, newTalk);
+
+		talkService.updateTalk(newTalk);
+
+		Assert.assertEquals(0, eventHandler.getEventQueue().size());
 	}
 
 	@Test
-	public void findTalkByName() throws Exception {
+	public void testTalkUpdateWithModification() throws Exception {
 
-		Talk result = talkService.findTalkByName(talk.getName());
+		Talk newTalk = new Talk();
+		newTalk.setId(talk.getId());
+		newTalk.setVersion(talk.getVersion());
+		newTalk.setName("haha");
+		newTalk.setConference(talk.getConference());
+		newTalk.setRoom(talk.getRoom());
+		newTalk.setStartDate(talk.getStartDate());
+		newTalk.setDuration(talk.getDuration());
+		newTalk.getSpeakers().addAll(talk.getSpeakers());
 
-		Assert.assertNotNull(result);
-		Assert.assertNotNull(result.getId());
-		Assert.assertNotNull(result.getVersion());
-		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Java EE Webstack Performance", result.getName());
+		talkService.updateTalk(newTalk);
+
+		Assert.assertEquals(1, eventHandler.getEventQueue().size());
+
+		TalkModificationEvent event = eventHandler.getEventQueue().poll();
+
+		System.out.println(event.getChanges());
+
+		Assert.assertNotNull(event.getOldTalk());
+		Assert.assertNotNull(event.getNewTalk());
+
+		Assert.assertNotEquals(event.getOldTalk(), event.getNewTalk());
+
+		Assert.assertEquals("Java EE Webstack Performance", event.getOldTalk().getName());
+		Assert.assertEquals("haha", event.getNewTalk().getName());
 	}
-
-	@Test
-	public void getAllTalks() throws Exception {
-
-		List<Talk> talks = talkService.getAllTalks();
-
-		Assert.assertNotNull(talks);
-		Assert.assertEquals(1, talks.size());
-	}
-
-	@Test
-	public void getTalksByConference() throws Exception {
-
-		List<Talk> talks = talkService.getTalksByConference(this.conference);
-
-		Assert.assertNotNull(talks);
-		Assert.assertEquals(1, talks.size());
-
-		Talk result = talks.get(0);
-
-		Assert.assertNotNull(result);
-		Assert.assertNotNull(result.getId());
-		Assert.assertNotNull(result.getVersion());
-		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Java EE Webstack Performance", result.getName());
-	}
-
-	@Test
-	public void getTalksBySpeaker() throws Exception {
-
-		List<Talk> talks = talkService.getTalksBySpeaker(this.adamBien);
-
-		Assert.assertNotNull(talks);
-		Assert.assertEquals(1, talks.size());
-
-		Talk result = talks.get(0);
-
-		Assert.assertNotNull(result);
-		Assert.assertNotNull(result.getId());
-		Assert.assertNotNull(result.getVersion());
-		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Java EE Webstack Performance", result.getName());
-	}
-
-	@Test
-	public void getTalksBySpeakerRange() throws Exception {
-
-		List<Talk> talks = talkService.getTalksBySpeaker(this.adamBien, super.parseDate("04.10.2013"),
-				super.parseDate("10.10.2013"));
-
-		Assert.assertNotNull(talks);
-		Assert.assertEquals(0, talks.size());
-	}
-
-	@Test
-	public void getTalksByRoom() throws Exception {
-
-		List<Talk> talks = talkService.getTalksByRoom(this.room);
-
-		Assert.assertNotNull(talks);
-		Assert.assertEquals(1, talks.size());
-
-		Talk result = talks.get(0);
-
-		Assert.assertNotNull(result);
-		Assert.assertNotNull(result.getId());
-		Assert.assertNotNull(result.getVersion());
-		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Java EE Webstack Performance", result.getName());
-	}
-
-	@Test
-	public void getTalksByRoomRange() throws Exception {
-
-		List<Talk> talks = talkService.getTalksByRoom(this.room, super.parseDate("04.10.2013"),
-				super.parseDate("10.10.2013"));
-
-		Assert.assertNotNull(talks);
-		Assert.assertEquals(0, talks.size());
-	}
-
 }

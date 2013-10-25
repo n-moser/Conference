@@ -23,7 +23,7 @@
 
 package com.prodyna.pac.conference.ejb.beans.service.room;
 
-import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
+import com.prodyna.pac.conference.ejb.beans.EJBTest;
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
@@ -45,7 +45,7 @@ import javax.inject.Inject;
  * Time: 12:34
  */
 @RunWith(Arquillian.class)
-public class RoomServiceTest extends ServiceTest {
+public class RoomServiceTest extends EJBTest {
 
 	@Inject
 	private RoomService service;

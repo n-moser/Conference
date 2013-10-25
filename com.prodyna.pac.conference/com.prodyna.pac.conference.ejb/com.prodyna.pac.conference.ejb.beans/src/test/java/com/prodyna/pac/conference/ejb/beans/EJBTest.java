@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.service;
+package com.prodyna.pac.conference.ejb.beans;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -29,13 +29,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * ServiceTest
+ * EJBTest
  * <p/>
  * Author: Nicolas Moser
  * Date: 12.09.13
  * Time: 12:37
  */
-public abstract class ServiceTest {
+public abstract class EJBTest {
 
 	private static final DateFormat FORMAT = new SimpleDateFormat("dd.MM.yyyy");
 
