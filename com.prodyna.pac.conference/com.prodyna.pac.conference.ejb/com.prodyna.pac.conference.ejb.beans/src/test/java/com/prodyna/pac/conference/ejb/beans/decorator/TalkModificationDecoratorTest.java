@@ -152,8 +152,6 @@ public class TalkModificationDecoratorTest extends EJBTest {
 		newTalk.setDuration(talk.getDuration());
 		newTalk.getSpeakers().addAll(talk.getSpeakers());
 
-		Assert.assertEquals(talk, newTalk);
-
 		talkService.updateTalk(newTalk);
 
 		Assert.assertEquals(0, eventHandler.getEventQueue().size());
