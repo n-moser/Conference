@@ -7,8 +7,7 @@ before_install:
 
 before_script:
   - cd com.prodyna.pac.conference
-  - mysql -e 'create database conference;'
-  - gradle projects
+  - mysql -e 'create database conference-test;'
 
 script:
   - TERM=dumb gradle check

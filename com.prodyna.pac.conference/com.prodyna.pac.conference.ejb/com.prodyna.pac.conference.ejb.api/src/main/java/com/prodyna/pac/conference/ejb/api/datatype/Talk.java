@@ -128,6 +128,7 @@ public class Talk implements Datatype {
 	 *
 	 * @return the description
 	 */
+	@Lob
 	@Size(max = 1000)
 	@Column(nullable = true, length = 1000)
 	public String getDescription() {
