@@ -23,11 +23,13 @@
 
 package com.prodyna.pac.conference.ejb.beans.service.speaker;
 
-import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
 import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
+import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
 import org.jboss.arquillian.junit.Arquillian;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -41,15 +43,17 @@ import javax.inject.Inject;
  * Time: 12:34
  */
 @RunWith(Arquillian.class)
-public class SpeakerServiceTest extends ServiceTest {
+public class SpeakerServiceSearchTest extends ServiceTest {
 
 	@Inject
 	private SpeakerService service;
 
-	@Test
-	public void createReadUpdateDeleteSpeaker() throws Exception {
+	private Speaker speaker;
 
-		Speaker speaker = new Speaker();
+	@Before
+	public void setUp() throws Exception {
+
+		speaker = new Speaker();
 		speaker.setName("Adam Bien");
 		speaker.setDescription(
 				"Bien works with many companies as a Java architecture consultant for enterprise applications, helping organizations design and implement high-performance Java solutions and troubleshooting mission-critical problems. He’s also the author of eight books and more than 100 articles on Java, architectures, and best practices.");
@@ -58,32 +62,37 @@ public class SpeakerServiceTest extends ServiceTest {
 
 		Assert.assertNotNull(result);
 		Assert.assertNotNull(result.getId());
-		Assert.assertNotNull(result.getVersion());
-		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Adam Bien", result.getName());
+	}
 
-		System.out.println("Speaker ID: " + result.getId());
-		System.out.println("Speaker Version: " + result.getVersion());
+	@After
+	public void tearDown() throws Exception {
 
-		result.setName("Jens Vogel");
-		result = service.updateSpeaker(result);
+		Speaker result = service.removeSpeaker(speaker);
+		Assert.assertNotNull(result);
+	}
+
+	@Test
+	public void findSpeakerById() throws Exception {
+
+		Speaker result = service.findSpeakerById(speaker.getId());
 
 		Assert.assertNotNull(result);
 		Assert.assertNotNull(result.getId());
 		Assert.assertNotNull(result.getVersion());
-		Assert.assertEquals(1L, result.getVersion().longValue());
-		Assert.assertEquals("Jens Vogel", result.getName());
+		Assert.assertEquals(0L, result.getVersion().longValue());
+		Assert.assertEquals("Adam Bien", result.getName());
+	}
 
-		System.out.println("Speaker ID: " + result.getId());
-		System.out.println("Speaker Version: " + result.getVersion());
+	@Test
+	public void findSpeakerByName() throws Exception {
 
-		result = service.removeSpeaker(result);
+		Speaker result = service.findSpeakerByName(speaker.getName());
 
 		Assert.assertNotNull(result);
-
-		result = service.findSpeakerById(result.getId());
-
-		Assert.assertNull(result);
+		Assert.assertNotNull(result.getId());
+		Assert.assertNotNull(result.getVersion());
+		Assert.assertEquals(0L, result.getVersion().longValue());
+		Assert.assertEquals("Adam Bien", result.getName());
 	}
 
 }

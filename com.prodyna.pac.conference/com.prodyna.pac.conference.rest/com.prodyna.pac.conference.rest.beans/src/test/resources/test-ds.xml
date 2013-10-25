@@ -30,7 +30,7 @@
                 pool-name="conference" enabled="true"
                 use-java-context="true">
 
-        <connection-url>jdbc:mysql://localhost:3306/conference</connection-url>
+        <connection-url>jdbc:mysql://localhost:3306/conferencetest</connection-url>
         <driver>mysql-connector-java-5.1.26.jar</driver>
 
         <pool>
