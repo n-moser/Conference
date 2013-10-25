@@ -23,6 +23,9 @@
 
 description = 'PAC Conference Root Project'
 
+apply plugin: 'distribution'
+apply plugin: 'build-dashboard'
+
 apply from: "$rootDir/config/gradle/database.gradle"
 
 ext {
@@ -96,13 +99,21 @@ subprojects {
 
 }
 
-task clean() {
+clean << {
+    delete 'build'
+}
 
-    description = 'Deletes the build directory.'
+buildDashboard {
+    description = 'Creates an HTML overview of all project reports.'
+    group = "Reporting"
+}
 
-    group = 'Build'
+distributions {
 
-    doLast {
-        delete 'build'
+    main {
+        contents {
+            from { 'docs' }
+            from { 'config/database' }
+        }
     }
 }
