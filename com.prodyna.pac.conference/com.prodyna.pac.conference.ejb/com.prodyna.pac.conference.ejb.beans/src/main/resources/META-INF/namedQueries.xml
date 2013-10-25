@@ -32,6 +32,7 @@
         <query>
             <![CDATA[
                 SELECT c FROM Conference c
+                ORDER BY c.startDate
             ]]>
         </query>
     </named-query>

@@ -61,11 +61,6 @@ tasks.withType(Pmd) {
     }
 }
 
-task checkClean(dependsOn: clean) {
-    check.execute();
-}
-
-
 task checkstyleReport << {
     if (file("$buildDir/reports/checkstyle/${checkType}.xml").exists()) {
         ant.xslt(in: "$buildDir/reports/checkstyle/${checkType}.xml",
@@ -85,4 +80,9 @@ gradle.taskGraph.afterTask { Task task ->
         }
         checkstyleReport.execute()
     }
+}
+
+checkstyleReport {
+    description = 'Generates a report about your Checkstyle compability'
+    group = 'Reporting'
 }

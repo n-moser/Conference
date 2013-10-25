@@ -23,6 +23,8 @@
 
 description = 'PAC Conference Root Project'
 
+apply from: "$rootDir/config/gradle/database.gradle"
+
 ext {
 
     // Library Versions
@@ -96,7 +98,9 @@ subprojects {
 
 task clean() {
 
-    description = 'Cleans the root build directory'
+    description = 'Deletes the build directory.'
+
+    group = 'Build'
 
     doLast {
         delete 'build'

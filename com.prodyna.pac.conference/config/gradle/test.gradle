@@ -66,10 +66,19 @@ test {
             logger.lifecycle("\t" + msg)
         }
     }
+
+    doLast {
+        logger.lifecycle("");
+    }
 }
 
 jacoco {
     toolVersion = jacocoVersion
+}
+
+jacocoTestReport {
+    description = 'Generates a report about your Test Coverage'
+    group = 'Reporting'
 }
 
 jacocoTestReport.dependsOn(build)
