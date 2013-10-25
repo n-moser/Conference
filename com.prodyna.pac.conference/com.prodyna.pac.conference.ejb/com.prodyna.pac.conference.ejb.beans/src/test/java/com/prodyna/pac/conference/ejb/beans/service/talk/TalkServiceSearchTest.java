@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.service.speaker;
+package com.prodyna.pac.conference.ejb.beans.service.talk;
 
 import com.prodyna.pac.conference.ejb.api.datatype.*;
 import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
@@ -47,13 +47,13 @@ import java.util.List;
  * Time: 12:34
  */
 @RunWith(Arquillian.class)
-public class SpeakerServiceSearchTest extends ServiceTest {
-
-	@Inject
-	private SpeakerService speakerService;
+public class TalkServiceSearchTest extends ServiceTest {
 
 	@Inject
 	private TalkService talkService;
+
+	@Inject
+	private SpeakerService speakerService;
 
 	@Inject
 	private RoomService roomService;
@@ -95,7 +95,7 @@ public class SpeakerServiceSearchTest extends ServiceTest {
 		Assert.assertNotNull(room.getId());
 
 		this.adamBien = new Speaker();
-		this.adamBien.setName("Adam Bien");
+		this.adamBien.setName("Java EE Webstack Performance");
 		this.adamBien.setDescription(
 				"Adam Bien works with many companies as a Java architecture consultant for enterprise applications, helping organizations design and implement high-performance Java solutions and troubleshooting mission-critical problems. He’s also the author of eight books and more than 100 articles on Java, architectures, and best practices.");
 
@@ -137,53 +137,107 @@ public class SpeakerServiceSearchTest extends ServiceTest {
 	}
 
 	@Test
-	public void findSpeakerById() throws Exception {
+	public void findTalkById() throws Exception {
 
-		Speaker result = speakerService.findSpeakerById(adamBien.getId());
-
-		Assert.assertNotNull(result);
-		Assert.assertNotNull(result.getId());
-		Assert.assertNotNull(result.getVersion());
-		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Adam Bien", result.getName());
-	}
-
-	@Test
-	public void findSpeakerByName() throws Exception {
-
-		Speaker result = speakerService.findSpeakerByName(adamBien.getName());
+		Talk result = talkService.findTalkById(talk.getId());
 
 		Assert.assertNotNull(result);
 		Assert.assertNotNull(result.getId());
 		Assert.assertNotNull(result.getVersion());
 		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Adam Bien", result.getName());
+		Assert.assertEquals("Java EE Webstack Performance", result.getName());
 	}
 
 	@Test
-	public void getAllSpeakers() throws Exception {
+	public void findTalkByName() throws Exception {
 
-		List<Speaker> speakers = speakerService.getAllSpeakers();
-
-		Assert.assertNotNull(speakers);
-		Assert.assertEquals(2, speakers.size());
-	}
-
-	@Test
-	public void getSpeakersByTalk() throws Exception {
-
-		List<Speaker> speakers = speakerService.getSpeakersByTalk(this.talk);
-
-		Assert.assertNotNull(speakers);
-		Assert.assertEquals(1, speakers.size());
-
-		Speaker result = speakers.get(0);
+		Talk result = talkService.findTalkByName(talk.getName());
 
 		Assert.assertNotNull(result);
 		Assert.assertNotNull(result.getId());
 		Assert.assertNotNull(result.getVersion());
 		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Adam Bien", result.getName());
+		Assert.assertEquals("Java EE Webstack Performance", result.getName());
+	}
+
+	@Test
+	public void getAllTalks() throws Exception {
+
+		List<Talk> talks = talkService.getAllTalks();
+
+		Assert.assertNotNull(talks);
+		Assert.assertEquals(1, talks.size());
+	}
+
+	@Test
+	public void getTalksByConference() throws Exception {
+
+		List<Talk> talks = talkService.getTalksByConference(this.conference);
+
+		Assert.assertNotNull(talks);
+		Assert.assertEquals(1, talks.size());
+
+		Talk result = talks.get(0);
+
+		Assert.assertNotNull(result);
+		Assert.assertNotNull(result.getId());
+		Assert.assertNotNull(result.getVersion());
+		Assert.assertEquals(0L, result.getVersion().longValue());
+		Assert.assertEquals("Java EE Webstack Performance", result.getName());
+	}
+
+	@Test
+	public void getTalksBySpeaker() throws Exception {
+
+		List<Talk> talks = talkService.getTalksBySpeaker(this.adamBien);
+
+		Assert.assertNotNull(talks);
+		Assert.assertEquals(1, talks.size());
+
+		Talk result = talks.get(0);
+
+		Assert.assertNotNull(result);
+		Assert.assertNotNull(result.getId());
+		Assert.assertNotNull(result.getVersion());
+		Assert.assertEquals(0L, result.getVersion().longValue());
+		Assert.assertEquals("Java EE Webstack Performance", result.getName());
+	}
+
+	@Test
+	public void getTalksBySpeakerRange() throws Exception {
+
+		List<Talk> talks = talkService.getTalksBySpeaker(this.adamBien, super.parseDate("04.10.2013"),
+				super.parseDate("10.10.2013"));
+
+		Assert.assertNotNull(talks);
+		Assert.assertEquals(0, talks.size());
+	}
+
+	@Test
+	public void getTalksByRoom() throws Exception {
+
+		List<Talk> talks = talkService.getTalksByRoom(this.room);
+
+		Assert.assertNotNull(talks);
+		Assert.assertEquals(1, talks.size());
+
+		Talk result = talks.get(0);
+
+		Assert.assertNotNull(result);
+		Assert.assertNotNull(result.getId());
+		Assert.assertNotNull(result.getVersion());
+		Assert.assertEquals(0L, result.getVersion().longValue());
+		Assert.assertEquals("Java EE Webstack Performance", result.getName());
+	}
+
+	@Test
+	public void getTalksByRoomRange() throws Exception {
+
+		List<Talk> talks = talkService.getTalksByRoom(this.room, super.parseDate("04.10.2013"),
+				super.parseDate("10.10.2013"));
+
+		Assert.assertNotNull(talks);
+		Assert.assertEquals(0, talks.size());
 	}
 
 }

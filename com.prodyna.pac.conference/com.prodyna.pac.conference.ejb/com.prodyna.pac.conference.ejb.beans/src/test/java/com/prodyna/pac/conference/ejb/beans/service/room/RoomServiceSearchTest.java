@@ -21,13 +21,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.service.speaker;
+package com.prodyna.pac.conference.ejb.beans.service.room;
 
 import com.prodyna.pac.conference.ejb.api.datatype.*;
 import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
-import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
-import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
 import com.prodyna.pac.conference.ejb.beans.service.ServiceTest;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.After;
@@ -40,20 +38,14 @@ import javax.inject.Inject;
 import java.util.List;
 
 /**
- * SpeakerServiceTest
+ * RoomServiceTest
  * <p/>
  * Author: Nicolas Moser
  * Date: 12.09.13
  * Time: 12:34
  */
 @RunWith(Arquillian.class)
-public class SpeakerServiceSearchTest extends ServiceTest {
-
-	@Inject
-	private SpeakerService speakerService;
-
-	@Inject
-	private TalkService talkService;
+public class RoomServiceSearchTest extends ServiceTest {
 
 	@Inject
 	private RoomService roomService;
@@ -64,12 +56,6 @@ public class SpeakerServiceSearchTest extends ServiceTest {
 	private Conference conference;
 
 	private Room room;
-
-	private Speaker adamBien;
-
-	private Speaker larsVogel;
-
-	private Talk talk;
 
 	@Before
 	public void setUp() throws Exception {
@@ -93,97 +79,63 @@ public class SpeakerServiceSearchTest extends ServiceTest {
 		this.room = this.roomService.createRoom(room);
 		Assert.assertNotNull(room);
 		Assert.assertNotNull(room.getId());
-
-		this.adamBien = new Speaker();
-		this.adamBien.setName("Adam Bien");
-		this.adamBien.setDescription(
-				"Adam Bien works with many companies as a Java architecture consultant for enterprise applications, helping organizations design and implement high-performance Java solutions and troubleshooting mission-critical problems. He’s also the author of eight books and more than 100 articles on Java, architectures, and best practices.");
-
-		this.adamBien = this.speakerService.createSpeaker(this.adamBien);
-		Assert.assertNotNull(adamBien);
-		Assert.assertNotNull(adamBien.getId());
-
-		this.larsVogel = new Speaker();
-		this.larsVogel.setName("Lars Vogel");
-		this.larsVogel.setDescription(
-				"Lars Vogel is the founder and CEO of the vogella GmbH and works as an Eclipse, Git and Android consultant, trainer and book author. He is a regular speaker at international conferences, as for example EclipseCon, Devoxx, OOP, Droidcon and O'Reilly's Android Open and has presented at the Google Headquarters in Mountain View.");
-
-		this.larsVogel = this.speakerService.createSpeaker(this.larsVogel);
-		Assert.assertNotNull(larsVogel);
-		Assert.assertNotNull(larsVogel.getId());
-
-		this.talk = new Talk();
-		this.talk.setName("Java EE Webstack Performance");
-		this.talk.setConference(this.conference);
-		this.talk.setRoom(this.room);
-		this.talk.setStartDate(super.parseDate("03.10.2014"));
-		this.talk.setDuration(120);
-
-		TalkSpeaker talkSpeaker = new TalkSpeaker();
-		talkSpeaker.setSpeaker(this.adamBien);
-		this.talk.getSpeakers().add(talkSpeaker);
-
-		this.talk = talkService.createTalk(this.talk);
 	}
 
 	@After
 	public void tearDown() throws Exception {
 
-		this.talkService.removeTalk(talk);
 		this.roomService.removeRoom(room);
 		this.conferenceService.removeConference(conference);
-		this.speakerService.removeSpeaker(adamBien);
-		this.speakerService.removeSpeaker(larsVogel);
 	}
 
 	@Test
-	public void findSpeakerById() throws Exception {
+	public void findRoomById() throws Exception {
 
-		Speaker result = speakerService.findSpeakerById(adamBien.getId());
+		Room result = roomService.findRoomById(room.getId());
 
 		Assert.assertNotNull(result);
 		Assert.assertNotNull(result.getId());
 		Assert.assertNotNull(result.getVersion());
 		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Adam Bien", result.getName());
+		Assert.assertEquals("Snow White", result.getName());
 	}
 
 	@Test
-	public void findSpeakerByName() throws Exception {
+	public void findRoomByName() throws Exception {
 
-		Speaker result = speakerService.findSpeakerByName(adamBien.getName());
+		Room result = roomService.findRoomByName(room.getName());
 
 		Assert.assertNotNull(result);
 		Assert.assertNotNull(result.getId());
 		Assert.assertNotNull(result.getVersion());
 		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Adam Bien", result.getName());
+		Assert.assertEquals("Snow White", result.getName());
 	}
 
 	@Test
-	public void getAllSpeakers() throws Exception {
+	public void getAllRooms() throws Exception {
 
-		List<Speaker> speakers = speakerService.getAllSpeakers();
+		List<Room> rooms = roomService.getAllRooms();
 
-		Assert.assertNotNull(speakers);
-		Assert.assertEquals(2, speakers.size());
+		Assert.assertNotNull(rooms);
+		Assert.assertEquals(1, rooms.size());
 	}
 
 	@Test
-	public void getSpeakersByTalk() throws Exception {
+	public void getRoomsByTalk() throws Exception {
 
-		List<Speaker> speakers = speakerService.getSpeakersByTalk(this.talk);
+		List<Room> rooms = roomService.getRoomsByConference(this.conference);
 
-		Assert.assertNotNull(speakers);
-		Assert.assertEquals(1, speakers.size());
+		Assert.assertNotNull(rooms);
+		Assert.assertEquals(1, rooms.size());
 
-		Speaker result = speakers.get(0);
+		Room result = rooms.get(0);
 
 		Assert.assertNotNull(result);
 		Assert.assertNotNull(result.getId());
 		Assert.assertNotNull(result.getVersion());
 		Assert.assertEquals(0L, result.getVersion().longValue());
-		Assert.assertEquals("Adam Bien", result.getName());
+		Assert.assertEquals("Snow White", result.getName());
 	}
 
 }
