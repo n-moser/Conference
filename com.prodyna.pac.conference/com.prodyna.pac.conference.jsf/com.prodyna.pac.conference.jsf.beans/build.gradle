@@ -46,6 +46,9 @@ dependencies {
     testRuntime project(':com.prodyna.pac.conference.ejb:com.prodyna.pac.conference.ejb.api')
 }
 
+/**
+ * Copy the Mockito Jar to Arquillian Library directory.
+ */
 task copyMockitoForArquillian(type: Copy) {
 
     def arquillianLibDir = file("${rootDir}/build/arquillian/lib")

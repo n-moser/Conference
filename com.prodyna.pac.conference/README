@@ -1,0 +1,37 @@
+#####################################################
+#                                                   #
+#   PAC Conferences                                 #
+#   ===============                                 #
+#                                                   #
+#   Copyright (c) 2013 Nicolas Moser, PRODYNA AG    #
+#                                                   #
+#####################################################
+
+
+PAC Conferences is a Java Enterprise 6 application to manage public Conferences including Rooms, Speakers and Talks. The
+application is based on technologies like EJB, JPA, JSF and JAX-RS.
+
+
+Setup Conference Application
+----------------------------
+
+To install the application you should process with the following steps:
+
+ 1. Install a MySQL 5.1.*
+    a) Start the MySQL server
+    b) Create a new Database called 'conference'
+    c) Import the database tables using the database/mysql/create-tables.sql (tables only)
+       or database/mysql/create-tables-testdata.sql (including testdata)
+
+ 2. Install a JBoss AS 7.1
+    a) Copy the EAR file 'com.prodyna.pac.conference.ear' into the JBoss AS 7 deployments directory.
+    b) Configure the JBoss AS 7.1 Mysql Datasource based on datasources/mysql-ds.xml
+    c) Install the MySQL JDBC driver in your JBoss 7.1 AS
+
+ 3. Start the JBoss AS 7.1
+    a) From Windows using command <JBOSS_HOME>/bin/standalone.bat -c standalone-full.xml
+    b) From Unix using command <JBOSS_HOME>/bin/standalone.sh -c standalone-full.xml
+
+ 4. The application is deployed and can be accessed by an HTTP URL.
+    a) The JSF application via the URL: http://localhost:8080/app
+    b) The REST interface via the URL: http://localhost:8080/rest
