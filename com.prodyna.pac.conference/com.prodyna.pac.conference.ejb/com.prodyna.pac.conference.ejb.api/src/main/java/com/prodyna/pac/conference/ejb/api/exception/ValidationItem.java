@@ -26,7 +26,7 @@ package com.prodyna.pac.conference.ejb.api.exception;
 import java.io.Serializable;
 
 /**
- * ValidationItem
+ * A single constraint violation item with property name and message.
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
@@ -38,6 +38,14 @@ public class ValidationItem implements Serializable {
 
 	private String message;
 
+	/**
+	 * Creates a new validation item.
+	 *
+	 * @param propertyName
+	 * 		the property name
+	 * @param message
+	 * 		the validation message
+	 */
 	public ValidationItem(String propertyName, String message) {
 
 		this.propertyName = propertyName;
@@ -60,7 +68,6 @@ public class ValidationItem implements Serializable {
 	 * @return the validation message
 	 */
 	public String getMessage() {
-
 
 		return message;
 	}

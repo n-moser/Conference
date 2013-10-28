@@ -26,7 +26,7 @@ package com.prodyna.pac.conference.ejb.api.datatype;
 import java.io.Serializable;
 
 /**
- * Datatype
+ * Generic datatype interface for generic access on entity ID and Version.
  * <p/>
  * Author: Nicolas Moser
  * Date: 06.09.13

@@ -12,73 +12,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/jar/6b262da268f8ad9eff941b25503a9198f0a0ac93/slf4j-api-1.7.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/source/654135274d4c27132ea208a4ec07f344bdb83bcb/slf4j-api-1.7.5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.jms/jboss-jms-api_1.1_spec/1.0.0.Final/jar/fcf14e80bb363847b0ed955df0a5a01242b9f26/jboss-jms-api_1.1_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.jms/jboss-jms-api_1.1_spec/1.0.0.Final/source/7bdd9af5da9f5299f8cc691d868f8680cd9eb63e/jboss-jms-api_1.1_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.annotation/jboss-annotations-api_1.1_spec/1.0.0.Final/jar/394e909e8b61259bcd63e9ba8b0d7a636d8db479/jboss-annotations-api_1.1_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.annotation/jboss-annotations-api_1.1_spec/1.0.0.Final/source/749eb3ec8063d0a1ae2bb965640a5604181d7c2a/jboss-annotations-api_1.1_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
     <orderEntry type="module" module-name="com.prodyna.pac.conference.ejb.api" exported="" />
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jacoco/org.jacoco.core/0.6.0.201210061924/eclipse-plugin/776db5e7b047e6e2a4ade61e414e4b3b01aca7fc/org.jacoco.core-0.6.0.201210061924.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jacoco/org.jacoco.core/0.6.0.201210061924/source/5c637d21cd4664fd0f94e86506027206a85af277/org.jacoco.core-0.6.0.201210061924-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.extension/arquillian-jacoco/1.0.0.Alpha5/jar/9401eab6e5c54f50a1a68b9f8c3416261ca97307/arquillian-jacoco-1.0.0.Alpha5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.extension/arquillian-jacoco/1.0.0.Alpha5/source/58799e752e00e5c4d75b99f0110461af86b69984/arquillian-jacoco-1.0.0.Alpha5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.11/jar/4e031bb61df09069aeb2bffb4019e7a5034a4ee0/junit-4.11.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.11/source/28e0ad201304e4a4abf999ca0570b7cffc352c3c/junit-4.11-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
@@ -93,303 +27,6 @@
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.protocol/arquillian-protocol-servlet/1.1.1.Final/jar/f5e9dbba1d6990789902d31036f234e0af761471/arquillian-protocol-servlet-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.protocol/arquillian-protocol-servlet/1.1.1.Final/source/c8cf761556780da61f1128cdb32aa69cf01d02f2/arquillian-protocol-servlet-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-api-javaee/2.0.0-alpha-3/jar/fe2baf49629a81ca4eb93cc9cf9017cb64b35a52/shrinkwrap-descriptors-api-javaee-2.0.0-alpha-3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-api-javaee/2.0.0-alpha-3/source/3d7c585d2daf4cebdb0aba2c7f429cc3c7e7d476/shrinkwrap-descriptors-api-javaee-2.0.0-alpha-3-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-log4j12/1.7.5/jar/6edffc576ce104ec769d954618764f39f0f0f10d/slf4j-log4j12-1.7.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-log4j12/1.7.5/source/65ffa6d644792e8b09cf6479d5c01ed95bb153a0/slf4j-log4j12-1.7.5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-arquillian-container-managed/7.1.1.Final/jar/b0744f45b2ef98cbd5d7d07af9d14fc3b6edabf9/jboss-as-arquillian-container-managed-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-arquillian-container-managed/7.1.1.Final/source/3aabe89b5e11a38ac6ef68697d88c551a7ddc10b/jboss-as-arquillian-container-managed-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-impl-javaee/2.0.0-alpha-3/jar/53532ad4e61ababe92137ab9ffe4f304d9eafc45/shrinkwrap-descriptors-impl-javaee-2.0.0-alpha-3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-impl-javaee/2.0.0-alpha-3/source/34a9fdfb79ec4f965f78b24de992b2719aa54ce/shrinkwrap-descriptors-impl-javaee-2.0.0-alpha-3-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.enterprise/cdi-api/1.0-SP4/jar/6e38490033eb8b36c4cf1f7605163424a574dcf0/cdi-api-1.0-SP4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.enterprise/cdi-api/1.0-SP4/source/c8a80687c76c4fa34d566ae8b6634f1dfb7aecf0/cdi-api-1.0-SP4-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.hamcrest/hamcrest-core/1.3/jar/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.hamcrest/hamcrest-core/1.3/source/1dc37250fbc78e23a65a67fbbaf71d2e9cbc3c0b/hamcrest-core-1.3-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.ow2.asm/asm-all/4.0/jar/2518725354c7a6a491a323249b9e86846b00df09/asm-all-4.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.ow2.asm/asm-all/4.0/source/4a33d6206d6d442446a8edbd2b0798ecfaebc229/asm-all-4.0-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-api-base/2.0.0-alpha-3/jar/9f4ae1b50391d78d1d6860222a9041b18689b39b/shrinkwrap-descriptors-api-base-2.0.0-alpha-3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-api-base/2.0.0-alpha-3/source/2294108d77e9f7f53e68b326be81006033a41fb6/shrinkwrap-descriptors-api-base-2.0.0-alpha-3-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap/shrinkwrap-api/1.1.2/jar/3339fd063aa1961c9016d85aafbbae902ab699d4/shrinkwrap-api-1.1.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap/shrinkwrap-api/1.1.2/source/2efa70bd40f66c0565f712c232dad12beb30dc0c/shrinkwrap-api-1.1.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.core/arquillian-core-api/1.1.1.Final/jar/199b5a029e0637e0d908f8c89ee20b6939a86555/arquillian-core-api-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.core/arquillian-core-api/1.1.1.Final/source/e3a88dab168bca61ba952c681cf8dc8b2abfc692/arquillian-core-api-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.test/arquillian-test-api/1.1.1.Final/jar/d86c13b6e6df610b15ad1fa2c2a4032937296c4a/arquillian-test-api-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.test/arquillian-test-api/1.1.1.Final/source/4fbdcd00ad2a3f224da30060b6778c71f3df79e3/arquillian-test-api-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.core/arquillian-core-spi/1.1.1.Final/jar/bbd2422c8b16c60dab5c75405a189a5a5a8c82b7/arquillian-core-spi-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.core/arquillian-core-spi/1.1.1.Final/source/8377654cab96d5c520a69724e1349c6c101b5e22/arquillian-core-spi-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.test/arquillian-test-spi/1.1.1.Final/jar/9f133dba4ecb0b0aa8d8c482c950c9257d7a1cfc/arquillian-test-spi-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.test/arquillian-test-spi/1.1.1.Final/source/fbbdee36ec5604a9c32542baf7d549bcfae3eb8a/arquillian-test-spi-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.junit/arquillian-junit-core/1.1.1.Final/jar/b3da2052aac6a584de1e043258052a4ae94ce2c8/arquillian-junit-core-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.junit/arquillian-junit-core/1.1.1.Final/source/f2092df765c88b6bb96ea43ef7839164520c3a9d/arquillian-junit-core-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-test-api/1.1.1.Final/jar/1c6980e6e50dde627a2217f9184effbed8ccfc27/arquillian-container-test-api-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-test-api/1.1.1.Final/source/9091de5d2e61d225fd9fca304106077d2ec9f6a5/arquillian-container-test-api-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.config/arquillian-config-api/1.1.1.Final/jar/ba7bfc7a6d91a3e5b07ef59d5d7317bf2a170f8c/arquillian-config-api-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.config/arquillian-config-api/1.1.1.Final/source/92d7514c6b2c46e4e8cdbf9a0851a3f30a2bb5b/arquillian-config-api-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-spi/2.0.0-alpha-3/jar/86e6d0ba8d2cf43b5e4213cde47d6477f5a8691d/shrinkwrap-descriptors-spi-2.0.0-alpha-3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-spi/2.0.0-alpha-3/source/8afabe36324a18ae5313fc3ae5ee066f6491b59a/shrinkwrap-descriptors-spi-2.0.0-alpha-3-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.config/arquillian-config-impl-base/1.1.1.Final/jar/6bcf0e85edb401008d8c2fe0781e816285616191/arquillian-config-impl-base-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.config/arquillian-config-impl-base/1.1.1.Final/source/a7313f6a20ae42a9b88860b5b9dfafb9d69e1d2b/arquillian-config-impl-base-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-spi/1.1.1.Final/jar/dd35d0ee0e4d75cdc07061d4b035a554d92b8da7/arquillian-container-spi-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-spi/1.1.1.Final/source/98c5da268d833b8c21c9be9ccd90850a993b5d4f/arquillian-container-spi-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-test-spi/1.1.1.Final/jar/a18c1699f1894e7f9b0c80febe71f51fd690d168/arquillian-container-test-spi-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-test-spi/1.1.1.Final/source/e172a958bcfd53befdd04bc36485fecc62dd9979/arquillian-container-test-spi-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.core/arquillian-core-impl-base/1.1.1.Final/jar/5995413f1b0a8542f37d27df212d73a6f9af3c62/arquillian-core-impl-base-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.core/arquillian-core-impl-base/1.1.1.Final/source/822dee38e7c1b7d7ffec36c377a8ac185a56761e/arquillian-core-impl-base-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.test/arquillian-test-impl-base/1.1.1.Final/jar/1b92cbc0180afccc0dd9b8a5f37aefde1cdca418/arquillian-test-impl-base-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.test/arquillian-test-impl-base/1.1.1.Final/source/91c482c4c71e041c335a5863b121e4406b9d555c/arquillian-test-impl-base-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-impl-base/1.1.1.Final/jar/b65e7378452040e5d5b8f14e978dbf3a73325c89/arquillian-container-impl-base-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-impl-base/1.1.1.Final/source/b20141ebc60c3992ae973968249053bed47fa260/arquillian-container-impl-base-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-test-impl-base/1.1.1.Final/jar/6ec1c1ea1aba2f1f4ff901d0c2d6b82ead66796e/arquillian-container-test-impl-base-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-test-impl-base/1.1.1.Final/source/86e664ffca030c23aa93559c0be09050d73aae40/arquillian-container-test-impl-base-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap/shrinkwrap-spi/1.1.2/jar/6f13fe4d4db5a462160e7669cf149f4e29631c4d/shrinkwrap-spi-1.1.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap/shrinkwrap-spi/1.1.2/source/5c777f5a2c982f988f8df7febf8e9a2a5e6556ef/shrinkwrap-spi-1.1.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap/shrinkwrap-impl-base/1.1.2/jar/ef653f19613a95df0ecafa98464ab17a976fa243/shrinkwrap-impl-base-1.1.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap/shrinkwrap-impl-base/1.1.2/source/4ba4deba36c8ebee70f61e167dff85308c4c7eeb/shrinkwrap-impl-base-1.1.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.slf4j/slf4j-api/1.7.5/jar/6b262da268f8ad9eff941b25503a9198f0a0ac93/slf4j-api-1.7.5.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -401,165 +38,11 @@
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/log4j/log4j/1.2.17/bundle/5af35056b4d257e4b64b9e8069c0746e8b08629f/log4j-1.2.17.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/log4j/log4j/1.2.17/source/677abe279b68c5e7490d6d50c6951376238d7d3e/log4j-1.2.17-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.logging/jboss-logging/3.1.0.GA/jar/c71f2856e7b60efe485db39b37a31811e6c84365/jboss-logging-3.1.0.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.logging/jboss-logging/3.1.0.GA/source/119d7007b7459ddfd016fc0977b9a07f53d24b3d/jboss-logging-3.1.0.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.xnio/xnio-api/3.0.3.GA/jar/36b0592483bc26f2114b12dde9ec9de9e9984e2d/xnio-api-3.0.3.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.xnio/xnio-api/3.0.3.GA/source/47801d94bf55e9b0119bd2b7e5eada0b66d8f91b/xnio-api-3.0.3.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.remoting3/jboss-remoting/3.2.3.GA/jar/b847184fa6d6c0b88f871f5bb41572169b798ace/jboss-remoting-3.2.3.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.remoting3/jboss-remoting/3.2.3.GA/source/d377a124c80c8352f52dac4a80b935c5d89c48cd/jboss-remoting-3.2.3.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.logmanager/jboss-logmanager/1.2.2.GA/jar/da7827ab77efc6907df0ca76b41920bc3fd9052a/jboss-logmanager-1.2.2.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.logmanager/jboss-logmanager/1.2.2.GA/source/31ffd0ad7033f7d37797f4b8dc106a14c9be4a5b/jboss-logmanager-1.2.2.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.marshalling/jboss-marshalling/1.3.11.GA/jar/47f1c30f5198d5b1babd6622f36d67ea913fb555/jboss-marshalling-1.3.11.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.marshalling/jboss-marshalling/1.3.11.GA/source/3e5610f8efa490a8c634eaf548b17f05b154bcc/jboss-marshalling-1.3.11.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.remotingjmx/remoting-jmx/1.0.2.Final/jar/8366b0f0de8a4a164388396024197be57aa42ef/remoting-jmx-1.0.2.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.remotingjmx/remoting-jmx/1.0.2.Final/source/dbd43b2daf6ee25ce2ae5e6990fcf2beb9e6cee6/remoting-jmx-1.0.2.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.sasl/jboss-sasl/1.0.0.Final/jar/2ed012f8a26318149ad497ee316fad9f150214fc/jboss-sasl-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.sasl/jboss-sasl/1.0.0.Final/source/22821d5d1533cc059e9b9ceacf97f8ecdbfb0ae2/jboss-sasl-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-build-config/7.1.1.Final/jar/1093b4d4548f99a84eb7b284f4a4975d490e1a5a/jboss-as-build-config-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-build-config/7.1.1.Final/source/f8a85e58ca9678c5f48b6eb3b16260ac78c3ff3f/jboss-as-build-config-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/args4j/args4j/2.0.12/jar/8c5403feb1152f34fff9b013f0d0b5a05c4f5764/args4j-2.0.12.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/args4j/args4j/2.0.12/source/5d77a08421931abefc396d92a55ec01c642343f6/args4j-2.0.12-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.vfs/jbosgi-vfs/1.0.7.Final/jar/541f734c26ccb95a3407d74db48a4d6c4306fe9f/jbosgi-vfs-1.0.7.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.vfs/jbosgi-vfs/1.0.7.Final/source/e61ac2cb8683a3033c5bcd013b30f98b3bfc761f/jbosgi-vfs-1.0.7.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.spi/jbosgi-spi/3.0.1.Final/jar/2872b7a13eeef82f4f31db83231ef98844a957df/jbosgi-spi-3.0.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.spi/jbosgi-spi/3.0.1.Final/source/6043e51ed4d50a432075474fc0947d15710d1f8/jbosgi-spi-3.0.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-osgi/1.0.2.Final/jar/2c702f844afbd8840606fb73bb9346d90b19ad37/arquillian-container-osgi-1.0.2.Final.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-osgi/1.0.2.Final/source/6bc3114193b58ef2cf8b429ee605acf12119cfb0/arquillian-container-osgi-1.0.2.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.testenricher/arquillian-testenricher-cdi/1.0.0.CR7/jar/5e62d394cc9423a9ed6ab652a7e4260c74ded353/arquillian-testenricher-cdi-1.0.0.CR7.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.testenricher/arquillian-testenricher-cdi/1.0.0.CR7/source/71c52cc3ba532cf92369ef938a5f3f7458d5feb5/arquillian-testenricher-cdi-1.0.0.CR7-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.testenricher/arquillian-testenricher-ejb/1.0.0.CR7/jar/a5f342af9e18fb17163e1618e05bbf779629abc9/arquillian-testenricher-ejb-1.0.0.CR7.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.testenricher/arquillian-testenricher-ejb/1.0.0.CR7/source/1b34efd0b1717fc2ccc8e3f233b98d5c2975ee1e/arquillian-testenricher-ejb-1.0.0.CR7-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -588,814 +71,11 @@
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.testenricher/arquillian-testenricher-resource/1.0.0.CR7/jar/b82694b1b9993eed88aa193ed1c6967b6468c11f/arquillian-testenricher-resource-1.0.0.CR7.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.testenricher/arquillian-testenricher-resource/1.0.0.CR7/source/512f2e325d408ae2dba85453a1bd8aa8a7e11ce4/arquillian-testenricher-resource-1.0.0.CR7-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.inject/javax.inject/1/jar/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.inject/javax.inject/1/source/a00123f261762a7c5e0ec916a2c7c8298d29c400/javax.inject-1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.msc/jboss-msc/1.0.2.GA/jar/d616a991ddfe28c446d6aeca56c86e2ff298cfbb/jboss-msc-1.0.2.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.msc/jboss-msc/1.0.2.GA/source/456cfe8e8c9ab16821b6f4a3c25fb5b4e1d6c376/jboss-msc-1.0.2.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-arquillian-testenricher-msc/7.1.1.Final/jar/a8f6ffe28788fc2e89623a2eda31071f7943e261/jboss-as-arquillian-testenricher-msc-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-arquillian-testenricher-msc/7.1.1.Final/source/8ef7e33a84449c019a8fb1c5fd7e2bd3a47f1e78/jboss-as-arquillian-testenricher-msc-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.threads/jboss-threads/2.0.0.GA/jar/959b2c24987f7f38fea02c06d818bf65e49e7795/jboss-threads-2.0.0.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.threads/jboss-threads/2.0.0.GA/source/71b7a007dc83f272a948bac3348cb08889697b2/jboss-threads-2.0.0.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.xnio/xnio-nio/3.0.3.GA/jar/3668d0db9f7ad3289e7465d119bc788c8491fbc0/xnio-nio-3.0.3.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.xnio/xnio-nio/3.0.3.GA/source/e4411902cf8d9e82be61ed4f1972fddfca8c9bdc/xnio-nio-3.0.3.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-protocol/7.1.1.Final/jar/bc4cb4ca0578512a167d84a5a4fc48366032ac8b/jboss-as-protocol-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-protocol/7.1.1.Final/source/3faf19c2889b97d1bf4b80fc88ebc1c850abff5c/jboss-as-protocol-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jboss-dmr/1.1.1.Final/jar/7506200d32c2bb0833969ab13e8a0e4795853198/jboss-dmr-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jboss-dmr/1.1.1.Final/source/330fd6687014c9b2177058490b4ab02d2b49de71/jboss-dmr-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-controller-client/7.1.1.Final/jar/2313480f60c442dec920631fa2334f10b766b081/jboss-as-controller-client-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-controller-client/7.1.1.Final/source/e7c22a1d5451976c848eaf904b6efe0538bd1940/jboss-as-controller-client-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jboss-common-core/2.2.17.GA/jar/3993677c640af597d8e748c4a124288a4a99fe58/jboss-common-core-2.2.17.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jboss-common-core/2.2.17.GA/source/daf51a9f75bbc91bdbfe07fd60abe98232f4baa5/jboss-common-core-2.2.17.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.modules/jboss-modules/1.1.1.GA/jar/145c8d190f383c0f2e26489e0c02ae4dd0c8282f/jboss-modules-1.1.1.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.modules/jboss-modules/1.1.1.GA/source/fe9bd8ada1540da83c13aaeaadf6923b09e61901/jboss-modules-1.1.1.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/staxmapper/1.1.0.Final/jar/af938b7fead1eb6e1d54e001aceb7d92bf71c013/staxmapper-1.1.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/staxmapper/1.1.0.Final/source/731cde759f4ad47bee64c61b70b16b7b1df038d9/staxmapper-1.1.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-controller/7.1.1.Final/jar/f17e031ff264f8b12ee9a4571047f6c8adfdac87/jboss-as-controller-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-controller/7.1.1.Final/source/973b68479ed1e638070b2c038d1d971669e771be/jboss-as-controller-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-domain-management/7.1.1.Final/jar/5dd85154caaa82b56a2721ce155f4d81cd440e03/jboss-as-domain-management-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-domain-management/7.1.1.Final/source/98b87adfd688feab33715ce277b25eeb1e219542/jboss-as-domain-management-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.com.sun.httpserver/httpserver/1.0.0.Final/jar/a270367872518cc8662be33c3337baebad27ecb1/httpserver-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.com.sun.httpserver/httpserver/1.0.0.Final/source/20dd91fe38ce5cd11c3dd07556a0defdda9b560e/httpserver-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-domain-http-interface/7.1.1.Final/jar/62ee7b05e1c7d8e28c0f0f271c86923abe586627/jboss-as-domain-http-interface-7.1.1.Final.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-domain-http-interface/7.1.1.Final/source/c26dc3e9dc686fe0dc4b7dbf95492d7025c4f530/jboss-as-domain-http-interface-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jboss-vfs/3.1.0.Final/jar/d234479ff4ce2282789dedf378b052cde00bb543/jboss-vfs-3.1.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jboss-vfs/3.1.0.Final/source/9a7d9835a70481dd322601a8c173a83130490c1a/jboss-vfs-3.1.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-deployment-repository/7.1.1.Final/jar/765041a94f6204afc8e83a3ca8d4325b52aaa631/jboss-as-deployment-repository-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-deployment-repository/7.1.1.Final/source/d7fa1912138c6efe984880a8611493046c41eb87/jboss-as-deployment-repository-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jandex/1.0.3.Final/jar/10936892478ff3003cf5275d1a35953081d0a219/jandex-1.0.3.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jandex/1.0.3.Final/source/51b327ab8b7d7b82b81a56508a2e4bc261ed48c/jandex-1.0.3.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-embedded/7.1.1.Final/jar/e3d70bf131747ad5b9632d037c97129dbc212895/jboss-as-embedded-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-embedded/7.1.1.Final/source/dc2e47007eecbcde04abf732f95c8b42bfd1465c/jboss-as-embedded-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-platform-mbean/7.1.1.Final/jar/38212d154df3fa8d3a0396d471294100cae762d6/jboss-as-platform-mbean-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-platform-mbean/7.1.1.Final/source/6c45f02f87a5eee469f9a134430f781c2e6de7a8/jboss-as-platform-mbean-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-process-controller/7.1.1.Final/jar/44114005cb4cafc5f9bec809a91d9722c3cac773/jboss-as-process-controller-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-process-controller/7.1.1.Final/source/b42d0ae0961ffcf70d01b8587b6803afe1d875e1/jboss-as-process-controller-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-network/7.1.1.Final/jar/5fcd29dbc83f3caf9491a9e7e203b80e771d6729/jboss-as-network-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-network/7.1.1.Final/source/bb837527be6ccf6447e9be2f9f41843f46a24a69/jboss-as-network-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-threads/7.1.1.Final/jar/2ed5b9526d43f37691e4d4e9299878534c1da548/jboss-as-threads-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-threads/7.1.1.Final/source/a33f1ba6f3c076419c54df67c8990a0f46fda4a2/jboss-as-threads-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-remoting/7.1.1.Final/jar/f21112f7c645566fee719fb346eb4dc721c72608/jboss-as-remoting-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-remoting/7.1.1.Final/source/9ac3bef4f504cd933aee8f0aa66ab0d012149967/jboss-as-remoting-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.invocation/jboss-invocation/1.1.1.Final/jar/4934fba5357d21eb089c370e77f9b41e16de9726/jboss-invocation-1.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.invocation/jboss-invocation/1.1.1.Final/source/eb422eb8c18ff039059e2106ff482d18ffdc227e/jboss-invocation-1.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.logmanager/jboss-logmanager-log4j/1.0.0.GA/jar/59f4db191a41092631ab1747a41c6074a602d593/jboss-logmanager-log4j-1.0.0.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.logmanager/jboss-logmanager-log4j/1.0.0.GA/source/47d62f5ff3abfb02d1585058f645e74b31fc6153/jboss-logmanager-log4j-1.0.0.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.stdio/jboss-stdio/1.0.1.GA/jar/113ac47b216097482d4b958a93bd1f601b9fb6d9/jboss-stdio-1.0.1.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.stdio/jboss-stdio/1.0.1.GA/source/b6bbf9af026b4c8cb3db1cd45770986f763de211/jboss-stdio-1.0.1.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-server/7.1.1.Final/jar/d769d3748dd27bb3db1167923f965916638cf05c/jboss-as-server-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-server/7.1.1.Final/source/255fd7df015a3453bdced3a105ab07c0ccafed2/jboss-as-server-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.marshalling/jboss-marshalling-river/1.3.11.GA/jar/a0ab649dacbff16efedb51e9a9dc574c5b27d3a0/jboss-marshalling-river-1.3.11.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.marshalling/jboss-marshalling-river/1.3.11.GA/source/1dc5f847b0d6f86c76b994c7a9245ee038546fbb/jboss-marshalling-river-1.3.11.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-jmx/7.1.1.Final/jar/ac029b64091982ef4fe27ad7318a19fee37a0f4e/jboss-as-jmx-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-jmx/7.1.1.Final/source/ffb9249e5cfceb501607735acbc8c1693a145089/jboss-as-jmx-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.resolver/shrinkwrap-resolver-api/1.0.0-beta-5/jar/e397efd926d25195e8ef7fa87f2566cc21cf2180/shrinkwrap-resolver-api-1.0.0-beta-5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.resolver/shrinkwrap-resolver-api/1.0.0-beta-5/source/276585ae2bfef89d6d1e00543eb8acff72119e32/shrinkwrap-resolver-api-1.0.0-beta-5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.resolver/shrinkwrap-resolver-api-maven/1.0.0-beta-5/jar/1b99260bde9acaefe0e716ddd48ca36a5af1738d/shrinkwrap-resolver-api-maven-1.0.0-beta-5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.resolver/shrinkwrap-resolver-api-maven/1.0.0-beta-5/source/ff4c563295a61b1e17aef3680ebd021b8c18f3c/shrinkwrap-resolver-api-maven-1.0.0-beta-5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.aether/aether-api/1.8/jar/aace92896c520bd6827bdd757456d9724e5227e2/aether-api-1.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.aether/aether-api/1.8/source/1c1792f7a7cda08402c97c27a2cf16bf2f55046e/aether-api-1.8-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.aether/aether-util/1.8/jar/f98a1296968b4ce6d12732ba5cf69ad39853cc39/aether-util-1.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.aether/aether-util/1.8/source/f35868d829fa8ee43d4cc597da73c72e25d07006/aether-util-1.8-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.codehaus.plexus/plexus-utils/2.0.4/jar/1a363fa733fba4285967162f9a6ffe6fd356ec24/plexus-utils-2.0.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.codehaus.plexus/plexus-utils/2.0.4/source/cb9f65c2f070df2bce2af66b9963c6b9351fbdd1/plexus-utils-2.0.4-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven.wagon/wagon-provider-api/1.0-beta-7/jar/441fca36ab21586d9c6bb56c55224a45cb2e8f42/wagon-provider-api-1.0-beta-7.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven.wagon/wagon-provider-api/1.0-beta-7/source/484d1136ed6cb1eaec2f242f3d9b7b693313da8e/wagon-provider-api-1.0-beta-7-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.aether/aether-spi/1.8/jar/73c6a045cfa5783007664c0228c8e0a92b6ea374/aether-spi-1.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.aether/aether-spi/1.8/source/e702cf50902d34c691310686f409babbda7dd19d/aether-spi-1.8-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.codehaus.plexus/plexus-classworlds/2.2.2/jar/3a2bad2b58c1ca765d3f471cea8c1655d70fdfd9/plexus-classworlds-2.2.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.codehaus.plexus/plexus-classworlds/2.2.2/source/b5e33106279bbc09be9078890478112ebe3623ef/plexus-classworlds-2.2.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.xbean/xbean-reflect/3.4/bundle/26fd55dceb037f4789b399b22874d74f4d2db66f/xbean-reflect-3.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.xbean/xbean-reflect/3.4/source/77c8a006107cb5520096d629aedd0ff733e11fe1/xbean-reflect-3.4-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/com.google.collections/google-collections/1.0/jar/9ffe71ac6dcab6bc03ea13f5c2e7b2804e69b357/google-collections-1.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/com.google.collections/google-collections/1.0/source/8283dd0edd369f2cb594cd3f2433c498801bcb09/google-collections-1.0-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.codehaus.plexus/plexus-container-default/1.5.5/jar/265fa2851d31c2e2177859a518987595efe146b/plexus-container-default-1.5.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.codehaus.plexus/plexus-container-default/1.5.5/source/5a8d85ede02b1a32f79f8b17f0fe2077d952de2d/plexus-container-default-1.5.5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.aether/aether-connector-wagon/1.8/jar/7dade3c055c412ee3cd45544b8c529cc88561576/aether-connector-wagon-1.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.aether/aether-connector-wagon/1.8/source/24a34ffa48b5874ea01898f7dabfdee0641066f4/aether-connector-wagon-1.8-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-model/3.0.1/jar/b5e1921042f0accfca6fa8dab261f2a63f9c39a3/maven-model-3.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-model/3.0.1/source/2344f07a9b28201b19e2d616229546e1fd93fff7/maven-model-3.0.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.codehaus.plexus/plexus-component-annotations/1.5.5/jar/c72f2660d0cbed24246ddb55d7fdc4f7374d2078/plexus-component-annotations-1.5.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.codehaus.plexus/plexus-component-annotations/1.5.5/source/b10462efcf1ac1915797958d479c724d1bd5008d/plexus-component-annotations-1.5.5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.codehaus.plexus/plexus-interpolation/1.14/jar/c88dd864fe8b8256c25558ce7cd63be66ba07693/plexus-interpolation-1.14.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.codehaus.plexus/plexus-interpolation/1.14/source/ec4b1ecf8064ff5e40dce45ae3f62776faa6f6b8/plexus-interpolation-1.14-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-model-builder/3.0.1/jar/25a6c1b9194d6174484002e06fa2cfcc184d8726/maven-model-builder-3.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-model-builder/3.0.1/source/e7b2cb3e34fb5eb97e1608d775b5a4a75b8ce119/maven-model-builder-3.0.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-repository-metadata/3.0.1/jar/38003b99502591634b8200aed29f76625a6a082f/maven-repository-metadata-3.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-repository-metadata/3.0.1/source/7f17e6ec9aa7092fdda18f299357add7fabd2444/maven-repository-metadata-3.0.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.aether/aether-impl/1.8/jar/b7fbcb6a67b37424d6bf265c1ae2552e1c97d9e3/aether-impl-1.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.aether/aether-impl/1.8/source/85a8654aa820b3504fc0e6bfc6ba487765a54ac7/aether-impl-1.8-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-aether-provider/3.0.1/jar/53f6b97b968bd9b4678d5310dbd18e8f9b8b4c01/maven-aether-provider-3.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-aether-provider/3.0.1/source/fa1d57a0ff9df14f1a5413d1b7f3533816c0f935/maven-aether-provider-3.0.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-settings/3.0.1/jar/94e8205548e3fc791c2c5a0000b1313dc77c68c1/maven-settings-3.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-settings/3.0.1/source/97b04f942c900a9bf0ff0cc32584367729cde327/maven-settings-3.0.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.plexus/plexus-cipher/1.4/jar/50ade46f23bb38cd984b4ec560c46223432aac38/plexus-cipher-1.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.plexus/plexus-cipher/1.4/source/fd919edf211954e41e0e60bc8b042bd2e1e5cc1f/plexus-cipher-1.4-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.plexus/plexus-sec-dispatcher/1.3/jar/dedc02034fb8fcd7615d66593228cb71709134b4/plexus-sec-dispatcher-1.3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.sonatype.plexus/plexus-sec-dispatcher/1.3/source/4f1b3cd71ec7bbc5de8406fe560d3b34099d6a85/plexus-sec-dispatcher-1.3-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-settings-builder/3.0.1/jar/6610ad3fc2123fa7332d945256bbfdae6ff2d37c/maven-settings-builder-3.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven/maven-settings-builder/3.0.1/source/e25e1a3091ef5154d77676a726faf70abcb0f822/maven-settings-builder-3.0.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven.wagon/wagon-file/1.0-beta-7/jar/9e2405d51af394f2d7eddea991bc5f8f15b4a09/wagon-file-1.0-beta-7.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven.wagon/wagon-file/1.0-beta-7/source/c79d02c7720c0f36d408170a64a0e03bceb9dc5e/wagon-file-1.0-beta-7-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven.wagon/wagon-http-shared/1.0-beta-7/jar/6413e9bdc0a1970f86ebbce9cab976f550414d8/wagon-http-shared-1.0-beta-7.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven.wagon/wagon-http-shared/1.0-beta-7/source/65145301296da079c9841040a0e197bb0b5725b9/wagon-http-shared-1.0-beta-7-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven.wagon/wagon-http-lightweight/1.0-beta-7/jar/9ef3b12c97698bbff2a339d38a6c3f24e490e466/wagon-http-lightweight-1.0-beta-7.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.maven.wagon/wagon-http-lightweight/1.0-beta-7/source/11bd8f11931dc59bfb0ecc80b94658f9d3f19f6c/wagon-http-lightweight-1.0-beta-7-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.resolver/shrinkwrap-resolver-impl-maven/1.0.0-beta-5/jar/566df16cb6d217c8f91290d64959a4acdca74f75/shrinkwrap-resolver-impl-maven-1.0.0-beta-5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.resolver/shrinkwrap-resolver-impl-maven/1.0.0-beta-5/source/9347aa99ede724834a5254002e8243bebf17544f/shrinkwrap-resolver-impl-maven-1.0.0-beta-5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.osgi/org.osgi.core/4.2.0/jar/66ab449ff3aa5c4adfc82c89025cc983b422eb95/org.osgi.core-4.2.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.osgi/org.osgi.core/4.2.0/source/24fae108a96e53a576b819bb0aacb81443920f44/org.osgi.core-4.2.0-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-arquillian-common/7.1.1.Final/jar/16a8fae5bbe4a953d0215a69f2fb01e9aca775e/jboss-as-arquillian-common-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-arquillian-common/7.1.1.Final/source/845cb363ab2f897430d0ff391915828845db3714/jboss-as-arquillian-common-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.transaction/jboss-transaction-api_1.1_spec/1.0.0.Final/jar/2ab6236535e085d86f37fd97ddfdd35c88c1a419/jboss-transaction-api_1.1_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.transaction/jboss-transaction-api_1.1_spec/1.0.0.Final/source/9bbc5381224289a1cf67988c661a1dcdc165b9ff/jboss-transaction-api_1.1_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.validation/validation-api/1.0.0.GA/jar/b6bd7f9d78f6fdaa3c37dae18a4bd298915f328e/validation-api-1.0.0.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.validation/validation-api/1.0.0.GA/source/7a561191db2203550fbfa40d534d4997624cd369/validation-api-1.0.0.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jboss-ejb-client/1.0.0.Final/jar/a4261bb553342317e666809a47217d477e83cf2b/jboss-ejb-client-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jboss-ejb-client/1.0.0.Final/source/96faf8c508ee68c1bcc685e4b26a031c2282d753/jboss-ejb-client-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jboss-remote-naming/1.0.2.Final/jar/780e8d441beed0fb17fb38ca5a056ea2ffb908fc/jboss-remote-naming-1.0.2.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss/jboss-remote-naming/1.0.2.Final/source/35201e2a982e42d377889a3c21df91017a22569c/jboss-remote-naming-1.0.2.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-naming/7.1.1.Final/jar/ee369adf6d6e8cf7c973b28299675b9d7bf1cbd7/jboss-as-naming-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-naming/7.1.1.Final/source/39158d7b31cfa9b6072711ee04673ea777dfcba5/jboss-as-naming-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.hibernate/hibernate-validator/4.2.0.Final/jar/eac2db0a9d86a9749724fe93d43afffa8106f25e/hibernate-validator-4.2.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.hibernate/hibernate-validator/4.2.0.Final/source/a41e980a54e139faae6eb7054dc545b14125e090/hibernate-validator-4.2.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.interceptor/jboss-interceptor-spi/2.0.0.Final/jar/d22fa4055b3a2a79036b556440c898185ebdea09/jboss-interceptor-spi-2.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.interceptor/jboss-interceptor-spi/2.0.0.Final/source/9fe3cb0720a7bc7c28cf11f2d964f7295eb7b8ed/jboss-interceptor-spi-2.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.metadata/jboss-metadata-common/7.0.1.Final/jar/22c617a86215cdfb4c9bfc55d7f9140eea4afcd6/jboss-metadata-common-7.0.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.metadata/jboss-metadata-common/7.0.1.Final/source/2fc86a7236ffd9ad50bd90858a9056a721cca3d9/jboss-metadata-common-7.0.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.metadata/jboss-metadata-ear/7.0.1.Final/jar/45446fd6ff13eefbb83f63076e90f69caa8fbb2b/jboss-metadata-ear-7.0.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.metadata/jboss-metadata-ear/7.0.1.Final/source/8ccdf1d94aa1dca756182d5c0cb0be80ab6e52f3/jboss-metadata-ear-7.0.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.interceptor/jboss-interceptors-api_1.1_spec/1.0.0.Final/jar/30f4b941417a72fe02b06a849f85b010467b3e1f/jboss-interceptors-api_1.1_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.interceptor/jboss-interceptors-api_1.1_spec/1.0.0.Final/source/4b510dbd35bb67c656c6921e10c4e45fdbea75aa/jboss-interceptors-api_1.1_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-ee/7.1.1.Final/jar/539b7ad68e5820dfa0871498e498e6ac325b7f89/jboss-as-ee-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-ee/7.1.1.Final/source/4ac5673cbccfd111e4cdeced326be4bc3370426f/jboss-as-ee-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.deployment/jbosgi-deployment/1.0.12.Final/jar/fbdc15c82cbc6226a0892437839a3eb9edb60472/jbosgi-deployment-1.0.12.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.deployment/jbosgi-deployment/1.0.12.Final/source/e594b6b693eaeef81adf3ec7821c250d3561171/jbosgi-deployment-1.0.12.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.metadata/jbosgi-metadata/2.0.3.Final/jar/afc579e8a9ac459ae71c2f3dbc3a12c8bda0c654/jbosgi-metadata-2.0.3.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.metadata/jbosgi-metadata/2.0.3.Final/source/e9285c72b1182b7d4b6ef01c35e0bb3ea9e3548e/jbosgi-metadata-2.0.3.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.resolver/jbosgi-resolver-api/1.0.13.Final/jar/5f54229d2ae987ef00e635e8e1b7ad3a501633c9/jbosgi-resolver-api-1.0.13.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.resolver/jbosgi-resolver-api/1.0.13.Final/source/83122406be8e0c14d5c62f17d66806b33607be08/jbosgi-resolver-api-1.0.13.Final-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -1413,297 +93,11 @@
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.resolver/jbosgi-resolver-felix/1.0.13.Final/jar/8284de73532f155cc27c7b99c270230fd25e3ab6/jbosgi-resolver-felix-1.0.13.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.resolver/jbosgi-resolver-felix/1.0.13.Final/source/7b2553616cedee5d68190fc3a71d86e0763ae95e/jbosgi-resolver-felix-1.0.13.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.vfs/jbosgi-vfs30/1.0.7.Final/jar/53723a300089bae2e38bdeb6b637d712a8684e7c/jbosgi-vfs30-1.0.7.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.vfs/jbosgi-vfs30/1.0.7.Final/source/613e1f43ba36ca4d71de211b1ad67fa742b371c/jbosgi-vfs30-1.0.7.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.osgi/org.osgi.compendium/4.2.0/jar/1e506145ec53132bce79ce8798d98026b598fd48/org.osgi.compendium-4.2.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.osgi/org.osgi.compendium/4.2.0/source/afeafc13c34dd8276b197d0479b438d2324c4bd7/org.osgi.compendium-4.2.0-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.framework/jbosgi-framework-core/1.1.8.Final/jar/9e2adeb0518df20946eda582c0c0fde35e4ec805/jbosgi-framework-core-1.1.8.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.framework/jbosgi-framework-core/1.1.8.Final/source/eecdcae397703d34589bfa8d1385177a122e1274/jbosgi-framework-core-1.1.8.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.felix/org.apache.felix.resolver/0.1.0.Beta1/bundle/d20b5ae50cf2359cc3a85edeeb4e600011c7bfe3/org.apache.felix.resolver-0.1.0.Beta1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.apache.felix/org.apache.felix.resolver/0.1.0.Beta1/source/2bab6b77533381d19c0d9718aebfcd0b1be29146/org.apache.felix.resolver-0.1.0.Beta1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.resolver/jbosgi-resolver-api-v2/2.0.0.Beta2/jar/526afc898a561781785f70db382ad93e1324cbd8/jbosgi-resolver-api-v2-2.0.0.Beta2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.resolver/jbosgi-resolver-api-v2/2.0.0.Beta2/source/fa4330acb9ad5ee08a4fa55c027a0be5b46dc2e9/jbosgi-resolver-api-v2-2.0.0.Beta2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.repository/jbosgi-repository-api/1.0.5/bundle/4a759fc5b039d9e16e91f404539c081c8f7cb973/jbosgi-repository-api-1.0.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.repository/jbosgi-repository-api/1.0.5/source/d0d42843144c8de8fe3b8e8deb344fae8b27c47d/jbosgi-repository-api-1.0.5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.repository/jbosgi-repository-core/1.0.5/jar/14ba0535773b00957b46cb7b05f52ca282053f77/jbosgi-repository-core-1.0.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.osgi.repository/jbosgi-repository-core/1.0.5/source/b4257951c8c5ce92b53fb2b20590246bf8ba89d9/jbosgi-repository-core-1.0.5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.osgi/org.osgi.enterprise/4.2.0/jar/8634dcb0fc62196e820ed0f1062993c377f74972/org.osgi.enterprise-4.2.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.osgi/org.osgi.enterprise/4.2.0/source/d885c29ea36fd5719b1db1ee1bc8b4c33e374cd1/org.osgi.enterprise-4.2.0-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-osgi-service/7.1.1.Final/jar/f17991f20eaf921df2fae0e4575c6550772522b5/jboss-as-osgi-service-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-osgi-service/7.1.1.Final/source/1239f8fe19dda5e6c436233207e1b30b06dcf767/jboss-as-osgi-service-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.protocol/arquillian-protocol-jmx/1.0.0.CR7/jar/228b9f25569d3b931aa16827378a605d1fdd241d/arquillian-protocol-jmx-1.0.0.CR7.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.protocol/arquillian-protocol-jmx/1.0.0.CR7/source/dc6d38c4f89e2e8d2b318a146dc2b9847cf0d2ad/arquillian-protocol-jmx-1.0.0.CR7-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-arquillian-protocol-jmx/7.1.1.Final/jar/f7f2a3f97fd4df03286313d250443e259a2b0ee3/jboss-as-arquillian-protocol-jmx-7.1.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.as/jboss-as-arquillian-protocol-jmx/7.1.1.Final/source/71af415e3650538f3a628391533a73f25a2f217c/jboss-as-arquillian-protocol-jmx-7.1.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-impl-base/2.0.0-alpha-3/jar/67d2be5c674fb2b0e0386cf520c605d25ae6ffb1/shrinkwrap-descriptors-impl-base-2.0.0-alpha-3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-impl-base/2.0.0-alpha-3/source/438266c3cb833527b6ed47d5d1917b746ecad964/shrinkwrap-descriptors-impl-base-2.0.0-alpha-3-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.annotation/jsr250-api/1.0/jar/5025422767732a1ab45d93abfea846513d742dcf/jsr250-api-1.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.annotation/jsr250-api/1.0/source/9b1fba77edd118e13c42bda43d3c993dadd52c25/jsr250-api-1.0-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.resource/jboss-connector-api_1.5_spec/1.0.0.Final/jar/a94f4dff833a6cd37eb1162b3e93db3ec1d378e4/jboss-connector-api_1.5_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.resource/jboss-connector-api_1.5_spec/1.0.0.Final/source/8a165bc8f7f2d6cc1145474b6d2459fef63cb5da/jboss-connector-api_1.5_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.el/jboss-el-api_2.2_spec/1.0.0.Final/jar/39d6bd0272bae967e99a60de2c8cf1754e13cfc9/jboss-el-api_2.2_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.el/jboss-el-api_2.2_spec/1.0.0.Final/source/9246974930dd82acdc1526d1101470e5fbbf710c/jboss-el-api_2.2_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.servlet/jboss-servlet-api_3.0_spec/1.0.0.Final/jar/44fb8e9dff4a0ec4081bb5492b9a3a9ab9c3466b/jboss-servlet-api_3.0_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.servlet/jboss-servlet-api_3.0_spec/1.0.0.Final/source/c4d0c1b8f52aaf0b73b5277c0ec0bdfdb7f2ecbe/jboss-servlet-api_3.0_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.security.jacc/jboss-jacc-api_1.4_spec/1.0.0.Final/jar/b69cb291327ad0009870eb485fbf1b9d41708ab1/jboss-jacc-api_1.4_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.security.jacc/jboss-jacc-api_1.4_spec/1.0.0.Final/source/855bf4eeaf1d809ce2e36eb883d7e5af6f5626b/jboss-jacc-api_1.4_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.enterprise.deploy/jboss-jad-api_1.2_spec/1.0.0.Final/jar/fe6298a32dbe475a156339d3a3a8e20bc802bcab/jboss-jad-api_1.2_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.enterprise.deploy/jboss-jad-api_1.2_spec/1.0.0.Final/source/d0af6ef72ec2a9584b8f2fc5f75a2b3f85274572/jboss-jad-api_1.2_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.security.auth.message/jboss-jaspi-api_1.0_spec/1.0.0.Final/jar/a2832db1f8f3577f2cb1c20dcca034e7f7359c1e/jboss-jaspi-api_1.0_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.security.auth.message/jboss-jaspi-api_1.0_spec/1.0.0.Final/source/7babef325c4c428565a7ea600ac479740d977ffe/jboss-jaspi-api_1.0_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.activation/activation/1.1/jar/e6cb541461c2834bdea3eb920f1884d1eb508b50/activation-1.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.activation/activation/1.1/source/3697e9f67a2ed7ac5f589cff30f21173299440/activation-1.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.xml.registry/jboss-jaxr-api_1.0_spec/1.0.0.Final/jar/20251b85415fc1fcd73554a0d04a678d7a7aefc7/jboss-jaxr-api_1.0_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.xml.registry/jboss-jaxr-api_1.0_spec/1.0.0.Final/source/790c38f81cc0d1e7608ad836be4bf25b3aaf60cd/jboss-jaxr-api_1.0_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.jms/jboss-jms-api_1.1_spec/1.0.0.Final/jar/fcf14e80bb363847b0ed955df0a5a01242b9f26/jboss-jms-api_1.1_spec-1.0.0.Final.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.jms/jboss-jms-api_1.1_spec/1.0.0.Final/source/7bdd9af5da9f5299f8cc691d868f8680cd9eb63e/jboss-jms-api_1.1_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.servlet.jsp/jboss-jsp-api_2.2_spec/1.0.0.Final/jar/2b629bc9a598edc1f56ae6c98ca92c8346e27834/jboss-jsp-api_2.2_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.servlet.jsp/jboss-jsp-api_2.2_spec/1.0.0.Final/source/fea36045acfc380ae7029ce68c1f0910bc74e87/jboss-jsp-api_2.2_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.xml.bind/jboss-jaxb-api_2.2_spec/1.0.0.Final/jar/6036055b429b25cda82714cc87bd304be06986a7/jboss-jaxb-api_2.2_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.xml.bind/jboss-jaxb-api_2.2_spec/1.0.0.Final/source/55eb30e4cc543f18ef69bea823d07e6e57420254/jboss-jaxb-api_2.2_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.xml.rpc/jboss-jaxrpc-api_1.1_spec/1.0.0.Final/jar/1a10a2215a433d5102aef193692557709ae49573/jboss-jaxrpc-api_1.1_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.xml.rpc/jboss-jaxrpc-api_1.1_spec/1.0.0.Final/source/b9bf6cc26513004a16e17d8c735184e9f276aaad/jboss-jaxrpc-api_1.1_spec-1.0.0.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.xml.soap/jboss-saaj-api_1.3_spec/1.0.0.Final/jar/6aa2fe20556e61f21304c1037aa344d2d08405cd/jboss-saaj-api_1.3_spec-1.0.0.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.xml.soap/jboss-saaj-api_1.3_spec/1.0.0.Final/source/c959d21d45671cd00641efe1065612e83eac79ad/jboss-saaj-api_1.3_spec-1.0.0.Final-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -1718,94 +112,160 @@
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/com.sun.faces/jsf-api/2.0.3-b05/jar/d959dddbb55c2e9b83dab786967e0680d385cd93/jsf-api-2.0.3-b05.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/com.sun.faces/jsf-api/2.0.3-b05/source/b283a31d23d85616d583ed807207c8a255f97b2c/jsf-api-2.0.3-b05-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.jws/jsr181-api/1.0-MR1/jar/401cc1d0e5f0d8f4d0532a54928ceaa27ec21258/jsr181-api-1.0-MR1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.jws/jsr181-api/1.0-MR1/source/91949f9602ca47ff97f3b269076335a615e0d5e3/jsr181-api-1.0-MR1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.mail/mail/1.4.2/jar/6a1d836b6a4c77ec11ac46d2ea8557ca574cd428/mail-1.4.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.mail/mail/1.4.2/source/d83de697786c3ffc8785188fe2e2920c37b38423/mail-1.4.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.servlet/jstl/1.2/jar/74aca283cd4f4b4f3e425f5820cda58f44409547/jstl-1.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/javax.servlet/jstl/1.2/source/2f5877ef15adb721421e80f5aa2b6fe069eec8ed/jstl-1.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.resteasy/jaxrs-api/2.1.0.GA/jar/6b35db4c5db99999f2e2e7c7ae7c4723c8a942c4/jaxrs-api-2.1.0.GA.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.resteasy/jaxrs-api/2.1.0.GA/source/b6e0e55faffbcc4bdd70d4ae27dd02fcab6bb7f2/jaxrs-api-2.1.0.GA-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/stax/stax-api/1.0.1/jar/49c100caf72d658aca8e58bd74a4ba90fa2b0d70/stax-api-1.0.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/stax/stax-api/1.0.1/source/db2c401019251319a52dd9aafd120e8efed54e42/stax-api-1.0.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.ejb/jboss-ejb-api_3.1_spec/1.0.1.Final/jar/45670ed292a56924505b9a04eb623761d80deb2d/jboss-ejb-api_3.1_spec-1.0.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.spec.javax.ejb/jboss-ejb-api_3.1_spec/1.0.1.Final/source/e21e30371133c257b75de8eba8526201739189b0/jboss-ejb-api_3.1_spec-1.0.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.hibernate.javax.persistence/hibernate-jpa-2.0-api/1.0.1.Final/jar/3306a165afa81938fc3d8a0948e891de9f6b192b/hibernate-jpa-2.0-api-1.0.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.hibernate.javax.persistence/hibernate-jpa-2.0-api/1.0.1.Final/source/574f65373b46a038332eb1a14acc3142bd9e9810/hibernate-jpa-2.0-api-1.0.1.Final-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
+    <orderEntry type="library" scope="TEST" name="junit-4.11" level="project" />
+    <orderEntry type="library" scope="TEST" name="aether-util-1.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-modules-1.1.1.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-container-test-api-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="validation-api-1.0.0.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-config-api-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="plexus-interpolation-1.14" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-metadata-ear-7.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-protocol-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-arquillian-common-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.jacoco.core-0.6.0.201210061924" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-resolver-api-maven-1.0.0-beta-5" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.osgi.enterprise-4.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="google-collections-1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="slf4j-log4j12-1.7.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-api-1.1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="maven-model-3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-junit-core-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="staxmapper-1.1.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="xbean-reflect-3.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-interceptor-spi-2.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-testenricher-resource-1.0.0.CR7" level="project" />
+    <orderEntry type="library" scope="TEST" name="args4j-2.0.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-descriptors-api-javaee-2.0.0-alpha-3" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-remote-naming-1.0.2.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-platform-mbean-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-test-api-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-arquillian-testenricher-msc-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-vfs-1.0.7.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-container-spi-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-repository-core-1.0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-arquillian-container-managed-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-container-test-spi-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-servlet-api_3.0_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-descriptors-spi-2.0.0-alpha-3" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-framework-core-1.1.8.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="wagon-http-lightweight-1.0-beta-7" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-transaction-api_1.1_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-jmx-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="plexus-component-annotations-1.5.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="stax-api-1.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-metadata-common-7.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-embedded-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="aether-impl-1.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-remoting-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="jboss-jms-api_1.1_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-jacoco-1.0.0.Alpha5" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-jaxr-api_1.0_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-process-controller-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.osgi.core-4.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-resolver-felix-1.0.13.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-el-api_2.2_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-marshalling-river-1.3.11.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="httpserver-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="xnio-api-3.0.3.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-ejb-client-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-protocol-servlet-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-jaxrpc-api_1.1_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-msc-1.0.2.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-network-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-controller-client-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-vfs-3.1.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-stdio-1.0.1.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="aether-spi-1.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-test-impl-base-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-dmr-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-jsp-api_2.2_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-logging-3.1.0.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-invocation-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-osgi-service-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-sasl-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="plexus-container-default-1.5.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-container-test-impl-base-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-logmanager-log4j-1.0.0.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="log4j-1.2.17" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-deployment-repository-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-common-core-2.2.17.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="javax.inject-1" level="project" />
+    <orderEntry type="library" scope="TEST" name="aether-connector-wagon-1.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-spi-1.1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="plexus-utils-2.0.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="hibernate-validator-4.2.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jaxrs-api-2.1.0.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-resolver-api-1.0.0-beta-5" level="project" />
+    <orderEntry type="library" scope="TEST" name="aether-api-1.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="mail-1.4.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-container-impl-base-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-ejb-api_3.1_spec-1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-arquillian-protocol-jmx-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-saaj-api_1.3_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-threads-2.0.0.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-core-impl-base-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-threads-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="maven-model-builder-3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-resolver-api-v2-2.0.0.Beta2" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-descriptors-impl-javaee-2.0.0-alpha-3" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-testenricher-ejb-1.0.0.CR7" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-config-impl-base-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-testenricher-cdi-1.0.0.CR7" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.apache.felix.resolver-0.1.0.Beta1" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-protocol-jmx-1.0.0.CR7" level="project" />
+    <orderEntry type="library" scope="TEST" name="cdi-api-1.0-SP4" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-jacc-api_1.4_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-domain-management-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.osgi.compendium-4.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-marshalling-1.3.11.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-core-api-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-jaspi-api_1.0_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="wagon-provider-api-1.0-beta-7" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-core-spi-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-logmanager-1.2.2.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-ee-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-resolver-api-1.0.13.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="xnio-nio-3.0.3.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="plexus-sec-dispatcher-1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="plexus-classworlds-2.2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="activation-1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="maven-aether-provider-3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="jsf-api-2.0.3-b05" level="project" />
+    <orderEntry type="library" scope="TEST" name="jsr181-api-1.0-MR1" level="project" />
+    <orderEntry type="library" scope="TEST" name="jsr250-api-1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-impl-base-1.1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-resolver-impl-maven-1.0.0-beta-5" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="slf4j-api-1.7.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-jaxb-api_2.2_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-interceptors-api_1.1_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="asm-all-4.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-vfs30-1.0.7.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="wagon-file-1.0-beta-7" level="project" />
+    <orderEntry type="library" scope="TEST" name="remoting-jmx-1.0.2.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-naming-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-remoting-3.2.3.GA" level="project" />
+    <orderEntry type="library" scope="TEST" name="maven-settings-builder-3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="jstl-1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-server-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-repository-api-1.0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="hamcrest-core-1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-connector-api_1.5_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" exported="" name="jboss-annotations-api_1.1_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-build-config-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-as-controller-7.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="arquillian-test-spi-1.1.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="plexus-cipher-1.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-deployment-1.0.12.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-metadata-2.0.3.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="wagon-http-shared-1.0-beta-7" level="project" />
+    <orderEntry type="library" scope="TEST" name="jandex-1.0.3.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="hibernate-jpa-2.0-api-1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-descriptors-impl-base-2.0.0-alpha-3" level="project" />
+    <orderEntry type="library" scope="TEST" name="jbosgi-spi-3.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="maven-repository-metadata-3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="maven-settings-3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="jboss-jad-api_1.2_spec-1.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="shrinkwrap-descriptors-api-base-2.0.0-alpha-3" level="project" />
   </component>
 </module>
 

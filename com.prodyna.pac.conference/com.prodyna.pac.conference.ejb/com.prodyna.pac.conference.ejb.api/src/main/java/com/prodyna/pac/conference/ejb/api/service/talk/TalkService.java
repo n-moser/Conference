@@ -35,7 +35,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * TalkService
+ * Service responsible for managing (CRUD) Talk entites.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13

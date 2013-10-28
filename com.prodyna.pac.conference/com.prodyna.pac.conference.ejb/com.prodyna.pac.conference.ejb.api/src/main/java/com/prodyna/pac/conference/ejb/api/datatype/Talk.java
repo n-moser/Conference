@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Talk
+ * A talk is a specific topic presented on a conference in defined room.
  * <p/>
  * Author: Nicolas Moser
  * Date: 06.09.13

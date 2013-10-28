@@ -30,7 +30,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
- * Conference
+ * A conference is an organized meeting with discussions about multiple topics.
  * <p/>
  * Author: Nicolas Moser
  * Date: 06.09.13

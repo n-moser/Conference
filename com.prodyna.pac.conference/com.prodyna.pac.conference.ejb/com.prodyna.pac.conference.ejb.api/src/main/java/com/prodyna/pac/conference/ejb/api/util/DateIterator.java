@@ -31,7 +31,7 @@ import java.util.Date;
 import java.util.Iterator;
 
 /**
- * Iteriert Tagesweise von einem Start-Datum zu einem Ende-Datum.
+ * Iterator for daily iteration from a start- to an end-date.
  *
  * @author Nicolas Moser <nicolas.moser@prodyna.de>
  */

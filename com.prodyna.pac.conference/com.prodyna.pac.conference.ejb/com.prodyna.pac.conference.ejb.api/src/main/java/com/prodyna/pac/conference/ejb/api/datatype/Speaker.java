@@ -29,7 +29,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
- * Speaker
+ * A speaker is able to hold a talk.
  * <p/>
  * Author: Nicolas Moser
  * Date: 06.09.13
@@ -172,6 +172,7 @@ public class Speaker implements Datatype {
 
 	@Override
 	public String toString() {
+
 		return this.getName();
 	}
 }

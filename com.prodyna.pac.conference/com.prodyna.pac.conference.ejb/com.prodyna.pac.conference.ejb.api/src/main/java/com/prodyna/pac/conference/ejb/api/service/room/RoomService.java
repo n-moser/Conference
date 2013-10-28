@@ -32,7 +32,7 @@ import javax.ejb.Local;
 import java.util.List;
 
 /**
- * RoomService
+ * Service responsible for managing (CRUD) Room entites.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13

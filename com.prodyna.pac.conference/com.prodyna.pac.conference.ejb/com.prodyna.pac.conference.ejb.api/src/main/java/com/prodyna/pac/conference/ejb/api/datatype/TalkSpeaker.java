@@ -27,7 +27,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
- * TalkSpeaker
+ * Mapping entity between talks and speakers.
  * <p/>
  * Author: Nicolas Moser
  * Date: 09.09.13

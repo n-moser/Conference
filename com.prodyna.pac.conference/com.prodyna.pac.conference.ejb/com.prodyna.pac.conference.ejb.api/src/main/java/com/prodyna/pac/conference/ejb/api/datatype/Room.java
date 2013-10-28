@@ -30,7 +30,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * Room
+ * A room is a location on a conference with a defined amount of seats.
  * <p/>
  * Author: Nicolas Moser
  * Date: 06.09.13

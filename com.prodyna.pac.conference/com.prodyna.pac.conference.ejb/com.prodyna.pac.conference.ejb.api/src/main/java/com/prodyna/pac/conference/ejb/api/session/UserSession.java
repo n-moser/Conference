@@ -27,7 +27,7 @@ import javax.ejb.Local;
 import java.io.Serializable;
 
 /**
- * Service for storing the user name.
+ * Stateful service for storing the user name.
  * <p/>
  * Author: Nicolas Moser
  * Date: 22.10.13

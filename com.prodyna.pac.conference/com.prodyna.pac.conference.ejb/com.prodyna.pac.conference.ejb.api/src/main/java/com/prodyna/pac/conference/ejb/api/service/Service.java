@@ -26,7 +26,7 @@ package com.prodyna.pac.conference.ejb.api.service;
 import java.io.Serializable;
 
 /**
- * Service
+ * Generic service interface for marking purposes.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13
