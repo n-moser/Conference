@@ -42,12 +42,12 @@ import javax.ws.rs.core.MediaType;
 @Path("secure/speaker")
 public interface SpeakerAdminResource extends SpeakerResource {
 
-	@PUT
+	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Speaker createSpeaker(Speaker speaker) throws RESTException;
 
-	@POST
+	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Speaker updateSpeaker(Speaker speaker) throws RESTException;

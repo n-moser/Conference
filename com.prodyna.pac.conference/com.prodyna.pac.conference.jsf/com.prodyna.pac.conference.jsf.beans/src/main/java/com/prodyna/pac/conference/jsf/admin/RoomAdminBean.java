@@ -64,7 +64,6 @@ public class RoomAdminBean implements Serializable {
 	@Inject
 	private Logger logger;
 
-
 	/**
 	 * Getter for the room instance.
 	 *

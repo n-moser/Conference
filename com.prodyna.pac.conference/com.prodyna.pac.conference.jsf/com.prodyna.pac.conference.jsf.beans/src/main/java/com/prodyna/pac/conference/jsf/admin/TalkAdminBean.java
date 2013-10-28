@@ -109,6 +109,11 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 		return this.speakers;
 	}
 
+	/**
+	 * Getter for the Talk.
+	 *
+	 * @return the talk
+	 */
 	public Talk getTalk() {
 
 		if (talk == null) {
@@ -117,11 +122,25 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 		return talk;
 	}
 
-	public void setTalk(Talk conference) {
+	/**
+	 * Setter for the Talk
+	 *
+	 * @param talk
+	 * 		the talk to set
+	 */
+	public void setTalk(Talk talk) {
 
-		this.talk = conference;
+		this.talk = talk;
 	}
 
+	/**
+	 * Getter for the available Rooms.
+	 *
+	 * @return the list of rooms of the selected conference
+	 *
+	 * @throws ServiceException
+	 * 		when the rooms cannot be loaded
+	 */
 	public List<Room> getRooms() throws ServiceException {
 
 		Conference conference = this.talk.getConference();
@@ -132,11 +151,22 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 		return Collections.emptyList();
 	}
 
+	/**
+	 * Getter for the speaker ID.
+	 *
+	 * @return the speaker ID
+	 */
 	public Long getSpeakerId() {
 
 		return this.speakerId;
 	}
 
+	/**
+	 * Setter for the speaker ID.
+	 *
+	 * @param speakerId
+	 * 		the speaker ID to set
+	 */
 	public void setSpeakerId(Long speakerId) {
 
 		this.speakerId = speakerId;
@@ -191,11 +221,35 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 		}
 	}
 
+	/**
+	 * Open this talk for editing.
+	 *
+	 * @param talkId
+	 * 		the talk ID
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the talk with the given ID cannot be loaded
+	 */
 	public String edit(Long talkId) throws ServiceException {
 
 		return this.edit(talkId, null);
 	}
 
+	/**
+	 * Open this talk for editing.
+	 *
+	 * @param talkId
+	 * 		the talk ID
+	 * @param conferenceId
+	 * 		ID of the conference
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the talk with the given ID cannot be loaded
+	 */
 	public String edit(Long talkId, Long conferenceId) throws ServiceException {
 
 		if (talkId != null) {

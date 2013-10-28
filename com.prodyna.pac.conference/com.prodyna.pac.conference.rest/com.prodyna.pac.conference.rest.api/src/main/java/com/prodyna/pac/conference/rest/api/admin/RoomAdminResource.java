@@ -42,12 +42,12 @@ import javax.ws.rs.core.MediaType;
 @Path("secure/room")
 public interface RoomAdminResource extends RoomResource {
 
-	@PUT
+	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Room createRoom(Room room) throws RESTException;
 
-	@POST
+	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Room updateRoom(Room room) throws RESTException;

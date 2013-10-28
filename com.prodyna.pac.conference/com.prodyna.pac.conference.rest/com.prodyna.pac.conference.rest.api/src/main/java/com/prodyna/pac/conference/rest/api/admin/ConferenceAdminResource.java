@@ -42,12 +42,12 @@ import javax.ws.rs.core.MediaType;
 @Path("secure/conference")
 public interface ConferenceAdminResource extends ConferenceResource {
 
-	@PUT
+	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Conference createConference(Conference conference) throws RESTException;
 
-	@POST
+	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Conference updateConference(Conference conference) throws RESTException;

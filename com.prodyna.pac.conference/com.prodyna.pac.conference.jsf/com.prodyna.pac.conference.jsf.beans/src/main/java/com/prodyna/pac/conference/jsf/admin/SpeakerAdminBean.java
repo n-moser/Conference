@@ -56,7 +56,11 @@ public class SpeakerAdminBean implements Serializable {
 	@Inject
 	private Logger logger;
 
-
+	/**
+	 * Getter for the Speaker.
+	 *
+	 * @return the speaker
+	 */
 	public Speaker getSpeaker() {
 
 		if (speaker == null) {
@@ -65,11 +69,28 @@ public class SpeakerAdminBean implements Serializable {
 		return speaker;
 	}
 
-	public void setSpeaker(Speaker conference) {
+	/**
+	 * Setter for the Speaker.
+	 *
+	 * @param speaker
+	 * 		the speaker to set
+	 */
+	public void setSpeaker(Speaker speaker) {
 
-		this.speaker = conference;
+		this.speaker = speaker;
 	}
 
+	/**
+	 * Open the speaker with the given ID for editing.
+	 *
+	 * @param speakerId
+	 * 		the speaker ID
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the speaker with the given ID cannot be loaded
+	 */
 	public String edit(Long speakerId) throws ServiceException {
 
 		if (speakerId != null) {
@@ -85,6 +106,14 @@ public class SpeakerAdminBean implements Serializable {
 		return "adminSpeaker?faces-redirect=true";
 	}
 
+	/**
+	 * Save the current speaker instance.
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the speaker cannot be saved
+	 */
 	public String save() throws ServiceException {
 
 		if (speaker != null) {
@@ -98,6 +127,14 @@ public class SpeakerAdminBean implements Serializable {
 		return "admin?faces-redirect=true";
 	}
 
+	/**
+	 * Remove the current speaker instance.
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the speaker cannot be removed
+	 */
 	public String remove() throws ServiceException {
 
 		if (speaker != null) {

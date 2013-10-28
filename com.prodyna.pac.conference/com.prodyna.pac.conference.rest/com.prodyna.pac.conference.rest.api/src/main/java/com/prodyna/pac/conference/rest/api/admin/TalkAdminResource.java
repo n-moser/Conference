@@ -42,12 +42,12 @@ import javax.ws.rs.core.MediaType;
 @Path("secure/talk")
 public interface TalkAdminResource extends TalkResource {
 
-	@PUT
+	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Talk createTalk(Talk talk) throws RESTException;
 
-	@POST
+	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Talk updateTalk(Talk talk) throws RESTException;

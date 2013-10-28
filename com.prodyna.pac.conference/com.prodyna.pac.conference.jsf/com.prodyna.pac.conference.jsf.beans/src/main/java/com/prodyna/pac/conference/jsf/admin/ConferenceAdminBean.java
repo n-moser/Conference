@@ -71,6 +71,11 @@ public class ConferenceAdminBean implements Serializable {
 	@Inject
 	private Logger logger;
 
+	/**
+	 * Getter for the Conference instance.
+	 *
+	 * @return the conference instance
+	 */
 	public Conference getConference() {
 
 		if (conference == null) {
@@ -79,11 +84,25 @@ public class ConferenceAdminBean implements Serializable {
 		return conference;
 	}
 
+	/**
+	 * Setter for the conference instance.
+	 *
+	 * @param conference
+	 * 		the conference to set
+	 */
 	public void setConference(Conference conference) {
 
 		this.conference = conference;
 	}
 
+	/**
+	 * Getter for the list of talks of the current conference.
+	 *
+	 * @return the list of talks
+	 *
+	 * @throws ServiceException
+	 * 		when the talks cannot be loaded
+	 */
 	public List<Talk> getTalks() throws ServiceException {
 
 		if (conference != null && conference.getId() != null) {
@@ -92,6 +111,14 @@ public class ConferenceAdminBean implements Serializable {
 		return talks;
 	}
 
+	/**
+	 * Getter for the list of rooms of the current conference.
+	 *
+	 * @return the list of rooms
+	 *
+	 * @throws ServiceException
+	 * 		when the rooms cannot be loaded
+	 */
 	public List<Room> getRooms() throws ServiceException {
 
 		if (conference != null && conference.getId() != null) {
@@ -100,6 +127,17 @@ public class ConferenceAdminBean implements Serializable {
 		return rooms;
 	}
 
+	/**
+	 * Open the conference with the given ID for editing.
+	 *
+	 * @param conferenceId
+	 * 		the conference ID to edit
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the conference cannot be loaded
+	 */
 	public String edit(Long conferenceId) throws ServiceException {
 
 		if (conferenceId != null) {
@@ -123,6 +161,14 @@ public class ConferenceAdminBean implements Serializable {
 		return "adminConference?faces-redirect=true";
 	}
 
+	/**
+	 * Save the current conference instance.
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the conference cannot be saved
+	 */
 	public String save() throws ServiceException {
 
 		if (conference != null) {
@@ -136,6 +182,14 @@ public class ConferenceAdminBean implements Serializable {
 		return "admin?faces-redirect=true";
 	}
 
+	/**
+	 * Removes the current conference instance.
+	 *
+	 * @return the navigation outcome
+	 *
+	 * @throws ServiceException
+	 * 		when the conference cannot be removed
+	 */
 	public String remove() throws ServiceException {
 
 		if (conference != null) {

@@ -31,7 +31,7 @@ import javax.ejb.Local;
 import java.util.List;
 
 /**
- * Service responsible for managing (CRUD) Room entites.
+ * Service responsible for managing (CRUD) Conference entites.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13
