@@ -3,7 +3,7 @@ Conference
 
 PAC Project (JSF, EJB, JPA, JAX-RS)
 
-Es soll eine Applikation für Konferenzen programmiert werden. Die Hauptanwender sind Gäste, die diese Applikation über das Web oder über mobile Endgeräte nutzen sollen. 
+An application for conferences should be developed. The main users are conference guests that want to use the application via web or mobile devices.
 
 #### Wiki
 The project wiki may be found [here](https://github.com/pd-nmoser/Conference/wiki).
