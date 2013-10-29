@@ -21,58 +21,58 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans;
+package com.prodyna.pac.conference.rest.beans.resource;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.datatype.Conference;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
-import com.prodyna.pac.conference.rest.api.SpeakerResource;
+import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
+import com.prodyna.pac.conference.rest.api.resource.ConferenceResource;
 
 import javax.inject.Inject;
 import javax.ws.rs.PathParam;
 import java.util.List;
 
 /**
- * SpeakerResourceBean
+ * ConferenceResourceBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 19.09.13
  * Time: 18:28
  */
-public class SpeakerResourceBean implements SpeakerResource {
+public class ConferenceResourceBean implements ConferenceResource {
 
 	@Inject
-	private SpeakerService speakerService;
+	private ConferenceService conferenceService;
 
 	@Override
-	public Speaker findSpeaker(@PathParam("id") Long id) throws RESTException {
+	public Conference findConference(@PathParam("id") Long id) throws RESTException {
 
 		try {
-			return this.getSpeakerService().findSpeakerById(id);
+			return this.getConferenceService().findConferenceById(id);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	public List<Speaker> getAllSpeakers() throws RESTException {
+	public List<Conference> getAllConferences() throws RESTException {
 
 		try {
-			return this.getSpeakerService().getAllSpeakers();
+			return this.getConferenceService().getAllConferences();
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	/**
-	 * Getter for the speaker service EJB.
+	 * Getter for the conference service EJB.
 	 *
-	 * @return the speaker service
+	 * @return the conference service
 	 */
-	protected SpeakerService getSpeakerService() {
+	protected ConferenceService getConferenceService() {
 
-		return this.speakerService;
+		return this.conferenceService;
 	}
 
 }

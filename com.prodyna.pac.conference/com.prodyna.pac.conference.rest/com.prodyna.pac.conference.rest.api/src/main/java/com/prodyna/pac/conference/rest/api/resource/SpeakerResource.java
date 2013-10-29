@@ -21,39 +21,35 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api.admin;
+package com.prodyna.pac.conference.rest.api.resource;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Conference;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.rest.api.ConferenceResource;
+import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
 
-import javax.annotation.security.RolesAllowed;
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
- * ConferenceResource
+ * SpeakerResource
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
- * Time: 15:43
+ * Time: 15:46
  */
-@RolesAllowed("admin")
-@Path("secure/conference")
-public interface ConferenceAdminResource extends ConferenceResource {
+@Path("speaker")
+public interface SpeakerResource extends Resource {
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Conference createConference(Conference conference) throws RESTException;
-
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Conference updateConference(Conference conference) throws RESTException;
-
-	@DELETE
+	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	Conference deleteConference(@PathParam("id") Long id) throws RESTException;
+	Speaker findSpeaker(@PathParam("id") Long id) throws RESTException;
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	List<Speaker> getAllSpeakers() throws RESTException;
+
 }

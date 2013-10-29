@@ -27,7 +27,7 @@ package com.prodyna.pac.conference.rest.beans;
 import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
-import com.prodyna.pac.conference.rest.api.admin.SpeakerAdminResource;
+import com.prodyna.pac.conference.rest.api.resource.admin.SpeakerAdminResource;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Assert;

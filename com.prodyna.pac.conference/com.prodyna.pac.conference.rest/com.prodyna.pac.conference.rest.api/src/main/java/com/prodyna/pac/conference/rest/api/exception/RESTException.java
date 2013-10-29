@@ -21,39 +21,59 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api.admin;
+package com.prodyna.pac.conference.rest.api.exception;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Talk;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.rest.api.TalkResource;
-
-import javax.annotation.security.RolesAllowed;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.ejb.ApplicationException;
 
 /**
- * TalkResource
+ * Called when a REST operation fails.
  * <p/>
  * Author: Nicolas Moser
- * Date: 17.10.13
- * Time: 15:47
+ * Date: 11.09.13
+ * Time: 16:44
  */
-@RolesAllowed("admin")
-@Path("secure/talk")
-public interface TalkAdminResource extends TalkResource {
+@ApplicationException(rollback = true)
+public class RESTException extends Exception {
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Talk createTalk(Talk talk) throws RESTException;
+	/** Creates a new REST exception without parameters. */
+	public RESTException() {
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Talk updateTalk(Talk talk) throws RESTException;
+		super();
+	}
 
-	@DELETE
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	Talk deleteTalk(@PathParam("id") Long id) throws RESTException;
+	/**
+	 * Creates a new REST exception with the given error message.
+	 *
+	 * @param message
+	 * 		the error message
+	 */
+	public RESTException(String message) {
+
+		super(message);
+	}
+
+	/**
+	 * Creates a new REST exception with the given error cause.
+	 *
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public RESTException(Exception cause) {
+
+		super(cause);
+	}
+
+	/**
+	 * Creates a new REST exception with the given error message and cause.
+	 *
+	 * @param message
+	 * 		the error message
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public RESTException(String message, Exception cause) {
+
+		super(message, cause);
+	}
+
 }

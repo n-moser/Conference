@@ -28,7 +28,7 @@ import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
-import com.prodyna.pac.conference.rest.api.admin.TalkAdminResource;
+import com.prodyna.pac.conference.rest.api.resource.admin.TalkAdminResource;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Assert;

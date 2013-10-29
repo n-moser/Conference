@@ -27,7 +27,7 @@ package com.prodyna.pac.conference.rest.beans;
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
 import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
-import com.prodyna.pac.conference.rest.api.admin.ConferenceAdminResource;
+import com.prodyna.pac.conference.rest.api.resource.admin.ConferenceAdminResource;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.After;

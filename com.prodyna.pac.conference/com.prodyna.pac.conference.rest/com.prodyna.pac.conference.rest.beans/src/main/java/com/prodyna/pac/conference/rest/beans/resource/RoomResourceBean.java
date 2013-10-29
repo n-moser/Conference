@@ -21,39 +21,58 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api.admin;
+package com.prodyna.pac.conference.rest.beans.resource;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.rest.api.SpeakerResource;
+import com.prodyna.pac.conference.ejb.api.datatype.Room;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
+import com.prodyna.pac.conference.rest.api.resource.RoomResource;
 
-import javax.annotation.security.RolesAllowed;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.inject.Inject;
+import javax.ws.rs.PathParam;
+import java.util.List;
 
 /**
- * SpeakerResource
+ * RoomResourceBean
  * <p/>
  * Author: Nicolas Moser
- * Date: 17.10.13
- * Time: 15:46
+ * Date: 19.09.13
+ * Time: 18:28
  */
-@RolesAllowed("admin")
-@Path("secure/speaker")
-public interface SpeakerAdminResource extends SpeakerResource {
+public class RoomResourceBean implements RoomResource {
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Speaker createSpeaker(Speaker speaker) throws RESTException;
+	@Inject
+	private RoomService roomService;
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Speaker updateSpeaker(Speaker speaker) throws RESTException;
+	@Override
+	public Room findRoom(@PathParam("id") Long id) throws RESTException {
 
-	@DELETE
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	Speaker deleteSpeaker(@PathParam("id") Long id) throws RESTException;
+		try {
+			return this.getRoomService().findRoomById(id);
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	@Override
+	public List<Room> getAllRooms() throws RESTException {
+
+		try {
+			return this.getRoomService().getAllRooms();
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	/**
+	 * Getter for the room service EJB.
+	 *
+	 * @return the room service
+	 */
+	protected RoomService getRoomService() {
+
+		return this.roomService;
+	}
+
 }

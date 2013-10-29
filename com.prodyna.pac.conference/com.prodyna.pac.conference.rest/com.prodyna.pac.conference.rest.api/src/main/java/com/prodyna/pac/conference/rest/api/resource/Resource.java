@@ -21,34 +21,15 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api;
-
-import com.prodyna.pac.conference.ejb.api.datatype.Talk;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import java.util.List;
+package com.prodyna.pac.conference.rest.api.resource;
 
 /**
- * TalkResource
+ * Resource
  * <p/>
  * Author: Nicolas Moser
- * Date: 17.10.13
- * Time: 15:47
+ * Date: 22.10.13
+ * Time: 10:42
  */
-@Path("talk")
-public interface TalkResource extends Resource {
+public interface Resource {
 
-	@GET
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	Talk findTalk(@PathParam("id") Long id) throws RESTException;
-
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	List<Talk> getAllTalks() throws RESTException;
 }

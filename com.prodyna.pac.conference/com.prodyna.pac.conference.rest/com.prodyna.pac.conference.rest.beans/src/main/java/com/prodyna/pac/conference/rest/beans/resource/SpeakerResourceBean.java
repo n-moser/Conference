@@ -21,58 +21,58 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans;
+package com.prodyna.pac.conference.rest.beans.resource;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Room;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
-import com.prodyna.pac.conference.rest.api.RoomResource;
+import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
+import com.prodyna.pac.conference.rest.api.resource.SpeakerResource;
 
 import javax.inject.Inject;
 import javax.ws.rs.PathParam;
 import java.util.List;
 
 /**
- * RoomResourceBean
+ * SpeakerResourceBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 19.09.13
  * Time: 18:28
  */
-public class RoomResourceBean implements RoomResource {
+public class SpeakerResourceBean implements SpeakerResource {
 
 	@Inject
-	private RoomService roomService;
+	private SpeakerService speakerService;
 
 	@Override
-	public Room findRoom(@PathParam("id") Long id) throws RESTException {
+	public Speaker findSpeaker(@PathParam("id") Long id) throws RESTException {
 
 		try {
-			return this.getRoomService().findRoomById(id);
+			return this.getSpeakerService().findSpeakerById(id);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	public List<Room> getAllRooms() throws RESTException {
+	public List<Speaker> getAllSpeakers() throws RESTException {
 
 		try {
-			return this.getRoomService().getAllRooms();
+			return this.getSpeakerService().getAllSpeakers();
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	/**
-	 * Getter for the room service EJB.
+	 * Getter for the speaker service EJB.
 	 *
-	 * @return the room service
+	 * @return the speaker service
 	 */
-	protected RoomService getRoomService() {
+	protected SpeakerService getSpeakerService() {
 
-		return this.roomService;
+		return this.speakerService;
 	}
 
 }

@@ -21,58 +21,37 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans;
+package com.prodyna.pac.conference.rest.api.resource;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
-import com.prodyna.pac.conference.rest.api.ConferenceResource;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
 
-import javax.inject.Inject;
+import javax.annotation.security.PermitAll;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
- * ConferenceResourceBean
+ * ConferenceResource
  * <p/>
  * Author: Nicolas Moser
- * Date: 19.09.13
- * Time: 18:28
+ * Date: 17.10.13
+ * Time: 15:43
  */
-public class ConferenceResourceBean implements ConferenceResource {
+@PermitAll
+@Path("conference")
+public interface ConferenceResource extends Resource {
 
-	@Inject
-	private ConferenceService conferenceService;
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	Conference findConference(@PathParam("id") Long id) throws RESTException;
 
-	@Override
-	public Conference findConference(@PathParam("id") Long id) throws RESTException {
-
-		try {
-			return this.getConferenceService().findConferenceById(id);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	public List<Conference> getAllConferences() throws RESTException {
-
-		try {
-			return this.getConferenceService().getAllConferences();
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	/**
-	 * Getter for the conference service EJB.
-	 *
-	 * @return the conference service
-	 */
-	protected ConferenceService getConferenceService() {
-
-		return this.conferenceService;
-	}
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	List<Conference> getAllConferences() throws RESTException;
 
 }

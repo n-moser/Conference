@@ -21,59 +21,19 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans;
+package com.prodyna.pac.conference.rest.api.resource;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Talk;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
-import com.prodyna.pac.conference.rest.api.TalkResource;
-
-import javax.inject.Inject;
-import javax.ws.rs.PathParam;
-import java.util.List;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
 /**
- * TalkResourceBean
+ * ConferenceApplication
  * <p/>
  * Author: Nicolas Moser
- * Date: 19.09.13
- * Time: 18:28
+ * Date: 21.09.13
+ * Time: 10:20
  */
-public class TalkResourceBean implements TalkResource {
-
-	@Inject
-	private TalkService talkService;
-
-	@Override
-	public Talk findTalk(@PathParam("id") Long id) throws RESTException {
-
-		try {
-			return this.getTalkService().findTalkById(id);
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	@Override
-	public List<Talk> getAllTalks() throws RESTException {
-
-		try {
-			return this.getTalkService().getAllTalks();
-		} catch (ServiceException e) {
-			throw new RESTException(e);
-		}
-	}
-
-	/**
-	 * Getter for the talk service EJB.
-	 *
-	 * @return the talk service
-	 */
-	protected TalkService getTalkService() {
-
-		return this.talkService;
-	}
-
+@ApplicationPath("")
+public class ConferenceApplication extends Application {
 
 }

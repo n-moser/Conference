@@ -21,34 +21,39 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api;
+package com.prodyna.pac.conference.rest.api.resource.admin;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Room;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
+import com.prodyna.pac.conference.rest.api.resource.TalkResource;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.annotation.security.RolesAllowed;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 /**
- * RoomResource
+ * TalkResource
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
- * Time: 15:45
+ * Time: 15:47
  */
-@Path("room")
-public interface RoomResource extends Resource {
+@RolesAllowed("admin")
+@Path("secure/talk")
+public interface TalkAdminResource extends TalkResource {
 
-	@GET
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Talk createTalk(Talk talk) throws RESTException;
+
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Talk updateTalk(Talk talk) throws RESTException;
+
+	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	Room findRoom(@PathParam("id") Long id) throws RESTException;
-
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	List<Room> getAllRooms() throws RESTException;
+	Talk deleteTalk(@PathParam("id") Long id) throws RESTException;
 }

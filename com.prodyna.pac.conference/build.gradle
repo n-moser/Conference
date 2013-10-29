@@ -106,6 +106,8 @@ subprojects {
 task clean() {
 
     description = 'Cleans the root build directory'
+	
+	group = 'Build'
 
     doLast {
         delete 'build/reports'

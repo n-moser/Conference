@@ -21,64 +21,64 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans.admin;
+package com.prodyna.pac.conference.rest.beans.resource.admin;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Room;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
-import com.prodyna.pac.conference.rest.api.admin.RoomAdminResource;
-import com.prodyna.pac.conference.rest.beans.RoomResourceBean;
+import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
+import com.prodyna.pac.conference.rest.api.resource.admin.TalkAdminResource;
+import com.prodyna.pac.conference.rest.beans.resource.TalkResourceBean;
 
 import javax.inject.Inject;
 
 /**
- * RoomResourceBean
+ * TalkResourceBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 19.09.13
  * Time: 18:28
  */
-public class RoomAdminResourceBean extends RoomResourceBean implements RoomAdminResource {
+public class TalkAdminResourceBean extends TalkResourceBean implements TalkAdminResource {
 
 	@Inject
-	private RoomService roomService;
+	private TalkService talkService;
 
 	@Override
-	public Room createRoom(Room room) throws RESTException {
+	public Talk createTalk(Talk talk) throws RESTException {
 
 		try {
-			return this.roomService.createRoom(room);
+			return this.talkService.createTalk(talk);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	public Room updateRoom(Room room) throws RESTException {
+	public Talk updateTalk(Talk talk) throws RESTException {
 
 		try {
-			return this.roomService.updateRoom(room);
+			return this.talkService.updateTalk(talk);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	public Room deleteRoom(Long id) throws RESTException {
+	public Talk deleteTalk(Long id) throws RESTException {
 
 		try {
-			Room room = this.roomService.findRoomById(id);
-			return this.roomService.removeRoom(room);
+			Talk talk = this.talkService.findTalkById(id);
+			return this.talkService.removeTalk(talk);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	protected RoomService getRoomService() {
+	protected TalkService getTalkService() {
 
-		return this.roomService;
+		return this.talkService;
 	}
 
 }

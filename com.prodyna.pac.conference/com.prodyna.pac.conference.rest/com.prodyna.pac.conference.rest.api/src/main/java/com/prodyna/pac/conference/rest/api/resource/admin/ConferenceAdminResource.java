@@ -21,15 +21,39 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api;
+package com.prodyna.pac.conference.rest.api.resource.admin;
+
+import com.prodyna.pac.conference.ejb.api.datatype.Conference;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
+import com.prodyna.pac.conference.rest.api.resource.ConferenceResource;
+
+import javax.annotation.security.RolesAllowed;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 /**
- * Resource
+ * ConferenceResource
  * <p/>
  * Author: Nicolas Moser
- * Date: 22.10.13
- * Time: 10:42
+ * Date: 17.10.13
+ * Time: 15:43
  */
-public interface Resource {
+@RolesAllowed("admin")
+@Path("secure/conference")
+public interface ConferenceAdminResource extends ConferenceResource {
 
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Conference createConference(Conference conference) throws RESTException;
+
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Conference updateConference(Conference conference) throws RESTException;
+
+	@DELETE
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	Conference deleteConference(@PathParam("id") Long id) throws RESTException;
 }

@@ -23,7 +23,7 @@
 
 package com.prodyna.pac.conference.rest.beans;
 
-import com.prodyna.pac.conference.rest.api.Resource;
+import com.prodyna.pac.conference.rest.api.resource.Resource;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.jboss.resteasy.client.ProxyFactory;
 import org.jboss.resteasy.plugins.providers.RegisterBuiltin;

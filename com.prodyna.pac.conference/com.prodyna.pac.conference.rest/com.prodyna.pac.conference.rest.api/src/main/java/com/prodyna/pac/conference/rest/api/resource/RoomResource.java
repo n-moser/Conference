@@ -21,12 +21,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api;
+package com.prodyna.pac.conference.rest.api.resource;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Conference;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.datatype.Room;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
 
-import javax.annotation.security.PermitAll;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -35,23 +34,21 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
- * ConferenceResource
+ * RoomResource
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
- * Time: 15:43
+ * Time: 15:45
  */
-@PermitAll
-@Path("conference")
-public interface ConferenceResource extends Resource {
+@Path("room")
+public interface RoomResource extends Resource {
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	Conference findConference(@PathParam("id") Long id) throws RESTException;
+	Room findRoom(@PathParam("id") Long id) throws RESTException;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	List<Conference> getAllConferences() throws RESTException;
-
+	List<Room> getAllRooms() throws RESTException;
 }

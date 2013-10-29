@@ -21,59 +21,39 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.api.exception;
+package com.prodyna.pac.conference.rest.api.resource.admin;
 
-import javax.ejb.ApplicationException;
+import com.prodyna.pac.conference.ejb.api.datatype.Room;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
+import com.prodyna.pac.conference.rest.api.resource.RoomResource;
+
+import javax.annotation.security.RolesAllowed;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 /**
- * Called when a REST operation fails.
+ * RoomResource
  * <p/>
  * Author: Nicolas Moser
- * Date: 11.09.13
- * Time: 16:44
+ * Date: 17.10.13
+ * Time: 15:45
  */
-@ApplicationException(rollback = true)
-public class RESTException extends Exception {
+@RolesAllowed("admin")
+@Path("secure/room")
+public interface RoomAdminResource extends RoomResource {
 
-	/** Creates a new REST exception without parameters. */
-	public RESTException() {
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Room createRoom(Room room) throws RESTException;
 
-		super();
-	}
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	Room updateRoom(Room room) throws RESTException;
 
-	/**
-	 * Creates a new REST exception with the given error message.
-	 *
-	 * @param message
-	 * 		the error message
-	 */
-	public RESTException(String message) {
-
-		super(message);
-	}
-
-	/**
-	 * Creates a new REST exception with the given error cause.
-	 *
-	 * @param cause
-	 * 		the causing exception
-	 */
-	public RESTException(Exception cause) {
-
-		super(cause);
-	}
-
-	/**
-	 * Creates a new REST exception with the given error message and cause.
-	 *
-	 * @param message
-	 * 		the error message
-	 * @param cause
-	 * 		the causing exception
-	 */
-	public RESTException(String message, Exception cause) {
-
-		super(message, cause);
-	}
-
+	@DELETE
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	Room deleteRoom(@PathParam("id") Long id) throws RESTException;
 }

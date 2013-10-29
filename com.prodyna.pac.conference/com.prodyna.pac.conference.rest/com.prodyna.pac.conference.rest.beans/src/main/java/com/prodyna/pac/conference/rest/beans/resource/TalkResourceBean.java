@@ -21,39 +21,59 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api.admin;
+package com.prodyna.pac.conference.rest.beans.resource;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Room;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
-import com.prodyna.pac.conference.rest.api.RoomResource;
+import com.prodyna.pac.conference.ejb.api.datatype.Talk;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
+import com.prodyna.pac.conference.rest.api.resource.TalkResource;
 
-import javax.annotation.security.RolesAllowed;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.inject.Inject;
+import javax.ws.rs.PathParam;
+import java.util.List;
 
 /**
- * RoomResource
+ * TalkResourceBean
  * <p/>
  * Author: Nicolas Moser
- * Date: 17.10.13
- * Time: 15:45
+ * Date: 19.09.13
+ * Time: 18:28
  */
-@RolesAllowed("admin")
-@Path("secure/room")
-public interface RoomAdminResource extends RoomResource {
+public class TalkResourceBean implements TalkResource {
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Room createRoom(Room room) throws RESTException;
+	@Inject
+	private TalkService talkService;
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Room updateRoom(Room room) throws RESTException;
+	@Override
+	public Talk findTalk(@PathParam("id") Long id) throws RESTException {
 
-	@DELETE
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	Room deleteRoom(@PathParam("id") Long id) throws RESTException;
+		try {
+			return this.getTalkService().findTalkById(id);
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	@Override
+	public List<Talk> getAllTalks() throws RESTException {
+
+		try {
+			return this.getTalkService().getAllTalks();
+		} catch (ServiceException e) {
+			throw new RESTException(e);
+		}
+	}
+
+	/**
+	 * Getter for the talk service EJB.
+	 *
+	 * @return the talk service
+	 */
+	protected TalkService getTalkService() {
+
+		return this.talkService;
+	}
+
+
 }

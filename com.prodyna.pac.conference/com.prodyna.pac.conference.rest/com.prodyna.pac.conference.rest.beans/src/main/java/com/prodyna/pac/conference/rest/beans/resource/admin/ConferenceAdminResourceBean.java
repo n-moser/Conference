@@ -21,63 +21,64 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans.admin;
+package com.prodyna.pac.conference.rest.beans.resource.admin;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.datatype.Conference;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
-import com.prodyna.pac.conference.rest.api.admin.SpeakerAdminResource;
-import com.prodyna.pac.conference.rest.beans.SpeakerResourceBean;
+import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
+import com.prodyna.pac.conference.rest.api.resource.admin.ConferenceAdminResource;
+import com.prodyna.pac.conference.rest.beans.resource.ConferenceResourceBean;
 
 import javax.inject.Inject;
 
 /**
- * SpeakerResourceBean
+ * ConferenceResourceBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 19.09.13
  * Time: 18:28
  */
-public class SpeakerAdminResourceBean extends SpeakerResourceBean implements SpeakerAdminResource {
+public class ConferenceAdminResourceBean extends ConferenceResourceBean implements ConferenceAdminResource {
 
 	@Inject
-	private SpeakerService speakerService;
+	private ConferenceService conferenceService;
 
 	@Override
-	public Speaker createSpeaker(Speaker speaker) throws RESTException {
+	public Conference createConference(Conference conference) throws RESTException {
 
 		try {
-			return this.speakerService.createSpeaker(speaker);
+			return this.conferenceService.createConference(conference);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	public Speaker updateSpeaker(Speaker speaker) throws RESTException {
+	public Conference updateConference(Conference conference) throws RESTException {
 
 		try {
-			return this.speakerService.updateSpeaker(speaker);
+			return this.conferenceService.updateConference(conference);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	public Speaker deleteSpeaker(Long id) throws RESTException {
+	public Conference deleteConference(Long id) throws RESTException {
 
 		try {
-			Speaker speaker = this.speakerService.findSpeakerById(id);
-			return this.speakerService.removeSpeaker(speaker);
+			Conference conference = this.conferenceService.findConferenceById(id);
+			return this.conferenceService.removeConference(conference);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	protected SpeakerService getSpeakerService() {
+	protected ConferenceService getConferenceService() {
 
-		return this.speakerService;
+		return this.conferenceService;
 	}
+
 }

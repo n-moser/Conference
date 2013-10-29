@@ -25,6 +25,7 @@ package com.prodyna.pac.conference.ejb.beans.service.conference;
 
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
+import com.prodyna.pac.conference.ejb.api.exception.ValidationException;
 import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.beans.interceptor.Audit;
 import com.prodyna.pac.conference.ejb.beans.interceptor.Performance;
@@ -35,6 +36,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -100,6 +102,8 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 	@Override
 	public Conference createConference(Conference conference) throws ServiceException {
 
+		this.validateConference(conference);
+
 		try {
 			this.entityManager.persist(conference);
 			this.entityManager.flush();
@@ -115,6 +119,8 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 	@Override
 	public Conference updateConference(Conference conference) throws ServiceException {
 
+		this.validateConference(conference);
+
 		try {
 			conference = this.entityManager.merge(conference);
 			this.entityManager.flush();
@@ -123,6 +129,32 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 		}
 
 		return conference;
+	}
+
+	/**
+	 * Validate the conference entity.
+	 *
+	 * @param conference
+	 * 		the conference to validate
+	 *
+	 * @throws ValidationException
+	 * 		if the conference is not valid
+	 */
+	private void validateConference(Conference conference) throws ValidationException {
+
+		ValidationException exception = new ValidationException("Error validating Talk.");
+
+		if (conference != null) {
+			Date startDate = conference.getStartDate();
+			Date endDate = conference.getEndDate();
+
+			if (startDate.after(endDate)) {
+
+				exception.addItem("startDate", "Start Date must be before End Date.");
+				throw exception;
+			}
+		}
+
 	}
 
 	@Audit

@@ -21,64 +21,64 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.beans.admin;
+package com.prodyna.pac.conference.rest.beans.resource.admin;
 
-import com.prodyna.pac.conference.ejb.api.datatype.Conference;
-import com.prodyna.pac.conference.ejb.api.exception.RESTException;
+import com.prodyna.pac.conference.ejb.api.datatype.Room;
+import com.prodyna.pac.conference.rest.api.exception.RESTException;
 import com.prodyna.pac.conference.ejb.api.exception.ServiceException;
-import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
-import com.prodyna.pac.conference.rest.api.admin.ConferenceAdminResource;
-import com.prodyna.pac.conference.rest.beans.ConferenceResourceBean;
+import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
+import com.prodyna.pac.conference.rest.api.resource.admin.RoomAdminResource;
+import com.prodyna.pac.conference.rest.beans.resource.RoomResourceBean;
 
 import javax.inject.Inject;
 
 /**
- * ConferenceResourceBean
+ * RoomResourceBean
  * <p/>
  * Author: Nicolas Moser
  * Date: 19.09.13
  * Time: 18:28
  */
-public class ConferenceAdminResourceBean extends ConferenceResourceBean implements ConferenceAdminResource {
+public class RoomAdminResourceBean extends RoomResourceBean implements RoomAdminResource {
 
 	@Inject
-	private ConferenceService conferenceService;
+	private RoomService roomService;
 
 	@Override
-	public Conference createConference(Conference conference) throws RESTException {
+	public Room createRoom(Room room) throws RESTException {
 
 		try {
-			return this.conferenceService.createConference(conference);
+			return this.roomService.createRoom(room);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	public Conference updateConference(Conference conference) throws RESTException {
+	public Room updateRoom(Room room) throws RESTException {
 
 		try {
-			return this.conferenceService.updateConference(conference);
+			return this.roomService.updateRoom(room);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	public Conference deleteConference(Long id) throws RESTException {
+	public Room deleteRoom(Long id) throws RESTException {
 
 		try {
-			Conference conference = this.conferenceService.findConferenceById(id);
-			return this.conferenceService.removeConference(conference);
+			Room room = this.roomService.findRoomById(id);
+			return this.roomService.removeRoom(room);
 		} catch (ServiceException e) {
 			throw new RESTException(e);
 		}
 	}
 
 	@Override
-	protected ConferenceService getConferenceService() {
+	protected RoomService getRoomService() {
 
-		return this.conferenceService;
+		return this.roomService;
 	}
 
 }
