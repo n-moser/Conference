@@ -30,7 +30,6 @@ import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
 import com.prodyna.pac.conference.rest.api.resource.admin.ConferenceAdminResource;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,7 +37,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 import javax.enterprise.inject.Produces;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
@@ -62,23 +60,6 @@ public class ConferenceResourceTest extends ResourceTest {
 		this.conferenceResource = super.getResource(ConferenceAdminResource.class);
 	}
 
-	@After
-	public void writeOutJacocoData() {
-
-		try {
-			Class<?> rtClass = Thread.currentThread().getContextClassLoader().getParent().loadClass(
-					"org.jacoco.agent.rt.RT");
-			Object jacocoAgent = rtClass.getMethod("getAgent", (Class<?>) null).invoke(null);
-			Method dumpMethod = jacocoAgent.getClass().getMethod("dump", boolean.class);
-			Object result = dumpMethod.invoke(jacocoAgent, false);
-			System.out.println("Dump result: " + result);
-		} catch (ClassNotFoundException e) {
-			System.err.println("no jacoco agent attached to this jvm");
-		} catch (Exception e) {
-			System.err.println("while trying to dump jacoco data: " + e);
-		}
-	}
-
 	@Produces
 	public ConferenceService createConferenceMock() throws ServiceException {
 
@@ -98,7 +79,6 @@ public class ConferenceResourceTest extends ResourceTest {
 
 		return conferenceMock;
 	}
-
 
 	@Test
 	@RunAsClient

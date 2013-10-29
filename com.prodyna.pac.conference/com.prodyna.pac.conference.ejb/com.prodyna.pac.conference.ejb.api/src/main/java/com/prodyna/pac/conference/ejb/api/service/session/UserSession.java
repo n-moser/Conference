@@ -21,34 +21,32 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.session;
+package com.prodyna.pac.conference.ejb.api.service.session;
 
-import com.prodyna.pac.conference.ejb.api.session.UserSession;
-
-import javax.ejb.Stateful;
+import javax.ejb.Local;
+import java.io.Serializable;
 
 /**
- * Default implementation of the UserSession session bean.
+ * Stateful service for storing the user name.
  * <p/>
  * Author: Nicolas Moser
  * Date: 22.10.13
- * Time: 16:37
+ * Time: 16:56
  */
-@Stateful
-public class UserSessionBean implements UserSession {
+@Local
+public interface UserSession extends Serializable {
 
-	private String userName;
+	/**
+	 * Getter for the user name.
+	 *
+	 * @return the user name
+	 */
+	String getUserName();
 
-
-	@Override
-	public String getUserName() {
-
-		return userName;
-	}
-
-	@Override
-	public void setUserName(String userName) {
-
-		this.userName = userName;
-	}
+	/**
+	 * Setter for the
+	 *
+	 * @param userName
+	 */
+	void setUserName(String userName);
 }

@@ -31,7 +31,7 @@ task dbCreateTables(type: Exec) {
         System.getenv('MYSQL_HOME') != null
     }
 
-    commandLine = ['mysql', '-hlocalhost', '-uconference', '-pconference', '-Dconference']
+    commandLine = ['mysql', '-hlocalhost', '-uconference', '-pconference', '-Dconference', '--default-character-set=utf8']
 
     standardInput = file("$rootDir/config/database/mysql/create-tables.sql").newInputStream()
 }
@@ -46,7 +46,7 @@ task dbCreateTablesWithTestData(type: Exec) {
         System.getenv('MYSQL_HOME') != null
     }
 
-    commandLine = ['mysql', '-hlocalhost', '-uconference', '-pconference', '-Dconference']
+    commandLine = ['mysql', '-hlocalhost', '-uconference', '-pconference', '-Dconference', '--default-character-set=utf8']
 
     standardInput = file("$rootDir/config/database/mysql/create-tables-testdata.sql").newInputStream()
 }
@@ -61,7 +61,7 @@ task dbDropCreateTables(type: Exec) {
         System.getenv('MYSQL_HOME') != null
     }
 
-    commandLine = ['mysql', '-hlocalhost', '-uconference', '-pconference', '-Dconference']
+    commandLine = ['mysql', '-hlocalhost', '-uconference', '-pconference', '-Dconference', '--default-character-set=utf8']
 
     standardInput = file("$rootDir/config/database/mysql/drop-create-tables.sql").newInputStream()
 }
@@ -76,7 +76,7 @@ task dbDropCreateTablesWithTestData(type: Exec) {
         System.getenv('MYSQL_HOME') != null
     }
 
-    commandLine = ['mysql', '-hlocalhost', '-uconference', '-pconference', '-Dconference']
+    commandLine = ['mysql', '-hlocalhost', '-uconference', '-pconference', '-Dconference', '--default-character-set=utf8']
 
     standardInput = file("$rootDir/config/database/mysql/drop-create-tables-testdata.sql").newInputStream()
 }
@@ -91,7 +91,7 @@ task dbInsertTestData(type: Exec) {
         System.getenv('MYSQL_HOME') != null
     }
 
-    commandLine = ['mysql', '-hlocalhost', '-uconference', '-pconference', '-Dconference']
+    commandLine = ['mysql', '-hlocalhost', '-uconference', '-pconference', '-Dconference', '--default-character-set=utf8']
 
     standardInput = file("$rootDir/config/database/mysql/insert-testdata.sql").newInputStream()
 

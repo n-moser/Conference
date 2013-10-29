@@ -60,7 +60,7 @@ public class TalkNotificationBean implements MessageListener {
 			}
 
 		} catch (JMSException e) {
-			logger.error("Error serializing JMS message.", e);
+			logger.error("Error deserializing JMS message.", e);
 		}
 	}
 

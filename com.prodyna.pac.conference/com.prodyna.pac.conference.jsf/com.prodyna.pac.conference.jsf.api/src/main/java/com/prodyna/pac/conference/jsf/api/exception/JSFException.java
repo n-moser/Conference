@@ -21,19 +21,56 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.rest.api.resource;
-
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+package com.prodyna.pac.conference.jsf.api.exception;
 
 /**
- * REST Application Definition.
+ * JSFException
  * <p/>
  * Author: Nicolas Moser
- * Date: 21.09.13
- * Time: 10:20
+ * Date: 29.10.13
+ * Time: 22:36
  */
-@ApplicationPath("")
-public class ConferenceApplication extends Application {
+public class JSFException extends Exception {
+
+	/** Creates a new JSF exception without parameters. */
+	public JSFException() {
+
+		super();
+	}
+
+	/**
+	 * Creates a new JSF exception with the given error message.
+	 *
+	 * @param message
+	 * 		the error message
+	 */
+	public JSFException(String message) {
+
+		super(message);
+	}
+
+	/**
+	 * Creates a new JSF exception with the given error cause.
+	 *
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public JSFException(Exception cause) {
+
+		super(cause);
+	}
+
+	/**
+	 * Creates a new JSF exception with the given error message and cause.
+	 *
+	 * @param message
+	 * 		the error message
+	 * @param cause
+	 * 		the causing exception
+	 */
+	public JSFException(String message, Exception cause) {
+
+		super(message, cause);
+	}
 
 }

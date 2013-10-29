@@ -24,7 +24,7 @@
 /*
  * (C)opyright 2012 ssb Software Service und Beratung GmbH
  */
-package com.prodyna.pac.conference.ejb.api.util;
+package com.prodyna.pac.conference.ejb.api.datatype.util;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -31,17 +31,23 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <jta-data-source>java:jboss/datasources/MysqlDS</jta-data-source>
 
+        <!-- Selective Caching by @Cacheable -->
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+
+        <!-- Enable javax.validation -->
         <validation-mode>CALLBACK</validation-mode>
 
+        <!-- Entities -->
         <class>com.prodyna.pac.conference.ejb.api.datatype.Conference</class>
         <class>com.prodyna.pac.conference.ejb.api.datatype.Room</class>
         <class>com.prodyna.pac.conference.ejb.api.datatype.Speaker</class>
         <class>com.prodyna.pac.conference.ejb.api.datatype.Talk</class>
         <class>com.prodyna.pac.conference.ejb.api.datatype.TalkSpeaker</class>
 
+        <!-- Named Queries -->
         <mapping-file>META-INF/namedQueries.xml</mapping-file>
 
+        <!-- Do not search for annotated entities. -->
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>

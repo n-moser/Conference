@@ -23,7 +23,7 @@
 
 package com.prodyna.pac.conference.ejb.beans.interceptor;
 
-import com.prodyna.pac.conference.ejb.api.session.UserSession;
+import com.prodyna.pac.conference.ejb.api.service.session.UserSession;
 import org.slf4j.Logger;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
@@ -70,9 +70,12 @@ public class AuditInterceptor {
 		Marker marker = MarkerFactory.getMarker(MARKER_AUDIT);
 
 		String user = userSession.getUserName() != null ? userSession.getUserName() : "Anonymous";
+		Class<?> serviceClass = context.getTarget().getClass();
 		Method method = context.getMethod();
 
-		logger.debug(marker, "User '{}' accessed service operation '{}'.", user, method.getName());
+		String[] args = new String[]{user, serviceClass.getName(), method.getName()};
+
+		logger.debug(marker, "User '{}' accessed service operation '{}.{}()'.", args);
 
 		return context.proceed();
 	}

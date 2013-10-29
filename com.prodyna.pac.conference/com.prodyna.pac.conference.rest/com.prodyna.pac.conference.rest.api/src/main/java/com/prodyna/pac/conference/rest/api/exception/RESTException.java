@@ -23,8 +23,6 @@
 
 package com.prodyna.pac.conference.rest.api.exception;
 
-import javax.ejb.ApplicationException;
-
 /**
  * Called when a REST operation fails.
  * <p/>
@@ -32,7 +30,6 @@ import javax.ejb.ApplicationException;
  * Date: 11.09.13
  * Time: 16:44
  */
-@ApplicationException(rollback = true)
 public class RESTException extends Exception {
 
 	/** Creates a new REST exception without parameters. */

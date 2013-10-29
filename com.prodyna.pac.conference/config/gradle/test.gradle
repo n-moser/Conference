@@ -25,6 +25,9 @@
 apply plugin: 'jacoco'
 
 dependencies {
+
+    testCompile group: 'junit', name: 'junit', version: junitVersion
+
     testCompile group: 'org.jacoco', name: 'org.jacoco.core', version: jacocoVersion
     testCompile group: 'org.jboss.arquillian.extension', name: 'arquillian-jacoco', version: jacocoExtensionVersion
 }

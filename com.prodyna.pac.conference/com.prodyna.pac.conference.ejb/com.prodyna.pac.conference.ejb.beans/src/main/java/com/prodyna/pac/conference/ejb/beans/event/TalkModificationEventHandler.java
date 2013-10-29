@@ -69,7 +69,7 @@ public class TalkModificationEventHandler {
 
 		try {
 			String message = this.createMessage(event);
-			sendMessage(message);
+			this.sendMessage(message);
 		} catch (JMSException e) {
 			logger.error("Error sending Message to JMS Queue.", e);
 		}

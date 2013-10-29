@@ -23,7 +23,7 @@
 
 package com.prodyna.pac.conference.jsf.security;
 
-import com.prodyna.pac.conference.ejb.api.session.UserSession;
+import com.prodyna.pac.conference.ejb.api.service.session.UserSession;
 import org.slf4j.Logger;
 
 import javax.annotation.ManagedBean;
