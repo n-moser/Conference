@@ -75,8 +75,9 @@ public class PerformanceInterceptor {
 			long end = System.currentTimeMillis();
 			long duration = end - start;
 
-			logger.info("Operation '{}.{}' lasted '{}' seconds.", serviceClass.getName(), method.getName(),
-					duration / 1000.0);
+			String[] args = new String[]{serviceClass.getName(), method.getName(), String.valueOf(duration / 1000.0)};
+
+			logger.info("Operation '{}.{}' lasted '{}' seconds.", args);
 
 			this.sendToMBean(serviceClass, method, duration);
 		}
