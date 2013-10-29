@@ -26,7 +26,6 @@
        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://jboss.org/schema/cdi/beans_1_0.xsd">
 
     <interceptors>
-        <class>com.prodyna.pac.conference.ejb.beans.interceptor.AuditInterceptor</class>
         <class>com.prodyna.pac.conference.ejb.beans.interceptor.PerformanceInterceptor</class>
     </interceptors>
 
