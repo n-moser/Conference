@@ -127,6 +127,8 @@ public class TalkModificationDecoratorTest extends EJBTest {
 		this.talk.getSpeakers().add(talkSpeaker);
 
 		this.talk = talkService.createTalk(this.talk);
+
+		this.eventHandler.getEventQueue().clear();
 	}
 
 	@After
@@ -154,6 +156,8 @@ public class TalkModificationDecoratorTest extends EJBTest {
 
 		talkService.updateTalk(newTalk);
 
+		Thread.sleep(1000l);
+
 		Assert.assertEquals(0, eventHandler.getEventQueue().size());
 	}
 
@@ -171,6 +175,8 @@ public class TalkModificationDecoratorTest extends EJBTest {
 		newTalk.getSpeakers().addAll(talk.getSpeakers());
 
 		talkService.updateTalk(newTalk);
+
+		Thread.sleep(1000l);
 
 		Assert.assertEquals(1, eventHandler.getEventQueue().size());
 

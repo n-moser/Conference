@@ -27,8 +27,8 @@ import com.prodyna.pac.conference.ejb.beans.event.TalkModificationEvent;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Singleton;
-import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.SynchronousQueue;
 
 /**
  * TestTalkModificationEventHandler
@@ -40,7 +40,7 @@ import java.util.Queue;
 @Singleton
 public class TestTalkModificationEventHandler {
 
-	private Queue<TalkModificationEvent> eventQueue = new LinkedList<TalkModificationEvent>();
+	private Queue<TalkModificationEvent> eventQueue;
 
 	/**
 	 * Test accept the event.
@@ -58,8 +58,11 @@ public class TestTalkModificationEventHandler {
 	 *
 	 * @return the event queue
 	 */
-	public Queue<TalkModificationEvent> getEventQueue() {
+	public synchronized Queue<TalkModificationEvent> getEventQueue() {
 
+		if (this.eventQueue == null) {
+			this.eventQueue = new SynchronousQueue<TalkModificationEvent>();
+		}
 		return eventQueue;
 	}
 }

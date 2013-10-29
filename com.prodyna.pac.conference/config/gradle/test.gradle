@@ -31,8 +31,6 @@ dependencies {
 
 test {
 
-    ext.debugMode = false
-
     // explicitly include tests
     include 'com/prodyna/pac/conference/**'
 
@@ -59,10 +57,13 @@ test {
     // listen to standard out and standard error of the test JVM(s)
     onOutput { descriptor, event ->
 
-        def msg = event.message
-        msg = msg.replace("\r\n", "");
-        msg = msg.replace("\n", "");
-        logger.lifecycle("\t" + msg)
+        if (debugMode.toBoolean()) {
+            def msg = event.message
+            msg = msg.replace("\r\n", "");
+            msg = msg.replace("\n", "");
+            logger.lifecycle("\t" + msg)
+
+        }
     }
 
     doLast {
