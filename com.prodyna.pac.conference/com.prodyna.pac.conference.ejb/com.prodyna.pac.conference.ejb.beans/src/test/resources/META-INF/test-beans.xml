@@ -25,10 +25,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://jboss.org/schema/cdi/beans_1_0.xsd">
 
-    <interceptors>
-        <class>com.prodyna.pac.conference.ejb.beans.interceptor.PerformanceInterceptor</class>
-    </interceptors>
-
     <decorators>
         <class>com.prodyna.pac.conference.ejb.beans.decorator.TalkModificationDecorator</class>
     </decorators>
