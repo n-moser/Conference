@@ -66,7 +66,7 @@ public class Deployments {
 		logger.info(war.toString(true));
 		logger.info(jar.toString(true));
 
-		File tempFile = new File("build/arquillian/latest-ejb.jar");
+		File tempFile = new File("build/arquillian/latest-ejb.war");
 		if (!tempFile.exists()) {
 			File arquillianFolder = tempFile.getParentFile();
 			if (!arquillianFolder.exists()) {

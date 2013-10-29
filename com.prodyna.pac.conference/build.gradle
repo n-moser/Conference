@@ -108,7 +108,11 @@ task clean() {
     description = 'Cleans the root build directory'
 
     doLast {
-        delete 'build'
+        delete 'build/reports'
+        delete 'build/classes'
+        delete 'build/arquillian/latest-ejb.war'
+        delete 'build/arquillian/latest-jsf.war'
+        delete 'build/arquillian/latest-rest.war'
     }
 }
 
