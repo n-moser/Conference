@@ -59,12 +59,10 @@ test {
     // listen to standard out and standard error of the test JVM(s)
     onOutput { descriptor, event ->
 
-        if (test.debugMode) {
-            def msg = event.message
-            msg = msg.replace("\r\n", "");
-            msg = msg.replace("\n", "");
-            logger.lifecycle("\t" + msg)
-        }
+        def msg = event.message
+        msg = msg.replace("\r\n", "");
+        msg = msg.replace("\n", "");
+        logger.lifecycle("\t" + msg)
     }
 
     doLast {
