@@ -23,6 +23,13 @@
 
 package com.prodyna.pac.conference.ejb.beans.mbean;
 
+/**
+ * A performance entry for one service operation.
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 16:43
+ */
 public class PerformanceEntry {
 
 	private String service;
@@ -37,12 +44,26 @@ public class PerformanceEntry {
 
 	private long sum;
 
+	/**
+	 * Creates a new performance entry.
+	 *
+	 * @param service
+	 * 		the service interface name
+	 * @param method
+	 * 		the service operation name
+	 */
 	public PerformanceEntry(String service, String method) {
 
 		this.service = service;
 		this.method = method;
 	}
 
+	/**
+	 * Report a service call duraion to the entry.
+	 *
+	 * @param time
+	 * 		the duration
+	 */
 	public void report(long time) {
 
 		if (time > maxTime) {
@@ -56,36 +77,71 @@ public class PerformanceEntry {
 		this.count++;
 	}
 
+	/**
+	 * Getter for the service name.
+	 *
+	 * @return the service name
+	 */
 	public String getService() {
 
 		return service;
 	}
 
+	/**
+	 * Getter for the service operation name.
+	 *
+	 * @return the service operation name
+	 */
 	public String getMethod() {
 
 		return method;
 	}
 
+	/**
+	 * Getter for the invocation count.
+	 *
+	 * @return the invocation count
+	 */
 	public int getCount() {
 
 		return count;
 	}
 
+	/**
+	 * Getter for the minimum duration.
+	 *
+	 * @return the smallest duration
+	 */
 	public long getMinTime() {
 
 		return minTime;
 	}
 
+	/**
+	 * Getter for the maximum duration.
+	 *
+	 * @return the longest duration
+	 */
 	public long getMaxTime() {
 
 		return maxTime;
 	}
 
+	/**
+	 * Getter for the average duration.
+	 *
+	 * @return the average duration
+	 */
 	public long getAverageTime() {
 
 		return sum / count;
 	}
 
+	/**
+	 * Getter for the overall duration.
+	 *
+	 * @return the overall duration
+	 */
 	public long getSum() {
 
 		return sum;

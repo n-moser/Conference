@@ -25,22 +25,70 @@ package com.prodyna.pac.conference.ejb.beans.mbean;
 
 import java.util.List;
 
+/**
+ * An MBean for monitoring service operation statistics like invocation count and duration.
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 11.09.13
+ * Time: 16:43
+ */
 public interface PerformanceMBean {
 
+	/**
+	 * Getter for all performance entries.
+	 *
+	 * @return the list of entries
+	 */
 	List<PerformanceEntry> getAll();
 
+	/**
+	 * Retrieves all performance entries as single string.
+	 *
+	 * @return the result string
+	 */
+	String getAllAsString();
+
+	/**
+	 * Report a service invocation.
+	 *
+	 * @param service
+	 * 		the invocated service
+	 * @param method
+	 * 		the invocated service operation
+	 * @param time
+	 * 		the service operation duration
+	 */
 	void report(String service, String method, long time);
 
+	/**
+	 * Retrieves the amount of performance entries.
+	 *
+	 * @return the amount of entries
+	 */
 	int getCount();
 
+	/**
+	 * Retrieve the worst entry by overal time.
+	 *
+	 * @return the entry with most overall duration
+	 */
 	PerformanceEntry getWorstByTime();
 
+	/**
+	 * Retrieve the worst entry by average time.
+	 *
+	 * @return the entry with most average duration
+	 */
 	PerformanceEntry getWorstByAverage();
 
+	/**
+	 * Retrieve the worst entry by invocation count.
+	 *
+	 * @return the entry with most invocation counts
+	 */
 	PerformanceEntry getWorstByCount();
 
+	/** Reset all collected performance entries. */
 	void reset();
-
-	String getAllAsString();
 
 }

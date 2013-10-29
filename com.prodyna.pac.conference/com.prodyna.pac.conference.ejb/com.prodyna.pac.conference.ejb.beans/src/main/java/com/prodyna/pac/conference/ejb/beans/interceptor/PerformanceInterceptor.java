@@ -34,6 +34,13 @@ import javax.management.ObjectName;
 import java.lang.management.ManagementFactory;
 import java.lang.reflect.Method;
 
+/**
+ * Interceptor that intercepts operations in order to create performance logs.
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 15.10.13
+ * Time: 00:30
+ */
 @Performance
 @Interceptor
 public class PerformanceInterceptor {
@@ -43,9 +50,21 @@ public class PerformanceInterceptor {
 	@Inject
 	private Logger logger;
 
+	/**
+	 * Interception method that is called before the delegating operation is called.
+	 *
+	 * @param context
+	 * 		the invocation context
+	 *
+	 * @return the operation result
+	 *
+	 * @throws Exception
+	 * 		when the delegating operation raises an exception
+	 */
 	@AroundInvoke
 	public Object monitorPerformance(InvocationContext context) throws Exception {
 
+		Class<?> serviceClass = context.getTarget().getClass();
 		Method method = context.getMethod();
 
 		long start = System.currentTimeMillis();
@@ -56,13 +75,24 @@ public class PerformanceInterceptor {
 			long end = System.currentTimeMillis();
 			long duration = end - start;
 
-			logger.debug("Operation '{}' lasted '{}' seconds.", method.getName(), duration / 1000.0);
+			logger.info("Operation '{}.{}' lasted '{}' seconds.", serviceClass.getName(), method.getName(),
+					duration / 1000.0);
 
-			this.sendToMBean(context.getTarget().getClass(), method, duration);
+			this.sendToMBean(serviceClass, method, duration);
 		}
 
 	}
 
+	/**
+	 * Send the service call and duration to the PerformanceMBean.
+	 *
+	 * @param service
+	 * 		the service interface class
+	 * @param method
+	 * 		the service operation
+	 * @param time
+	 * 		the service call duration
+	 */
 	private void sendToMBean(Class<?> service, Method method, long time) {
 
 		try {
@@ -82,7 +112,6 @@ public class PerformanceInterceptor {
 			logger.error("Error invoking MBean performance report.", e);
 		}
 
-		// JMX.newMBeanProxy(conn, objectName, PerformanceMBean.class);
 	}
 
 }

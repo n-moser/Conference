@@ -34,6 +34,13 @@ import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 import java.lang.reflect.Method;
 
+/**
+ * Interceptor that intercepts operations in order to create audit logs.
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 15.10.13
+ * Time: 00:30
+ */
 @Audit
 @Interceptor
 public class AuditInterceptor {
@@ -46,15 +53,26 @@ public class AuditInterceptor {
 	@Inject
 	private UserSession userSession;
 
+	/**
+	 * Interception method that is called before the delegating operation is called.
+	 *
+	 * @param context
+	 * 		the invocation context
+	 *
+	 * @return the operation result
+	 *
+	 * @throws Exception
+	 * 		when the delegating operation raises an exception
+	 */
 	@AroundInvoke
 	public Object audit(InvocationContext context) throws Exception {
 
 		Marker marker = MarkerFactory.getMarker(MARKER_AUDIT);
 
-		String user = userSession.getUserName();
+		String user = userSession.getUserName() != null ? userSession.getUserName() : "Anonymous";
 		Method method = context.getMethod();
 
-		logger.info(marker, "User '{}' accessed service operation '{}'.", user, method.getName());
+		logger.debug(marker, "User '{}' accessed service operation '{}'.", user, method.getName());
 
 		return context.proceed();
 	}

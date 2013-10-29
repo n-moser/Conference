@@ -28,7 +28,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * EntityManagerProducer
+ * CDI Producer that creates the EntityManagerFactory.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13

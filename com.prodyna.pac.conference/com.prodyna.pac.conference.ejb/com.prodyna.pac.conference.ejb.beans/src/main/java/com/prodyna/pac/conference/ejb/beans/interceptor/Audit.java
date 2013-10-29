@@ -33,6 +33,13 @@ import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+/**
+ * Annotation that marks an interface or operation to get intercepted in order to create audit logs.
+ * <p/>
+ * Author: Nicolas Moser
+ * Date: 15.10.13
+ * Time: 00:30
+ */
 @InterceptorBinding
 @Inherited
 @Target({TYPE, METHOD})

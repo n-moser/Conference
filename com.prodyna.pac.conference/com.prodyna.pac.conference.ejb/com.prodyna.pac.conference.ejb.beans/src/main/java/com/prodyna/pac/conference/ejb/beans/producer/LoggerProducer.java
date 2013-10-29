@@ -30,7 +30,7 @@ import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
 /**
- * LoggerProducer
+ * CDI Producer that creates the SLF4J Logger.
  * <p/>
  * Author: Nicolas Moser
  * Date: 26.09.13
@@ -38,9 +38,17 @@ import javax.enterprise.inject.spi.InjectionPoint;
  */
 public class LoggerProducer {
 
+	/**
+	 * Creates a SLF4J Logger for the injected class.
+	 *
+	 * @param injectionPoint
+	 * 		the injection point
+	 *
+	 * @return the logger instance
+	 */
 	@Produces
-	public Logger produceLogger(InjectionPoint ip) {
+	public Logger produceLogger(InjectionPoint injectionPoint) {
 
-		return LoggerFactory.getLogger(ip.getMember().getDeclaringClass());
+		return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass());
 	}
 }
