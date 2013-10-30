@@ -73,7 +73,7 @@ public class AuditInterceptor {
 		Class<?> serviceClass = context.getTarget().getClass();
 		Method method = context.getMethod();
 
-		String[] args = new String[]{user, serviceClass.getName(), method.getName()};
+		Object[] args = new Object[]{user, serviceClass.getName(), method.getName()};
 
 		logger.debug(marker, "User '{}' accessed service operation '{}.{}()'.", args);
 

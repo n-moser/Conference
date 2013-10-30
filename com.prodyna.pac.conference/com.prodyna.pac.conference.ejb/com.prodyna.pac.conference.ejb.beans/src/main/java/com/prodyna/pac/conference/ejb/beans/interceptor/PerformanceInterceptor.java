@@ -80,9 +80,9 @@ public class PerformanceInterceptor {
 
 			String serviceName = serviceClass.getName();
 			String serviceOperationName = method.getName();
-			String[] args = new String[]{serviceName, serviceOperationName, String.valueOf(duration / 1000.0)};
+			Object[] args = new Object[]{serviceName, serviceOperationName, String.valueOf(duration / 1000.0)};
 
-			logger.info("Operation '{}.{}()' lasted '{}' seconds.", args);
+			logger.debug("Operation '{}.{}()' lasted '{}' seconds.", args);
 
 			this.mBean.report(serviceName, serviceOperationName, duration);
 		}
