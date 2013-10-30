@@ -48,7 +48,7 @@ import java.util.List;
 public class SpeakerListBean {
 
 	@Inject
-	private SpeakerService service;
+	private SpeakerService speakerService;
 
 	@Inject
 	private Logger logger;
@@ -70,7 +70,7 @@ public class SpeakerListBean {
 	public void init() {
 
 		try {
-			this.speakers = service.getAllSpeakers();
+			this.speakers = speakerService.getAllSpeakers();
 
 		} catch (ServiceException se) {
 			logger.error("Error retrieving Speakers.", se);

@@ -26,7 +26,6 @@ package com.prodyna.pac.conference.rest.api.resource;
 import com.prodyna.pac.conference.ejb.api.datatype.Conference;
 import com.prodyna.pac.conference.rest.api.exception.RESTException;
 
-import javax.annotation.security.PermitAll;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -41,7 +40,6 @@ import java.util.List;
  * Date: 17.10.13
  * Time: 15:43
  */
-@PermitAll
 @Path("conference")
 public interface ConferenceResource extends Resource {
 

@@ -56,7 +56,7 @@ public class MBeanProxyProducer {
 	 */
 	@Produces
 	@MBeanProxy
-	public PerformanceMXBean producePerformanceMBean() throws JMException {
+	public PerformanceMXBean producePerformanceMXBean() throws JMException {
 
 		MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
 

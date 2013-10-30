@@ -49,7 +49,7 @@ import java.util.List;
 public class ConferenceListBean {
 
 	@Inject
-	private ConferenceService service;
+	private ConferenceService conferenceService;
 
 	@Inject
 	private Logger logger;
@@ -71,7 +71,7 @@ public class ConferenceListBean {
 	public void init() {
 
 		try {
-			this.conferences = service.getAllConferences();
+			this.conferences = conferenceService.getAllConferences();
 
 		} catch (ServiceException se) {
 			logger.error("Error retrieving Conferences.", se);

@@ -27,7 +27,6 @@ import com.prodyna.pac.conference.ejb.api.datatype.Talk;
 import com.prodyna.pac.conference.rest.api.exception.RESTException;
 import com.prodyna.pac.conference.rest.api.resource.TalkResource;
 
-import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -38,7 +37,6 @@ import javax.ws.rs.core.MediaType;
  * Date: 17.10.13
  * Time: 15:47
  */
-@RolesAllowed("admin")
 @Path("secure/talk")
 public interface TalkAdminResource extends TalkResource {
 

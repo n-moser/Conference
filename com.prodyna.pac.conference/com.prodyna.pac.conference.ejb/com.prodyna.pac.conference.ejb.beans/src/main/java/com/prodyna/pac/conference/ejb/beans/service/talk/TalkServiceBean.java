@@ -37,6 +37,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -253,11 +254,11 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 		Conference conference = talk.getConference();
 		if (conference != null) {
 
-			if (startTime.before(conference.getStartDate())) {
+			if (startTime.before(this.toStartOfDay(conference.getStartDate()))) {
 				exception.addItem("startDate",
 						"Talk must be within the timeframe of conference '" + conference.getName() + "'.");
 			}
-			if (endTime.after(conference.getEndDate())) {
+			if (endTime.after(this.toEndOfDay(conference.getEndDate()))) {
 				exception.addItem("startDate",
 						"Talk must be within the timeframe of conference '" + conference.getName() + "'.");
 			}
@@ -308,5 +309,43 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 		if (exception.hasItems()) {
 			throw exception;
 		}
+	}
+
+	/**
+	 * Shifts the time of the given date to the start of the day.
+	 *
+	 * @param date
+	 * 		the date to change
+	 *
+	 * @return the new date
+	 */
+	private Date toStartOfDay(Date date) {
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.set(Calendar.HOUR, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+
+		return calendar.getTime();
+	}
+
+	/**
+	 * Shifts the time of the given date to the end of the day.
+	 *
+	 * @param date
+	 * 		the date to change
+	 *
+	 * @return the new date
+	 */
+	private Date toEndOfDay(Date date) {
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.set(Calendar.HOUR, 23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 59);
+
+		return calendar.getTime();
 	}
 }

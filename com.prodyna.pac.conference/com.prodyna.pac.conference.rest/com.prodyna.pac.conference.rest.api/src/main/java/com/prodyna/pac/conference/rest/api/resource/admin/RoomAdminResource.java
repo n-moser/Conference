@@ -27,7 +27,6 @@ import com.prodyna.pac.conference.ejb.api.datatype.Room;
 import com.prodyna.pac.conference.rest.api.exception.RESTException;
 import com.prodyna.pac.conference.rest.api.resource.RoomResource;
 
-import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -38,7 +37,6 @@ import javax.ws.rs.core.MediaType;
  * Date: 17.10.13
  * Time: 15:45
  */
-@RolesAllowed("admin")
 @Path("secure/room")
 public interface RoomAdminResource extends RoomResource {
 

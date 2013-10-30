@@ -79,9 +79,6 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 	private ConferenceAdminBean conferenceAdminBean;
 
 	@Inject
-	private FacesContext facesContext;
-
-	@Inject
 	private Logger logger;
 
 	private List<Speaker> speakers;
@@ -298,7 +295,7 @@ public class TalkAdminBean extends AdminBean implements Serializable {
 
 		if (talk != null) {
 
-			if (facesContext.isValidationFailed()) {
+			if (FacesContext.getCurrentInstance().isValidationFailed()) {
 				return null;
 			}
 

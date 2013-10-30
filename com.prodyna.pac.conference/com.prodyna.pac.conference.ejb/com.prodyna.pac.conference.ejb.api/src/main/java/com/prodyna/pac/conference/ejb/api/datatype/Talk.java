@@ -297,7 +297,7 @@ public class Talk implements Datatype {
 	 */
 	@Valid
 	@Size(min = 1)
-	@JoinColumn(name = "talk_id")
+	@JoinColumn(name = "talk_id", nullable = false)
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, orphanRemoval = true)
 	public List<TalkSpeaker> getSpeakers() {
 

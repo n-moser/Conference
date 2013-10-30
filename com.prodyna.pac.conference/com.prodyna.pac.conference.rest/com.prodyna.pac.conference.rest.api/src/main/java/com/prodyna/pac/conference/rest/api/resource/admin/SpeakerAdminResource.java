@@ -27,7 +27,6 @@ import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
 import com.prodyna.pac.conference.rest.api.exception.RESTException;
 import com.prodyna.pac.conference.rest.api.resource.SpeakerResource;
 
-import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -38,7 +37,6 @@ import javax.ws.rs.core.MediaType;
  * Date: 17.10.13
  * Time: 15:46
  */
-@RolesAllowed("admin")
 @Path("secure/speaker")
 public interface SpeakerAdminResource extends SpeakerResource {
 

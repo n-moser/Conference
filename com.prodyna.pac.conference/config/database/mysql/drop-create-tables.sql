@@ -43,8 +43,9 @@ CREATE TABLE IF NOT EXISTS `room` (
   `version` bigint(20) DEFAULT NULL,
   `conference_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
+  FOREIGN KEY (`conference_id`) REFERENCES conference(id),
   KEY `FK26F4FB1953212F` (`conference_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 
 -- -------------------
@@ -79,9 +80,11 @@ CREATE TABLE IF NOT EXISTS `talk` (
   `conference_id` bigint(20) NOT NULL,
   `room_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
+  FOREIGN KEY (`room_id`) REFERENCES room(id),
+  FOREIGN KEY (`conference_id`) REFERENCES conference(id),
   KEY `FK27A8CC3118308F` (`room_id`),
   KEY `FK27A8CC1953212F` (`conference_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 
 -- -------------------
@@ -94,11 +97,13 @@ CREATE TABLE IF NOT EXISTS `talkspeaker` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `version` bigint(20) DEFAULT NULL,
   `speaker_id` bigint(20) NOT NULL,
-  `talk_id` bigint(20) DEFAULT NULL,
+  `talk_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
+  FOREIGN KEY (`speaker_id`) REFERENCES speaker(id),
+  FOREIGN KEY (`talk_id`) REFERENCES talk(id),
   KEY `FK4E5C119377461485` (`speaker_id`),
   KEY `FK4E5C119382D652EF` (`talk_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 
 
