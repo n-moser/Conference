@@ -34,7 +34,7 @@ import java.io.Serializable;
  * Time: 16:56
  */
 @Local
-public interface UserSession extends Serializable {
+public interface UserSession extends Service {
 
 	/**
 	 * Getter for the user name.
