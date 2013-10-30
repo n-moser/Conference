@@ -23,15 +23,14 @@
 
 package com.prodyna.pac.conference.ejb.beans.interceptor;
 
+import com.prodyna.pac.conference.ejb.beans.mbean.MBeanProxy;
+import com.prodyna.pac.conference.ejb.beans.mbean.performance.PerformanceMBean;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
-import java.lang.management.ManagementFactory;
 import java.lang.reflect.Method;
 
 /**
@@ -50,6 +49,10 @@ public class PerformanceInterceptor {
 	@Inject
 	private Logger logger;
 
+	@Inject
+	@MBeanProxy
+	private PerformanceMBean mBean;
+
 	/**
 	 * Interception method that is called before the delegating operation is called.
 	 *
@@ -64,9 +67,6 @@ public class PerformanceInterceptor {
 	@AroundInvoke
 	public Object monitorPerformance(InvocationContext context) throws Exception {
 
-		Class<?> serviceClass = context.getTarget().getClass();
-		Method method = context.getMethod();
-
 		long start = System.currentTimeMillis();
 
 		try {
@@ -75,44 +75,17 @@ public class PerformanceInterceptor {
 			long end = System.currentTimeMillis();
 			long duration = end - start;
 
-			String[] args = new String[]{serviceClass.getName(), method.getName(), String.valueOf(duration / 1000.0)};
+			Class<?> serviceClass = context.getTarget().getClass();
+			Method method = context.getMethod();
+
+			String serviceName = serviceClass.getName();
+			String serviceOperationName = method.getName();
+			String[] args = new String[]{serviceName, serviceOperationName, String.valueOf(duration / 1000.0)};
 
 			logger.info("Operation '{}.{}()' lasted '{}' seconds.", args);
 
-			this.sendToMBean(serviceClass, method, duration);
+			this.mBean.report(serviceName, serviceOperationName, duration);
 		}
-
-	}
-
-	/**
-	 * Send the service call and duration to the PerformanceMBean.
-	 *
-	 * @param service
-	 * 		the service interface class
-	 * @param method
-	 * 		the service operation
-	 * @param time
-	 * 		the service call duration
-	 */
-	private void sendToMBean(Class<?> service, Method method, long time) {
-
-		try {
-			MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
-			ObjectName objectName = new ObjectName(MBEAN);
-
-			if (!mBeanServer.isRegistered(objectName)) {
-				mBeanServer.registerMBean(new com.prodyna.pac.conference.ejb.beans.mbean.Performance(), objectName);
-			}
-
-			Object[] parameters = new Object[]{service.getName(), method.getName(), time};
-			String[] signature = new String[]{String.class.getName(), String.class.getName(), long.class.getName()};
-
-			mBeanServer.invoke(objectName, "report", parameters, signature);
-
-		} catch (Exception e) {
-			logger.error("Error invoking MBean performance report.", e);
-		}
-
 	}
 
 }

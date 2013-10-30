@@ -42,6 +42,24 @@ public class TalkSpeaker implements Datatype {
 
 	private Speaker speaker;
 
+	/** Create a new TalkSpeaker without delegating speaker. */
+	public TalkSpeaker() {
+
+		super();
+	}
+
+	/**
+	 * Creates a new talk speaker delegating to a given speaker.
+	 *
+	 * @param speaker
+	 * 		the delegating speaker
+	 */
+	public TalkSpeaker(Speaker speaker) {
+
+		this();
+		this.setSpeaker(speaker);
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Override

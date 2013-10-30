@@ -64,9 +64,13 @@ public class TalkModificationDecoratorTest extends EJBTest {
 	@Inject
 	private TestTalkModificationEventHandler eventHandler;
 
-	private Conference conference;
+	private Conference jax;
 
-	private Room room;
+	private Conference jfs;
+
+	private Room snowWhite;
+
+	private Room blueRoom;
 
 	private Speaker adamBien;
 
@@ -77,25 +81,46 @@ public class TalkModificationDecoratorTest extends EJBTest {
 	@Before
 	public void setUp() throws Exception {
 
-		this.conference = new Conference();
-		this.conference.setName("JAX");
-		this.conference.setLocation("Mainz");
-		this.conference.setDescription("Konferenz für die Java-Plattform");
-		this.conference.setStartDate(super.parseDate("01.10.2014"));
-		this.conference.setEndDate(super.parseDate("05.10.2014"));
+		this.jax = new Conference();
+		this.jax.setName("JAX");
+		this.jax.setLocation("Mainz");
+		this.jax.setDescription("Konferenz für die Java-Plattform");
+		this.jax.setStartDate(super.parseDate("01.10.2014"));
+		this.jax.setEndDate(super.parseDate("05.10.2014"));
 
-		this.conference = conferenceService.createConference(this.conference);
-		Assert.assertNotNull(conference);
-		Assert.assertNotNull(conference.getId());
+		this.jax = conferenceService.createConference(this.jax);
+		Assert.assertNotNull(jax);
+		Assert.assertNotNull(jax.getId());
 
-		this.room = new Room();
-		this.room.setConference(conference);
-		this.room.setCapacity(300);
-		this.room.setName("Snow White");
+		this.snowWhite = new Room();
+		this.snowWhite.setConference(jax);
+		this.snowWhite.setCapacity(300);
+		this.snowWhite.setName("Snow White");
 
-		this.room = this.roomService.createRoom(room);
-		Assert.assertNotNull(room);
-		Assert.assertNotNull(room.getId());
+		this.snowWhite = this.roomService.createRoom(snowWhite);
+		Assert.assertNotNull(snowWhite);
+		Assert.assertNotNull(snowWhite.getId());
+
+		this.jfs = new Conference();
+		this.jfs.setName("Java Forum");
+		this.jfs.setLocation("Stuttgart");
+		this.jfs.setDescription("Java Forum Stuttgart");
+		this.jfs.setStartDate(super.parseDate("02.10.2014"));
+		this.jfs.setEndDate(super.parseDate("03.10.2014"));
+
+		this.jfs = conferenceService.createConference(jfs);
+		Assert.assertNotNull(this.jfs);
+		Assert.assertNotNull(this.jfs.getId());
+
+		this.blueRoom = new Room();
+		this.blueRoom.setConference(this.jfs);
+		this.blueRoom.setCapacity(200);
+		this.blueRoom.setName("Blue Room");
+
+		this.blueRoom = this.roomService.createRoom(this.blueRoom);
+		Assert.assertNotNull(this.blueRoom);
+		Assert.assertNotNull(this.blueRoom.getId());
+
 
 		this.adamBien = new Speaker();
 		this.adamBien.setName("Adam Bien");
@@ -117,8 +142,8 @@ public class TalkModificationDecoratorTest extends EJBTest {
 
 		this.talk = new Talk();
 		this.talk.setName("Java EE Webstack Performance");
-		this.talk.setConference(this.conference);
-		this.talk.setRoom(this.room);
+		this.talk.setConference(this.jax);
+		this.talk.setRoom(this.snowWhite);
 		this.talk.setStartDate(super.parseDate("03.10.2014"));
 		this.talk.setDuration(120);
 
@@ -135,8 +160,10 @@ public class TalkModificationDecoratorTest extends EJBTest {
 	public void tearDown() throws Exception {
 
 		this.talkService.removeTalk(talk);
-		this.roomService.removeRoom(room);
-		this.conferenceService.removeConference(conference);
+		this.roomService.removeRoom(snowWhite);
+		this.roomService.removeRoom(blueRoom);
+		this.conferenceService.removeConference(jax);
+		this.conferenceService.removeConference(jfs);
 		this.speakerService.removeSpeaker(adamBien);
 		this.speakerService.removeSpeaker(larsVogel);
 	}
@@ -154,7 +181,7 @@ public class TalkModificationDecoratorTest extends EJBTest {
 		newTalk.setDuration(talk.getDuration());
 		newTalk.getSpeakers().addAll(talk.getSpeakers());
 
-		talkService.updateTalk(newTalk);
+		this.talk = talkService.updateTalk(newTalk);
 
 		Thread.sleep(1000l);
 
@@ -162,7 +189,7 @@ public class TalkModificationDecoratorTest extends EJBTest {
 	}
 
 	@Test
-	public void testTalkUpdateWithModification() throws Exception {
+	public void testTalkUpdateWithLittleModification() throws Exception {
 
 		Talk newTalk = new Talk();
 		newTalk.setId(talk.getId());
@@ -173,6 +200,38 @@ public class TalkModificationDecoratorTest extends EJBTest {
 		newTalk.setStartDate(talk.getStartDate());
 		newTalk.setDuration(talk.getDuration());
 		newTalk.getSpeakers().addAll(talk.getSpeakers());
+
+		this.talk = talkService.updateTalk(newTalk);
+
+		Thread.sleep(1000l);
+
+		Assert.assertEquals(1, eventHandler.getEventQueue().size());
+
+		TalkModificationEvent event = eventHandler.getEventQueue().poll();
+
+		System.out.println(event.getChanges());
+
+		Assert.assertNotNull(event.getOldTalk());
+		Assert.assertNotNull(event.getNewTalk());
+
+		Assert.assertNotEquals(event.getOldTalk(), event.getNewTalk());
+
+		Assert.assertEquals("Java EE Webstack Performance", event.getOldTalk().getName());
+		Assert.assertEquals("haha", event.getNewTalk().getName());
+	}
+
+	@Test
+	public void testTalkUpdateWithMajorModification() throws Exception {
+
+		Talk newTalk = new Talk();
+		newTalk.setId(talk.getId());
+		newTalk.setVersion(talk.getVersion());
+		newTalk.setName("haha");
+		newTalk.setConference(this.jfs);
+		newTalk.setRoom(this.blueRoom);
+		newTalk.setStartDate(super.parseDate("02.10.2014"));
+		newTalk.setDuration(90);
+		newTalk.getSpeakers().add(new TalkSpeaker(this.adamBien));
 
 		talkService.updateTalk(newTalk);
 

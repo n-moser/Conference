@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.prodyna.pac.conference.ejb.beans.mbean;
+package com.prodyna.pac.conference.ejb.beans.mbean.performance;
 
 import java.util.ArrayList;
 import java.util.HashMap;
