@@ -24,7 +24,7 @@
 package com.prodyna.pac.conference.rest.api.exception;
 
 /**
- * Called when a REST operation fails.
+ * Raised when a REST operation fails.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13

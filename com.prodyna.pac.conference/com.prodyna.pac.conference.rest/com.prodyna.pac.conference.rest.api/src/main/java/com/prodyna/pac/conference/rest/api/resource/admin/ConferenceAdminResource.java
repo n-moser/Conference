@@ -32,7 +32,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
- * ConferenceResource
+ * REST Resource to retrieve and administrate conference information.
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
@@ -42,16 +42,49 @@ import javax.ws.rs.core.MediaType;
 @Path("secure/conference")
 public interface ConferenceAdminResource extends ConferenceResource {
 
+	/**
+	 * Adds a new Conference resource.
+	 *
+	 * @param conference
+	 * 		the conference to add
+	 *
+	 * @return the added conference
+	 *
+	 * @throws RESTException
+	 * 		when the creation fails
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Conference createConference(Conference conference) throws RESTException;
 
+	/**
+	 * Updates an existing Conference resource.
+	 *
+	 * @param conference
+	 * 		the conference to update
+	 *
+	 * @return the update conference
+	 *
+	 * @throws RESTException
+	 * 		when the modification fails
+	 */
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Conference updateConference(Conference conference) throws RESTException;
 
+	/**
+	 * Remvoves an existing Conference resource.
+	 *
+	 * @param id
+	 * 		id of the conference to remove
+	 *
+	 * @return the removed conference
+	 *
+	 * @throws RESTException
+	 * 		when the deletion fails
+	 */
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

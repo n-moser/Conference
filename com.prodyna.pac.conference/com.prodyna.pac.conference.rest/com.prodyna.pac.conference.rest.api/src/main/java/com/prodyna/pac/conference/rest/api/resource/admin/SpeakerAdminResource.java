@@ -32,7 +32,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
- * SpeakerResource
+ * REST Resource to retrieve and administrate speaker information.
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
@@ -42,16 +42,49 @@ import javax.ws.rs.core.MediaType;
 @Path("secure/speaker")
 public interface SpeakerAdminResource extends SpeakerResource {
 
+	/**
+	 * Adds a new Speaker resource.
+	 *
+	 * @param speaker
+	 * 		the speaker to add
+	 *
+	 * @return the added speaker
+	 *
+	 * @throws RESTException
+	 * 		when the creation fails
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Speaker createSpeaker(Speaker speaker) throws RESTException;
 
+	/**
+	 * Updates an existing Speaker resource.
+	 *
+	 * @param speaker
+	 * 		the speaker to update
+	 *
+	 * @return the update speaker
+	 *
+	 * @throws RESTException
+	 * 		when the modification fails
+	 */
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Speaker updateSpeaker(Speaker speaker) throws RESTException;
 
+	/**
+	 * Remvoves an existing Speaker resource.
+	 *
+	 * @param id
+	 * 		id of the speaker to remove
+	 *
+	 * @return the removed speaker
+	 *
+	 * @throws RESTException
+	 * 		when the deletion fails
+	 */
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

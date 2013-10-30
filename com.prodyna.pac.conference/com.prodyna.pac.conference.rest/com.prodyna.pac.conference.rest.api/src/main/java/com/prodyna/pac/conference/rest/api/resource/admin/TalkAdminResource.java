@@ -32,7 +32,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
- * TalkResource
+ * REST Resource to retrieve and administrate conference information.
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
@@ -42,16 +42,49 @@ import javax.ws.rs.core.MediaType;
 @Path("secure/talk")
 public interface TalkAdminResource extends TalkResource {
 
+	/**
+	 * Adds a new Talk resource.
+	 *
+	 * @param talk
+	 * 		the talk to add
+	 *
+	 * @return the added talk
+	 *
+	 * @throws RESTException
+	 * 		when the creation fails
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Talk createTalk(Talk talk) throws RESTException;
 
+	/**
+	 * Updates an existing Talk resource.
+	 *
+	 * @param talk
+	 * 		the talk to update
+	 *
+	 * @return the update talk
+	 *
+	 * @throws RESTException
+	 * 		when the modification fails
+	 */
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Talk updateTalk(Talk talk) throws RESTException;
 
+	/**
+	 * Remvoves an existing Talk resource.
+	 *
+	 * @param id
+	 * 		id of the talk to remove
+	 *
+	 * @return the removed talk
+	 *
+	 * @throws RESTException
+	 * 		when the deletion fails
+	 */
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

@@ -26,7 +26,7 @@ package com.prodyna.pac.conference.ejb.api.exception;
 import javax.ejb.ApplicationException;
 
 /**
- * Called when a EJB service operation fails.
+ * Raised when a EJB service operation fails.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13

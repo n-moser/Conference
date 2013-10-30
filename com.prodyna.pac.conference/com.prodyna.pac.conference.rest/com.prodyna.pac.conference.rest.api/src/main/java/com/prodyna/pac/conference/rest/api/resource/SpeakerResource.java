@@ -34,7 +34,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
- * SpeakerResource
+ * REST Resource to retrieve speaker information.
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
@@ -43,11 +43,30 @@ import java.util.List;
 @Path("speaker")
 public interface SpeakerResource extends Resource {
 
+	/**
+	 * Retrieve the speaker with the given ID.
+	 *
+	 * @param id
+	 * 		the speaker ID
+	 *
+	 * @return the speaker or null if no speaker with the given ID exists
+	 *
+	 * @throws RESTException
+	 * 		when the search fails
+	 */
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	Speaker findSpeaker(@PathParam("id") Long id) throws RESTException;
 
+	/**
+	 * Retrieves all existing speakers.
+	 *
+	 * @return the speaker list
+	 *
+	 * @throws RESTException
+	 * 		when the search fails
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	List<Speaker> getAllSpeakers() throws RESTException;

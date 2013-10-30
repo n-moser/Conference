@@ -32,7 +32,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
- * RoomResource
+ * REST Resource to retrieve and administrate room information.
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
@@ -42,16 +42,49 @@ import javax.ws.rs.core.MediaType;
 @Path("secure/room")
 public interface RoomAdminResource extends RoomResource {
 
+	/**
+	 * Adds a new Room resource.
+	 *
+	 * @param room
+	 * 		the room to add
+	 *
+	 * @return the added room
+	 *
+	 * @throws RESTException
+	 * 		when the creation fails
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Room createRoom(Room room) throws RESTException;
 
+	/**
+	 * Updates an existing Room resource.
+	 *
+	 * @param room
+	 * 		the room to update
+	 *
+	 * @return the update room
+	 *
+	 * @throws RESTException
+	 * 		when the modification fails
+	 */
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Room updateRoom(Room room) throws RESTException;
 
+	/**
+	 * Remvoves an existing Room resource.
+	 *
+	 * @param id
+	 * 		id of the room to remove
+	 *
+	 * @return the removed room
+	 *
+	 * @throws RESTException
+	 * 		when the deletion fails
+	 */
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

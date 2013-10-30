@@ -34,7 +34,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
- * RoomResource
+ * REST Resource to retrieve room information.
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
@@ -43,12 +43,32 @@ import java.util.List;
 @Path("room")
 public interface RoomResource extends Resource {
 
+	/**
+	 * Retrieve the room with the given ID.
+	 *
+	 * @param id
+	 * 		the room ID
+	 *
+	 * @return the room or null if no room with the given ID exists
+	 *
+	 * @throws RESTException
+	 * 		when the search fails
+	 */
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	Room findRoom(@PathParam("id") Long id) throws RESTException;
 
+	/**
+	 * Retrieves all existing rooms.
+	 *
+	 * @return the room list
+	 *
+	 * @throws RESTException
+	 * 		when the search fails
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	List<Room> getAllRooms() throws RESTException;
+
 }

@@ -35,7 +35,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
- * ConferenceResource
+ * REST Resource to retrieve conference information.
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
@@ -45,11 +45,30 @@ import java.util.List;
 @Path("conference")
 public interface ConferenceResource extends Resource {
 
+	/**
+	 * Retrieve the conference with the given ID.
+	 *
+	 * @param id
+	 * 		the conference ID
+	 *
+	 * @return the conference or null if no conference with the given ID exists
+	 *
+	 * @throws RESTException
+	 * 		when the search fails
+	 */
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	Conference findConference(@PathParam("id") Long id) throws RESTException;
 
+	/**
+	 * Retrieves all existing conferences.
+	 *
+	 * @return the conference list
+	 *
+	 * @throws RESTException
+	 * 		when the search fails
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	List<Conference> getAllConferences() throws RESTException;

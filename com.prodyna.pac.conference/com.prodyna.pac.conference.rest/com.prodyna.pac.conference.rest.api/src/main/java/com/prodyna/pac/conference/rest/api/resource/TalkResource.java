@@ -34,7 +34,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
- * TalkResource
+ * REST Resource to retrieve talk information.
  * <p/>
  * Author: Nicolas Moser
  * Date: 17.10.13
@@ -43,11 +43,30 @@ import java.util.List;
 @Path("talk")
 public interface TalkResource extends Resource {
 
+	/**
+	 * Retrieve the talk with the given ID.
+	 *
+	 * @param id
+	 * 		the talk ID
+	 *
+	 * @return the talk or null if no talk with the given ID exists
+	 *
+	 * @throws RESTException
+	 * 		when the search fails
+	 */
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	Talk findTalk(@PathParam("id") Long id) throws RESTException;
 
+	/**
+	 * Retrieves all existing talks.
+	 *
+	 * @return the talk list
+	 *
+	 * @throws RESTException
+	 * 		when the search fails
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	List<Talk> getAllTalks() throws RESTException;

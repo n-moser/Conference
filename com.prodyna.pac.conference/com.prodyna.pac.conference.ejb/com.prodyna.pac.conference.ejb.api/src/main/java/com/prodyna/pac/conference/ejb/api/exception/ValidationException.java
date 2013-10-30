@@ -29,7 +29,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Called when a constraint violation occurs.
+ * Raised when a constraint violation occurs.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13
