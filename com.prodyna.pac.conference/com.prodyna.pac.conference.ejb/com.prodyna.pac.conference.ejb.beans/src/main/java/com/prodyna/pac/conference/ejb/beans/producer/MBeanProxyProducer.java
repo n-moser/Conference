@@ -35,7 +35,7 @@ import javax.management.ObjectName;
 import java.lang.management.ManagementFactory;
 
 /**
- * Produces MBean Proxy instances.
+ * CDI Producer that creates the MBean Proxy instances.
  * <p/>
  * Author: Nicolas Moser
  * Date: 30.10.13
