@@ -25,7 +25,7 @@ package com.prodyna.pac.conference.ejb.beans.producer;
 
 import com.prodyna.pac.conference.ejb.beans.mbean.MBeanProxy;
 import com.prodyna.pac.conference.ejb.beans.mbean.performance.Performance;
-import com.prodyna.pac.conference.ejb.beans.mbean.performance.PerformanceMBean;
+import com.prodyna.pac.conference.ejb.beans.mbean.performance.PerformanceMXBean;
 
 import javax.enterprise.inject.Produces;
 import javax.management.JMException;
@@ -44,7 +44,7 @@ import java.lang.management.ManagementFactory;
 public class MBeanProxyProducer {
 
 	/**
-	 * Creates a new PerformanceMBean proxy.
+	 * Creates a new PerformanceMXBean proxy.
 	 *
 	 * @return the mbean proxy
 	 *
@@ -53,7 +53,7 @@ public class MBeanProxyProducer {
 	 */
 	@Produces
 	@MBeanProxy
-	public PerformanceMBean producePerformanceMBean() throws JMException {
+	public PerformanceMXBean producePerformanceMBean() throws JMException {
 
 		MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
 
@@ -66,7 +66,7 @@ public class MBeanProxyProducer {
 			mBeanServer.registerMBean(new Performance(), objectName);
 		}
 
-		return JMX.newMBeanProxy(mBeanServer, objectName, PerformanceMBean.class);
+		return JMX.newMXBeanProxy(mBeanServer, objectName, PerformanceMXBean.class);
 	}
 
 }

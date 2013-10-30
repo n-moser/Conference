@@ -32,7 +32,7 @@ import java.util.List;
  * Date: 11.09.13
  * Time: 16:43
  */
-public interface PerformanceMBean {
+public interface PerformanceMXBean {
 
 	/**
 	 * Getter for all performance entries.

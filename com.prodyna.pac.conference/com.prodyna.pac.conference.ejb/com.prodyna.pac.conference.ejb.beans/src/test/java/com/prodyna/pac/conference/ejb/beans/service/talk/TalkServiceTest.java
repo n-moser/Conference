@@ -23,12 +23,12 @@
 
 package com.prodyna.pac.conference.ejb.beans.service.talk;
 
-import com.prodyna.pac.conference.ejb.beans.EJBTest;
 import com.prodyna.pac.conference.ejb.api.datatype.*;
 import com.prodyna.pac.conference.ejb.api.service.conference.ConferenceService;
 import com.prodyna.pac.conference.ejb.api.service.room.RoomService;
 import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
 import com.prodyna.pac.conference.ejb.api.service.talk.TalkService;
+import com.prodyna.pac.conference.ejb.beans.EJBTest;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.After;
 import org.junit.Assert;
@@ -37,6 +37,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * TalkServiceTest
@@ -173,6 +174,21 @@ public class TalkServiceTest extends EJBTest {
 		result = service.findTalkById(result.getId());
 
 		Assert.assertNull(result);
+	}
+
+	@Test(expected = InvocationTargetException.class)
+	public void validateTalkConferenceIntersection() throws Exception {
+
+		Talk talk = new Talk();
+		talk.setName("Java EE Webstack Performance");
+		talk.setConference(this.conference);
+		talk.setRoom(this.room);
+		talk.setStartDate(super.parseDate("03.10.2015"));
+		talk.setDuration(120);
+
+		talk.setConference(this.conference);
+
+		service.validateTalk(talk);
 	}
 
 

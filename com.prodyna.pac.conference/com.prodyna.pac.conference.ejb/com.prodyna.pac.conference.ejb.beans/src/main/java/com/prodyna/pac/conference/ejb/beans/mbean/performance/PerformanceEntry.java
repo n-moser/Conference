@@ -23,6 +23,8 @@
 
 package com.prodyna.pac.conference.ejb.beans.mbean.performance;
 
+import java.beans.ConstructorProperties;
+
 /**
  * A performance entry for one service operation.
  * <p/>
@@ -52,6 +54,7 @@ public class PerformanceEntry {
 	 * @param method
 	 * 		the service operation name
 	 */
+	@ConstructorProperties({"service", "method"})
 	public PerformanceEntry(String service, String method) {
 
 		this.service = service;

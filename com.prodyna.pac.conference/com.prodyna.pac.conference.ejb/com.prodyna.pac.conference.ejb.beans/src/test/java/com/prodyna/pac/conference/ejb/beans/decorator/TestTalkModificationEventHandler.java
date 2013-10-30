@@ -50,7 +50,7 @@ public class TestTalkModificationEventHandler {
 	 */
 	public void accept(@Observes TalkModificationEvent event) {
 
-		eventQueue.offer(event);
+		this.getEventQueue().offer(event);
 	}
 
 	/**

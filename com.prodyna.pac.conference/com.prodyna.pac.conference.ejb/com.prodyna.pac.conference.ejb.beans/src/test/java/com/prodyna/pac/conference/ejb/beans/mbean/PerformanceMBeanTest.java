@@ -26,7 +26,7 @@ package com.prodyna.pac.conference.ejb.beans.mbean;
 import com.prodyna.pac.conference.ejb.api.datatype.Speaker;
 import com.prodyna.pac.conference.ejb.api.service.speaker.SpeakerService;
 import com.prodyna.pac.conference.ejb.beans.mbean.performance.PerformanceEntry;
-import com.prodyna.pac.conference.ejb.beans.mbean.performance.PerformanceMBean;
+import com.prodyna.pac.conference.ejb.beans.mbean.performance.PerformanceMXBean;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Assert;
 import org.junit.Before;
@@ -51,7 +51,7 @@ public class PerformanceMBeanTest {
 
 	@Inject
 	@MBeanProxy
-	private PerformanceMBean mBean;
+	private PerformanceMXBean mBean;
 
 	@Before
 	public void setUp() throws Exception {

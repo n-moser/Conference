@@ -24,7 +24,7 @@
 package com.prodyna.pac.conference.ejb.beans.interceptor;
 
 import com.prodyna.pac.conference.ejb.beans.mbean.MBeanProxy;
-import com.prodyna.pac.conference.ejb.beans.mbean.performance.PerformanceMBean;
+import com.prodyna.pac.conference.ejb.beans.mbean.performance.PerformanceMXBean;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
@@ -51,7 +51,7 @@ public class PerformanceInterceptor {
 
 	@Inject
 	@MBeanProxy
-	private PerformanceMBean mBean;
+	private PerformanceMXBean mBean;
 
 	/**
 	 * Interception method that is called before the delegating operation is called.

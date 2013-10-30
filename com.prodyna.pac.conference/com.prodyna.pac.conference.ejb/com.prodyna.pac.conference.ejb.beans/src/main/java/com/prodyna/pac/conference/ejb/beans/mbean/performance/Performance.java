@@ -29,13 +29,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Default Implementation of PerformanceMBean.
+ * Default Implementation of PerformanceMXBean.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13
  * Time: 16:43
  */
-public class Performance implements PerformanceMBean {
+public class Performance implements PerformanceMXBean {
 
 	private Map<String, PerformanceEntry> entries = new HashMap<String, PerformanceEntry>();
 
