@@ -75,7 +75,7 @@ public class AuditInterceptor {
 
 		Object[] args = new Object[]{user, serviceClass.getName(), method.getName()};
 
-		logger.debug(marker, "User '{}' accessed service operation '{}.{}()'.", args);
+		logger.info(marker, "User '{}' accessed service operation '{}.{}()'.", args);
 
 		return context.proceed();
 	}

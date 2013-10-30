@@ -26,6 +26,7 @@ package com.prodyna.pac.conference.ejb.beans.service.session;
 import com.prodyna.pac.conference.ejb.api.service.session.UserSession;
 
 import javax.ejb.Stateful;
+import javax.enterprise.context.SessionScoped;
 
 /**
  * Default implementation of the UserSession session bean.
@@ -35,6 +36,7 @@ import javax.ejb.Stateful;
  * Time: 16:37
  */
 @Stateful
+@SessionScoped
 public class UserSessionBean implements UserSession {
 
 	private String userName;
