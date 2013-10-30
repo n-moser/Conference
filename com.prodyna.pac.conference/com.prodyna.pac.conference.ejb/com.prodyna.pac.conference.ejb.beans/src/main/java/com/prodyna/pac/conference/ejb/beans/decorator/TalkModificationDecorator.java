@@ -37,7 +37,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 
 /**
- * Java EE Decorator that intersects TalkService and sends modifications of Talk entity as Java EE.
+ * CDI Decorator that intersects TalkService and sends modifications of Talk entity as CDI Event.
  * <p/>
  * Author: Nicolas Moser
  * Date: 11.09.13

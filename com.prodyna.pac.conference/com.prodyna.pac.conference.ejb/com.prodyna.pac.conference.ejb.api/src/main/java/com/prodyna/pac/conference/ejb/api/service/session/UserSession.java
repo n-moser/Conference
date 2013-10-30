@@ -23,8 +23,9 @@
 
 package com.prodyna.pac.conference.ejb.api.service.session;
 
+import com.prodyna.pac.conference.ejb.api.service.Service;
+
 import javax.ejb.Local;
-import java.io.Serializable;
 
 /**
  * Stateful service for storing the user name.

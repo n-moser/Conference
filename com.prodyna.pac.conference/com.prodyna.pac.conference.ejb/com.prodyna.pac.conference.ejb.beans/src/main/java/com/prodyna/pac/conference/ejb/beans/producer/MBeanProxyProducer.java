@@ -43,6 +43,9 @@ import java.lang.management.ManagementFactory;
  */
 public class MBeanProxyProducer {
 
+	/** Constant for JMX Object Name of PerformanceMXBean */
+	private static final String OBJECT_NAME_PERFORMANCE = "com.prodyna:type=Performance";
+
 	/**
 	 * Creates a new PerformanceMXBean proxy.
 	 *
@@ -61,7 +64,7 @@ public class MBeanProxyProducer {
 			throw new IllegalStateException("No MBean Server registered!");
 		}
 
-		ObjectName objectName = new ObjectName("com.prodyna:type=Performance");
+		ObjectName objectName = new ObjectName(OBJECT_NAME_PERFORMANCE);
 		if (!mBeanServer.isRegistered(objectName)) {
 			mBeanServer.registerMBean(new Performance(), objectName);
 		}
