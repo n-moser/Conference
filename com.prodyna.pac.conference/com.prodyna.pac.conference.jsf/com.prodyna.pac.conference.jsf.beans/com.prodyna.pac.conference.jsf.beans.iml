@@ -148,6 +148,17 @@
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.11/jar/4e031bb61df09069aeb2bffb4019e7a5034a4ee0/junit-4.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.11/source/28e0ad201304e4a4abf999ca0570b7cffc352c3c/junit-4.11-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jacoco/org.jacoco.core/0.6.0.201210061924/eclipse-plugin/776db5e7b047e6e2a4ade61e414e4b3b01aca7fc/org.jacoco.core-0.6.0.201210061924.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -164,17 +175,6 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.extension/arquillian-jacoco/1.0.0.Alpha5/source/58799e752e00e5c4d75b99f0110461af86b69984/arquillian-jacoco-1.0.0.Alpha5-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.11/jar/4e031bb61df09069aeb2bffb4019e7a5034a4ee0/junit-4.11.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.11/source/28e0ad201304e4a4abf999ca0570b7cffc352c3c/junit-4.11-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -291,17 +291,6 @@
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-api-base/2.0.0-alpha-3/jar/9f4ae1b50391d78d1d6860222a9041b18689b39b/shrinkwrap-descriptors-api-base-2.0.0-alpha-3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-api-base/2.0.0-alpha-3/source/2294108d77e9f7f53e68b326be81006033a41fb6/shrinkwrap-descriptors-api-base-2.0.0-alpha-3-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap/shrinkwrap-api/1.1.2/jar/3339fd063aa1961c9016d85aafbbae902ab699d4/shrinkwrap-api-1.1.2.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -373,6 +362,17 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.arquillian.container/arquillian-container-test-api/1.1.1.Final/source/9091de5d2e61d225fd9fca304106077d2ec9f6a5/arquillian-container-test-api-1.1.1.Final-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-api-base/2.0.0-alpha-3/jar/9f4ae1b50391d78d1d6860222a9041b18689b39b/shrinkwrap-descriptors-api-base-2.0.0-alpha-3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jboss.shrinkwrap.descriptors/shrinkwrap-descriptors-api-base/2.0.0-alpha-3/source/2294108d77e9f7f53e68b326be81006033a41fb6/shrinkwrap-descriptors-api-base-2.0.0-alpha-3-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

@@ -24,7 +24,6 @@
 apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
-apply plugin: 'project-report'
 
 checkstyle {
     ignoreFailures = true

@@ -29,7 +29,10 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: junitVersion
 
     testCompile group: 'org.jacoco', name: 'org.jacoco.core', version: jacocoVersion
-    testCompile group: 'org.jboss.arquillian.extension', name: 'arquillian-jacoco', version: jacocoExtensionVersion
+
+    testCompile('org.jboss.arquillian.extension:arquillian-jacoco:' + jacocoExtensionVersion) {
+        exclude group: 'org.jboss.shrinkwrap.descriptors'
+    }
 }
 
 test {

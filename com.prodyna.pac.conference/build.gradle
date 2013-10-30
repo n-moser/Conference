@@ -25,6 +25,7 @@ description = 'PAC Conference Root Project'
 
 version = '1.0'
 
+apply plugin: 'project-report'
 apply plugin: 'build-dashboard'
 
 apply from: "$rootDir/config/gradle/database.gradle"
