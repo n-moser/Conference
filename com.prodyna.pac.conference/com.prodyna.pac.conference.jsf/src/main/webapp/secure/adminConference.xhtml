@@ -47,7 +47,7 @@
 
                 <rich:panel id="conference" header="Conference">
 
-                    <h:form>
+                    <h:form id="conferenceForm">
                         <h:panelGrid columns="3" styleClass="masterTable">
 
                             <h:outputText title="Name of the Conference" value="Name" styleClass="label"/>
@@ -72,18 +72,18 @@
                             <rich:message for="location" styleClass="message"/>
 
                             <h:outputText title="Start Date of the Conference" value="Start Date" styleClass="label"/>
-                            <rich:calendar id="start" value="#{conferenceAdminBean.conference.startDate}"
+                            <rich:calendar id="startDate" value="#{conferenceAdminBean.conference.startDate}"
                                            inputClass="masterControlCal">
                                 <rich:validator/>
                             </rich:calendar>
-                            <rich:message for="start" styleClass="message"/>
+                            <rich:message for="startDate" styleClass="message"/>
 
                             <h:outputText title="End Date of the Conference" value="End Date" styleClass="label"/>
-                            <rich:calendar id="end" value="#{conferenceAdminBean.conference.endDate}"
+                            <rich:calendar id="endDate" value="#{conferenceAdminBean.conference.endDate}"
                                            inputClass="masterControlCal">
                                 <rich:validator/>
                             </rich:calendar>
-                            <rich:message for="end" styleClass="message"/>
+                            <rich:message for="endDate" styleClass="message"/>
 
                         </h:panelGrid>
 

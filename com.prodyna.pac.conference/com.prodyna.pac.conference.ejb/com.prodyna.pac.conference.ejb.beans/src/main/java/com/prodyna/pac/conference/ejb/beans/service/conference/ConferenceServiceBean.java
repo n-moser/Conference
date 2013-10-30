@@ -150,7 +150,7 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 
 			if (startDate.after(endDate)) {
 
-				exception.addItem("startDate", "Start Date must be before End Date.");
+				exception.addItem("endDate", "Start Date must be before End Date.");
 				throw exception;
 			}
 		}

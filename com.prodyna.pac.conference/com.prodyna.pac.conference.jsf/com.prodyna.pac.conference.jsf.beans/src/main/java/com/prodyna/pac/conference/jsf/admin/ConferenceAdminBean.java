@@ -51,7 +51,7 @@ import java.util.List;
 @SessionScoped
 @RolesAllowed("admin")
 @Named("conferenceAdminBean")
-public class ConferenceAdminBean implements Serializable {
+public class ConferenceAdminBean extends AdminBean implements Serializable {
 
 	private Conference conference;
 
@@ -161,15 +161,8 @@ public class ConferenceAdminBean implements Serializable {
 		return "adminConference?faces-redirect=true";
 	}
 
-	/**
-	 * Save the current conference instance.
-	 *
-	 * @return the navigation outcome
-	 *
-	 * @throws ServiceException
-	 * 		when the conference cannot be saved
-	 */
-	public String save() throws ServiceException {
+	@Override
+	protected String internalSave() throws ServiceException {
 
 		if (conference != null) {
 			if (conference.getId() == null) {
@@ -182,15 +175,8 @@ public class ConferenceAdminBean implements Serializable {
 		return "admin?faces-redirect=true";
 	}
 
-	/**
-	 * Removes the current conference instance.
-	 *
-	 * @return the navigation outcome
-	 *
-	 * @throws ServiceException
-	 * 		when the conference cannot be removed
-	 */
-	public String remove() throws ServiceException {
+	@Override
+	protected String internalRemove() throws ServiceException {
 
 		if (conference != null) {
 			if (conference.getId() == null) {
@@ -201,6 +187,12 @@ public class ConferenceAdminBean implements Serializable {
 		}
 
 		return "admin?faces-redirect=true";
+	}
+
+	@Override
+	protected String getFormName() {
+
+		return "conferenceForm";
 	}
 
 }
