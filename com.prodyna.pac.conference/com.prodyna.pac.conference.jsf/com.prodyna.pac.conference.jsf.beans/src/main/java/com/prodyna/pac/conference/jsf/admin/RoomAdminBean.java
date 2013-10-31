@@ -48,7 +48,7 @@ import java.io.Serializable;
 @SessionScoped
 @RolesAllowed("admin")
 @Named("roomAdminBean")
-public class RoomAdminBean implements Serializable {
+public class RoomAdminBean extends AdminBean implements Serializable {
 
 	private Room room;
 
@@ -138,15 +138,8 @@ public class RoomAdminBean implements Serializable {
 		return "adminRoom?faces-redirect=true";
 	}
 
-	/**
-	 * Save the current room instance.
-	 *
-	 * @return the navigation outcome
-	 *
-	 * @throws ServiceException
-	 * 		when the room cannot be saved
-	 */
-	public String save() throws ServiceException {
+	@Override
+	protected String internalSave() throws ServiceException {
 
 		if (room != null) {
 			if (room.getId() == null) {
@@ -161,15 +154,9 @@ public class RoomAdminBean implements Serializable {
 		return "adminConference?faces-redirect=true";
 	}
 
-	/**
-	 * Remove the current room instance.
-	 *
-	 * @return the navigation outcome
-	 *
-	 * @throws ServiceException
-	 * 		when the room cannot be removed
-	 */
-	public String remove() throws ServiceException {
+	@Override
+	protected String internalRemove() throws ServiceException {
+
 
 		if (room != null) {
 			if (room.getId() == null) {
@@ -184,5 +171,10 @@ public class RoomAdminBean implements Serializable {
 		}
 
 		return "adminConference?faces-redirect=true";
+	}
+
+	@Override
+	protected String getFormName() {
+		return "roomForm";
 	}
 }

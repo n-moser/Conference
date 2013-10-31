@@ -89,7 +89,7 @@ public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 	@Override
 	public List<Speaker> getAllSpeakers() throws ServiceException {
 
-			try {
+		try {
 			TypedQuery<Speaker> query = this.entityManager.
 					createNamedQuery(QUERY_FIND_ALL_SPEAKERS, Speaker.class);
 
@@ -101,7 +101,7 @@ public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 	}
 
 	@Override
-	public List<Speaker> getSpeakersByTalk(Talk talk) throws ServiceException{
+	public List<Speaker> getSpeakersByTalk(Talk talk) throws ServiceException {
 
 		try {
 			TypedQuery<Speaker> query = this.entityManager.
@@ -155,7 +155,8 @@ public class SpeakerServiceBean extends ServiceBean implements SpeakerService {
 			this.entityManager.remove(speaker);
 			this.entityManager.flush();
 		} catch (PersistenceException pe) {
-			throw new ServiceException("Error removing Speaker entity with ID '" + speaker.getId() + "'.", pe);
+			throw new ServiceException(
+					"Cannot remove Speaker '" + speaker.getName() + "'. It is still referenced from a Talk.", pe);
 		}
 
 		return speaker;

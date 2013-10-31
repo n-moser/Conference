@@ -237,7 +237,7 @@ public class TalkServiceBean extends ServiceBean implements TalkService {
 			this.entityManager.remove(talk);
 			this.entityManager.flush();
 		} catch (PersistenceException pe) {
-			throw new ServiceException("Error removing Talk entity with ID '" + talk.getId() + "'.", pe);
+			throw new ServiceException("Cannot remove Talk '" + talk.getName() + "'.", pe);
 		}
 
 		return talk;

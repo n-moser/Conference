@@ -154,7 +154,8 @@ public class RoomServiceBean extends ServiceBean implements RoomService {
 			this.entityManager.remove(room);
 			this.entityManager.flush();
 		} catch (PersistenceException pe) {
-			throw new ServiceException("Error removing Room entity with ID '" + room.getId() + "'.", pe);
+			throw new ServiceException(
+					"Cannot remove Room '" + room.getName() + "'. It is still referenced from a Talk.", pe);
 		}
 
 		return room;

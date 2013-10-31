@@ -46,7 +46,7 @@ import java.io.Serializable;
 @SessionScoped
 @RolesAllowed("admin")
 @Named("speakerAdminBean")
-public class SpeakerAdminBean implements Serializable {
+public class SpeakerAdminBean extends AdminBean implements Serializable {
 
 	private Speaker speaker;
 
@@ -106,15 +106,8 @@ public class SpeakerAdminBean implements Serializable {
 		return "adminSpeaker?faces-redirect=true";
 	}
 
-	/**
-	 * Save the current speaker instance.
-	 *
-	 * @return the navigation outcome
-	 *
-	 * @throws ServiceException
-	 * 		when the speaker cannot be saved
-	 */
-	public String save() throws ServiceException {
+	@Override
+	protected String internalSave() throws ServiceException {
 
 		if (speaker != null) {
 			if (speaker.getId() == null) {
@@ -127,15 +120,8 @@ public class SpeakerAdminBean implements Serializable {
 		return "admin?faces-redirect=true";
 	}
 
-	/**
-	 * Remove the current speaker instance.
-	 *
-	 * @return the navigation outcome
-	 *
-	 * @throws ServiceException
-	 * 		when the speaker cannot be removed
-	 */
-	public String remove() throws ServiceException {
+	@Override
+	protected String internalRemove() throws ServiceException {
 
 		if (speaker != null) {
 			if (speaker.getId() == null) {
@@ -146,5 +132,11 @@ public class SpeakerAdminBean implements Serializable {
 		}
 
 		return "admin?faces-redirect=true";
+	}
+
+	@Override
+	protected String getFormName() {
+
+		return "speakerForm";
 	}
 }

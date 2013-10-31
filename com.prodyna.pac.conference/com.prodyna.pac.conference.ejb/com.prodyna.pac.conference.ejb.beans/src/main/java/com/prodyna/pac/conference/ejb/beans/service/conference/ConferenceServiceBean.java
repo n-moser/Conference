@@ -169,7 +169,9 @@ public class ConferenceServiceBean extends ServiceBean implements ConferenceServ
 			this.entityManager.detach(conference);
 
 		} catch (PersistenceException pe) {
-			throw new ServiceException("Error removing Conference entity with ID '" + conference.getId() + "'.", pe);
+			throw new ServiceException(
+					"Error removing Conference '" + conference.getName() + "'. It is still referenced from a Talk or Room.",
+					pe);
 		}
 
 		return conference;
